@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSS3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .logo {
+            height: 50px;
+        }
+        .footer-section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #score-display {
+      max-width: 600px;
+      margin: auto;
+    }
+
+#score-display h4 {
+          color: #007bff; /* Bootstrap primary color */
+        }
+      #timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: fixed;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+    #timer-display {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.jpg" alt="Logo 1" class="logo">
+            <img src="img/logo2.jpg" alt="Logo 2" class="logo">
+            Computer Based Examination System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<!-- Container for displaying timer -->
+<div id="timer-container">
+  <center>
+      <div id="timer-display">
+          <p>Exam Time:</p>
+          <p id="timer">00:00</p>
+      </div>
+  </center>
+</div>
+
+<div class="container mt-5">
+    <div id="subjectAccordion">
+        <!-- JSS2 -->
+        <div class="card">
+            <div class="card-header" id="headingPrimary5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePrimary5" aria-expanded="true" aria-controls="collapsePrimary5">
+                        JSS 3
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePrimary5" class="collapse show" aria-labelledby="headingPrimary5" data-parent="#subjectAccordion">
+                <div class="card-body">
+                    <button class="btn btn-secondary" onclick="displayQuestions('Mathematics')">Mathematics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('English language')">English language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Yoruba language')">Yoruba language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Civic education')">Civic education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Physical and health education')">Physical and health education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Christian religion studies')">Christian religion studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Social studies')">Social studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Agricultural studies')">Agricultural studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Home economics')">Home economics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('History')">History</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Creative and cultural art')">Creative and cultural art</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Basic science and technology')">Basic science and technology</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Leadership')">Leadership</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('French language')">French language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Digital literacy')">Digital literacy</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Business studies')">Business studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Entrepreneurship')">Entrepreneurship</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Container for displaying questions -->
+<div id="questionContainer" class="container mt-3">
+
+  
+</div> 
+
+
+<!-- Container for displaying score for each subject -->
+<div id="score-display" class="mt-3 p-3 border rounded shadow-sm bg-light">
+  <h4 class="text-center">Score board</h4>
+  <!-- Add score content here -->
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <p>Developed by Livingstone Consult 2024</p>
+    </div>
+</footer>
+
+<script>
+
+const questions = {
+    'Mathematics': [
+  { question: "1. What is the value of 8 × 7?", options: ["54", "56", "58"], answer: "56" },
+  { question: "2. Solve for x: 2x + 3 = 11", options: ["4", "5", "6"], answer: "4" },
+  { question: "3. What is the square root of 144?", options: ["10", "11", "12"], answer: "12" },
+  { question: "4. If a rectangle has a length of 8 cm and a width of 5 cm, what is its area?", options: ["40 cm²", "30 cm²", "50 cm²"], answer: "40 cm²" },
+  { question: "5. What is 15% of 200?", options: ["30", "25", "35"], answer: "30" },
+  { question: "6. Convert 0.75 to a fraction.", options: ["3/4", "1/2", "2/3"], answer: "3/4" },
+  { question: "7. What is the next prime number after 7?", options: ["11", "9", "13"], answer: "11" },
+  { question: "8. What is the perimeter of a square with side length 6 cm?", options: ["24 cm", "20 cm", "30 cm"], answer: "24 cm" },
+  { question: "9. Solve for y: y/4 = 5", options: ["20", "15", "25"], answer: "20" },
+  { question: "10. What is 50 divided by 5?", options: ["8", "9", "10"], answer: "10" },
+  { question: "11. What is the area of a triangle with a base of 10 cm and a height of 5 cm?", options: ["25 cm²", "50 cm²", "15 cm²"], answer: "25 cm²" },
+  { question: "12. What is the value of 9 squared?", options: ["81", "72", "90"], answer: "81" },
+  { question: "13. Convert 2/5 to a decimal.", options: ["0.4", "0.5", "0.6"], answer: "0.4" },
+  { question: "14. What is the volume of a cube with a side length of 3 cm?", options: ["27 cm³", "9 cm³", "12 cm³"], answer: "27 cm³" },
+  { question: "15. Solve for z: 3z - 7 = 2", options: ["3", "4", "5"], answer: "3" },
+  { question: "16. What is 25 multiplied by 4?", options: ["100", "90", "110"], answer: "100" },
+  { question: "17. What is the sum of the angles in a triangle?", options: ["180 degrees", "360 degrees", "90 degrees"], answer: "180 degrees" },
+  { question: "18. Simplify: 3(4 + 5)", options: ["27", "24", "20"], answer: "27" },
+  { question: "19. What is the median of the following numbers: 3, 7, 5, 9, 6?", options: ["7", "6", "5"], answer: "7" },
+  { question: "20. What is the circumference of a circle with a diameter of 10 cm (Use π ≈ 3.14)?", options: ["31.4 cm", "25.2 cm", "20 cm"], answer: "31.4 cm" },
+  { question: "21. Solve for x: x - 8 = 15", options: ["23", "22", "24"], answer: "23" },
+  { question: "22. What is the greatest common divisor of 18 and 24?", options: ["6", "4", "8"], answer: "6" },
+  { question: "23. What is the product of the first five prime numbers?", options: ["2310", "210", "120"], answer: "2310" },
+  { question: "24. What is the slope of the line that passes through the points (1, 2) and (3, 6)?", options: ["2", "4", "3"], answer: "2" },
+  { question: "25. Convert 3/8 to a percentage.", options: ["37.5%", "40%", "35%"], answer: "37.5%" },
+  { question: "26. What is the difference between 1000 and 865?", options: ["135", "125", "145"], answer: "135" },
+  { question: "27. What is the area of a circle with a radius of 4 cm (Use π ≈ 3.14)?", options: ["50.24 cm²", "40.96 cm²", "60.48 cm²"], answer: "50.24 cm²" },
+  { question: "28. What is the value of 7 × (5 + 3)?", options: ["56", "50", "60"], answer: "56" },
+  { question: "29. What is 10% of 450?", options: ["45", "50", "40"], answer: "45" },
+  { question: "30. Simplify: 12 ÷ 3 × 2", options: ["8", "10", "6"], answer: "8" }
+],
+
+    'English language': [
+  { question: "1. Choose the correct past tense form of the verb 'go'.", options: ["Went", "Going", "Gone"], answer: "Went" },
+  { question: "2. Identify the subject in the sentence: 'The cat slept on the mat.'", options: ["The mat", "Slept", "The cat"], answer: "The cat" },
+  { question: "3. Which word is an adjective in the sentence: 'She wore a beautiful dress.'?", options: ["Wore", "Beautiful", "Dress"], answer: "Beautiful" },
+  { question: "4. What is the plural of 'child'?", options: ["Childs", "Children", "Childes"], answer: "Children" },
+  { question: "5. Choose the correct sentence.", options: ["She don't like apples.", "She doesn't like apples.", "She doesn't likes apples."], answer: "She doesn't like apples." },
+  { question: "6. What is the synonym of 'happy'?", options: ["Sad", "Joyful", "Angry"], answer: "Joyful" },
+  { question: "7. What is the antonym of 'hot'?", options: ["Cold", "Warm", "Heat"], answer: "Cold" },
+  { question: "8. Fill in the blank: 'He ____ a book on the table.'", options: ["Put", "Puts", "Putting"], answer: "Put" },
+  { question: "9. Which of these sentences is correct?", options: ["The dog chase the cat.", "The dog chases the cat.", "The dog chased the cat."], answer: "The dog chases the cat." },
+  { question: "10. Choose the word that means the same as 'quickly'.", options: ["Slowly", "Fast", "Carefully"], answer: "Fast" },
+  { question: "11. Find the odd word out: 'Cat', 'Dog', 'Tree'.", options: ["Cat", "Dog", "Tree"], answer: "Tree" },
+  { question: "12. What is the plural form of 'city'?", options: ["Cities", "Citys", "Citi"], answer: "Cities" },
+  { question: "13. What is the correct form of the verb in the sentence: 'They ____ to school every day.'?", options: ["Walk", "Walked", "Walking"], answer: "Walk" },
+  { question: "14. Choose the correct sentence.", options: ["I am going to the store tomorrow.", "I going to the store tomorrow.", "I goes to the store tomorrow."], answer: "I am going to the store tomorrow." },
+  { question: "15. What is the meaning of 'giggle'?", options: ["Cry", "Laugh", "Whisper"], answer: "Laugh" },
+  { question: "16. Which sentence is a question?", options: ["She is going to the park.", "Are you coming to the party?", "He likes ice cream."], answer: "Are you coming to the party?" },
+  { question: "17. What is the past tense of 'eat'?", options: ["Eats", "Eaten", "Ate"], answer: "Ate" },
+  { question: "18. Which word is a noun?", options: ["Happy", "Run", "School"], answer: "School" },
+  { question: "19. Identify the verb in the sentence: 'She sings beautifully.'", options: ["She", "Sings", "Beautifully"], answer: "Sings" },
+  { question: "20. Choose the correct word: 'He has ____ car.'", options: ["A", "An", "The"], answer: "A" },
+  { question: "21. What is the antonym of 'easy'?", options: ["Hard", "Simple", "Quick"], answer: "Hard" },
+  { question: "22. Fill in the blank: 'She ____ to the library yesterday.'", options: ["Goes", "Go", "Went"], answer: "Went" },
+  { question: "23. Which of these is a conjunction?", options: ["And", "House", "Blue"], answer: "And" },
+  { question: "24. What is the synonym of 'large'?", options: ["Big", "Small", "Tiny"], answer: "Big" },
+  { question: "25. Identify the adverb in the sentence: 'He ran quickly.'", options: ["He", "Ran", "Quickly"], answer: "Quickly" },
+  { question: "26. Choose the correct form of the verb: 'I ____ a letter now.'", options: ["Write", "Writes", "Writing"], answer: "Writing" },
+  { question: "27. What is the antonym of 'early'?", options: ["Late", "Soon", "Fast"], answer: "Late" },
+  { question: "28. What is the plural of 'mouse'?", options: ["Mouses", "Mice", "Mouse"], answer: "Mice" },
+  { question: "29. Choose the correct sentence.", options: ["She don't like bananas.", "She doesn't like bananas.", "She doesn't likes bananas."], answer: "She doesn't like bananas." },
+  { question: "30. What is the meaning of 'whisper'?", options: ["Talk loudly", "Speak quietly", "Shout"], answer: "Speak quietly" }
+],
+
+
+'Yoruba language': [
+  { question: "1. Kí ni itumọ̀ ọrọ̀ 'ṣé'?", options: ["To do", "To eat", "To sleep"], answer: "To do" },
+  { question: "2. Kí ni orúkọ Yoruba fún 'school'?", options: ["Ile-ẹ̀kọ́", "Ile-ọba", "Ile-iwe"], answer: "Ile-iwe" },
+  { question: "3. Bawo ni a ṣe ń pe 'pen' ní Yoruba?", options: ["Pen", "Kalẹ́mù", "Pẹ́ńsíl"], answer: "Kalẹ́mù" },
+  { question: "4. Kí ni orúkọ Yoruba fún 'book'?", options: ["Iwe", "Ìwé", "Iwe-itan"], answer: "Ìwé" },
+  { question: "5. Kí ni itumọ̀ ọrọ̀ 'àárín'?", options: ["Middle", "End", "Beginning"], answer: "Middle" },
+  { question: "6. Kí ni itumọ̀ ọrọ̀ 'ayé'?", options: ["Earth", "Sky", "Sea"], answer: "Earth" },
+  { question: "7. Bawo ni a ṣe ń sọ 'good morning' ní Yoruba?", options: ["Ẹ n lẹ́", "Ẹ káàárọ̀", "Ẹ ṣé"], answer: "Ẹ káàárọ̀" },
+  { question: "8. Kí ni orúkọ Yoruba fún 'house'?", options: ["Ile", "Ọ̀gá", "Ọdẹ"], answer: "Ile" },
+  { question: "9. Kí ni itumọ̀ ọrọ̀ 'lẹ́kè'?", options: ["Up", "Down", "Side"], answer: "Up" },
+  { question: "10. Kí ni a ń pè 'dog' ní Yoruba?", options: ["Èkú", "Ajá", "Ọ̀sìn"], answer: "Ajá" },
+  { question: "11. Kí ni itumọ̀ ọrọ̀ 'òjò'?", options: ["Sun", "Rain", "Wind"], answer: "Rain" },
+  { question: "12. Bawo ni a ṣe ń sọ 'thank you' ní Yoruba?", options: ["Ẹ ṣé", "Ẹ n lẹ́", "Ẹ ṣé gan"], answer: "Ẹ ṣé" },
+  { question: "13. Kí ni orúkọ Yoruba fún 'food'?", options: ["Ounjẹ", "Omi", "Iṣẹ"], answer: "Ounjẹ" },
+  { question: "14. Kí ni itumọ̀ ọrọ̀ 'orúkọ'?", options: ["Name", "Age", "Place"], answer: "Name" },
+  { question: "15. Kí ni a ń pè 'cat' ní Yoruba?", options: ["Ologbo", "Oso", "Ewe"], answer: "Ologbo" },
+  { question: "16. Kí ni itumọ̀ ọrọ̀ 'àròko'?", options: ["Story", "Essay", "Letter"], answer: "Essay" },
+  { question: "17. Kí ni orúkọ Yoruba fún 'car'?", options: ["Ọkọ̀", "Motò", "Ẹṣin"], answer: "Motò" },
+  { question: "18. Bawo ni a ṣe ń sọ 'please' ní Yoruba?", options: ["Jọ̀ọ́", "Bẹ́ẹ̀ni", "Ẹ ṣé"], answer: "Jọ̀ọ́" },
+  { question: "19. Kí ni itumọ̀ ọrọ̀ 'dáadáa'?", options: ["Good", "Bad", "Old"], answer: "Good" },
+  { question: "20. Kí ni a ń pè 'friend' ní Yoruba?", options: ["Ọ̀rẹ́", "Ọ̀gá", "Ẹ̀gbẹ́"], answer: "Ọ̀rẹ́" },
+  { question: "21. Kí ni orúkọ Yoruba fún 'teacher'?", options: ["Olùkó", "Ọ̀gbẹ́ni", "Olùkọ́"], answer: "Olùkó" },
+  { question: "22. Kí ni itumọ̀ ọrọ̀ 'gbà'?", options: ["To receive", "To give", "To sell"], answer: "To receive" },
+  { question: "23. Bawo ni a ṣe ń sọ 'I love you' ní Yoruba?", options: ["Mo nífẹ̀ẹ́ rẹ", "Mo fẹ́ rẹ", "Mo fẹ́kú"], answer: "Mo nífẹ̀ẹ́ rẹ" },
+  { question: "24. Kí ni itumọ̀ ọrọ̀ 'àárín'?", options: ["Middle", "End", "Beginning"], answer: "Middle" },
+  { question: "25. Kí ni orúkọ Yoruba fún 'computer'?", options: ["Kọ̀mpútà", "Ìkànnì", "Ẹrọ"], answer: "Kọ̀mpútà" },
+  { question: "26. Kí ni itumọ̀ ọrọ̀ 'abẹ́'?", options: ["Under", "Above", "Beside"], answer: "Under" },
+  { question: "27. Kí ni a ń pè 'bird' ní Yoruba?", options: ["Ẹyẹ", "Ireke", "Ẹranko"], answer: "Ẹyẹ" },
+  { question: "28. Kí ni itumọ̀ ọrọ̀ 'akẹ́kọ̀ọ́'?", options: ["Student", "Teacher", "Parent"], answer: "Student" },
+  { question: "29. Kí ni orúkọ Yoruba fún 'market'?", options: ["Ọjà", "Ìkà", "Ile"], answer: "Ọjà" },
+  { question: "30. Kí ni itumọ̀ ọrọ̀ 'ìdí'?", options: ["Reason", "Place", "Time"], answer: "Reason" }
+],
+
+'Civic education': [
+  { question: "1. What is the primary purpose of a constitution?", options: ["To outline the laws of a country", "To celebrate national holidays", "To provide food and shelter"], answer: "To outline the laws of a country" },
+  { question: "2. Which of the following is a fundamental human right?", options: ["Right to vote", "Right to own property", "Right to be educated"], answer: "Right to be educated" },
+  { question: "3. What does the term 'democracy' mean?", options: ["Rule by the people", "Rule by the king", "Rule by the military"], answer: "Rule by the people" },
+  { question: "4. Who is responsible for making laws in a democratic country?", options: ["The president", "The legislature", "The judiciary"], answer: "The legislature" },
+  { question: "5. What is the role of the judiciary?", options: ["To make laws", "To enforce laws", "To interpret laws"], answer: "To interpret laws" },
+  { question: "6. Which of the following is a duty of a citizen?", options: ["Paying taxes", "Traveling abroad", "Watching television"], answer: "Paying taxes" },
+  { question: "7. What does 'civil rights' refer to?", options: ["Rights to participate in political activities", "Rights to own a car", "Rights to personal and legal freedoms"], answer: "Rights to personal and legal freedoms" },
+  { question: "8. What is the purpose of elections?", options: ["To select leaders", "To provide entertainment", "To build infrastructure"], answer: "To select leaders" },
+  { question: "9. What is 'good governance'?", options: ["Effective and transparent administration", "High taxes", "Frequent changes in government"], answer: "Effective and transparent administration" },
+  { question: "10. Which of the following is a characteristic of a republic?", options: ["Rule by elected representatives", "Rule by a monarch", "Rule by a dictator"], answer: "Rule by elected representatives" },
+  { question: "11. What does the term 'equality before the law' mean?", options: ["Everyone is treated the same under the law", "Some people are above the law", "Only rich people are treated well"], answer: "Everyone is treated the same under the law" },
+  { question: "12. Who has the power to amend the constitution?", options: ["The parliament", "The president", "The judiciary"], answer: "The parliament" },
+  { question: "13. What is the significance of human rights?", options: ["They protect individual freedoms", "They increase government power", "They restrict personal freedoms"], answer: "They protect individual freedoms" },
+  { question: "14. What does 'separation of powers' refer to?", options: ["Division of government responsibilities into distinct branches", "Combining all powers into one branch", "Sharing power with foreign countries"], answer: "Division of government responsibilities into distinct branches" },
+  { question: "15. What is the role of the executive branch?", options: ["To enforce laws", "To interpret laws", "To make laws"], answer: "To enforce laws" },
+  { question: "16. What is the function of the legislative branch?", options: ["To make laws", "To enforce laws", "To interpret laws"], answer: "To make laws" },
+  { question: "17. What is 'freedom of speech'?", options: ["The right to express opinions without censorship", "The right to own property", "The right to travel"], answer: "The right to express opinions without censorship" },
+  { question: "18. What does 'rule of law' mean?", options: ["Everyone is accountable under the law", "Only certain people are accountable", "Laws are applied arbitrarily"], answer: "Everyone is accountable under the law" },
+  { question: "19. Who is responsible for enforcing laws at the local level?", options: ["Local police", "National army", "International organizations"], answer: "Local police" },
+  { question: "20. What is the purpose of a bill of rights?", options: ["To list fundamental rights and freedoms", "To define government powers", "To regulate trade"], answer: "To list fundamental rights and freedoms" },
+  { question: "21. What is 'public accountability'?", options: ["Government officials are answerable to the public", "Government officials are not accountable", "Public services are free"], answer: "Government officials are answerable to the public" },
+  { question: "22. What is 'judicial review'?", options: ["The process of reviewing laws to ensure they are constitutional", "The process of making new laws", "The process of enforcing laws"], answer: "The process of reviewing laws to ensure they are constitutional" },
+  { question: "23. What does 'due process' mean?", options: ["Fair treatment through the judicial system", "Immediate execution of laws", "Ignoring legal procedures"], answer: "Fair treatment through the judicial system" },
+  { question: "24. What is 'civil society'?", options: ["Organizations and groups that work to improve society", "Government agencies", "Businesses"], answer: "Organizations and groups that work to improve society" },
+  { question: "25. What is the main function of local government?", options: ["To address local issues and needs", "To make national laws", "To conduct foreign relations"], answer: "To address local issues and needs" },
+  { question: "26. What is the role of the media in a democracy?", options: ["To inform the public and hold leaders accountable", "To create propaganda", "To influence elections"], answer: "To inform the public and hold leaders accountable" },
+  { question: "27. What does 'political participation' mean?", options: ["Involvement in political processes and decisions", "Avoiding elections", "Ignoring political news"], answer: "Involvement in political processes and decisions" },
+  { question: "28. What is the importance of civic education?", options: ["To educate citizens about their rights and responsibilities", "To promote government propaganda", "To increase political conflicts"], answer: "To educate citizens about their rights and responsibilities" },
+  { question: "29. What is 'national unity'?", options: ["The state of being united as a nation", "The division of states", "The creation of different nationalities"], answer: "The state of being united as a nation" },
+  { question: "30. What is the purpose of public elections?", options: ["To select representatives and leaders", "To increase taxes", "To control media"], answer: "To select representatives and leaders" }
+],
+
+
+'Physical and health education': [
+  { question: "1. What is the primary benefit of regular physical exercise?", options: ["Improves cardiovascular health", "Increases stress levels", "Decreases flexibility"], answer: "Improves cardiovascular health" },
+  { question: "2. Which of the following is an example of aerobic exercise?", options: ["Running", "Weightlifting", "Stretching"], answer: "Running" },
+  { question: "3. What is the purpose of warming up before exercise?", options: ["To prevent injury", "To reduce body temperature", "To decrease heart rate"], answer: "To prevent injury" },
+  { question: "4. What does BMI stand for?", options: ["Body Mass Index", "Body Muscle Indicator", "Basic Metabolism Index"], answer: "Body Mass Index" },
+  { question: "5. Which nutrient is essential for muscle repair?", options: ["Protein", "Carbohydrate", "Fat"], answer: "Protein" },
+  { question: "6. What is a healthy way to stay hydrated?", options: ["Drinking water regularly", "Drinking sugary beverages", "Avoiding fluids"], answer: "Drinking water regularly" },
+  { question: "7. What is the role of carbohydrates in a diet?", options: ["To provide energy", "To build muscle", "To repair tissues"], answer: "To provide energy" },
+  { question: "8. How often should you engage in physical activity each week for overall health?", options: ["At least 150 minutes", "At least 30 minutes", "Only once a week"], answer: "At least 150 minutes" },
+  { question: "9. What is the importance of stretching exercises?", options: ["Increases flexibility", "Decreases strength", "Reduces muscle mass"], answer: "Increases flexibility" },
+  { question: "10. What does 'cardiovascular endurance' refer to?", options: ["The ability of the heart and lungs to supply oxygen during sustained exercise", "The strength of muscles", "The flexibility of joints"], answer: "The ability of the heart and lungs to supply oxygen during sustained exercise" },
+  { question: "11. Which of the following is a sign of dehydration?", options: ["Dark urine", "Increased energy", "Frequent urination"], answer: "Dark urine" },
+  { question: "12. What is a common benefit of strength training?", options: ["Increases muscle mass", "Reduces bone density", "Decreases metabolism"], answer: "Increases muscle mass" },
+  { question: "13. What should be included in a balanced diet?", options: ["A variety of nutrients from different food groups", "Only protein-rich foods", "High sugar foods"], answer: "A variety of nutrients from different food groups" },
+  { question: "14. How can you measure your heart rate during exercise?", options: ["By checking your pulse", "By measuring your weight", "By counting your breaths"], answer: "By checking your pulse" },
+  { question: "15. What is the recommended amount of sleep for teenagers?", options: ["8-10 hours", "6-8 hours", "4-6 hours"], answer: "8-10 hours" },
+  { question: "16. What is the purpose of cooling down after exercise?", options: ["To gradually lower heart rate", "To increase heart rate", "To immediately stop all physical activity"], answer: "To gradually lower heart rate" },
+  { question: "17. Which exercise is best for improving flexibility?", options: ["Yoga", "Running", "Cycling"], answer: "Yoga" },
+  { question: "18. What role does water play in physical health?", options: ["Helps regulate body temperature", "Decreases oxygen levels", "Reduces hydration"], answer: "Helps regulate body temperature" },
+  { question: "19. How can you prevent injuries during sports?", options: ["By wearing appropriate protective gear", "By skipping warm-up exercises", "By ignoring pain"], answer: "By wearing appropriate protective gear" },
+  { question: "20. What does 'body composition' refer to?", options: ["The proportion of fat, muscle, and other tissues in the body", "The total weight of the body", "The size of the body"], answer: "The proportion of fat, muscle, and other tissues in the body" },
+  { question: "21. What is a healthy practice for mental well-being?", options: ["Regular physical activity", "Skipping meals", "Overworking"], answer: "Regular physical activity" },
+  { question: "22. Which of the following is an example of a sedentary activity?", options: ["Watching TV", "Playing soccer", "Swimming"], answer: "Watching TV" },
+  { question: "23. What is the role of fats in a diet?", options: ["To provide energy and support cell function", "To repair muscles", "To increase water intake"], answer: "To provide energy and support cell function" },
+  { question: "24. What should be the focus of a warm-up routine?", options: ["Preparing the body for exercise", "Cooling down the body", "Increasing body fat"], answer: "Preparing the body for exercise" },
+  { question: "25. What is the importance of having a fitness goal?", options: ["To provide motivation and track progress", "To avoid exercise", "To ignore health needs"], answer: "To provide motivation and track progress" },
+  { question: "26. How can you improve your endurance?", options: ["By gradually increasing exercise intensity", "By decreasing physical activity", "By resting constantly"], answer: "By gradually increasing exercise intensity" },
+  { question: "27. What is 'balance' in physical fitness?", options: ["The ability to maintain stability and control", "The ability to lift heavy weights", "The ability to run fast"], answer: "The ability to maintain stability and control" },
+  { question: "28. Which type of exercise helps in building cardiovascular health?", options: ["Running", "Weightlifting", "Yoga"], answer: "Running" },
+  { question: "29. What is 'muscle endurance'?", options: ["The ability of a muscle to sustain repeated contractions", "The ability to lift heavy weights", "The ability to relax muscles"], answer: "The ability of a muscle to sustain repeated contractions" },
+  { question: "30. How often should you engage in strength training exercises?", options: ["2-3 times a week", "Daily", "Once a month"], answer: "2-3 times a week" }
+],
+
+
+'Christian religion studies': [
+  { question: "1. Who is considered the founder of Christianity?", options: ["Jesus Christ", "Moses", "Abraham"], answer: "Jesus Christ" },
+  { question: "2. What is the first book of the New Testament?", options: ["Matthew", "Genesis", "Psalms"], answer: "Matthew" },
+  { question: "3. What are the two main parts of the Bible?", options: ["Old Testament and New Testament", "Law and Prophets", "Gospels and Epistles"], answer: "Old Testament and New Testament" },
+  { question: "4. What is the significance of Easter in Christianity?", options: ["It celebrates the resurrection of Jesus", "It marks the birth of Jesus", "It commemorates the Last Supper"], answer: "It celebrates the resurrection of Jesus" },
+  { question: "5. Who were the first disciples of Jesus?", options: ["Peter and Andrew", "Moses and Aaron", "Paul and Silas"], answer: "Peter and Andrew" },
+  { question: "6. What is the main message of the Sermon on the Mount?", options: ["Love your neighbor", "Follow the Ten Commandments", "Honor your father and mother"], answer: "Love your neighbor" },
+  { question: "7. Which book in the Bible contains the Ten Commandments?", options: ["Exodus", "Leviticus", "Numbers"], answer: "Exodus" },
+  { question: "8. What is the meaning of the word 'Gospel'?", options: ["Good news", "Law", "History"], answer: "Good news" },
+  { question: "9. Who betrayed Jesus for thirty pieces of silver?", options: ["Judas Iscariot", "Peter", "John"], answer: "Judas Iscariot" },
+  { question: "10. What event does Pentecost commemorate?", options: ["The descent of the Holy Spirit", "The resurrection of Jesus", "The crucifixion of Jesus"], answer: "The descent of the Holy Spirit" },
+  { question: "11. What is the Lord's Prayer also known as?", options: ["Our Father", "Hail Mary", "Apostles' Creed"], answer: "Our Father" },
+  { question: "12. In which city was Jesus crucified?", options: ["Jerusalem", "Bethlehem", "Nazareth"], answer: "Jerusalem" },
+  { question: "13. What are the fruits of the Spirit mentioned in Galatians?", options: ["Love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control", "Wisdom, knowledge, understanding", "Faith, hope, charity"], answer: "Love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control" },
+  { question: "14. Who wrote most of the Epistles in the New Testament?", options: ["Paul", "Peter", "James"], answer: "Paul" },
+  { question: "15. What miracle is Jesus known for performing at the wedding in Cana?", options: ["Turning water into wine", "Feeding 5000 people", "Healing the blind"], answer: "Turning water into wine" },
+  { question: "16. What does the term 'Christ' mean?", options: ["Anointed one", "Teacher", "King"], answer: "Anointed one" },
+  { question: "17. What is the Great Commission?", options: ["Jesus' command to spread the Gospel", "The Sermon on the Mount", "The Last Supper"], answer: "Jesus' command to spread the Gospel" },
+  { question: "18. What is the purpose of baptism in Christianity?", options: ["To signify entry into the Christian faith", "To receive a blessing", "To confess sins"], answer: "To signify entry into the Christian faith" },
+  { question: "19. Who was the first Christian martyr?", options: ["Stephen", "James", "Peter"], answer: "Stephen" },
+  { question: "20. What does the term 'Apostle' mean?", options: ["One who is sent", "A teacher", "A prophet"], answer: "One who is sent" },
+  { question: "21. What is the significance of the Last Supper?", options: ["It was Jesus' final meal with His disciples before His crucifixion", "It commemorates the birth of Jesus", "It marks the beginning of Jesus' ministry"], answer: "It was Jesus' final meal with His disciples before His crucifixion" },
+  { question: "22. Which book of the Bible describes the creation of the world?", options: ["Genesis", "Revelation", "Psalms"], answer: "Genesis" },
+  { question: "23. What is the primary theme of the Book of Proverbs?", options: ["Wisdom and instruction", "Prophecy and vision", "Law and commandments"], answer: "Wisdom and instruction" },
+  { question: "24. Who are considered the 'Patriarchs' in the Bible?", options: ["Abraham, Isaac, and Jacob", "Moses and Aaron", "David and Solomon"], answer: "Abraham, Isaac, and Jacob" },
+  { question: "25. What is the Book of Psalms known for?", options: ["Songs and prayers", "Prophecies", "Historical accounts"], answer: "Songs and prayers" },
+  { question: "26. What does the term 'Messiah' mean?", options: ["Savior", "Prophet", "King"], answer: "Savior" },
+  { question: "27. What is the main message of the Book of Revelation?", options: ["The end times and the second coming of Christ", "The life of Jesus", "The early church's struggles"], answer: "The end times and the second coming of Christ" },
+  { question: "28. Who is traditionally believed to have written the Book of James?", options: ["James, the brother of Jesus", "James, the son of Zebedee", "James, the father of Judas"], answer: "James, the brother of Jesus" },
+  { question: "29. What does 'grace' mean in Christian theology?", options: ["Unmerited favor from God", "Strength to endure hardships", "A gift of prophecy"], answer: "Unmerited favor from God" },
+  { question: "30. What is the main focus of the Epistle to the Romans?", options: ["The doctrine of salvation and righteousness", "The history of the early church", "The life of Jesus"], answer: "The doctrine of salvation and righteousness" }
+],
+
+
+'Social studies': [
+
+  { question: "1. What is the primary function of government?", options: ["To maintain order and provide services", "To collect taxes", "To make laws only"], answer: "To maintain order and provide services" },
+  { question: "2. What does the term 'democracy' mean?", options: ["A system of government by the people", "A type of economy", "A form of education"], answer: "A system of government by the people" },
+  { question: "3. Who is considered the head of state in a parliamentary democracy?", options: ["The Prime Minister", "The President", "The Governor"], answer: "The Prime Minister" },
+  { question: "4. What is the main purpose of the United Nations?", options: ["To promote international peace and security", "To govern all countries", "To enforce local laws"], answer: "To promote international peace and security" },
+  { question: "5. What is a 'constitution'?", options: ["A set of fundamental laws and principles", "A type of government", "An economic policy"], answer: "A set of fundamental laws and principles" },
+  { question: "6. What is the role of the executive branch in government?", options: ["To enforce laws", "To interpret laws", "To make laws"], answer: "To enforce laws" },
+  { question: "7. What does 'citizenship' mean?", options: ["Membership in a political community", "Owning property", "Being educated"], answer: "Membership in a political community" },
+  { question: "8. What is the main function of the legislative branch of government?", options: ["To make laws", "To enforce laws", "To interpret laws"], answer: "To make laws" },
+  { question: "9. What is 'globalization'?", options: ["The process of international integration", "A type of local government", "A form of cultural tradition"], answer: "The process of international integration" },
+  { question: "10. What does the term 'civil rights' refer to?", options: ["Rights of citizens to political and social freedom", "Rights related to property ownership", "Economic rights"], answer: "Rights of citizens to political and social freedom" },
+  { question: "11. What is the purpose of a 'budget' in government?", options: ["To plan and allocate financial resources", "To regulate trade", "To oversee foreign policy"], answer: "To plan and allocate financial resources" },
+  { question: "12. What is the 'Bill of Rights'?", options: ["A list of fundamental rights and freedoms", "A government budget", "A type of legislation"], answer: "A list of fundamental rights and freedoms" },
+  { question: "13. What does 'economic development' involve?", options: ["Improving economic conditions and quality of life", "Building new infrastructure", "Reducing taxes"], answer: "Improving economic conditions and quality of life" },
+  { question: "14. What is 'social justice'?", options: ["Fairness and equality in society", "Economic growth", "Legal procedures"], answer: "Fairness and equality in society" },
+  { question: "15. What does the term 'urbanization' refer to?", options: ["The growth of cities and towns", "The process of farming", "The study of rural areas"], answer: "The growth of cities and towns" },
+  { question: "16. What is a 'demographic transition'?", options: ["Changes in a country's population structure", "Economic policy changes", "Cultural shifts"], answer: "Changes in a country's population structure" },
+  { question: "17. What does 'sustainable development' mean?", options: ["Development that meets current needs without compromising future generations", "Economic growth without restrictions", "Urban expansion"], answer: "Development that meets current needs without compromising future generations" },
+  { question: "18. What is the main focus of 'environmental studies'?", options: ["The relationship between humans and their environment", "Economic systems", "Political structures"], answer: "The relationship between humans and their environment" },
+  { question: "19. What is 'human rights'?", options: ["Basic freedoms and protections for all people", "Economic entitlements", "Legal obligations"], answer: "Basic freedoms and protections for all people" },
+  { question: "20. What does 'public policy' involve?", options: ["Government actions and decisions affecting society", "Private business decisions", "Individual choices"], answer: "Government actions and decisions affecting society" },
+  { question: "21. What is a 'non-governmental organization' (NGO)?", options: ["An organization independent of government that works on social issues", "A government agency", "A private business"], answer: "An organization independent of government that works on social issues" },
+  { question: "22. What is 'civic duty'?", options: ["Responsibilities of citizens to contribute to society", "Rights granted by the government", "Economic benefits"], answer: "Responsibilities of citizens to contribute to society" },
+  { question: "23. What does 'income inequality' refer to?", options: ["Disparities in income distribution among individuals or groups", "Equal income distribution", "Government tax policies"], answer: "Disparities in income distribution among individuals or groups" },
+  { question: "24. What is the role of 'media' in society?", options: ["To inform and educate the public", "To make laws", "To provide financial services"], answer: "To inform and educate the public" },
+  { question: "25. What is 'cultural diversity'?", options: ["The presence of different cultural groups within a society", "Uniformity of cultural practices", "Economic variations"], answer: "The presence of different cultural groups within a society" },
+  { question: "26. What is the purpose of 'foreign aid'?", options: ["To provide assistance to other countries", "To impose trade restrictions", "To establish military bases"], answer: "To provide assistance to other countries" },
+  { question: "27. What does 'social mobility' mean?", options: ["The ability to move up or down in social status", "Economic development", "Political change"], answer: "The ability to move up or down in social status" },
+  { question: "28. What is the 'rule of law'?", options: ["The principle that all people are subject to the law", "The process of lawmaking", "The administration of laws"], answer: "The principle that all people are subject to the law" },
+  { question: "29. What does 'economic disparity' refer to?", options: ["Differences in wealth and income among individuals or groups", "Economic policies", "Business competition"], answer: "Differences in wealth and income among individuals or groups" },
+  { question: "30. What is the significance of 'civic education'?", options: ["To prepare citizens for active participation in society", "To provide vocational training", "To focus on academic subjects"], answer: "To prepare citizens for active participation in society" }
+],
+
+
+'Agricultural studies': [
+  { question: "1. What is the primary purpose of crop rotation?", options: ["To maintain soil fertility", "To increase crop yield", "To control pests"], answer: "To maintain soil fertility" },
+  { question: "2. What is 'organic farming'?", options: ["Farming without synthetic chemicals", "Farming with genetically modified organisms", "Farming using only mechanical tools"], answer: "Farming without synthetic chemicals" },
+  { question: "3. What does 'irrigation' mean?", options: ["The artificial application of water to crops", "The process of planting seeds", "The removal of weeds"], answer: "The artificial application of water to crops" },
+  { question: "4. What is the main purpose of a greenhouse?", options: ["To provide a controlled environment for plants", "To store farm equipment", "To process harvested crops"], answer: "To provide a controlled environment for plants" },
+  { question: "5. What is 'soil erosion'?", options: ["The removal of topsoil by wind or water", "The addition of nutrients to the soil", "The process of planting cover crops"], answer: "The removal of topsoil by wind or water" },
+  { question: "6. What is 'pest control'?", options: ["Methods used to manage and eliminate pests", "The process of planting crops", "The harvesting of produce"], answer: "Methods used to manage and eliminate pests" },
+  { question: "7. What is the purpose of 'fertilizers'?", options: ["To supply essential nutrients to plants", "To kill weeds", "To control insects"], answer: "To supply essential nutrients to plants" },
+  { question: "8. What does 'crop yield' refer to?", options: ["The amount of crop produced", "The quality of soil", "The type of crop planted"], answer: "The amount of crop produced" },
+  { question: "9. What is 'aquaculture'?", options: ["The cultivation of aquatic organisms", "The planting of trees", "The management of livestock"], answer: "The cultivation of aquatic organisms" },
+  { question: "10. What is 'animal husbandry'?", options: ["The care and breeding of farm animals", "The cultivation of crops", "The management of water resources"], answer: "The care and breeding of farm animals" },
+  { question: "11. What is 'composting'?", options: ["The process of recycling organic material into fertilizer", "The application of synthetic chemicals", "The planting of cover crops"], answer: "The process of recycling organic material into fertilizer" },
+  { question: "12. What does 'crop rotation' help to prevent?", options: ["Soil depletion and pest buildup", "Overproduction of crops", "Waterlogging of soil"], answer: "Soil depletion and pest buildup" },
+  { question: "13. What is 'plant breeding'?", options: ["The science of improving plant varieties", "The process of planting seeds", "The harvesting of crops"], answer: "The science of improving plant varieties" },
+  { question: "14. What is 'soil conservation'?", options: ["The practice of protecting soil from erosion and degradation", "The addition of chemical fertilizers", "The process of planting new crops"], answer: "The practice of protecting soil from erosion and degradation" },
+  { question: "15. What is the purpose of 'crop management'?", options: ["To maximize crop production and quality", "To manage farm finances", "To design farm layout"], answer: "To maximize crop production and quality" },
+  { question: "16. What does 'drainage' refer to in agriculture?", options: ["The removal of excess water from the soil", "The addition of water to crops", "The planting of drought-resistant crops"], answer: "The removal of excess water from the soil" },
+  { question: "17. What is 'genetic modification' in agriculture?", options: ["The alteration of the genetic makeup of crops or animals", "The use of traditional breeding methods", "The application of organic fertilizers"], answer: "The alteration of the genetic makeup of crops or animals" },
+  { question: "18. What is the main advantage of 'organic farming'?", options: ["It avoids the use of synthetic chemicals", "It increases the yield of crops", "It requires less labor"], answer: "It avoids the use of synthetic chemicals" },
+  { question: "19. What is 'precision agriculture'?", options: ["The use of technology to manage field variability", "The planting of high-yield crops", "The use of traditional farming methods"], answer: "The use of technology to manage field variability" },
+  { question: "20. What does 'sustainable agriculture' involve?", options: ["Farming practices that preserve resources and the environment", "Farming with maximum chemical input", "Farming with high water usage"], answer: "Farming practices that preserve resources and the environment" },
+  { question: "21. What is 'crop diversification'?", options: ["Growing a variety of different crops", "Specializing in a single crop", "Using synthetic fertilizers"], answer: "Growing a variety of different crops" },
+  { question: "22. What is 'livestock production'?", options: ["The breeding and raising of animals for food and other products", "The planting of crops", "The processing of harvested crops"], answer: "The breeding and raising of animals for food and other products" },
+  { question: "23. What does 'mulching' involve?", options: ["Applying a layer of material to the soil surface", "Planting cover crops", "Irrigating fields"], answer: "Applying a layer of material to the soil surface" },
+  { question: "24. What is 'integrated pest management'?", options: ["A combination of biological, physical, and chemical methods to control pests", "Using only chemical pesticides", "Only planting pest-resistant crops"], answer: "A combination of biological, physical, and chemical methods to control pests" },
+  { question: "25. What is 'soil fertility'?", options: ["The ability of soil to support plant growth", "The amount of water in the soil", "The level of soil erosion"], answer: "The ability of soil to support plant growth" },
+  { question: "26. What does 'harvesting' refer to?", options: ["The process of gathering mature crops from the fields", "The planting of seeds", "The application of fertilizers"], answer: "The process of gathering mature crops from the fields" },
+  { question: "27. What is 'agricultural extension'?", options: ["The provision of education and information to farmers", "The process of planting new crops", "The marketing of farm products"], answer: "The provision of education and information to farmers" },
+  { question: "28. What does 'irrigation' help to control?", options: ["Water supply for crops", "Soil erosion", "Pest infestation"], answer: "Water supply for crops" },
+  { question: "29. What is 'farm management'?", options: ["The planning and organization of farm activities", "The process of planting and harvesting crops", "The breeding of animals"], answer: "The planning and organization of farm activities" },
+  { question: "30. What is the purpose of 'animal nutrition'?", options: ["To ensure animals receive the necessary nutrients for growth and productivity", "To manage animal breeding", "To control animal diseases"], answer: "To ensure animals receive the necessary nutrients for growth and productivity" }
+
+],
+
+
+'Home economics': [
+  { question: "1. What is the primary purpose of a budget?", options: ["To manage income and expenses", "To increase spending", "To track personal interests"], answer: "To manage income and expenses" },
+  { question: "2. What does 'nutrition' involve?", options: ["The process of providing the body with essential nutrients", "The decoration of food", "The preparation of meals"], answer: "The process of providing the body with essential nutrients" },
+  { question: "3. What is 'hygiene'?", options: ["The practice of maintaining cleanliness", "The act of cooking food", "The process of purchasing groceries"], answer: "The practice of maintaining cleanliness" },
+  { question: "4. What is 'meal planning'?", options: ["The process of organizing meals in advance", "The act of cooking meals", "The preparation of shopping lists"], answer: "The process of organizing meals in advance" },
+  { question: "5. What does 'safety' in food preparation mean?", options: ["Ensuring food is prepared in a hygienic manner", "Cooking food at a high temperature", "Using a lot of spices"], answer: "Ensuring food is prepared in a hygienic manner" },
+  { question: "6. What is the importance of 'housekeeping'?", options: ["To maintain a clean and organized living space", "To design home interiors", "To increase home value"], answer: "To maintain a clean and organized living space" },
+  { question: "7. What does 'sewing' involve?", options: ["The process of joining fabrics using a needle and thread", "The act of buying clothes", "The process of cleaning garments"], answer: "The process of joining fabrics using a needle and thread" },
+  { question: "8. What is 'textile care'?", options: ["The practice of maintaining and cleaning fabrics", "The design of new clothing", "The buying of fabrics"], answer: "The practice of maintaining and cleaning fabrics" },
+  { question: "9. What is the purpose of 'food preservation'?", options: ["To extend the shelf life of food", "To change the taste of food", "To increase the size of food"], answer: "To extend the shelf life of food" },
+  { question: "10. What does 'cooking methods' refer to?", options: ["Different techniques used to prepare food", "The process of shopping for groceries", "The design of kitchen appliances"], answer: "Different techniques used to prepare food" },
+  { question: "11. What is 'budgeting'?", options: ["The process of planning and managing finances", "The act of spending money", "The process of saving money"], answer: "The process of planning and managing finances" },
+  { question: "12. What is the purpose of 'personal hygiene'?", options: ["To maintain cleanliness and health", "To enhance appearance", "To decorate personal items"], answer: "To maintain cleanliness and health" },
+  { question: "13. What is 'food safety'?", options: ["Practices to prevent foodborne illnesses", "The act of cooking food thoroughly", "The process of storing food"], answer: "Practices to prevent foodborne illnesses" },
+  { question: "14. What is 'home management'?", options: ["The organization and control of household activities", "The process of decorating a home", "The buying and selling of home goods"], answer: "The organization and control of household activities" },
+  { question: "15. What is 'nutrition labeling'?", options: ["Information on food packages about nutritional content", "The process of cooking food", "The design of food packaging"], answer: "Information on food packages about nutritional content" },
+  { question: "16. What is the importance of 'cleaning'?", options: ["To remove dirt and maintain hygiene", "To redecorate a space", "To organize personal belongings"], answer: "To remove dirt and maintain hygiene" },
+  { question: "17. What does 'family budgeting' involve?", options: ["Planning and managing family finances", "The decoration of family spaces", "The preparation of family meals"], answer: "Planning and managing family finances" },
+  { question: "18. What is 'laundry care'?", options: ["The process of washing and maintaining clothes", "The buying of new garments", "The design of new clothing"], answer: "The process of washing and maintaining clothes" },
+  { question: "19. What does 'meal preparation' involve?", options: ["The act of preparing ingredients and cooking meals", "The process of buying groceries", "The decoration of dining spaces"], answer: "The act of preparing ingredients and cooking meals" },
+  { question: "20. What is 'home safety'?", options: ["Practices to ensure a safe living environment", "The design of home interiors", "The process of organizing home items"], answer: "Practices to ensure a safe living environment" },
+  { question: "21. What does 'clothing maintenance' include?", options: ["Cleaning, repairing, and storing clothes", "Designing new clothing", "Shopping for fashion items"], answer: "Cleaning, repairing, and storing clothes" },
+  { question: "22. What is 'energy conservation'?", options: ["The practice of using energy efficiently", "The design of energy-efficient appliances", "The process of generating energy"], answer: "The practice of using energy efficiently" },
+  { question: "23. What is 'household budgeting'?", options: ["Managing household expenses and income", "Decorating the home", "The process of buying home goods"], answer: "Managing household expenses and income" },
+  { question: "24. What does 'food storage' involve?", options: ["Keeping food in conditions that prevent spoilage", "The process of preparing meals", "The design of food packaging"], answer: "Keeping food in conditions that prevent spoilage" },
+  { question: "25. What is 'personal finance'?", options: ["Managing individual financial resources", "The process of purchasing home goods", "The design of financial plans for businesses"], answer: "Managing individual financial resources" },
+  { question: "26. What does 'kitchen hygiene' include?", options: ["Maintaining cleanliness in the kitchen to ensure food safety", "The decoration of kitchen spaces", "The buying of kitchen appliances"], answer: "Maintaining cleanliness in the kitchen to ensure food safety" },
+  { question: "27. What is 'interior design'?", options: ["The art of decorating and arranging interior spaces", "The process of cleaning home interiors", "The buying of new furniture"], answer: "The art of decorating and arranging interior spaces" },
+  { question: "28. What does 'textile management' involve?", options: ["Organizing and caring for fabrics and clothing", "The design of new textile products", "The purchasing of textiles"], answer: "Organizing and caring for fabrics and clothing" },
+  { question: "29. What is 'household chores'?", options: ["Routine tasks performed to maintain a home", "The design of home layouts", "The process of shopping for home goods"], answer: "Routine tasks performed to maintain a home" },
+  { question: "30. What does 'financial planning' involve?", options: ["Creating strategies to manage finances effectively", "The process of buying new items", "The design of financial statements"], answer: "Creating strategies to manage finances effectively" }
+],
+
+
+    'History': [
+  { question: "1. What is the capital city of Ancient Egypt?", options: ["Cairo", "Alexandria", "Memphis"], answer: "Memphis" },
+  { question: "2. Who was the first President of the United States?", options: ["Thomas Jefferson", "George Washington", "Abraham Lincoln"], answer: "George Washington" },
+  { question: "3. What year did World War I begin?", options: ["1912", "1914", "1916"], answer: "1914" },
+  { question: "4. Who was the leader of the Soviet Union during World War II?", options: ["Leon Trotsky", "Joseph Stalin", "Vladimir Lenin"], answer: "Joseph Stalin" },
+  { question: "5. Which ancient civilization built the Machu Picchu?", options: ["Aztec", "Inca", "Maya"], answer: "Inca" },
+  { question: "6. Who was the famous queen of Ancient Egypt?", options: ["Cleopatra", "Nefertiti", "Hatshepsut"], answer: "Cleopatra" },
+  { question: "7. When did the French Revolution start?", options: ["1789", "1792", "1804"], answer: "1789" },
+  { question: "8. What was the main cause of the American Civil War?", options: ["Economic differences", "Slavery", "Territorial expansion"], answer: "Slavery" },
+  { question: "9. Which empire was known for its contributions to mathematics and astronomy?", options: ["Roman Empire", "Ottoman Empire", "Islamic Caliphates"], answer: "Islamic Caliphates" },
+  { question: "10. Who was the first emperor of China?", options: ["Qin Shi Huang", "Han Wu Di", "Tang Taizong"], answer: "Qin Shi Huang" },
+  { question: "11. What was the name of the ship that brought the Pilgrims to America in 1620?", options: ["Mayflower", "Santa Maria", "Nina"], answer: "Mayflower" },
+  { question: "12. Who was the leader of the Mongol Empire?", options: ["Genghis Khan", "Kublai Khan", "Attila the Hun"], answer: "Genghis Khan" },
+  { question: "13. What was the main purpose of the Silk Road?", options: ["To trade silk and other goods", "To spread religious beliefs", "To explore new territories"], answer: "To trade silk and other goods" },
+  { question: "14. Which war was fought between the North and South in the United States?", options: ["World War I", "American Revolution", "American Civil War"], answer: "American Civil War" },
+  { question: "15. Who was the famous Roman general who became dictator for life?", options: ["Julius Caesar", "Augustus", "Nero"], answer: "Julius Caesar" },
+  { question: "16. What is the name of the period that marked the end of the Middle Ages?", options: ["Renaissance", "Enlightenment", "Industrial Revolution"], answer: "Renaissance" },
+  { question: "17. Who was the famous British Prime Minister during World War II?", options: ["Winston Churchill", "Neville Chamberlain", "Margaret Thatcher"], answer: "Winston Churchill" },
+  { question: "18. What was the primary focus of the Renaissance period?", options: ["Art and learning", "Military expansion", "Religious reformation"], answer: "Art and learning" },
+  { question: "19. Who was the first person to walk on the moon?", options: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin"], answer: "Neil Armstrong" },
+  { question: "20. Which civilization is known for its pyramids and mummies?", options: ["Mesopotamian", "Egyptian", "Greek"], answer: "Egyptian" },
+  { question: "21. What was the name of the policy that aimed to prevent the spread of communism during the Cold War?", options: ["Containment", "Isolationism", "Appeasement"], answer: "Containment" },
+  { question: "22. Who was the leader of the Indian independence movement?", options: ["Mahatma Gandhi", "Nehru", "Jinnah"], answer: "Mahatma Gandhi" },
+  { question: "23. What major event started in 1939 and ended in 1945?", options: ["World War I", "World War II", "The Great Depression"], answer: "World War II" },
+  { question: "24. Which ancient civilization is credited with creating the first written language?", options: ["Sumerians", "Egyptians", "Greeks"], answer: "Sumerians" },
+  { question: "25. What was the name of the famous trade route that connected Europe and Asia?", options: ["Silk Road", "Spice Route", "Trans-Saharan Route"], answer: "Silk Road" },
+  { question: "26. Who was the first President of South Africa after the end of apartheid?", options: ["Nelson Mandela", "Thabo Mbeki", "Jacob Zuma"], answer: "Nelson Mandela" },
+  { question: "27. What year did the Berlin Wall fall?", options: ["1987", "1989", "1991"], answer: "1989" },
+  { question: "28. Who was the main leader of the French Revolution?", options: ["Maximilien Robespierre", "Louis XVI", "Napoleon Bonaparte"], answer: "Maximilien Robespierre" },
+  { question: "29. What was the primary aim of the Reformation?", options: ["Religious reform", "Political change", "Economic development"], answer: "Religious reform" },
+  { question: "30. Which empire was known for its vast conquests and influence over Europe and the Middle East during the 12th century?", options: ["Ottoman Empire", "Roman Empire", "Byzantine Empire"], answer: "Ottoman Empire" }
+],
+
+
+    'Creative and cultural art': [
+  { question: "1. What is the primary purpose of a mural?", options: ["Decoration", "Advertising", "Functional use"], answer: "Decoration" },
+  { question: "2. Who is known as the father of modern art?", options: ["Pablo Picasso", "Vincent van Gogh", "Claude Monet"], answer: "Pablo Picasso" },
+  { question: "3. What type of art involves creating images from beads or sequins?", options: ["Mosaic", "Beadwork", "Embroidery"], answer: "Beadwork" },
+  { question: "4. Which art form uses a camera to capture images?", options: ["Photography", "Painting", "Sculpture"], answer: "Photography" },
+  { question: "5. What is the name of the technique where paint is applied thickly to create texture?", options: ["Impasto", "Watercolor", "Glazing"], answer: "Impasto" },
+  { question: "6. Which artist is famous for his works with Campbell's Soup cans?", options: ["Andy Warhol", "Jackson Pollock", "Salvador Dalí"], answer: "Andy Warhol" },
+  { question: "7. What is the main medium used in sculpting?", options: ["Clay", "Fabric", "Paper"], answer: "Clay" },
+  { question: "8. What term describes an artwork created by arranging found objects?", options: ["Assemblage", "Collage", "Installation"], answer: "Assemblage" },
+  { question: "9. Which famous painting is known for its mysterious smile?", options: ["Mona Lisa", "Starry Night", "The Scream"], answer: "Mona Lisa" },
+  { question: "10. What is the technique called where artists use small dots of color to create an image?", options: ["Pointillism", "Sfumato", "Chiaroscuro"], answer: "Pointillism" },
+  { question: "11. What is the art movement characterized by abstract shapes and bright colors?", options: ["Cubism", "Surrealism", "Impressionism"], answer: "Cubism" },
+  { question: "12. Who painted the ceiling of the Sistine Chapel?", options: ["Michelangelo", "Leonardo da Vinci", "Raphael"], answer: "Michelangelo" },
+  { question: "13. What is the name of the process where metal is melted and poured into molds?", options: ["Casting", "Forging", "Carving"], answer: "Casting" },
+  { question: "14. Which art form involves creating images by cutting into surfaces such as wood or linoleum?", options: ["Printmaking", "Sculpture", "Drawing"], answer: "Printmaking" },
+  { question: "15. What type of art involves creating designs on fabric using dye?", options: ["Tie-dye", "Embroidery", "Screen printing"], answer: "Tie-dye" },
+  { question: "16. Which artist is known for his large-scale outdoor sculptures, such as 'The Gates' in Central Park?", options: ["Christo", "Damien Hirst", "Jeff Koons"], answer: "Christo" },
+  { question: "17. What is the term for the art of designing and arranging elements on a page?", options: ["Graphic Design", "Illustration", "Typography"], answer: "Graphic Design" },
+  { question: "18. What type of painting technique involves applying thin layers of paint to create a luminous effect?", options: ["Glazing", "Impasto", "Scumbling"], answer: "Glazing" },
+  { question: "19. Who is known for his 'Campbell's Soup Cans' artwork?", options: ["Andy Warhol", "Roy Lichtenstein", "Keith Haring"], answer: "Andy Warhol" },
+  { question: "20. What is the technique called where artists use a sponge or brush to create a textured effect?", options: ["Sponging", "Blending", "Dabbing"], answer: "Sponging" },
+  { question: "21. Which artist is known for the surrealist painting 'The Persistence of Memory'?", options: ["Salvador Dalí", "René Magritte", "Max Ernst"], answer: "Salvador Dalí" },
+  { question: "22. What is the name of the art style characterized by exaggerated colors and bold lines, often seen in comic strips?", options: ["Pop Art", "Art Nouveau", "Expressionism"], answer: "Pop Art" },
+  { question: "23. What is the term for creating artwork by manipulating clay?", options: ["Pottery", "Weaving", "Casting"], answer: "Pottery" },
+  { question: "24. Who is known for his 'Starry Night' painting?", options: ["Vincent van Gogh", "Edvard Munch", "Claude Monet"], answer: "Vincent van Gogh" },
+  { question: "25. What type of art involves creating three-dimensional objects from materials such as metal or wood?", options: ["Sculpture", "Painting", "Drawing"], answer: "Sculpture" },
+  { question: "26. Which art form involves decorating surfaces with designs made from pieces of colored glass?", options: ["Mosaic", "Tapestry", "Fresco"], answer: "Mosaic" },
+  { question: "27. What is the term for a painting technique that creates a sense of depth through the use of light and shadow?", options: ["Chiaroscuro", "Sfumato", "Foreshortening"], answer: "Chiaroscuro" },
+  { question: "28. Who is known for his work in Abstract Expressionism, including 'No. 5, 1948'?", options: ["Jackson Pollock", "Mark Rothko", "Willem de Kooning"], answer: "Jackson Pollock" },
+  { question: "29. What technique involves creating artwork by arranging and gluing colored paper or other materials?", options: ["Collage", "Assemblage", "Decoupage"], answer: "Collage" },
+  { question: "30. What is the art form called where artists create designs by carving into surfaces such as wood or linoleum?", options: ["Printmaking", "Relief Printing", "Etching"], answer: "Relief Printing" }
+],
+
+
+    'Basic science and technology': [
+  { question: "1. What is the basic unit of life?", options: ["Cell", "Atom", "Molecule"], answer: "Cell" },
+  { question: "2. What force keeps us grounded on the Earth's surface?", options: ["Gravity", "Magnetism", "Friction"], answer: "Gravity" },
+  { question: "3. What is the process by which plants make their food?", options: ["Photosynthesis", "Respiration", "Digestion"], answer: "Photosynthesis" },
+  { question: "4. Which planet is known as the Red Planet?", options: ["Mars", "Venus", "Jupiter"], answer: "Mars" },
+  { question: "5. What is the chemical symbol for water?", options: ["H2O", "CO2", "O2"], answer: "H2O" },
+  { question: "6. What type of energy is stored in food?", options: ["Chemical energy", "Kinetic energy", "Potential energy"], answer: "Chemical energy" },
+  { question: "7. What is the force that opposes motion between two surfaces in contact?", options: ["Friction", "Gravity", "Magnetism"], answer: "Friction" },
+  { question: "8. Which organ in the human body is responsible for pumping blood?", options: ["Heart", "Lungs", "Liver"], answer: "Heart" },
+  { question: "9. What is the process by which liquid turns into gas?", options: ["Evaporation", "Condensation", "Freezing"], answer: "Evaporation" },
+  { question: "10. What is the smallest unit of an element that retains its chemical properties?", options: ["Atom", "Molecule", "Compound"], answer: "Atom" },
+  { question: "11. What is the force that attracts objects towards the center of the Earth?", options: ["Gravity", "Electrostatic force", "Magnetic force"], answer: "Gravity" },
+  { question: "12. What do you call the change of state from gas to liquid?", options: ["Condensation", "Evaporation", "Sublimation"], answer: "Condensation" },
+  { question: "13. Which device is used to measure temperature?", options: ["Thermometer", "Barometer", "Hygrometer"], answer: "Thermometer" },
+  { question: "14. What is the process of making electricity using sunlight called?", options: ["Solar energy", "Nuclear energy", "Wind energy"], answer: "Solar energy" },
+  { question: "15. What is the main function of the roots of a plant?", options: ["Absorbing water", "Producing food", "Reproducing"], answer: "Absorbing water" },
+  { question: "16. Which substance is necessary for photosynthesis to occur?", options: ["Carbon dioxide", "Nitrogen", "Helium"], answer: "Carbon dioxide" },
+  { question: "17. What do you call a mixture of two or more metals?", options: ["Alloy", "Compound", "Solution"], answer: "Alloy" },
+  { question: "18. What type of energy is associated with motion?", options: ["Kinetic energy", "Potential energy", "Chemical energy"], answer: "Kinetic energy" },
+  { question: "19. What is the term for the change of state from solid to liquid?", options: ["Melting", "Freezing", "Condensation"], answer: "Melting" },
+  { question: "20. What do you call the movement of heat through a liquid or gas?", options: ["Convection", "Conduction", "Radiation"], answer: "Convection" },
+  { question: "21. What is the name of the layer of gases surrounding the Earth?", options: ["Atmosphere", "Stratosphere", "Troposphere"], answer: "Atmosphere" },
+  { question: "22. What is the term for energy stored in an object due to its position?", options: ["Potential energy", "Kinetic energy", "Thermal energy"], answer: "Potential energy" },
+  { question: "23. What is the primary source of energy for the Earth?", options: ["Sun", "Wind", "Water"], answer: "Sun" },
+  { question: "24. What device is used to separate mixtures based on their different boiling points?", options: ["Distillation apparatus", "Centrifuge", "Filter"], answer: "Distillation apparatus" },
+  { question: "25. What type of rock is formed from cooling and solidification of magma?", options: ["Igneous rock", "Sedimentary rock", "Metamorphic rock"], answer: "Igneous rock" },
+  { question: "26. What is the study of living organisms and their interactions with the environment called?", options: ["Biology", "Chemistry", "Physics"], answer: "Biology" },
+  { question: "27. What is the process of breaking down food in the digestive system?", options: ["Digestion", "Absorption", "Respiration"], answer: "Digestion" },
+  { question: "28. What is the term for the change of state from liquid to gas?", options: ["Evaporation", "Condensation", "Sublimation"], answer: "Evaporation" },
+  { question: "29. What is the name of the force that holds electrons in orbit around the nucleus of an atom?", options: ["Electromagnetic force", "Gravitational force", "Nuclear force"], answer: "Electromagnetic force" },
+  { question: "30. What is the term for the ability of a substance to dissolve in a liquid?", options: ["Solubility", "Density", "Viscosity"], answer: "Solubility" }
+],
+
+    
+
+    
+    'Leadership': [
+  { question: "1. What is an important quality of a good leader?", options: ["Integrity", "Greed", "Indifference"], answer: "Integrity" },
+  { question: "2. What does it mean to lead by example?", options: ["Demonstrating desired behaviors", "Giving orders from a distance", "Ignoring team issues"], answer: "Demonstrating desired behaviors" },
+  { question: "3. Why is effective communication crucial for leaders?", options: ["To share information clearly", "To create confusion", "To avoid listening"], answer: "To share information clearly" },
+  { question: "4. How can a leader inspire their team?", options: ["By setting a vision", "By avoiding challenges", "By making decisions alone"], answer: "By setting a vision" },
+  { question: "5. What is a key characteristic of a transformational leader?", options: ["Encouraging innovation", "Maintaining the status quo", "Avoiding change"], answer: "Encouraging innovation" },
+  { question: "6. What does it mean to delegate tasks effectively?", options: ["Assigning tasks based on team members' strengths", "Giving tasks without guidance", "Keeping all tasks for oneself"], answer: "Assigning tasks based on team members' strengths" },
+  { question: "7. How can a leader build trust within their team?", options: ["By being honest and reliable", "By hiding information", "By avoiding team members"], answer: "By being honest and reliable" },
+  { question: "8. What is the role of feedback in leadership?", options: ["To help improve performance", "To criticize team members", "To avoid discussion"], answer: "To help improve performance" },
+  { question: "9. Why is it important for leaders to set goals?", options: ["To provide direction and motivation", "To create confusion", "To limit progress"], answer: "To provide direction and motivation" },
+  { question: "10. How can a leader handle conflict within a team?", options: ["By mediating and finding solutions", "By ignoring the problem", "By taking sides"], answer: "By mediating and finding solutions" },
+  { question: "11. What does leading with empathy involve?", options: ["Understanding and addressing others' feelings", "Ignoring team members' concerns", "Imposing decisions"], answer: "Understanding and addressing others' feelings" },
+  { question: "12. How can a leader encourage team collaboration?", options: ["By fostering open communication", "By creating competition", "By avoiding teamwork"], answer: "By fostering open communication" },
+  { question: "13. What is the importance of decision-making skills for a leader?", options: ["To make informed and timely choices", "To avoid making decisions", "To rely on others for all choices"], answer: "To make informed and timely choices" },
+  { question: "14. How can a leader maintain motivation within their team?", options: ["By recognizing and rewarding achievements", "By ignoring successes", "By focusing only on problems"], answer: "By recognizing and rewarding achievements" },
+  { question: "15. What does it mean to have a visionary leadership style?", options: ["To set long-term goals and inspire others", "To focus only on immediate tasks", "To avoid planning"], answer: "To set long-term goals and inspire others" },
+  { question: "16. Why is adaptability important for a leader?", options: ["To respond effectively to changes", "To resist change", "To stick to outdated methods"], answer: "To respond effectively to changes" },
+  { question: "17. How can a leader develop their leadership skills?", options: ["Through continuous learning and practice", "By avoiding new challenges", "By only relying on experience"], answer: "Through continuous learning and practice" },
+  { question: "18. What is the role of a leader in setting a positive team culture?", options: ["To model and encourage positive behaviors", "To ignore team dynamics", "To enforce strict rules"], answer: "To model and encourage positive behaviors" },
+  { question: "19. How can a leader manage stress effectively?", options: ["By practicing self-care and seeking support", "By ignoring stress", "By avoiding responsibilities"], answer: "By practicing self-care and seeking support" },
+  { question: "20. What is a key benefit of having a diverse team?", options: ["Bringing different perspectives and ideas", "Creating uniformity", "Limiting creativity"], answer: "Bringing different perspectives and ideas" },
+  { question: "21. How can a leader ensure accountability within their team?", options: ["By setting clear expectations and monitoring progress", "By avoiding responsibility", "By focusing only on individual tasks"], answer: "By setting clear expectations and monitoring progress" },
+  { question: "22. What is an example of ethical leadership?", options: ["Making decisions based on fairness and honesty", "Avoiding ethical considerations", "Focusing only on personal gain"], answer: "Making decisions based on fairness and honesty" },
+  { question: "23. How can a leader handle criticism constructively?", options: ["By listening and making improvements", "By rejecting all feedback", "By ignoring concerns"], answer: "By listening and making improvements" },
+  { question: "24. Why is time management important for leaders?", options: ["To use time effectively and meet deadlines", "To procrastinate", "To focus on non-essential tasks"], answer: "To use time effectively and meet deadlines" },
+  { question: "25. How can a leader build resilience in their team?", options: ["By encouraging a growth mindset and supporting recovery", "By avoiding challenges", "By focusing on failures"], answer: "By encouraging a growth mindset and supporting recovery" },
+  { question: "26. What does ethical decision-making involve?", options: ["Considering the impact of decisions on others", "Ignoring ethical implications", "Focusing solely on personal benefits"], answer: "Considering the impact of decisions on others" },
+  { question: "27. How can a leader foster creativity within their team?", options: ["By encouraging experimentation and idea sharing", "By enforcing rigid rules", "By avoiding new ideas"], answer: "By encouraging experimentation and idea sharing" },
+  { question: "28. What is a common trait of successful leaders?", options: ["Resilience and perseverance", "Avoiding responsibility", "Ignoring feedback"], answer: "Resilience and perseverance" },
+  { question: "29. How can a leader demonstrate commitment to their team?", options: ["By actively supporting and engaging with team members", "By remaining distant", "By delegating all responsibilities"], answer: "By actively supporting and engaging with team members" },
+  { question: "30. What role does vision play in leadership?", options: ["Providing direction and inspiring others", "Creating confusion", "Avoiding future planning"], answer: "Providing direction and inspiring others" }
+],
+
+    
+    'French language': [
+  { question: "1. Comment dit-on 'Hello' en français?", options: ["Bonjour", "Au revoir", "Merci"], answer: "Bonjour" },
+  { question: "2. Quel est le mot pour 'apple' en français?", options: ["Pomme", "Orange", "Banane"], answer: "Pomme" },
+  { question: "3. Comment se dit 'Goodbye' en français?", options: ["Bonjour", "Merci", "Au revoir"], answer: "Au revoir" },
+  { question: "4. Quel est le mot pour 'dog' en français?", options: ["Chat", "Chien", "Oiseau"], answer: "Chien" },
+  { question: "5. Comment traduit-on 'house' en français?", options: ["Maison", "École", "Bureau"], answer: "Maison" },
+  { question: "6. Quelle est la traduction de 'school' en français?", options: ["École", "Université", "Maison"], answer: "École" },
+  { question: "7. Comment se dit 'Please' en français?", options: ["S'il vous plaît", "Merci", "Excusez-moi"], answer: "S'il vous plaît" },
+  { question: "8. Quel est le mot pour 'water' en français?", options: ["Eau", "Jus", "Lait"], answer: "Eau" },
+  { question: "9. Comment traduit-on 'friend' en français?", options: ["Ami", "Professeur", "Voisin"], answer: "Ami" },
+  { question: "10. Quel est le mot pour 'book' en français?", options: ["Livre", "Cahier", "Stylo"], answer: "Livre" },
+  { question: "11. Comment se dit 'food' en français?", options: ["Nourriture", "Boisson", "Fruits"], answer: "Nourriture" },
+  { question: "12. Quelle est la traduction de 'family' en français?", options: ["Famille", "Amis", "Collègues"], answer: "Famille" },
+  { question: "13. Comment dit-on 'happy' en français?", options: ["Heureux", "Triste", "En colère"], answer: "Heureux" },
+  { question: "14. Quel est le mot pour 'city' en français?", options: ["Ville", "Village", "Quartier"], answer: "Ville" },
+  { question: "15. Comment se dit 'morning' en français?", options: ["Matin", "Après-midi", "Soir"], answer: "Matin" },
+  { question: "16. Quel est le mot pour 'night' en français?", options: ["Nuit", "Jour", "Crépuscule"], answer: "Nuit" },
+  { question: "17. Comment traduit-on 'teacher' en français?", options: ["Enseignant", "Élève", "Directeur"], answer: "Enseignant" },
+  { question: "18. Quelle est la traduction de 'car' en français?", options: ["Voiture", "Bateau", "Avion"], answer: "Voiture" },
+  { question: "19. Comment se dit 'street' en français?", options: ["Rue", "Avenue", "Boulevard"], answer: "Rue" },
+  { question: "20. Quel est le mot pour 'hospital' en français?", options: ["Hôpital", "Pharmacie", "Clinique"], answer: "Hôpital" },
+  { question: "21. Comment traduit-on 'market' en français?", options: ["Marché", "Magasin", "Centre commercial"], answer: "Marché" },
+  { question: "22. Quelle est la traduction de 'family' en français?", options: ["Famille", "Amis", "Équipe"], answer: "Famille" },
+  { question: "23. Comment se dit 'river' en français?", options: ["Rivière", "Lac", "Mer"], answer: "Rivière" },
+  { question: "24. Quel est le mot pour 'mountain' en français?", options: ["Montagne", "Colline", "Plage"], answer: "Montagne" },
+  { question: "25. Comment traduit-on 'clothing' en français?", options: ["Vêtements", "Accessoires", "Chaussures"], answer: "Vêtements" },
+  { question: "26. Quelle est la traduction de 'bed' en français?", options: ["Lit", "Chaise", "Canapé"], answer: "Lit" },
+  { question: "27. Comment se dit 'table' en français?", options: ["Table", "Bureau", "Étagère"], answer: "Table" },
+  { question: "28. Quel est le mot pour 'computer' en français?", options: ["Ordinateur", "Téléphone", "Tablette"], answer: "Ordinateur" },
+  { question: "29. Comment traduit-on 'phone' en français?", options: ["Téléphone", "Appareil", "Ordinateur"], answer: "Téléphone" },
+  { question: "30. Quelle est la traduction de 'holiday' en français?", options: ["Vacances", "Fête", "Week-end"], answer: "Vacances" }
+],
+
+  
+    'Digital literacy': [
+  { question: "1. What does 'URL' stand for?", options: ["Uniform Resource Locator", "Universal Resource Locator", "United Resource Locator"], answer: "Uniform Resource Locator" },
+  { question: "2. Which of these is a web browser?", options: ["Microsoft Word", "Google Chrome", "Adobe Photoshop"], answer: "Google Chrome" },
+  { question: "3. What is the primary function of an antivirus program?", options: ["To edit photos", "To protect against malware", "To browse the internet"], answer: "To protect against malware" },
+  { question: "4. What does 'HTTP' stand for in a web address?", options: ["HyperText Transfer Protocol", "HyperText Transfer Program", "HighText Transfer Protocol"], answer: "HyperText Transfer Protocol" },
+  { question: "5. Which key combination is used to copy text?", options: ["Ctrl + V", "Ctrl + C", "Ctrl + X"], answer: "Ctrl + C" },
+  { question: "6. What is the function of a search engine?", options: ["To search for files on your computer", "To search for information on the internet", "To protect against viruses"], answer: "To search for information on the internet" },
+  { question: "7. What does 'Wi-Fi' stand for?", options: ["Wireless Fidelity", "Wide Frequency", "Wireless Facility"], answer: "Wireless Fidelity" },
+  { question: "8. What is 'phishing' in the context of digital security?", options: ["A method to find lost files", "A type of cyber attack to steal personal information", "A way to increase internet speed"], answer: "A type of cyber attack to steal personal information" },
+  { question: "9. Which of these is an example of a social media platform?", options: ["Microsoft Excel", "Facebook", "Adobe Illustrator"], answer: "Facebook" },
+  { question: "10. What does 'ISP' stand for?", options: ["Internet Service Provider", "Internal Storage Processor", "Internet Storage Protocol"], answer: "Internet Service Provider" },
+  { question: "11. What is 'cloud storage'?", options: ["Storing files on your computer", "Storing files on the internet", "Storing files on a USB drive"], answer: "Storing files on the internet" },
+  { question: "12. Which device is used to input text into a computer?", options: ["Mouse", "Keyboard", "Monitor"], answer: "Keyboard" },
+  { question: "13. What does 'RAM' stand for in computing?", options: ["Random Access Memory", "Read Access Memory", "Real Access Memory"], answer: "Random Access Memory" },
+  { question: "14. What is a 'URL' used for?", options: ["To identify a website", "To write text", "To create images"], answer: "To identify a website" },
+  { question: "15. What is the function of a firewall?", options: ["To cool down the computer", "To block unauthorized access to a network", "To increase internet speed"], answer: "To block unauthorized access to a network" },
+  { question: "16. Which file extension is used for Word documents?", options: [".docx", ".jpg", ".pdf"], answer: ".docx" },
+  { question: "17. What does 'USB' stand for?", options: ["Universal Serial Bus", "Uniform Serial Bus", "Unified Storage Bus"], answer: "Universal Serial Bus" },
+  { question: "18. What is 'spam' in digital communication?", options: ["Unwanted email", "A type of computer virus", "A secure email"], answer: "Unwanted email" },
+  { question: "19. Which of these is an online storage service?", options: ["Dropbox", "WordPress", "Excel"], answer: "Dropbox" },
+  { question: "20. What does 'E-mail' stand for?", options: ["Electronic Mail", "Enhanced Mail", "External Mail"], answer: "Electronic Mail" },
+  { question: "21. What is 'multitasking' on a computer?", options: ["Using multiple programs at once", "Changing the computer's settings", "Updating software"], answer: "Using multiple programs at once" },
+  { question: "22. What is the purpose of a 'password'?", options: ["To protect access to your accounts", "To download files", "To print documents"], answer: "To protect access to your accounts" },
+  { question: "23. What is '2FA'?", options: ["Two-Factor Authentication", "Two-Factor Access", "Two-Factor Authorization"], answer: "Two-Factor Authentication" },
+  { question: "24. What does 'Bluetooth' technology do?", options: ["Connects devices wirelessly", "Increases internet speed", "Protects against viruses"], answer: "Connects devices wirelessly" },
+  { question: "25. Which of these is a common web browser?", options: ["Google Chrome", "Microsoft Excel", "Adobe Reader"], answer: "Google Chrome" },
+  { question: "26. What is a 'cookie' in digital terms?", options: ["A small piece of data stored on a computer", "A type of computer virus", "An internet speed booster"], answer: "A small piece of data stored on a computer" },
+  { question: "27. What does 'IP address' stand for?", options: ["Internet Protocol Address", "Internal Protocol Address", "International Protocol Address"], answer: "Internet Protocol Address" },
+  { question: "28. What is the function of a 'search engine'?", options: ["To find information on the internet", "To write documents", "To edit images"], answer: "To find information on the internet" },
+  { question: "29. What does 'LAN' stand for?", options: ["Local Area Network", "Large Area Network", "Long Area Network"], answer: "Local Area Network" },
+  { question: "30. What is 'software'?", options: ["Programs and applications used by a computer", "The physical parts of a computer", "A type of internet service"], answer: "Programs and applications used by a computer" }
+],
+
+  
+
+'Business studies': [
+  { question: "1. What is 'entrepreneurship'?", options: ["The act of starting and managing a business", "The study of computers", "A type of investment"], answer: "The act of starting and managing a business" },
+  { question: "2. What is 'marketing'?", options: ["The process of promoting and selling products", "Managing employees", "Setting up a business"], answer: "The process of promoting and selling products" },
+  { question: "3. What is a 'business plan'?", options: ["A document outlining a business's goals and how to achieve them", "A list of employees", "A schedule of business meetings"], answer: "A document outlining a business's goals and how to achieve them" },
+  { question: "4. What does 'profit' mean?", options: ["The money earned after expenses are deducted", "The money spent on production", "The total revenue"], answer: "The money earned after expenses are deducted" },
+  { question: "5. What is 'capital' in business terms?", options: ["The money invested in a business", "The total number of products", "The market value of a company"], answer: "The money invested in a business" },
+  { question: "6. What does 'inventory' refer to?", options: ["A list of goods and materials held by a business", "The amount of money in the bank", "The business's website"], answer: "A list of goods and materials held by a business" },
+  { question: "7. What is 'customer service'?", options: ["The support provided to customers before, during, and after a purchase", "The sales strategy", "The process of hiring employees"], answer: "The support provided to customers before, during, and after a purchase" },
+  { question: "8. What is 'sales revenue'?", options: ["The total income from sales before expenses", "The cost of production", "The amount paid to suppliers"], answer: "The total income from sales before expenses" },
+  { question: "9. What is 'entrepreneur'?", options: ["A person who starts and runs a business", "A type of business plan", "A kind of financial statement"], answer: "A person who starts and runs a business" },
+  { question: "10. What does 'budget' mean?", options: ["A financial plan for income and expenses", "A type of business report", "A method of marketing"], answer: "A financial plan for income and expenses" },
+  { question: "11. What is 'merchandising'?", options: ["The promotion and selling of goods", "The hiring of staff", "The creation of a business plan"], answer: "The promotion and selling of goods" },
+  { question: "12. What is 'overhead cost'?", options: ["The fixed costs of running a business", "The cost of purchasing inventory", "The expenses related to marketing"], answer: "The fixed costs of running a business" },
+  { question: "13. What does 'profit margin' refer to?", options: ["The percentage of profit from sales", "The total revenue", "The cost of production"], answer: "The percentage of profit from sales" },
+  { question: "14. What is 'market research'?", options: ["The process of gathering information about consumers' needs and preferences", "The act of selling products", "The process of creating a business plan"], answer: "The process of gathering information about consumers' needs and preferences" },
+  { question: "15. What does 'business ethics' involve?", options: ["The moral principles guiding business behavior", "The process of hiring employees", "The setting of business goals"], answer: "The moral principles guiding business behavior" },
+  { question: "16. What is 'advertising'?", options: ["The act of promoting products or services to potential customers", "The process of manufacturing goods", "The process of managing finances"], answer: "The act of promoting products or services to potential customers" },
+  { question: "17. What is 'market segmentation'?", options: ["Dividing a market into distinct groups of buyers", "The process of creating a product", "The act of selling products"], answer: "Dividing a market into distinct groups of buyers" },
+  { question: "18. What does 'profit and loss statement' show?", options: ["The financial performance of a business over a period", "The market value of a company", "The total sales revenue"], answer: "The financial performance of a business over a period" },
+  { question: "19. What is 'brand identity'?", options: ["The unique set of brand associations", "The amount of money invested", "The total sales revenue"], answer: "The unique set of brand associations" },
+  { question: "20. What is 'supply chain management'?", options: ["The management of the flow of goods from supplier to customer", "The process of creating marketing strategies", "The hiring of employees"], answer: "The management of the flow of goods from supplier to customer" },
+  { question: "21. What is 'franchising'?", options: ["A method of expanding a business by licensing it", "A type of business plan", "A method of advertising"], answer: "A method of expanding a business by licensing it" },
+  { question: "22. What does 'return on investment (ROI)' measure?", options: ["The profitability of an investment", "The total sales revenue", "The number of employees"], answer: "The profitability of an investment" },
+  { question: "23. What is 'customer loyalty'?", options: ["The tendency of customers to return to a business", "The process of acquiring new customers", "The amount of sales revenue"], answer: "The tendency of customers to return to a business" },
+  { question: "24. What does 'financial statement' include?", options: ["Balance sheet, income statement, cash flow statement", "Marketing plan, sales strategy", "Business goals, employee records"], answer: "Balance sheet, income statement, cash flow statement" },
+  { question: "25. What is 'e-commerce'?", options: ["Buying and selling of goods and services online", "The process of managing employees", "The creation of a business plan"], answer: "Buying and selling of goods and services online" },
+  { question: "26. What is 'business expansion'?", options: ["The growth of a business through new markets or products", "The process of hiring employees", "The process of creating marketing strategies"], answer: "The growth of a business through new markets or products" },
+  { question: "27. What does 'cost-benefit analysis' involve?", options: ["Comparing the costs and benefits of a business decision", "Calculating total revenue", "Managing inventory"], answer: "Comparing the costs and benefits of a business decision" },
+  { question: "28. What is 'business ethics'?", options: ["Moral principles that guide the behavior of a business", "The process of hiring staff", "The development of new products"], answer: "Moral principles that guide the behavior of a business" },
+  { question: "29. What is 'cash flow'?", options: ["The total amount of cash coming in and going out of a business", "The total revenue from sales", "The cost of production"], answer: "The total amount of cash coming in and going out of a business" },
+  { question: "30. What is 'entrepreneurial spirit'?", options: ["The drive and enthusiasm for starting and running a business", "The ability to manage employees", "The process of creating a business plan"], answer: "The drive and enthusiasm for starting and running a business" }
+],
+
+  
+
+'Entrepreneurship': [
+  { question: "1. What is an entrepreneur?", options: ["A person who starts and manages a business", "A type of business plan", "A financial report"], answer: "A person who starts and manages a business" },
+  { question: "2. What does 'innovation' refer to in entrepreneurship?", options: ["The process of creating new ideas or products", "The act of managing finances", "The hiring of employees"], answer: "The process of creating new ideas or products" },
+  { question: "3. What is a 'business model'?", options: ["A plan for how a business will operate and make money", "A type of business report", "A financial statement"], answer: "A plan for how a business will operate and make money" },
+  { question: "4. What is 'risk management'?", options: ["The process of identifying and mitigating potential business risks", "The process of hiring staff", "The creation of marketing strategies"], answer: "The process of identifying and mitigating potential business risks" },
+  { question: "5. What does 'scalability' mean?", options: ["The ability of a business to grow and manage increased demand", "The ability to reduce costs", "The process of hiring employees"], answer: "The ability of a business to grow and manage increased demand" },
+  { question: "6. What is a 'value proposition'?", options: ["A statement that explains how a product or service benefits customers", "A type of marketing strategy", "The amount of investment required"], answer: "A statement that explains how a product or service benefits customers" },
+  { question: "7. What is 'market research'?", options: ["The process of gathering information about market needs and preferences", "The act of creating a business plan", "The management of inventory"], answer: "The process of gathering information about market needs and preferences" },
+  { question: "8. What does 'business incubation' involve?", options: ["Providing support and resources to new startups", "The process of selling products", "The management of finances"], answer: "Providing support and resources to new startups" },
+  { question: "9. What is 'bootstrapping'?", options: ["Starting a business with minimal external funding", "The process of managing employees", "The creation of marketing materials"], answer: "Starting a business with minimal external funding" },
+  { question: "10. What does 'entrepreneurial mindset' refer to?", options: ["A set of attitudes and skills that drive entrepreneurial success", "The ability to manage a team", "The process of developing a product"], answer: "A set of attitudes and skills that drive entrepreneurial success" },
+  { question: "11. What is 'crowdfunding'?", options: ["Raising small amounts of money from a large number of people", "The process of managing a business", "A type of financial statement"], answer: "Raising small amounts of money from a large number of people" },
+  { question: "12. What is 'angel investing'?", options: ["Investment provided by wealthy individuals to startups", "The process of creating a business plan", "The management of business operations"], answer: "Investment provided by wealthy individuals to startups" },
+  { question: "13. What is a 'pitch' in entrepreneurship?", options: ["A presentation designed to attract investors or customers", "A type of financial report", "The process of hiring staff"], answer: "A presentation designed to attract investors or customers" },
+  { question: "14. What does 'business valuation' mean?", options: ["The process of determining the worth of a business", "The management of daily operations", "The creation of a marketing plan"], answer: "The process of determining the worth of a business" },
+  { question: "15. What is 'competitive advantage'?", options: ["A unique edge that allows a business to outperform competitors", "The amount of sales revenue", "The process of managing inventory"], answer: "A unique edge that allows a business to outperform competitors" },
+  { question: "16. What does 'exit strategy' refer to?", options: ["A plan for how an entrepreneur will leave the business", "The process of acquiring new customers", "The management of business finances"], answer: "A plan for how an entrepreneur will leave the business" },
+  { question: "17. What is 'customer acquisition'?", options: ["The process of gaining new customers", "The creation of a product", "The management of sales"], answer: "The process of gaining new customers" },
+  { question: "18. What is 'value chain analysis'?", options: ["Examining the activities that create value for a business", "The process of creating a marketing strategy", "The hiring of employees"], answer: "Examining the activities that create value for a business" },
+  { question: "19. What does 'leverage' mean in a business context?", options: ["Using resources to maximize returns", "The process of setting up a business", "The creation of a business plan"], answer: "Using resources to maximize returns" },
+  { question: "20. What is 'social entrepreneurship'?", options: ["Starting a business with a focus on solving social problems", "The management of business finances", "The creation of marketing strategies"], answer: "Starting a business with a focus on solving social problems" },
+  { question: "21. What is 'strategic planning'?", options: ["The process of defining long-term goals and strategies for a business", "The creation of a product", "The management of daily operations"], answer: "The process of defining long-term goals and strategies for a business" },
+  { question: "22. What is 'startup capital'?", options: ["The initial funding required to start a new business", "The total revenue from sales", "The cost of manufacturing products"], answer: "The initial funding required to start a new business" },
+  { question: "23. What does 'scaling' refer to?", options: ["The process of expanding a business to handle more demand", "The creation of a business plan", "The process of managing inventory"], answer: "The process of expanding a business to handle more demand" },
+  { question: "24. What is 'intellectual property'?", options: ["Legal rights to creations of the mind", "The amount of profit generated", "The process of hiring employees"], answer: "Legal rights to creations of the mind" },
+  { question: "25. What does 'negotiation' involve in business?", options: ["The process of discussing and reaching an agreement", "The creation of a marketing plan", "The management of finances"], answer: "The process of discussing and reaching an agreement" },
+  { question: "26. What is 'venture capital'?", options: ["Funding provided to startups with high growth potential", "The process of hiring staff", "The creation of business goals"], answer: "Funding provided to startups with high growth potential" },
+  { question: "27. What does 'customer retention' mean?", options: ["The strategies used to keep existing customers", "The process of acquiring new customers", "The management of business operations"], answer: "The strategies used to keep existing customers" },
+  { question: "28. What is 'business model canvas'?", options: ["A visual tool for describing a business model", "The process of creating a marketing strategy", "The amount of startup capital"], answer: "A visual tool for describing a business model" },
+  { question: "29. What is 'monetization'?", options: ["The process of turning assets or products into revenue", "The creation of a business plan", "The management of daily operations"], answer: "The process of turning assets or products into revenue" },
+  { question: "30. What is 'business networking'?", options: ["Building and maintaining relationships with other professionals", "The process of creating a product", "The management of business finances"], answer: "Building and maintaining relationships with other professionals" }
+],
+
+
+
+    'Music studies': [
+  { question: "1. What is the standard musical notation for a whole note?", options: ["O", "♩", "♪"], answer: "O" },
+  { question: "2. Which of the following is a string instrument?", options: ["Piano", "Guitar", "Drums"], answer: "Guitar" },
+  { question: "3. What does 'forte' mean in musical terms?", options: ["Loud", "Soft", "Slow"], answer: "Loud" },
+  { question: "4. What is the term for the speed of a piece of music?", options: ["Tempo", "Dynamics", "Pitch"], answer: "Tempo" },
+  { question: "5. What is a 'clef' used for in music?", options: ["To indicate the pitch of notes", "To mark the rhythm", "To show volume"], answer: "To indicate the pitch of notes" },
+  { question: "6. How many beats are in a measure of 4/4 time signature?", options: ["2", "4", "6"], answer: "4" },
+  { question: "7. Which symbol indicates silence in music?", options: ["Rest", "Note", "Clef"], answer: "Rest" },
+  { question: "8. What is the term for a gradual increase in volume?", options: ["Crescendo", "Decrescendo", "Legato"], answer: "Crescendo" },
+  { question: "9. What does 'staccato' mean?", options: ["Short and detached notes", "Smooth and connected notes", "Loud notes"], answer: "Short and detached notes" },
+  { question: "10. Which of the following is a woodwind instrument?", options: ["Trumpet", "Violin", "Flute"], answer: "Flute" },
+  { question: "11. What is the name of the musical symbol that raises a note by a half step?", options: ["Sharp", "Flat", "Natural"], answer: "Sharp" },
+  { question: "12. What does 'allegro' signify in music?", options: ["Fast tempo", "Slow tempo", "Medium tempo"], answer: "Fast tempo" },
+  { question: "13. What is the main function of the 'bass clef'?", options: ["To indicate lower pitches", "To indicate higher pitches", "To show rhythm"], answer: "To indicate lower pitches" },
+  { question: "14. What does 'legato' mean?", options: ["Smooth and connected notes", "Short and detached notes", "Loud notes"], answer: "Smooth and connected notes" },
+  { question: "15. Which note is the lowest in the treble clef?", options: ["E", "G", "C"], answer: "E" },
+  { question: "16. What is the term for a repeated section in music?", options: ["Refrain", "Verse", "Bridge"], answer: "Refrain" },
+  { question: "17. What does 'piano' mean in musical notation?", options: ["Soft", "Loud", "Moderate"], answer: "Soft" },
+  { question: "18. Which instrument is known for its use of keys and strings?", options: ["Piano", "Guitar", "Trumpet"], answer: "Piano" },
+  { question: "19. What is the purpose of a 'metronome'?", options: ["To keep time", "To tune instruments", "To amplify sound"], answer: "To keep time" },
+  { question: "20. What is the name of the first note in a major scale?", options: ["Tonic", "Dominant", "Subdominant"], answer: "Tonic" },
+  { question: "21. What does 'crescendo' indicate?", options: ["Gradual increase in volume", "Gradual decrease in volume", "Immediate loudness"], answer: "Gradual increase in volume" },
+  { question: "22. What is the role of the 'drum kit' in a band?", options: ["To provide rhythm", "To play melody", "To provide harmony"], answer: "To provide rhythm" },
+  { question: "23. What is a 'key signature'?", options: ["A symbol indicating the key of the piece", "A sign for tempo changes", "A mark for dynamics"], answer: "A symbol indicating the key of the piece" },
+  { question: "24. Which of the following is a brass instrument?", options: ["Trombone", "Harp", "Clarinet"], answer: "Trombone" },
+  { question: "25. What does 'fortissimo' mean?", options: ["Very loud", "Very soft", "Moderate volume"], answer: "Very loud" },
+  { question: "26. What is the 'staff' in music notation?", options: ["The set of lines on which notes are written", "The device used to keep time", "The symbol indicating pitch"], answer: "The set of lines on which notes are written" },
+  { question: "27. What is the term for a musical composition written for a single instrument?", options: ["Solo", "Duet", "Trio"], answer: "Solo" },
+  { question: "28. What is an 'interval' in music?", options: ["The distance between two notes", "A type of rhythm", "A musical key"], answer: "The distance between two notes" },
+  { question: "29. What does 'pianissimo' mean?", options: ["Very soft", "Very loud", "Moderate volume"], answer: "Very soft" },
+  { question: "30. Which of the following is a percussion instrument?", options: ["Violin", "Xylophone", "Flute"], answer: "Xylophone" }
+]
+
+    
+};
+
+function displayQuestions(subject) {
+    const questionList = questions[subject];
+    if (questionList) {
+        // Clear previous questions if any
+        document.getElementById('questionContainer').innerHTML = '';
+        // Display questions
+        questionList.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('card', 'mt-3');
+            questionElement.setAttribute('data-subject', subject);
+            questionElement.setAttribute('data-question-index', index);
+            questionElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${question.question}</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option1${index}" value="${question.options[0]}">
+                        <label class="form-check-label" for="option1${index}">
+                            ${question.options[0]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option2${index}" value="${question.options[1]}">
+                        <label class="form-check-label" for="option2${index}">
+                            ${question.options[1]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option3${index}" value="${question.options[2]}">
+                        <label class="form-check-label" for="option3${index}">
+                            ${question.options[2]}
+                        </label>
+                    </div>
+                </div>
+            `;
+            document.getElementById('questionContainer').appendChild(questionElement);
+        });
+        
+        // Add submit button
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary mt-3');
+        submitButton.textContent = 'Submit Answers';
+        submitButton.onclick = calculateScore;
+        document.getElementById('questionContainer').appendChild(submitButton);
+    }
+}
+
+
+
+function calculateScore(username) {
+    let score = 0;
+    const questionCards = document.querySelectorAll('.card.mt-3');
+    
+    questionCards.forEach((card, index) => {
+        const selectedOption = card.querySelector('input[type=radio]:checked');
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const subject = card.getAttribute('data-subject');
+            const questionIndex = card.getAttribute('data-question-index');
+            const correctAnswer = questions[subject][questionIndex].answer;
+            if (selectedAnswer === correctAnswer) {
+                score += 3.33333333; // Each correct answer earns 3.33 marks
+            }
+        }
+    });
+
+    // Determine the grade based on score ranges
+let grade;
+if (score >= 0 && score <= 17) {
+    grade = 'F';
+} else if (score >= 18 && score <= 30) {
+    grade = 'E';
+} else if (score >= 31 && score <= 44) {
+    grade = 'D';
+} else if (score >= 45 && score <= 69) {
+    grade = 'C';
+} else if (score >= 70 && score <= 84) {
+    grade = 'B';
+} else if (score >= 85 && score <= 100) {
+    grade = 'A';
+} else {
+    grade = 'Invalid'; // If score exceeds the expected range
+}
+
+
+    // Display the score and grade on the page
+    const scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.textContent = `Congratulations, your score is: ${score}, and your grade is: ${grade}`;
+}
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = minutes + ':' + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = '00:00';
+            // Time is up, automatically submit the exam
+            calculateScore();
+        }
+    }, 1000);
+}
+
+// Function to attach click event listeners to subject elements
+function attachTimerToSubjects() {
+    const subjects = document.querySelectorAll('[id^="collapsePrimary"]'); // Select all elements with ids starting with "collapsePrimary"
+    subjects.forEach(subject => {
+        subject.addEventListener('click', () => {
+            const display = document.getElementById('timer-display');
+            const timeLimit = 60 * 10; // 10 minutes in seconds
+            startTimer(timeLimit, display);
+        });
+    });
+}
+
+window.onload = function () {
+    attachTimerToSubjects();
+};
+
+        
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

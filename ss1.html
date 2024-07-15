@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primary Five</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .logo {
+            height: 50px;
+        }
+        .footer-section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #score-display {
+      max-width: 600px;
+      margin: auto;
+    }
+
+#score-display h4 {
+          color: #007bff; /* Bootstrap primary color */
+        }
+      #timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: fixed;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+    #timer-display {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.jpg" alt="Logo 1" class="logo">
+            <img src="img/logo2.jpg" alt="Logo 2" class="logo">
+            Computer Based Examination System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<!-- Container for displaying timer -->
+<div id="timer-container">
+  <center>
+      <div id="timer-display">
+          <p>Exam Time:</p>
+          <p id="timer">00:00</p>
+      </div>
+  </center>
+</div>
+
+<div class="container mt-5">
+    <div id="subjectAccordion">
+        <!-- Primary 5 -->
+        <div class="card">
+            <div class="card-header" id="headingPrimary5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePrimary5" aria-expanded="true" aria-controls="collapsePrimary5">
+                        Primary 5
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePrimary5" class="collapse show" aria-labelledby="headingPrimary5" data-parent="#subjectAccordion">
+                <div class="card-body">
+                    <button class="btn btn-secondary" onclick="displayQuestions('Mathematics')">Mathematics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('English language')">English language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Yoruba language')">Yoruba language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Civic education')">Civic education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Physical and health education')">Physical and health education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Christian religion studies')">Christian religion studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Social studies')">Social studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Agricultural studies')">Agricultural studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Home economics')">Home economics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('History')">History</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Creative and cultural art')">Creative and cultural art</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Basic science and technology')">Basic science and technology</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Leadership')">Leadership</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('French language')">French language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Digital literacy')">Digital literacy</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Container for displaying questions -->
+<div id="questionContainer" class="container mt-3">
+
+  
+</div> 
+
+
+<!-- Container for displaying score for each subject -->
+<div id="score-display" class="mt-3 p-3 border rounded shadow-sm bg-light">
+  <h4 class="text-center">Score board</h4>
+  <!-- Add score content here -->
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <p>Developed by Livingstone Consult 2024</p>
+    </div>
+</footer>
+
+<script>
+
+const questions = {
+    'Mathematics': [
+    { question: 'What is the ratio between the weight of two bags of sugar of 4kg and 6kg respectively?', options: ['2:3', '4:6', '1:2'], answer: '2:3' },
+    { question: 'A pole of length 165cm is divided into two parts such that lengths are in the ratio 7:8. What is the length of the first part?', options: ['77cm', '88cm', '100cm'], answer: '77cm' },
+    { question: 'A marker costs $18. Calculate the cost of 5 markers.', options: ['$90', '$100', '$85'], answer: '$90' },
+    { question: 'What is the price of one textbook if 2 textbooks cost $24?', options: ['$12', '$10', '$15'], answer: '$12' },
+    { question: 'Find the ratio of 24cm to 72cm in its lowest terms.', options: ['1:3', '2:3', '1:4'], answer: '1:3' },
+    { question: 'Find the ratio of 425km to 750km in its lowest terms.', options: ['17:30', '17:25', '16:30'], answer: '17:30' },
+    { question: 'Find the ratio of 75min to 150min in its lowest terms.', options: ['1:2', '1:3', '2:3'], answer: '1:2' },
+    { question: 'A field is 50m in length and 60m in width. Find the ratio between its width and length.', options: ['6:5', '5:6', '7:5'], answer: '6:5' },
+    { question: 'A scooter can travel 225km with 5 litres of petrol. How many litres of petrol is needed to travel 675km?', options: ['15 litres', '10 litres', '20 litres'], answer: '15 litres' },
+    { question: 'Change the fraction 2/5 to a percentage.', options: ['40%', '50%', '45%'], answer: '40%' },
+    { question: 'Change the percentage 75% to a fraction in its lowest terms.', options: ['3/4', '4/5', '3/5'], answer: '3/4' },
+    { question: 'Change 7 ½% to a fraction in its lowest terms.', options: ['3/40', '7/40', '1/40'], answer: '3/40' },
+    { question: 'What is the selling price if a clock is bought for $1,145 and sold for $1,170?', options: ['$1,170', '$1,200', '$1,150'], answer: '$1,170' },
+    { question: 'By selling a tin of oil for $1,320, a man made a profit of $150. How much did he pay for it?', options: ['$1,170', '$1,150', '$1,200'], answer: '$1,170' },
+    { question: 'Find the simple interest on $1,000 for 5 years at 3% per annum.', options: ['$150', '$200', '$250'], answer: '$150' },
+    { question: 'Seun deposits $14,500 in a bank account at 15% per annum for 2 ½ years. What is the simple interest?', options: ['$5,437.50', '$4,500', '$5,000'], answer: '$5,437.50' },
+    { question: 'An article bought for $3,000 was sold for $3,300. What is the profit percent?', options: ['10%', '15%', '5%'], answer: '10%' },
+    { question: 'A book bought for $25,000 was sold for $22,000. What is the loss percent?', options: ['12%', '10%', '15%'], answer: '12%' },
+    { question: 'Calculate the perimeter of a square with a side length of 9cm.', options: ['36cm', '27cm', '45cm'], answer: '36cm' },
+    { question: 'Calculate the perimeter of a rectangle with a length of 15cm and a width of 9cm.', options: ['48cm', '50cm', '54cm'], answer: '48cm' },
+    { question: 'Calculate the perimeter of a circle with a radius of 14cm (Take π = 22/7).', options: ['88cm', '84cm', '90cm'], answer: '88cm' },
+    { question: 'Calculate the area of a triangle with a base of 12cm and a height of 13cm.', options: ['78cm²', '72cm²', '65cm²'], answer: '78cm²' },
+    { question: 'Find the volume of a cylinder with a radius of 3.5cm and height of 12cm (Take π = 22/7).', options: ['462cm³', '500cm³', '450cm³'], answer: '462cm³' },
+    { question: 'Change 2000g to kilograms.', options: ['2kg', '2.5kg', '1.5kg'], answer: '2kg' },
+    { question: 'Change 5kg to grams.', options: ['5000g', '4000g', '6000g'], answer: '5000g' },
+    { question: 'Change the fraction 2/4 to a percentage.', options: ['50%', '25%', '75%'], answer: '50%' },
+    { question: 'Calculate the perimeter of a rectangle with a length of 12cm and a width of 7cm.', options: ['38cm', '40cm', '44cm'], answer: '38cm' },
+    { question: 'Find the ratio of 85kg to 102kg in its lowest terms.', options: ['5:6', '6:5', '7:6'], answer: '5:6' },
+    { question: 'Change 66 ½% to a fraction in its lowest terms.', options: ['2/3', '3/4', '1/2'], answer: '2/3' },
+    { question: 'A trader bought a dozen candles for $1,020 and sold them all at $960. What is the profit or loss on each candle?', options: ['Loss of $5', 'Profit of $5', 'Loss of $10'], answer: 'Loss of $5' }
+],
+
+
+    'English language': [
+    { question: '_______ is a linking word.', options: ['Because', 'This', 'Give'], answer: 'Because' },
+    { question: 'What is the linking word in the following sentence: "The Choir sang melodiously but a few people still complained"?', options: ['But', 'Choir', 'Sang'], answer: 'But' },
+    { question: 'Choose the correct word that best fits the following sentence: "The men had to leave early ____________ they had another meeting to attend."', options: ['So that', 'With', 'Because'], answer: 'Because' },
+    { question: 'Wash your hands _________ eating.', options: ['As soon as', 'Before', 'Go'], answer: 'Before' },
+    { question: 'The boy likes drawing _______ he doesn\'t like reading story books.', options: ['And', 'Is', 'But'], answer: 'But' },
+    { question: '_________ is used as an adverbial of time.', options: ['What', 'When', 'Is'], answer: 'When' },
+    { question: 'Choose the correct word that best fits the following sentence: "Take your medicine_____ you feel weak."', options: ['What', 'When', 'And'], answer: 'When' },
+    { question: '__________ is a linking word that joins two clauses together (main and subordinate clauses).', options: ['When', 'That', 'Go'], answer: 'When' },
+    { question: '_______ introduces a dependent clause.', options: ['That', 'When', 'From'], answer: 'When' },
+    { question: 'Choose the best word to fit the sentence: "The man came ______ it was raining."', options: ['In', 'When', 'For'], answer: 'When' },
+    { question: '_______________ are a group of words that do not make complete sense by themselves.', options: ['Noun', 'Adjectival clauses', 'Adverb'], answer: 'Adjectival clauses' },
+    { question: '_________ depend on other sentences for their meaning.', options: ['Verb', 'Adjectival clauses', 'Value'], answer: 'Adjectival clauses' },
+    { question: '_______ do the work of an adjective.', options: ['Pronoun', 'Adjectival clauses', 'Robot'], answer: 'Adjectival clauses' },
+    { question: 'Insert the best word for the sentence: "This is the house _______ Mr. Omonigho built."', options: ['For', 'That', 'Is'], answer: 'That' },
+    { question: 'You have the same bag _______ Bola has.', options: ['Is', 'That', 'When'], answer: 'That' },
+    { question: 'Identify the adjectival clause in the sentence: "We know the institution in which we studied."', options: ['The', 'In', 'Which'], answer: 'Which' },
+    { question: 'Where is the shirt that I just bought?', options: ['Where', 'That', 'Bought'], answer: 'That' },
+    { question: 'Past tense can be studied under _____ subheadings.', options: ['4', '3', '5'], answer: '4' },
+    { question: '______ is a past tense subheading.', options: ['Verb', 'Past continuous tense', 'Pronoun'], answer: 'Past continuous tense' },
+    { question: '_________ is used to show some events that happened in the past.', options: ['Proper noun', 'Simple past tense', 'Preposition'], answer: 'Simple past tense' },
+    { question: '__________ is used to show an action that had been completed at a certain time in the past.', options: ['Abstract noun', 'Past perfect tense', 'Verb'], answer: 'Past perfect tense' },
+    { question: 'Complete the sentence with the best word that fits: "Mother ______ a bag of rice yesterday."', options: ['Buy', 'Bought', 'Belong'], answer: 'Bought' },
+    { question: 'Abu ________ someone calling his name.', options: ['Want', 'Heard', 'Great'], answer: 'Heard' },
+    { question: 'Phrasal verb can be made up of verb+ ________.', options: ['An adverb', 'A noun', 'Pronoun'], answer: 'An adverb' },
+    { question: '_________ is formed when we add a preposition to a noun.', options: ['School', 'Prepositional phrase', 'Verb'], answer: 'Prepositional phrase' },
+    { question: '__________ are used to connect a noun to a clause or a statement it is related to.', options: ['Relative pronouns', 'Adverb', 'Motion'], answer: 'Relative pronouns' },
+    { question: '______ is an example of a phrasal verb.', options: ['Come', 'Take after', 'When'], answer: 'Take after' },
+    { question: 'What is the meaning of the phrasal verb "Given up"?', options: ['Have stopped', 'Tolerate', 'Run to'], answer: 'Have stopped' },
+    { question: 'Done with means?', options: ['Have solved problems', 'Build', 'Care for'], answer: 'Have solved problems' },
+    { question: 'Cut down on means', options: ['Reduce', 'Bring', 'Run'], answer: 'Reduce' }
+],
+
+'Yoruba language': [
+
+    { question: "Kini oro oruko afoyemo?", options: ["Eda to je eniyan", "Eda to je ohun", "Ise kan pato"], answer: "Eda to je ohun" },
+    { question: "Kini ere ayo?", options: ["Ere ti a n se ni ojo kan", "Ere ti a n ta paali", "Ere ti a n ta ayo"], answer: "Ere ti a n ta ayo" },
+    { question: "Kini anfaani ti o wa ninu ere ayo?", options: ["Ibaraenisoro", "Owo", "Aso"], answer: "Ibaraenisoro" },
+    { question: "Kini itumo ise ajumose?", options: ["Ise ti eniyan kan n se", "Ise ti eniyan po n se", "Ise ti o n be ni ile"], answer: "Ise ti eniyan po n se" },
+    { question: "Kini akole aroko ile iwe mi?", options: ["Ile iwe mi", "Oko mi", "Ile mi"], answer: "Ile iwe mi" },
+    { question: "Kini akanlo ede?", options: ["Oro ti o daju", "Oro ti o ni itumo meji", "Oro ti o dara"], answer: "Oro ti o ni itumo meji" },
+    { question: "Kini oro aseeka?", options: ["Oro ti o n se alaye", "Oro ti o n se idahun", "Oro ti o n se eewo"], answer: "Oro ti o n se alaye" },
+    { question: "Kini ise oluko?", options: ["Ise amoye", "Ise ti oluko n se", "Ise ti o ni ere"], answer: "Ise ti oluko n se" },
+    { question: "Kini awon ohun elo tita okoto?", options: ["Igo", "Aja", "Okoto"], answer: "Okoto" },
+    { question: "Kini awon anfaani ise agbe?", options: ["Owo", "Eda", "Ebi"], answer: "Owo" },
+    { question: "Kini awon aleebu ise ajumose?", options: ["Eyi to dara", "Aja ti o n dun", "Eyi to buru"], answer: "Eyi to buru" },
+    { question: "Kini bi a se n sere Bojuboju?", options: ["Lati se ere", "Lati tuka", "Lati bo oju"], answer: "Lati bo oju" },
+    { question: "Kini awon owe inu itan aroso?", options: ["Ewi", "Owe", "Itan"], answer: "Owe" },
+    { question: "Kini bi a se n sere arin?", options: ["Lati gbe e lati ile", "Lati rin kiri", "Lati se ere"], answer: "Lati rin kiri" },
+    { question: "Kini awon ofin ere Bojuboju?", options: ["Kii se ni gbogbo igba", "Kii se ni gbogbo ile", "Kii se ni gbogbo aye"], answer: "Kii se ni gbogbo igba" },
+    { question: "Kini akanlo ede pan-na?", options: ["Oro ti o fi ife han", "Oro ti o fi ilara han", "Oro ti o fi iberu han"], answer: "Oro ti o fi ife han" },
+    { question: "Kini awon ohun elo ise agbe?", options: ["Oko", "Ebi", "Aja"], answer: "Oko" },
+    { question: "Kini ise onise kekere?", options: ["Ise ti o kere", "Ise ti o tobi", "Ise ti ko si"], answer: "Ise ti o kere" },
+    { question: "Kini awon ona yiye?", options: ["Ero", "Okuta", "Iwe"], answer: "Okuta" },
+    { question: "Kini awon ere idaraya?", options: ["Ere ni ile", "Ere ni oko", "Ere ni ile-iwe"], answer: "Ere ni ile-iwe" },
+    { question: "Kini oro aropo oruko?", options: ["Oruko kan", "Oruko meji", "Oruko meta"], answer: "Oruko kan" },
+    { question: "Kini anfaani ise ajumose?", options: ["Isepo", "Isokan", "Isopowo"], answer: "Isokan" },
+    { question: "Kini aleebu ise ajumose?", options: ["Owo", "Ero", "Ijakadi"], answer: "Ijakadi" },
+    { question: "Kini ile iwe mi?", options: ["Ile ife", "Ile iwosan", "Ile-iwe"], answer: "Ile-iwe" },
+    { question: "Kini itumo oro atokun?", options: ["Oro ti o duro ni ipo kan", "Oro ti o n se alaye", "Oro ti o n fi han"], answer: "Oro ti o n se alaye" },
+    { question: "Kini awon eyo oro aropo?", options: ["Kan", "Meji", "Mejo"], answer: "Kan" },
+    { question: "Kini awon apeere ise ajumose?", options: ["Ise ni ile", "Ise ni oko", "Ise ni ile-iwe"], answer: "Ise ni ile-iwe" },
+    { question: "Kini awon aleebu ere ayo?", options: ["Ife", "Ijakadi", "Isokan"], answer: "Ijakadi" },
+    { question: "Kini awon anfaani ere arin?", options: ["Ifojudi", "Ifarada", "Isokan"], answer: "Isokan" },
+    { question: "Kini awon aleebu ere arin?", options: ["Ifarada", "Ijakadi", "Isokan"], answer: "Ijakadi" }
+
+
+],
+'Civic education': [
+    { question: '_______ can be described as organized groups which influence government decisions, socially or economically without the aim of being in government.', options: ['Passion group', 'Pressure group', 'Standard group'], answer: 'Pressure group' },
+    { question: 'NCWS means ______', options: ['National coca wisdom service', 'National council of women societies', 'National country ward set'], answer: 'National council of women societies' },
+    { question: 'NUPENG means ______', options: ['National union of petroleum and natural gas', 'No useful people encourage no goat', 'National union of people English now Go'], answer: 'National union of petroleum and natural gas' },
+    { question: 'The importance of pressure groups is to ______', options: ['To keep Government in check', 'To fight', 'To sing'], answer: 'To keep Government in check' },
+    { question: 'The disadvantage of pressure groups is that _____', options: ['They make demands that are sometimes for the benefit of their members only', 'They promote', 'They wear uniform'], answer: 'They make demands that are sometimes for the benefit of their members only' },
+    { question: '__________ are the beliefs which are important to someone in life', options: ['Good', 'Values', 'Great'], answer: 'Values' },
+    { question: 'Example of values is ________', options: ['Integrity', 'Sing', 'Kill'], answer: 'Integrity' },
+    { question: 'All of these are values except', options: ['Courage', 'Gratitude', 'Stealing'], answer: 'Stealing' },
+    { question: 'Value that promotes peace is _____', options: ['Forgive others', 'Reject people', 'Hate people'], answer: 'Forgive others' },
+    { question: '______ is a value that helps promote a peaceful co-existence among individuals and groups', options: ['Integrity', 'Tolerance', 'Obedient'], answer: 'Tolerance' },
+    { question: '_______ is working together in order to achieve a common purpose', options: ['Cooperation', 'Corrosive', 'Pleasant'], answer: 'Cooperation' },
+    { question: '______ humility means not being proud', options: ['Pride', 'Humility', 'Communication'], answer: 'Humility' },
+    { question: 'Value is ______', options: ['Debt', 'Gratitude', 'Play'], answer: 'Gratitude' },
+    { question: '_______ is working together in order to achieve a common purpose', options: ['Cooperation', 'Ability', 'Power'], answer: 'Cooperation' },
+    { question: '______ is when an individual or group treats another unfairly', options: ['Social injustice', 'Pride', 'Better'], answer: 'Social injustice' },
+    { question: '________ could also be wrongful actions against individuals within society', options: ['Brass', 'Social justice', 'Enjoyment'], answer: 'Social justice' },
+    { question: '______ takes place when people face discrimination because of their race', options: ['Tribe', 'Racism', 'Joy'], answer: 'Racism' },
+    { question: '________ is dislike against gay people', options: ['Homophone', 'Homophobia', 'Flag'], answer: 'Homophobia' },
+    { question: '________ is the unjust treatment of different categories of people especially in the area of disability', options: ['Describe', 'Discrimination', 'Spirit'], answer: 'Discrimination' },
+    { question: '_______ is discrimination on the grounds of a person\'s age', options: ['Ageism', 'Momentum', 'Grind'], answer: 'Ageism' },
+    { question: '______ is a type of social injustice', options: ['The gender pay gap', 'Blessing', 'Gift'], answer: 'The gender pay gap' },
+    { question: '____ is also a type of social injustice', options: ['Climate change', 'Father', 'Mother'], answer: 'Climate change' },
+    { question: '______ means the wide gap between what the male gender earns and the female', options: ['Product', 'Gender pay gap', 'Develop'], answer: 'Gender pay gap' },
+    { question: '_____ is driven by factors such as agriculture', options: ['Climate change', 'Horse', 'Weather'], answer: 'Climate change' },
+    { question: '________ through the gender pay gap, the income inequality is birthed', options: ['Income inequality', 'Habit', 'Grace'], answer: 'Income inequality' },
+    { question: '_________ with climate change, supply chain issues and inflation', options: ['Food insecurity', 'Power', 'Haven'], answer: 'Food insecurity' },
+    { question: 'How to communicate social injustice is ______', options: ['Demonstration', 'Pulley', 'Leverage'], answer: 'Demonstration' },
+    { question: '_______ is a decision not to work any longer as a result of demands for improved conditions that are not yet met with', options: ['Strike', 'Bullet', 'Gun'], answer: 'Strike' },
+    { question: '_______ is refusing to perform maximally or to meet up with the targeted production', options: ['Force', 'Reduce production', 'Vision'], answer: 'Reduce production' },
+    { question: '_______ is when some people resign from the work they do as a way of communicating social injustice', options: ['Signed', 'Resignation', 'Proper'], answer: 'Resignation' }
+],
+
+'Physical and health education': [
+    { question: '_______ are those useful substances available in the foods we eat.', options: ['Oil', 'Salt', 'Food nutrients', 'Sardines'], answer: 'Food nutrients' },
+    { question: '________ are absorbed and used by the body for growth', options: ['Ceramics', 'Food nutrients', 'Charger', 'Body'], answer: 'Food nutrients' },
+    { question: '________ gives energy to the body for performance of daily activities.', options: ['Oil', 'Fat and oil', 'Carbohydrates', 'Protein'], answer: 'Carbohydrates' },
+    { question: '______ build the body and help the body replace old cells with new ones', options: ['Fat and oil', 'Protein', 'Groundnut oil', 'Bread'], answer: 'Protein' },
+    { question: '______ produce heat to keep the body warm', options: ['Annointing oil', 'Berry', 'Fat and oil', 'Perfume'], answer: 'Fat and oil' },
+    { question: 'Vitamins protect us from infection and ________', options: ['Event', 'Disease', 'Organism', 'Power'], answer: 'Disease' },
+    { question: '________ make bone and teeth strong and enrich the blood', options: ['Minerals', 'Vitamins', 'Charcoal', 'Syringe'], answer: 'Minerals' },
+    { question: '_______ maintain fluids balance in the body and aids food digestion', options: ['Minerals', 'Water', 'Oil', 'Orange'], answer: 'Water' },
+    { question: 'Nutritional deficiency diseases arise as a result of lack of nutrients needed for body growth and ___________', options: ['Development', 'Bacteria', 'Power', 'Powder'], answer: 'Development' },
+    { question: 'Example of nutritional deficiency diseases are these except?', options: ['Kwashiorkor', 'Ticket', 'Scurvy', 'Headache'], answer: 'Headache' },
+    { question: '_________ is caused by lack of protein in the body', options: ['Headache', 'Stomach', 'Dizziness', 'Kwashiorkor'], answer: 'Kwashiorkor' },
+    { question: '______ is caused due to lack of vitamin D in the body', options: ['Fever', 'Ricket', 'Headache', 'Bow leg'], answer: 'Ricket' },
+    { question: '_______ is caused by lack of foods containing vitamin C', options: ['Scurvy', 'Muscle', 'Fatigue', 'Diabetes'], answer: 'Scurvy' },
+    { question: '______ is a combat game that was developed at the kodokan judo college in Tokyo.', options: ['Ludo', 'Judo', 'Tennis', 'Biro'], answer: 'Judo' },
+    { question: 'Professor Jigoro Kano in the year ______ developed judo game ?', options: ['1997', '1178', '1882', '1954'], answer: '1882' },
+    { question: 'Judo became Olympic ________', options: ['Game', 'Cloth', 'Track', 'Feast'], answer: 'Game' },
+    { question: 'A judo player is called a ______', options: ['Fighter', 'Judoka', 'Prayer', 'Bouncer'], answer: 'Judoka' },
+    { question: 'Judo helps to make the body strong and ______', options: ['Bold', 'Flexible', 'Swim', 'Faster'], answer: 'Flexible' },
+    { question: 'All these are facilities and equipment of judo except?', options: ['A belt', 'Judo suit', 'Mat', 'Socks'], answer: 'Socks' },
+    { question: '_______ is the movement made through water, with the help of both the arms and legs.', options: ['Swimming', 'Playing', 'Singing', 'Clapping'], answer: 'Swimming' },
+    { question: '_______ are the several ways by which we can move the body while swimming', options: ['Swimming pool', 'Swimming strokes', 'Bend strokes', 'Running'], answer: 'Swimming strokes' },
+    { question: '_____ is the use of back to swim', options: ['Front stroke', 'Back strokes', 'Running', 'Singing'], answer: 'Back strokes' },
+    { question: '_______ is the face of the swimmer stays in the water and breath kept in control while feet are extended backwards.', options: ['Move stroke', 'Crawl stroke', 'Front stroke', 'Back stroke'], answer: 'Crawl stroke' },
+    { question: '______ are those viruses, fungi, and bacteria that cause diseases', options: ['Pathogens', 'Virus', 'Fungi', 'Mucus'], answer: 'Pathogens' },
+    { question: 'Diseases and pathogens are these except;', options: ['Small pox', 'Tuberculosis', 'Fever', 'Catarrh'], answer: 'Fever' },
+    { question: 'A _______ interacts with the host and causes infection leading to the development of disease in the host', options: ['Fish', 'Goat', 'Pathogens', 'Fungi'], answer: 'Pathogens' },
+    { question: '_______ are experiences a patient goes through as a result of sickness.', options: ['Sickness', 'Symptoms', 'Cough', 'Weakness'], answer: 'Symptoms' },
+    { question: '_______ are the observations of findings of a doctor when checking a sick person.', options: ['Blend', 'Sign', 'Encourage', 'Eat'], answer: 'Sign' },
+    { question: 'Signs are following except?', options: ['Body pains', 'Aches', 'Body temperature', 'Playing'], answer: 'Playing' },
+    { question: '_______ have germs and can be spread from one person to another.', options: ['Diarrhea', 'Communicable diseases', 'Song', 'Polythene'], answer: 'Communicable diseases' }
+],
+
+'Christian religion studies': [
+    { question: 'God said Sarai should now be called ______', options: ['Jacob', 'Sarah', 'Noah'], answer: 'Sarah' },
+    { question: 'Sarai\'s name was changed because God wanted to bless her and give her a _____', options: ['money', 'son', 'power'], answer: 'son' },
+    { question: 'God promised that Sarah would become a mother of _______', options: ['nations', 'power', 'kingdom'], answer: 'nations' },
+    { question: 'The name of Sarah\'s son is ________', options: ['Isaac', 'Grace', 'Jesus'], answer: 'Isaac' },
+    { question: 'God promised to establish his covenant with ______ for an everlasting covenant.', options: ['Ezekiel', 'Isaac', 'Devil'], answer: 'Isaac' },
+    { question: 'God also promised to _______ that he will make him fruitful and multiply him exceedingly', options: ['Paul', 'Ishmael', 'Fighter'], answer: 'Ishmael' },
+    { question: 'God promised to make Ishmael have _______ princes and make him a great nation', options: ['12', '14', '15'], answer: '12' },
+    { question: 'The Lord visited _____ as promised', options: ['Israel', 'Jacob', 'Sarah'], answer: 'Sarah' },
+    { question: 'Sarah became _______', options: ['Powerful', 'Pregnant', 'Gifted'], answer: 'Pregnant' },
+    { question: 'The _____ did to her as has spoken', options: ['Lord', 'Jesus', 'Devil'], answer: 'Lord' },
+    { question: 'Sarah became pregnant and had a son for Abraham in their ______', options: ['Room', 'Old age', 'Studio'], answer: 'Old age' },
+    { question: 'Abraham named his son ______', options: ['Esau', 'Jacob', 'Isaac'], answer: 'Isaac' },
+    { question: 'He circumcised Isaac on the ______ day', options: ['3rd', '8th', '9th'], answer: '8th' },
+    { question: 'Abraham was ______ years old when he gave birth to Isaac', options: ['100', '90', '99'], answer: '100' },
+    { question: 'Sarah said God had made her ____', options: ['Dance', 'Laugh', 'Play'], answer: 'Laugh' },
+    { question: 'Paul\'s proposed mission to ______', options: ['Cameroon', 'Mexico', 'Damascus'], answer: 'Damascus' },
+    { question: 'The persecution against the church had become intense and the Christians had scattered ______', options: ['In the room', 'Everywhere', 'Home'], answer: 'Everywhere' },
+    { question: 'They went on preaching the ______ and winning new souls', options: ['Food', 'Word', 'Book'], answer: 'Word' },
+    { question: '______ was in Samaria preaching the word and there were mighty miracles', options: ['Silas', 'Devil', 'Philip'], answer: 'Philip' },
+    { question: 'Paul was armed with permission from the _____', options: ['Pastor', 'High priest', 'Paul'], answer: 'High priest' },
+    { question: 'The voice answered him \'I am Jesus whom you _______', options: ['Persecute', 'Fight', 'Build'], answer: 'Persecute' },
+    { question: 'Paul asked the _____ \'What would you have me do?\'', options: ['Devil', 'Lord', 'Jacob'], answer: 'Lord' },
+    { question: 'Paul and his ______ heard the voice but could not see anyone', options: ['Wife', 'Friends', 'Enemy'], answer: 'Friends' },
+    { question: 'Paul also became ____ and was led by his friends', options: ['Deaf', 'Blind', 'Courageous'], answer: 'Blind' },
+    { question: 'The Lord Jesus spoke to a disciple called ______', options: ['Noah', 'Ananias', 'Police'], answer: 'Ananias' },
+    { question: 'Ananias came to meet ______ to lay hands on him that he might receive sight.', options: ['Saul', 'Jacob', 'Jeremiah'], answer: 'Saul' },
+    { question: 'Ananias complained to the Lord about the identity of ____', options: ['Mary', 'Margaret', 'Paul'], answer: 'Paul' },
+    { question: 'Paul was a chosen _____ that would suffer a great deal for the Lord\'s sake', options: ['Glory', 'Vessel', 'Plant'], answer: 'Vessel' },
+    { question: 'The Holy Spirit said \'Separate me Barnabas and Saul for the ____ I have called them for\'', options: ['Prayer', 'Work', 'Gift'], answer: 'Work' },
+    { question: 'The two major groups Paul preached to are _______', options: ['Gentile and Jews', 'Paul and Silas', 'Jacob and Esau'], answer: 'Gentile and Jews' }
+],
+
+    'Social studies': [
+    { question: '_______ is not an example of houses Nigerians live in?', options: ['Thatched Roof and mud', 'Iron Roofing sheets and muds', 'Skyscrapers'], answer: 'Skyscrapers' },
+    { question: 'Provisions and acquisition of houses is by?', options: ['Reading', 'Personal savings and efforts', 'Singing'], answer: 'Personal savings and efforts' },
+    { question: 'How many suggested provisions and acquisitions of houses do we have?', options: ['5', '3', '8'], answer: '5' },
+    { question: 'Qualities of a good house are?', options: ['Good paint', 'Proper ventilation', 'Money'], answer: 'Proper ventilation' },
+    { question: '______ is also a quality of a good house.', options: ['Strong structure', 'Games', 'Book'], answer: 'Strong structure' },
+    { question: 'In the village _____ is available.', options: ['Bucket', 'People', 'Land'], answer: 'Land' },
+    { question: 'Building experts are available in the ________.', options: ['Villages', 'Cities', 'Market'], answer: 'Cities' },
+    { question: '_________ is the number of people living in a particular place at a certain period.', options: ['Pollution', 'Population', 'Class'], answer: 'Population' },
+    { question: '_________ means that the demand for houses will also increase and the number available becomes inadequate.', options: ['Disappoint', 'Population increases', 'Productivity'], answer: 'Population increases' },
+    { question: '______ is an example of a solution for house shortage.', options: ['Housing loan for workers', 'Lekki', 'Valuable'], answer: 'Housing loan for workers' },
+    { question: '________ is one of the best ways to protect yourself from getting gastro.', options: ['Bad diet', 'Good personal hygiene', 'Rest'], answer: 'Good personal hygiene' },
+    { question: '___________ refers to the abilities of children to use and control their bodies.', options: ['Spiritual', 'Physical development', 'Backbone'], answer: 'Physical development' },
+    { question: 'Pre-adolescent stage is _______________.', options: ['Girls initially grow taller than boys', 'Fighting', 'Money'], answer: 'Girls initially grow taller than boys' },
+    { question: 'Things to do to keep our body physically fit are;', options: ['Sweep', 'Always eat balanced diet', 'Read'], answer: 'Always eat balanced diet' },
+    { question: 'Another thing that keeps our body physically fit is _______.', options: ['Regular exercise', 'Knowledge', 'Friendship'], answer: 'Regular exercise' },
+    { question: '_______ is an example of characteristics of household population and effects on personal.', options: ['Size of family', 'Records', 'Investment'], answer: 'Size of family' },
+    { question: '___________ is a factor contributing to drug abuse.', options: ['Elephant', 'Ignorance', 'Fine'], answer: 'Ignorance' },
+    { question: 'Effect of abuse of stimulants?', options: ['Peer pressure', 'Banger', 'Generation'], answer: 'Peer pressure' },
+    { question: 'Socio-economic effects is ________?', options: ['Poor work performance', 'Fighting', 'Riot'], answer: 'Poor work performance' },
+    { question: 'Socio-economic effects is also _______?', options: ['Family', 'Debts', 'Fire'], answer: 'Debts' },
+    { question: 'Large scale sources are these except?', options: ['Drug barons', 'Clinic', 'Market'], answer: 'Clinic' },
+    { question: '________ are behaviors that will promote physical, mental, and social well-being?', options: ['Values', 'Health promotion behaviors', 'Errands'], answer: 'Health promotion behaviors' },
+    { question: 'Examples of health promotion behaviors are these except', options: ['Regular exercise', 'Positive relations', 'Drawing'], answer: 'Drawing' },
+    { question: 'Consequences of non-compliance are these except?', options: ['Indiscipline', 'Abnormal behavior', 'Money'], answer: 'Money' },
+    { question: '________ is air that contains harmful substances to life?', options: ['Fart', 'Air pollution', 'Noise'], answer: 'Air pollution' },
+    { question: 'Sources of air pollution are these except?', options: ['Burning of wood', 'Cigarette', 'Drinking'], answer: 'Drinking' },
+    { question: 'Air pollution can be reduced by;', options: ['Resting', 'Ban bush burning', 'Focus'], answer: 'Ban bush burning' },
+    { question: 'Air pollution can also be reduced by;', options: ['Arresting', 'Stopping gas flaring', 'Dancing'], answer: 'Stopping gas flaring' },
+    { question: '_______ are caused by nature;', options: ['Gift', 'Cattle', 'Natural disaster'], answer: 'Natural disaster' },
+    { question: '________ are caused by the actions of both human beings and animals.', options: ['Unnatural disaster', 'Overflow', 'Animal'], answer: 'Unnatural disaster' }
+],
+
+'Agricultural studies': [
+    { question: 'All these are kind of animals that can be raised except?', options: ['Goats', 'Pigs', 'Rabbits', 'Lion'], answer: 'Lion' },
+    { question: 'Reason for rearing animal are for their ______', options: ['Milk', 'Future', 'Love', 'Reason'], answer: 'Milk' },
+    { question: 'All of these are procedures for rearing farm animals except;', options: ['Construct a house or provide shelter', 'Provide necessary rearing equipment', 'Provide feed and water daily', 'Keep the animals'], answer: 'Keep the animals' },
+    { question: 'All of these are tools needed to raise farm animals except', options: ['Balance ration', 'Clean water', 'Adequate medication', 'Bag'], answer: 'Bag' },
+    { question: 'A male and female rabbit that are healthy are chosen for ______', options: ['Playing', 'Rearing', 'Lodging', 'Bringing'], answer: 'Rearing' },
+    { question: 'Heights of hutches vary from 46cm to ______', options: ['78cm', '62cm', '72cm', '61cm'], answer: '78cm' },
+    { question: 'Guinea pigs are ______ than rabbits', options: ['Smaller', 'Bigger', 'Larger', 'Thinner'], answer: 'Smaller' },
+    { question: 'Healthy male guinea pig is called _______', options: ['Boar', 'Doll', 'Duck', 'Dare'], answer: 'Boar' },
+    { question: 'Healthy female guinea pig is called ______', options: ['Sow', 'Wet', 'Wind', 'Gab'], answer: 'Sow' },
+    { question: 'Rabbits are reared in ______', options: ['Holes', 'Cages', 'Fence', 'Room'], answer: 'Cages' },
+    { question: 'Equipment needed in chicken rearing are these except?', options: ['Feeding troughs', 'Lamp to keep environment warm', 'Egg tray', 'Cutlass'], answer: 'Cutlass' },
+    { question: 'Feeds are _______', options: ['Noise makers', 'Chick mash', 'Play group', 'Big'], answer: 'Chick mash' },
+    { question: 'Feeds are also ______', options: ['Growers ration mash', 'Gold digger', 'Waste', 'Weeds'], answer: 'Growers ration mash' },
+    { question: 'Farm animal management includes all these except?', options: ['Housing', 'Food', 'Care', 'Silencing'], answer: 'Silencing' },
+    { question: 'Animal needs house for all these except?', options: ['Protection from the sun, rain and wind', 'Protection from predators', 'Protect them from thieves', 'To fight'], answer: 'To fight' },
+    { question: 'Animal houses are all these except;', options: ['Hutch', 'Cage', 'Pen brooder', 'Game'], answer: 'Game' },
+    { question: 'Carbohydrates feeds is ;', options: ['Guinea corn', 'Eba', 'Semo', 'Amala'], answer: 'Amala' },
+    { question: 'Protein feeds is;', options: ['Fish', 'Dog', 'Lion', 'Butterfly'], answer: 'Fish' },
+    { question: 'Ways of preparing livestock feeds is to _______', options: ['Cook them', 'Sell them', 'Play with them', 'Eat them'], answer: 'Cook them' },
+    { question: '_______ production is a type of livestock management?', options: ['Mixed', 'Proper', 'Growth'], answer: 'Mixed' },
+    { question: '__________ is defined as a specialized system of breeding animals by keeping them indoors and feeding on concentrated food.', options: ['Food storage', 'Intensive system of animal rearing', 'Carpet grassing', 'Farm produce'], answer: 'Intensive system of animal rearing' },
+    { question: '________ is an alternative method of rearing broilers by keeping them in a poultry house and giving them free access to a pasture area during the day.', options: ['Semi-intensive systems', 'Pattern system', 'Product management', 'Semi farm'], answer: 'Semi-intensive systems' },
+    { question: 'Disadvantages of rearing farm animals are all these except?', options: ['Cage layer fatigue', 'Fatty liver syndrome', 'Incidence of leg problem', 'Light'], answer: 'Light' },
+    { question: 'Pest and ________ are living organisms which live inside or outside another organism called the host organism and cause harm discomfort the even death to the host.', options: ['Egg', 'Parasite', 'Euglena', 'Mucos'], answer: 'Parasite' },
+    { question: 'The ______ organism suffers from the actions of the pests and parasites that take their food and shelters from the host organism.', options: ['Place', 'Host', 'Gift', 'Voice'], answer: 'Host' },
+    { question: 'Common pests and parasites of farm animals are divided into _____', options: ['7', '2', '5', '6'], answer: '2' },
+    { question: '_______ are pests and parasites that live inside the bodies of farm animals', options: ['Endo-parasites', 'Ectoparasite', 'Organoparasite', 'Megaparasite'], answer: 'Endo-parasites' },
+    { question: '_______ are pests and parasites that live either on or outside the bodies of farm animals', options: ['Endoparasite', 'Ectoparasite', 'Parasite', 'Fly'], answer: 'Ectoparasite' },
+    { question: 'Example of Endoparasite are all these except;', options: ['Liver fluke', 'Round worm', 'Tape worm', 'Cockroach'], answer: 'Cockroach' },
+    { question: 'Examples of Ectoparasite are all these except', options: ['Tick', 'Mite', 'Housefly', 'Tiger'], answer: 'Tiger' }
+],
+
+'Home economics': [
+    { question: 'What is clothing?', options: ['An item worn on the body', 'A type of food', 'A piece of furniture'], answer: 'An item worn on the body' },
+    { question: 'Which of these is a simple clothing article?', options: ['Apron', 'Book', 'Spoon'], answer: 'Apron' },
+    { question: 'What material is needed for making simple clothing articles?', options: ['Fabrics', 'Paper', 'Plastic'], answer: 'Fabrics' },
+    { question: 'What tool is used to cut fabrics?', options: ['Scissors', 'Pencil', 'Ruler'], answer: 'Scissors' },
+    { question: 'Which of these is not a simple clothing article?', options: ['Cap', 'Tray cover', 'Book'], answer: 'Book' },
+    { question: 'What is the purpose of an apron?', options: ['To protect clothes while cooking', 'To write on', 'To sit on'], answer: 'To protect clothes while cooking' },
+    { question: 'Which material is not needed for making an apron?', options: ['Measuring tape', 'Scissors', 'Paint'], answer: 'Paint' },
+    { question: 'What do you use to measure fabric?', options: ['Measuring tape', 'Brush', 'Glue'], answer: 'Measuring tape' },
+    { question: 'What is a thimble used for?', options: ['To protect fingers while sewing', 'To measure fabric', 'To cut fabric'], answer: 'To protect fingers while sewing' },
+    { question: 'What is the first step in preparing fabric for an apron?', options: ['Straighten the fabric', 'Cut the fabric', 'Sew the fabric'], answer: 'Straighten the fabric' },
+    { question: 'What stitch is used to hem a pocket?', options: ['Hemming stitch', 'Back stitch', 'Running stitch'], answer: 'Hemming stitch' },
+    { question: 'What is the final step in making an apron?', options: ['Press the apron', 'Cut the fabric', 'Sew the fabric'], answer: 'Press the apron' },
+    { question: 'What do you need to make a tray cover?', options: ['Plain cloth', 'Metal', 'Wood'], answer: 'Plain cloth' },
+    { question: 'Which thread is suitable for decorative stitches?', options: ['Embroidery thread', 'Cotton thread', 'Wool thread'], answer: 'Embroidery thread' },
+    { question: 'How should clothes be stored?', options: ['Folded neatly or hung up', 'Thrown on the floor', 'Left in the washing machine'], answer: 'Folded neatly or hung up' },
+    { question: 'Why should you mend your clothes as soon as they are torn?', options: ['To prevent further damage', 'To change their color', 'To make them heavier'], answer: 'To prevent further damage' },
+    { question: 'What should you do with dirty clothes?', options: ['Wash them as soon as possible', 'Store them with clean clothes', 'Throw them away'], answer: 'Wash them as soon as possible' },
+    { question: 'What is used to stiffen clothes?', options: ['Starch', 'Water', 'Oil'], answer: 'Starch' },
+    { question: 'What is the function of a hanger?', options: ['To hang clothes', 'To clean clothes', 'To iron clothes'], answer: 'To hang clothes' },
+    { question: 'What is an essential tool for removing stains?', options: ['Stain remover', 'Water', 'Paint'], answer: 'Stain remover' },
+    { question: 'Which material is needed for the care of clothing?', options: ['Soap', 'Pencil', 'Paper'], answer: 'Soap' },
+    { question: 'What should you do with damp clothes?', options: ['Do not store them', 'Hang them immediately', 'Fold them'], answer: 'Do not store them' },
+    { question: 'What is the use of a wardrobe?', options: ['To store clothes', 'To cook food', 'To sit on'], answer: 'To store clothes' },
+    { question: 'What is a needle used for?', options: ['Sewing', 'Drawing', 'Cutting'], answer: 'Sewing' },
+    { question: 'What material is used to mark fabric for cutting?', options: ['Tailor chalk', 'Paint', 'Glue'], answer: 'Tailor chalk' },
+    { question: 'Which of these is a method of caring for clothes?', options: ['Ironing', 'Tearing', 'Throwing away'], answer: 'Ironing' },
+    { question: 'Why should you study the label on clothes?', options: ['To know how to care for them', 'To know their price', 'To see their color'], answer: 'To know how to care for them' },
+    { question: 'What should you do with your underwear every day?', options: ['Change them', 'Paint them', 'Cut them'], answer: 'Change them' },
+    { question: 'Which of these is a simple clothing article?', options: ['Oven glove', 'Lamp', 'Chair'], answer: 'Oven glove' },
+    { question: 'What is the purpose of a hand towel?', options: ['To dry hands', 'To write on', 'To cook food'], answer: 'To dry hands' }
+],
+
+    'History': [
+    {question: "Who was Herbert Macaulay?", options: ["A politician", "A nationalist", "A soldier"], answer: "A nationalist"},
+    {question: "What lessons can be learned from Herbert Macaulay’s life?", options: ["Courage and determination", "Good education", "Nationalism"], answer: "Courage and determination"},
+    {question: "What was the importance of education according to Nnamdi Azikiwe?", options: ["To struggle without giving up", "To love Nigeria over ethnic groups", "To speak well"], answer: "To struggle without giving up"},
+    {question: "Which qualities were demonstrated by Chief Obafemi Awolowo?", options: ["Determination and leadership", "Selflessness and discipline", "Love for Nigeria"], answer: "Determination and leadership"},
+    {question: "What lesson can be learned from Alhaji Sir Ahmadu Bello’s life?", options: ["Need for education", "Leadership ability", "Love of country"], answer: "Need for education"},
+    {question: "What was the focus of Malam Aminu Kano’s life?", options: ["Hard work and determination", "Simplicity and selflessness", "Education and leadership"], answer: "Hard work and determination"},
+    {question: "What type of government does Nigeria have?", options: ["Federation and Republic", "Monarchy and Republic", "Democracy and Monarchy"], answer: "Federation and Republic"},
+    {question: "What are traditional religions in Nigeria?", options: ["Christianity and Islam", "Hinduism and Buddhism", "Local traditional beliefs"], answer: "Local traditional beliefs"},
+    {question: "Where is Islam predominantly practiced in Nigeria?", options: ["Northern Nigeria", "Southern Nigeria", "Eastern Nigeria"], answer: "Northern Nigeria"},
+    {question: "What were the roles of early Christian missionaries in Nigeria?", options: ["Spread Christianity", "Promote education", "Develop infrastructure"], answer: "Spread Christianity"},
+    {question: "What are traditional occupations in Nigeria?", options: ["Farming and trading", "Medicine and law", "Engineering and teaching"], answer: "Farming and trading"},
+    {question: "What are traditional occupations in your state?", options: ["Fishing and pottery", "Mining and construction", "Weaving and blacksmithing"], answer: "Fishing and pottery"},
+    {question: "What are traditional occupations of the Yoruba people?", options: ["Art and crafts", "Fishing and trading", "Farming and pottery"], answer: "Art and crafts"},
+    {question: "What are traditional occupations of the Hausa people?", options: ["Farming and trading", "Fishing and pottery", "Art and crafts"], answer: "Farming and trading"},
+    {question: "What are traditional occupations of the Igbo people?", options: ["Trading and weaving", "Farming and fishing", "Mining and pottery"], answer: "Trading and weaving"},
+    {question: "What was the significance of Nigerian Independence?", options: ["End of colonial rule", "Increase in population", "Economic development"], answer: "End of colonial rule"},
+    {question: "What are the types of traditional religions in Nigeria?", options: ["Christianity and Islam", "Hinduism and Buddhism", "Local traditional beliefs"], answer: "Local traditional beliefs"},
+    {question: "Where is Islam predominantly practiced in Nigeria?", options: ["Northern Nigeria", "Southern Nigeria", "Eastern Nigeria"], answer: "Northern Nigeria"},
+    {question: "What were the roles of early Christian missionaries in Nigeria?", options: ["Spread Christianity", "Promote education", "Develop infrastructure"], answer: "Spread Christianity"},
+    {question: "What are traditional occupations in Nigeria?", options: ["Farming and trading", "Medicine and law", "Engineering and teaching"], answer: "Farming and trading"},
+    {question: "What are traditional occupations in your state?", options: ["Fishing and pottery", "Mining and construction", "Weaving and blacksmithing"], answer: "Fishing and pottery"},
+    {question: "What are traditional occupations of the Yoruba people?", options: ["Art and crafts", "Fishing and trading", "Farming and pottery"], answer: "Art and crafts"},
+    {question: "What are traditional occupations of the Hausa people?", options: ["Farming and trading", "Fishing and pottery", "Art and crafts"], answer: "Farming and trading"},
+    {question: "What are traditional occupations of the Igbo people?", options: ["Trading and weaving", "Farming and fishing", "Mining and pottery"], answer: "Trading and weaving"},
+    {question: "What was the significance of Nigerian Independence?", options: ["End of colonial rule", "Increase in population", "Economic development"], answer: "End of colonial rule"},
+    {question: "What are the types of traditional religions in Nigeria?", options: ["Christianity and Islam", "Hinduism and Buddhism", "Local traditional beliefs"], answer: "Local traditional beliefs"},
+    {question: "Where is Islam predominantly practiced in Nigeria?", options: ["Northern Nigeria", "Southern Nigeria", "Eastern Nigeria"], answer: "Northern Nigeria"},
+    {question: "What were the roles of early Christian missionaries in Nigeria?", options: ["Spread Christianity", "Promote education", "Develop infrastructure"], answer: "Spread Christianity"},
+    {question: "What are traditional occupations in Nigeria?", options: ["Farming and trading", "Medicine and law", "Engineering and teaching"], answer: "Farming and trading"},
+    {question: "What are traditional occupations in your state?", options: ["Fishing and pottery", "Mining and construction", "Weaving and blacksmithing"], answer: "Fishing and pottery"},
+    {question: "What are traditional occupations of the Yoruba people?", options: ["Art and crafts", "Fishing and trading", "Farming and pottery"], answer: "Art and crafts"},
+
+],
+
+    'Creative and cultural art': [
+    { question: '______ is a piece of art created by combining photos, chipping, or small objects into a surface', options: ['Collage', 'Paper', 'Tv'], answer: 'Collage' },
+    { question: '______ is a material needed to create a collage', options: ['A board', 'A plate', 'Gift'], answer: 'A board' },
+    { question: 'Functions of collage is _____', options: ['It determines idea and concept', 'It\'s to pay vows', 'To reward'], answer: 'It determines idea and concept' },
+    { question: '______ is a step in making a paper collage', options: ['Find inspiration', 'Givers', 'Song'], answer: 'Find inspiration' },
+    { question: '_____ is a unique and distinctive genre of literature', options: ['Drama', 'Word', 'Paint'], answer: 'Drama' },
+    { question: '______ are stories that are acted through the combination of performance', options: ['Drama', 'Dream', 'Pile'], answer: 'Drama' },
+    { question: '______ is a form of drama', options: ['Comedy', 'Running', 'Playing'], answer: 'Comedy' },
+    { question: '_____ is also a form of drama', options: ['Tragicomedy', 'Comic', 'Public'], answer: 'Tragicomedy' },
+    { question: '_____ is a type of drama that aims to make the audience laugh', options: ['Comedy', 'Video', 'Shot'], answer: 'Comedy' },
+    { question: '_____ are murders, death', options: ['Tragedy', 'Play', 'Crying'], answer: 'Tragedy' },
+    { question: '_____ is a special kind of drama', options: ['Tragicomedy', 'Value', 'Fire'], answer: 'Tragicomedy' },
+    { question: '_____ is a dramatic work wherein the plot', options: ['Melodrama', 'Gift', 'Shot'], answer: 'Melodrama' },
+    { question: '_____ is a type of drama that is written', options: ['Scripted', 'Future', 'Booked'], answer: 'Scripted' },
+    { question: '_____ is an unwritten drama', options: ['Unscripted', 'Goal', 'Print'], answer: 'Unscripted' },
+    { question: '_____ is a function of drama', options: ['It educates', 'It makes one cry', 'It gives'], answer: 'It educates' },
+    { question: '______ is also a function of drama', options: ['It reduces stress', 'Light up', 'It makes one cry'], answer: 'It reduces stress' },
+    { question: '______ is an informal system of training in which knowledge is passed from a master craftsman to learners', options: ['Apprenticeship', 'Solver', 'Builder'], answer: 'Apprenticeship' },
+    { question: '_____ is among the trades in Nigeria', options: ['Carpentry', 'Thief', 'Yahoo boy'], answer: 'Carpentry' },
+    { question: '_____ is a type of apprenticeship', options: ['Father & son apprenticeship system', 'Aunty and sister system', 'Family and pet system'], answer: 'Father & son apprenticeship system' },
+    { question: '_____ is described as a built environment that is based upon local needs', options: ['Local architecture', 'Local gums', 'Local government'], answer: 'Local architecture' },
+    { question: '_____ is an essential skill for creating art', options: ['Creativity', 'Strength', 'Speed'], answer: 'Creativity' },
+    { question: '_____ is a medium often used in visual arts', options: ['Paint', 'Cloth', 'Metal'], answer: 'Paint' },
+    { question: '_____ is a common theme in drama', options: ['Conflict', 'Peace', 'Harmony'], answer: 'Conflict' },
+    { question: '_____ is a famous playwright', options: ['William Shakespeare', 'Albert Einstein', 'Isaac Newton'], answer: 'William Shakespeare' },
+    { question: '_____ is a genre of performance art', options: ['Dance', 'Swimming', 'Jogging'], answer: 'Dance' },
+    { question: '_____ is a tool used in drawing', options: ['Pencil', 'Hammer', 'Wrench'], answer: 'Pencil' },
+    { question: '_____ is the process of creating a sculpture', options: ['Carving', 'Painting', 'Sewing'], answer: 'Carving' },
+    { question: '_____ is a form of artistic expression', options: ['Music', 'Reading', 'Sleeping'], answer: 'Music' },
+    { question: '_____ is used to capture images', options: ['Camera', 'Knife', 'Drill'], answer: 'Camera' },
+    { question: '_____ is a common art material', options: ['Clay', 'Wood', 'Fabric'], answer: 'Clay' }
+],
+
+    'Basic science and technology': [
+    { question: '_______ is any hydroxide that dissolves in water to yield hydroxide (OH) as the only negative ion?', options: ['Element', 'Base', 'Boat'], answer: 'Base' },
+    { question: '______ are known as the oxides of metals or metallic oxides.', options: ['Compound', 'Base', 'Acid'], answer: 'Base' },
+    { question: 'MgO is _________', options: ['Magnesium oxide', 'Sulphur oxide', 'Phosphorus'], answer: 'Magnesium oxide' },
+    { question: '_______ is a type of base', options: ['Power base', 'Great base', 'Soluble base'], answer: 'Soluble base' },
+    { question: '______ are soluble in water and are alkalis', options: ['Soluble base', 'Future base', 'Solid base'], answer: 'Soluble base' },
+    { question: '________ is a compound which produces hydroxyl ions (OH) when dissolved in water', options: ['Emphatic', 'Alkali', 'Force'], answer: 'Alkali' },
+    { question: '_________ are not soluble in water', options: ['Element', 'Insoluble', 'Race'], answer: 'Insoluble' },
+    { question: 'Base have _________ in the mouth', options: ['Sweet taste', 'Bitter taste', 'Great taste'], answer: 'Bitter taste' },
+    { question: 'Bases turn red litmus paper _______', options: ['Black', 'Blue', 'Red'], answer: 'Blue' },
+    { question: 'Concentrated forms of bases have powerful corrosive _____', options: ['Power', 'Action', 'Force'], answer: 'Action' },
+    { question: '_______ are used in manufacture of fertilizers', options: ['Acid', 'Hospital', 'Base'], answer: 'Base' },
+    { question: '_______ are also used to manufacture dyes and detergent ?', options: ['Power', 'Acid', 'Police'], answer: 'Acid' },
+    { question: '________ are used in the production of chemically produced salts for soft drinks bottling', options: ['Power', 'Acid', 'Base'], answer: 'Base' },
+    { question: 'Acids are used for making preservatives for ______', options: ['Price', 'Market', 'Foods'], answer: 'Foods' },
+    { question: 'Acids are used in dehydration of ________', options: ['Book', 'Materials', 'Pencil'], answer: 'Materials' },
+    { question: '_______ is a good cleansing agent in soft water because it produces foam', options: ['Oil', 'Soap', 'Team'], answer: 'Soap' },
+    { question: '________ is a form of energy that can be produced in different ways', options: ['Light', 'Electricity', 'Power'], answer: 'Electricity' },
+    { question: '________ is a type of electricity', options: ['Static electricity', 'Power electricity', 'Combo electricity'], answer: 'Static electricity' },
+    { question: '__________ is a type of electricity that does not involve the flow of current.', options: ['Power', 'Static', 'Fire'], answer: 'Static' },
+    { question: '_______ electricity is a type of electricity that has the flow of electrons from direct or alternating source through wires and other materials that make the circuit.', options: ['Power', 'Current', 'Light'], answer: 'Current' },
+    { question: '_______ is a chemical pack that can store or give out electric current', options: ['Health', 'Cell', 'Power'], answer: 'Cell' },
+    { question: '________ are form of positive and negative inclined charges', options: ['Power cells', 'Chemical cells', 'Physical cells'], answer: 'Power cells' },
+    { question: '______ are dry cells because they are rechargeable', options: ['Secondary cells', 'Primary cells', 'Tertiary cells'], answer: 'Secondary cells' },
+    { question: '_________ is when two or more simple cells are joined together', options: ['Torch', 'Power', 'Battery'], answer: 'Battery' },
+    { question: '________ are the materials that allow the free flow of electric current to flow through them', options: ['Driver', 'Conductor', 'Power'], answer: 'Conductor' },
+    { question: 'Metals are good _______', options: ['Conductors', 'Fire', 'Metal'], answer: 'Conductors' },
+    { question: '________ is a closed path in which electric current flows in a conductor and that has a number of components connected.', options: ['Electric circuit', 'Light', 'Value'], answer: 'Electric circuit' },
+    { question: 'A ______ provides light when the filament is heated up', options: ['Bag', 'Lamp', 'Bulb'], answer: 'Bulb' },
+    { question: '________ is used for protecting appliances from damage or limiting the quality of current flow in a circuit', options: ['Fuse', 'Happy', 'Light'], answer: 'Fuse' },
+    { question: '______ attract magnetic materials like nails', options: ['Magnet', 'Light', 'Book'], answer: 'Magnet' }
+],
+
+    
+    'Leadership': [
+        { question: "What is the first step in a destiny introduction course?", options: ["Understanding yourself", "Making friends", "Saving money"], answer: "Understanding yourself" },
+        { question: "What is the main benefit of companionship?", options: ["Loneliness", "Support and friendship", "Spending money"], answer: "Support and friendship" },
+        { question: "What is an important skill in money management?", options: ["Spending quickly", "Saving and budgeting", "Ignoring finances"], answer: "Saving and budgeting" },
+        { question: "What does school culture include?", options: ["School rules and values", "Playing games", "Skipping classes"], answer: "School rules and values" },
+        { question: "What is school intelligence?", options: ["Knowing all the answers", "Participating in school activities", "Ignoring school rules"], answer: "Participating in school activities" },
+        { question: "What is an introduction to career about?", options: ["Choosing a job", "Playing sports", "Sleeping in class"], answer: "Choosing a job" },
+        { question: "What is important in a leadership role?", options: ["Being bossy", "Guiding others", "Not listening to others"], answer: "Guiding others" },
+        { question: "What is a positive mindset?", options: ["Thinking negatively", "Being optimistic and confident", "Ignoring problems"], answer: "Being optimistic and confident" },
+        { question: "What is dream intelligence?", options: ["Planning for your future", "Sleeping all day", "Wishing without action"], answer: "Planning for your future" },
+        { question: "Who is typically a leadership book author?", options: ["Someone with leadership experience", "A random person", "A child"], answer: "Someone with leadership experience" },
+        { question: "What is the value of academics?", options: ["Watching TV", "Gaining knowledge", "Playing video games"], answer: "Gaining knowledge" },
+        { question: "What is the first step in understanding yourself?", options: ["Asking friends", "Self-reflection", "Ignoring your feelings"], answer: "Self-reflection" },
+        { question: "How can you support your friends?", options: ["Ignoring them", "Being there for them", "Making fun of them"], answer: "Being there for them" },
+        { question: "Why is budgeting important?", options: ["To waste money", "To save and manage money wisely", "To avoid financial planning"], answer: "To save and manage money wisely" },
+        { question: "What helps to create a positive school culture?", options: ["Disobeying rules", "Respecting rules and others", "Skipping classes"], answer: "Respecting rules and others" },
+        { question: "What should you do to prepare for a career?", options: ["Ignore studies", "Explore different careers", "Avoid planning"], answer: "Explore different careers" },
+        { question: "What trait is important for a leader?", options: ["Listening to others", "Being selfish", "Avoiding responsibility"], answer: "Listening to others" },
+        { question: "How can you develop a positive mindset?", options: ["Thinking negatively", "Practicing gratitude", "Complaining often"], answer: "Practicing gratitude" },
+        { question: "What is the importance of dream intelligence?", options: ["Daydreaming", "Setting and achieving goals", "Giving up easily"], answer: "Setting and achieving goals" },
+        { question: "Why read leadership books?", options: ["To get bored", "To learn from experienced leaders", "To waste time"], answer: "To learn from experienced leaders" },
+        { question: "What is the benefit of academic knowledge?", options: ["Being uninformed", "Opening opportunities", "Ignoring facts"], answer: "Opening opportunities" },
+        { question: "What is an example of self-reflection?", options: ["Blaming others", "Thinking about your actions", "Ignoring your thoughts"], answer: "Thinking about your actions" },
+        { question: "How do you show empathy?", options: ["Ignoring others' feelings", "Understanding and sharing feelings", "Laughing at others"], answer: "Understanding and sharing feelings" },
+        { question: "What is an effective way to manage money?", options: ["Spending everything", "Creating a budget", "Ignoring expenses"], answer: "Creating a budget" },
+        { question: "What creates a strong school culture?", options: ["Disrespect", "Community activities", "Skipping school"], answer: "Community activities" },
+        { question: "What is crucial in career planning?", options: ["No preparation", "Researching careers", "Avoiding decisions"], answer: "Researching careers" },
+        { question: "What quality should a leader have?", options: ["Arrogance", "Humility", "Rudeness"], answer: "Humility" },
+        { question: "How can you maintain a positive mindset?", options: ["Focusing on failures", "Staying optimistic", "Ignoring challenges"], answer: "Staying optimistic" },
+        { question: "What is the role of dream intelligence?", options: ["Ignoring dreams", "Strategizing for the future", "Giving up"], answer: "Strategizing for the future" },
+        { question: "What do you learn from leadership books?", options: ["How to fail", "Leadership skills", "How to ignore people"], answer: "Leadership skills" }
+],
+    'French language': [
+    { question: "Comment dit-on '21' en français?", options: ["Vingt et un", "Vingt-deux", "Vingt-trois"], answer: "Vingt et un" },
+    { question: "Comment dit-on '31' en français?", options: ["Trente-deux", "Trente et un", "Trente-trois"], answer: "Trente et un" },
+    { question: "Comment dit-on '41' en français?", options: ["Quarante et un", "Quarante-deux", "Quarante-trois"], answer: "Quarante et un" },
+    { question: "Comment dit-on '51' en français?", options: ["Cinquante et un", "Cinquante-deux", "Cinquante-trois"], answer: "Cinquante et un" },
+    { question: "Comment dit-on '61' en français?", options: ["Soixante et un", "Soixante-deux", "Soixante-trois"], answer: "Soixante et un" },
+    { question: "Comment dit-on 'allez tout droit' en anglais?", options: ["Go left", "Go straight", "Go right"], answer: "Go straight" },
+    { question: "Comment dit-on 'tournez à gauche' en anglais?", options: ["Turn left", "Turn right", "Go straight"], answer: "Turn left" },
+    { question: "Comment dit-on 'tournez à droite' en anglais?", options: ["Turn left", "Turn right", "Go straight"], answer: "Turn right" },
+    { question: "Quel est le mot pour 'devant' en anglais?", options: ["Behind", "In front of", "Next to"], answer: "In front of" },
+    { question: "Quel est le mot pour 'derrière' en anglais?", options: ["In front of", "Next to", "Behind"], answer: "Behind" },
+    { question: "Comment dit-on 'professeur' en anglais?", options: ["Doctor", "Teacher", "Lawyer"], answer: "Teacher" },
+    { question: "Comment dit-on 'médecin' en anglais?", options: ["Teacher", "Doctor", "Journalist"], answer: "Doctor" },
+    { question: "Comment dit-on 'journaliste' en anglais?", options: ["Mechanic", "Journalist", "Artist"], answer: "Journalist" },
+    { question: "Comment dit-on 'footballeur' en anglais?", options: ["Football player", "Musician", "Singer"], answer: "Football player" },
+    { question: "Comment dit-on 'comptable' en anglais?", options: ["Accountant", "Lawyer", "Doctor"], answer: "Accountant" },
+    { question: "Comment dit-on 'chat' en anglais?", options: ["Dog", "Cat", "Horse"], answer: "Cat" },
+    { question: "Comment dit-on 'chien' en anglais?", options: ["Cat", "Dog", "Horse"], answer: "Dog" },
+    { question: "Comment dit-on 'cheval' en anglais?", options: ["Dog", "Horse", "Duck"], answer: "Horse" },
+    { question: "Comment dit-on 'lion' en anglais?", options: ["Leopard", "Lion", "Tiger"], answer: "Lion" },
+    { question: "Comment dit-on 'girafe' en anglais?", options: ["Giraffe", "Zebra", "Elephant"], answer: "Giraffe" },
+    { question: "Comment dit-on 'éléphant' en anglais?", options: ["Giraffe", "Elephant", "Whale"], answer: "Elephant" },
+    { question: "Comment dit-on 'requin' en anglais?", options: ["Shark", "Whale", "Dolphin"], answer: "Shark" },
+    { question: "Comment dit-on 'baleine' en anglais?", options: ["Shark", "Whale", "Dolphin"], answer: "Whale" },
+    { question: "Comment dit-on 'dauphin' en anglais?", options: ["Shark", "Whale", "Dolphin"], answer: "Dolphin" },
+    { question: "Comment demande-t-on son chemin en français?", options: ["Où est le chemin pour aller à", "Comment ça va?", "Quel âge as-tu?"], answer: "Où est le chemin pour aller à" },
+    { question: "Comment dit-on 'à gauche' en anglais?", options: ["Left", "Right", "Straight"], answer: "Left" },
+    { question: "Comment dit-on 'à droite' en anglais?", options: ["Left", "Right", "Straight"], answer: "Right" },
+    { question: "Comment dit-on 'tout droit' en anglais?", options: ["Left", "Right", "Straight"], answer: "Straight" },
+    { question: "Quel est le métier de quelqu'un qui joue de la musique?", options: ["Artiste", "Musicien", "Professeur"], answer: "Musicien" },
+    { question: "Quel est le métier de quelqu'un qui chante?", options: ["Chanteur", "Journaliste", "Docteur"], answer: "Chanteur" }
+
+    ],
+    'Digital literacy': [
+    { question: '_______ is an individual\'s ability to find, evaluate, and communicate information by utilizing typing or digital media platform?', options: ['Digital literacy', 'Type writer', 'Mouse'], answer: 'Digital literacy' },
+    { question: 'Component and importance of digital literacy is?', options: ['Creativity', 'Soap', 'Pail'], answer: 'Creativity' },
+    { question: '_______ applies when ideas are copied', options: ['Plagiarism', 'Confirm', 'Fugimate'], answer: 'Plagiarism' },
+    { question: '________ violation occurs only when a specific expression', options: ['Copyright', 'Word', 'Sky'], answer: 'Copyright' },
+    { question: '__________ is the bullying of a person by the use of electronic communication', options: ['Cyber bullying', 'Substance', 'Soccer'], answer: 'Cyber bullying' },
+    { question: 'Ways of dealing with cyber bullying', options: ['Don\'t respond immediately', 'Fight', 'Shout'], answer: 'Don\'t respond immediately' },
+    { question: 'Form of cyber bullying is _______', options: ['Exclusion', 'Violence', 'Gigantic'], answer: 'Exclusion' },
+    { question: 'Form of cyber bullying is also _____', options: ['Harassment', 'Talking', 'Eating'], answer: 'Harassment' },
+    { question: '_______ is a type of cyber bullying', options: ['Fake profile', 'Fight', 'Control'], answer: 'Fake profile' },
+    { question: '_______ is the ability to find, evaluate, use, share', options: ['Digital skills', 'Digital college', 'Demand'], answer: 'Digital skills' },
+    { question: 'Components of digital skills is ________', options: ['Content marketing skills', 'Camera', 'Technology'], answer: 'Content marketing skills' },
+    { question: 'Importance of digital skills is _______', options: ['It improves confidence to use technology for work', 'Face', 'Someone'], answer: 'It improves confidence to use technology for work' },
+    { question: 'Desktop publishing application is ______', options: ['Picmaker', 'Vehicle', 'Glory'], answer: 'Picmaker' },
+    { question: '___________ is a component of the Microsoft Office suite of products', options: ['Excel', 'Microsoft', 'Ingrate'], answer: 'Excel' },
+    { question: '_______ was a dynamic, interpreted language', options: ['Python', 'Fish', 'Race'], answer: 'Python' },
+    { question: 'Uses of Python is ________', options: ['Task automation', 'Grace', 'Power'], answer: 'Task automation' },
+    { question: '___________ is a set of rules that is designed', options: ['Past tense', 'Present', 'Syntax'], answer: 'Syntax' },
+    { question: '_______ is defined as a program', options: ['Scratch', 'Rebel', 'Black'], answer: 'Scratch' },
+    { question: 'Strategy and planning skills are;', options: ['Value', 'Disc', 'Spirit'], answer: 'Value' },
+    { question: 'Learning HTML Syntax its head tag and who?', options: ['HTML', 'CSS', 'Python'], answer: 'HTML' },
+    { question: 'Digital literacy involves the use of _______', options: ['Internet', 'Television', 'Radio'], answer: 'Internet' },
+    { question: '________ is important for protecting personal information online', options: ['Privacy settings', 'Game rules', 'Chat rooms'], answer: 'Privacy settings' },
+    { question: 'An example of digital collaboration tool is _______', options: ['Google Docs', 'Paint', 'Calculator'], answer: 'Google Docs' },
+    { question: 'A common online communication platform is _______', options: ['Email', 'Post', 'Book'], answer: 'Email' },
+    { question: '________ helps in creating presentations', options: ['PowerPoint', 'WordPad', 'Notepad'], answer: 'PowerPoint' },
+    { question: 'A strong password should include _______', options: ['Letters, numbers, and symbols', 'Only letters', 'Only numbers'], answer: 'Letters, numbers, and symbols' },
+    { question: 'The process of backing up data means _______', options: ['Making a copy of the data', 'Deleting the data', 'Sharing the data'], answer: 'Making a copy of the data' },
+    { question: 'To avoid plagiarism, one should always _______', options: ['Cite sources', 'Copy directly', 'Ignore sources'], answer: 'Cite sources' },
+    { question: 'An example of a search engine is _______', options: ['Google', 'Windows', 'Excel'], answer: 'Google' },
+    { question: 'A type of file that stores images is _______', options: ['JPEG', 'DOCX', 'MP3'], answer: 'JPEG' },
+    { question: '______ is used for video conferencing', options: ['Zoom', 'Paint', 'Word'], answer: 'Zoom' }
+],
+
+'Verbal reasoning': [
+    { question: 'Underline the correct answer: Water', options: ['mines', 'Trees', 'Streams'], answer: 'Streams' },
+    { question: 'Underline the correct answer: Tin', options: ['Trees', 'Streams', 'Fruits'], answer: 'Trees' },
+    { question: 'Underline the correct answer: Rubber', options: ['Streams', 'Fruits', 'nuts'], answer: 'Fruits' },
+    { question: 'Pick the largest: cat, ant, dog, horse', options: ['cat', 'ant', 'dog', 'horse'], answer: 'horse' },
+    { question: 'Pick the largest: Lorry, car, bus, kit-car, motor cycle', options: ['Lorry', 'car', 'bus', 'kit-car', 'motor cycle'], answer: 'Lorry' },
+    { question: 'Pick the largest: tree, trunk, twig, branch, leaf', options: ['tree', 'trunk', 'twig', 'branch', 'leaf'], answer: 'tree' },
+    { question: 'Underline the synonym: Dangerous', options: ['safe', 'harmful', 'indifferent'], answer: 'harmful' },
+    { question: 'Underline the synonym: bitter', options: ['sweet', 'sour', 'soft'], answer: 'sour' },
+    { question: 'Underline the synonym: Excess', options: ['decrease', 'reduce', 'surplus'], answer: 'surplus' },
+    { question: 'Underline the synonym: halt', options: ['start', 'stop', 'move'], answer: 'stop' },
+    { question: 'Underline the word which replaces the underlined word: She wrote her last examination last week.', options: ['first', 'final', 'next'], answer: 'final' },
+    { question: 'Underline the word which replaces the underlined word: Your writing skill must be improve.', options: ['inability', 'ability', 'style'], answer: 'style' },
+    { question: 'Underline the word which replaces the underlined word: The policemen is looking very weak.', options: ['feeble', 'strong', 'agile'], answer: 'feeble' },
+    { question: 'Choose the antonym: GIANT', options: ['dwarf', 'toll', 'stout'], answer: 'dwarf' },
+    { question: 'Choose the antonym: GENTLE', options: ['breezy', 'violent', 'broad'], answer: 'violent' },
+    { question: 'Choose the antonym: SAINT', options: ['priest', 'sinner', 'monk'], answer: 'sinner' },
+    { question: 'Choose the antonym: HOST', options: ['friend', 'hostess', 'guest'], answer: 'guest' },
+    { question: 'Complete the sentence: The ___ of God was referred to as the ______ of righteousness.', options: ['son, sun'], answer: 'sun' },
+    { question: 'Complete the sentence: He lost the _____ at the _____', options: ['key, guay'], answer: 'key' },
+    { question: 'Complete the sentence: He will ______ the butcher who sells the _____ to my aunt.', options: ['meat, meet'], answer: 'meat' },
+    { question: 'Write True (T), false (F) or NOT always true (NAT): Men are taller than women', options: ['T', 'F', 'NAT'], answer: 'NAT' },
+    { question: 'Write True (T), false (F) or NOT always true (NAT): Bungalows are higher than storey buildings', options: ['T', 'F', 'NAT'], answer: 'F' },
+    { question: 'Write True (T), false (F) or NOT always true (NAT): The sun sets in the evening', options: ['T', 'F', 'NAT'], answer: 'T' },
+    { question: 'Write True (T), false (F) or NOT always true (NAT): Policemen are all dishonest', options: ['T', 'F', 'NAT'], answer: 'F' },
+    { question: 'Complete the sentence: A vacant house is', options: ['occupied', 'full', 'empty', 'living'], answer: 'empty' },
+    { question: 'Complete the sentence: Prohibit means', options: ['advertise', 'allow', 'forbid', 'prove'], answer: 'forbid' },
+    { question: 'Complete the sentence: Enthusiasm means', options: ['zeal', 'fuss', 'excitement', 'success'], answer: 'zeal' },
+    { question: 'Complete the sentence: A visitor who was staying in a _____ city', options: ['noisy', 'dirty', 'strange', 'familiar'], answer: 'strange' },
+    { question: 'Complete the sentence: Lace up your _____ and make a', options: ['curtain', 'handkerchief', 'shoe', 'gloves'], answer: 'shoe' },
+    { question: 'Complete the sentence: The second to the last vowel in the alphabet is', options: ['I', 'e', 'o', 'u'], answer: 'o' }
+],
+
+'Quantitative reasoning': [
+    { 'question': 'If a pencil costs ₦15, how much will 5 pencils cost?','options': ['₦50', '₦60', '₦75'],'answer': '₦75' },
+    { 'question': 'What is the next number in the sequence: 10, 15, 20, 25, ___?', 'options': ['28', '30', '35'],'answer': '30' },
+    { 'question': 'A box contains 24 apples. If 8 apples are taken out, how many apples remain?', 'options': ['12', '14', '16'], 'answer': '16' },
+    { 'question': 'What is the sum of 456 and 287?', 'options': ['693', '743', '783'],'answer': '743' },
+    { 'question': 'If a book costs ₦450 and a pen costs ₦150, how much will you spend on both?','options': ['₦500', '₦600', '₦750'], 'answer': '₦600' },
+    { 'question': 'If a pencil costs ₦15, how much will 5 pencils cost?', 'options': ['₦50', '₦60', '₦75'], 'answer': '₦75' },
+    { 'question': 'What is the next number in the sequence: 10, 15, 20, 25, ___?', 'options': ['28', '30', '35'], 'answer': '30' },
+    { 'question': 'A box contains 24 apples. If 8 apples are taken out, how many apples remain?', 'options': ['12', '14', '16'], 'answer': '16' },
+    { 'question': 'What is the sum of 456 and 287?', 'options': ['693', '743', '783'], 'answer': '743' },
+    { 'question': 'If a book costs ₦450 and a pen costs ₦150, how much will you spend on both?', 'options': ['₦500', '₦600', '₦750'], 'answer': '₦600' },
+    { 'question': 'How many minutes are there in 2 hours and 45 minutes?', 'options': ['140', '155', '165'], 'answer': '165' },
+    { 'question': 'If a square has a side length of 7 cm, what is its perimeter?', 'options': ['21 cm', '28 cm', '35 cm'], 'answer': '28 cm' },
+    { 'question': 'A garden is 18 meters long and 12 meters wide. What is its area?', 'options': ['192 sq. meters', '216 sq. meters', '240 sq. meters'], 'answer': '216 sq. meters' },
+    { 'question': 'What is the difference between 875 and 462?', 'options': ['383', '413', '453'], 'answer': '413' },
+    { 'question': 'How many seconds are there in 15 minutes?', 'options': ['750', '850', '950'], 'answer': '900' },
+    { 'question': 'If a bag contains 36 marbles and 12 marbles are taken out, how many marbles remain?', 'options': ['18', '24', '30'], 'answer': '24' },
+    { 'question': 'What fraction of a day is 6 hours?', 'options': ['1/3', '1/4', '1/5'], 'answer': '1/4' },
+    { 'question': 'What is the product of 28 and 9?', 'options': ['252', '268', '284'], 'answer': '252' },
+    { 'question': 'What is the next number in the sequence: 3, 6, 9, 12, ___?', 'options': ['14', '15', '18'], 'answer': '15' },
+    { 'question': 'If 5 chairs cost ₦2000, how much does each chair cost?', 'options': ['₦350', '₦400', '₦450'], 'answer': '₦400' },
+    { 'question': 'How many millimeters are there in 3 meters?', 'options': ['3000 mm', '3100 mm', '3200 mm'], 'answer': '3000 mm' },
+    { 'question': 'A rectangle is 15 cm long and 8 cm wide. What is its perimeter?', 'options': ['38 cm', '40 cm', '42 cm'], 'answer': '46 cm' },
+    { 'question': 'What is the sum of the first 10 even numbers?', 'options': ['90', '100', '110'], 'answer': '110' },
+    { 'question': 'If a car travels at a speed of 60 km/h, how far will it travel in 5 hours?', 'options': ['250 km', '300 km', '350 km'], 'answer': '300 km' },
+    { 'question': 'What is 30% of 450?', 'options': ['120', '135', '150'], 'answer': '135' },
+    { 'question': 'A baker made 120 loaves of bread. If each loaf sells for ₦50, how much money did the baker make?', 'options': ['₦5000', '₦5500', '₦6000'], 'answer': '₦6000' },
+    { 'question': 'What is the next number in the sequence: 4, 8, 12, 16, ___?', 'options': ['18', '20', '24'], 'answer': '20' },
+    { 'question': 'A jar contains 200 candies. If 50 candies are taken out, how many candies remain?', 'options': ['120', '130', '150'], 'answer': '150' },
+    { 'question': 'How many liters are there in 4500 milliliters?', 'options': ['4.5 liters', '4.75 liters', '5 liters'], 'answer': '4.5 liters' },
+    { 'question': 'If a rectangle has a length of 20 cm and a width of 10 cm, what is its area?', 'options': ['180 sq. cm', '200 sq. cm', '220 sq. cm'], 'answer': '200 sq. cm' },
+    { 'question': 'What is the difference between 837 and 298?', 'options': ['529', '539', '549'], 'answer': '539' },
+    { 'question': 'How many sides does a hexagon have?', 'options': ['5', '6', '7'], 'answer': '6' },
+    { 'question': 'If there are 24 hours in a day, how many hours are there in 3 days?', 'options': ['68', '72', '76'], 'answer': '72' },
+    { 'question': 'What is 25% of 800?', 'options': ['180', '200', '220'], 'answer': '200' },
+    { 'question': 'A box contains 56 chocolates. If 16 chocolates are given away, how many chocolates remain?', 'options': ['30', '36', '40'], 'answer': '40' }
+
+],
+
+    'Music studies': [
+    { question: "What is a string instrument?", options: ["Guitar", "Drum", "Flute"], answer: "Guitar" },
+    { question: "Which instrument is played by blowing air?", options: ["Piano", "Trumpet", "Violin"], answer: "Trumpet" },
+    { question: "What type of instrument is a piano?", options: ["Percussion", "String", "Keyboard"], answer: "Keyboard" },
+    { question: "Which instrument has black and white keys?", options: ["Flute", "Piano", "Drum"], answer: "Piano" },
+    { question: "Which of these is a percussion instrument?", options: ["Trumpet", "Drum", "Violin"], answer: "Drum" },
+    { question: "What instrument is known for its use in jazz music?", options: ["Saxophone", "Violin", "Flute"], answer: "Saxophone" },
+    { question: "What type of instrument is a violin?", options: ["String", "Wind", "Percussion"], answer: "String" },
+    { question: "Which instrument is often used in orchestras?", options: ["Guitar", "Oboe", "Piano"], answer: "Oboe" },
+    { question: "Which instrument is typically made of brass?", options: ["Clarinet", "Trumpet", "Guitar"], answer: "Trumpet" },
+    { question: "Which instrument has strings that are plucked?", options: ["Guitar", "Flute", "Trombone"], answer: "Guitar" },
+    { question: "Which instrument is commonly used in rock music?", options: ["Harp", "Guitar", "Cello"], answer: "Guitar" },
+    { question: "What type of instrument is a drum?", options: ["String", "Percussion", "Wind"], answer: "Percussion" },
+    { question: "Which instrument is played using a bow?", options: ["Guitar", "Drum", "Violin"], answer: "Violin" },
+    { question: "Which of these is a woodwind instrument?", options: ["Flute", "Piano", "Guitar"], answer: "Flute" },
+    { question: "What instrument is known for its deep sound in an orchestra?", options: ["Violin", "Cello", "Trumpet"], answer: "Cello" },
+    { question: "Which instrument is used in marching bands?", options: ["Tuba", "Piano", "Harp"], answer: "Tuba" },
+    { question: "Which instrument has valves?", options: ["Guitar", "Trumpet", "Drum"], answer: "Trumpet" },
+    { question: "What is a common instrument in country music?", options: ["Flute", "Banjo", "Oboe"], answer: "Banjo" },
+    { question: "Which instrument has pedals to change the pitch?", options: ["Harp", "Guitar", "Piano"], answer: "Harp" },
+    { question: "Which instrument is played by striking keys?", options: ["Violin", "Piano", "Flute"], answer: "Piano" },
+    { question: "Which instrument is part of the brass family?", options: ["Violin", "Flute", "Trombone"], answer: "Trombone" },
+    { question: "Which instrument can have up to 88 keys?", options: ["Drum", "Violin", "Piano"], answer: "Piano" },
+    { question: "Which instrument is played by hitting with sticks?", options: ["Harp", "Drum", "Trumpet"], answer: "Drum" },
+    { question: "Which instrument is commonly used in classical music?", options: ["Guitar", "Violin", "Saxophone"], answer: "Violin" },
+    { question: "Which instrument is often played in pairs?", options: ["Cymbals", "Guitar", "Flute"], answer: "Cymbals" },
+    { question: "Which instrument is known for its use in folk music?", options: ["Flute", "Banjo", "Cello"], answer: "Banjo" },
+    { question: "Which instrument uses reeds?", options: ["Saxophone", "Piano", "Violin"], answer: "Saxophone" },
+    { question: "What instrument is often played in orchestral and solo performances?", options: ["Violin", "Drum", "Guitar"], answer: "Violin" },
+    { question: "Which instrument can be both acoustic and electric?", options: ["Flute", "Guitar", "Cello"], answer: "Guitar" },
+    { question: "Which instrument is associated with Scottish music?", options: ["Piano", "Bagpipes", "Violin"], answer: "Bagpipes" }
+],
+
+    
+};
+
+function displayQuestions(subject) {
+    const questionList = questions[subject];
+    if (questionList) {
+        // Clear previous questions if any
+        document.getElementById('questionContainer').innerHTML = '';
+        // Display questions
+        questionList.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('card', 'mt-3');
+            questionElement.setAttribute('data-subject', subject);
+            questionElement.setAttribute('data-question-index', index);
+            questionElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${question.question}</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option1${index}" value="${question.options[0]}">
+                        <label class="form-check-label" for="option1${index}">
+                            ${question.options[0]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option2${index}" value="${question.options[1]}">
+                        <label class="form-check-label" for="option2${index}">
+                            ${question.options[1]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option3${index}" value="${question.options[2]}">
+                        <label class="form-check-label" for="option3${index}">
+                            ${question.options[2]}
+                        </label>
+                    </div>
+                </div>
+            `;
+            document.getElementById('questionContainer').appendChild(questionElement);
+        });
+        
+        // Add submit button
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary mt-3');
+        submitButton.textContent = 'Submit Answers';
+        submitButton.onclick = calculateScore;
+        document.getElementById('questionContainer').appendChild(submitButton);
+    }
+}
+
+
+
+function calculateScore(username) {
+    let score = 0;
+    const questionCards = document.querySelectorAll('.card.mt-3');
+    
+    questionCards.forEach((card, index) => {
+        const selectedOption = card.querySelector('input[type=radio]:checked');
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const subject = card.getAttribute('data-subject');
+            const questionIndex = card.getAttribute('data-question-index');
+            const correctAnswer = questions[subject][questionIndex].answer;
+            if (selectedAnswer === correctAnswer) {
+                score += 3.33333333; // Each correct answer earns 3.33 marks
+            }
+        }
+    });
+
+    // Determine the grade based on score ranges
+let grade;
+if (score >= 0 && score <= 17) {
+    grade = 'F';
+} else if (score >= 18 && score <= 30) {
+    grade = 'E';
+} else if (score >= 31 && score <= 44) {
+    grade = 'D';
+} else if (score >= 45 && score <= 69) {
+    grade = 'C';
+} else if (score >= 70 && score <= 84) {
+    grade = 'B';
+} else if (score >= 85 && score <= 100) {
+    grade = 'A';
+} else {
+    grade = 'Invalid'; // If score exceeds the expected range
+}
+
+
+    // Display the score and grade on the page
+    const scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.textContent = `Congratulations, your score is: ${score}, and your grade is: ${grade}`;
+}
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = minutes + ':' + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = '00:00';
+            // Time is up, automatically submit the exam
+            calculateScore();
+        }
+    }, 1000);
+}
+
+// Function to attach click event listeners to subject elements
+function attachTimerToSubjects() {
+    const subjects = document.querySelectorAll('[id^="collapsePrimary"]'); // Select all elements with ids starting with "collapsePrimary"
+    subjects.forEach(subject => {
+        subject.addEventListener('click', () => {
+            const display = document.getElementById('timer-display');
+            const timeLimit = 60 * 10; // 10 minutes in seconds
+            startTimer(timeLimit, display);
+        });
+    });
+}
+
+window.onload = function () {
+    attachTimerToSubjects();
+};
+
+        
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

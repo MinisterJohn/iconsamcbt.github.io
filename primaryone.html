@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primary One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .logo {
+            height: 50px;
+        }
+        .footer-section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #score-display {
+      max-width: 600px;
+      margin: auto;
+    }
+
+#score-display h4 {
+          color: #007bff; /* Bootstrap primary color */
+        }
+      #timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: fixed;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+    #timer-display {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.jpg" alt="Logo 1" class="logo">
+            <img src="img/logo2.jpg" alt="Logo 2" class="logo">
+            Computer Based Examination System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<!-- Container for displaying timer -->
+<div id="timer-container">
+  <center>
+      <div id="timer-display">
+          <p>Exam Time:</p>
+          <p id="timer">00:00</p>
+      </div>
+  </center>
+</div>
+
+<div class="container mt-5">
+    <div id="subjectAccordion">
+        <!-- Primary 1 -->
+        <div class="card">
+            <div class="card-header" id="headingPrimary1">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePrimary1" aria-expanded="true" aria-controls="collapsePrimary1">
+                        Primary 1
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePrimary1" class="collapse show" aria-labelledby="headingPrimary1" data-parent="#subjectAccordion">
+                <div class="card-body">
+                    <button class="btn btn-secondary" onclick="displayQuestions('Mathematics')"> Mathematics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('English language')"> English language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Yoruba language')">Yoruba language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Civic education')">Civic education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Physical and health education')">Physical and health education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Christian religion studies')">Christian religion studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Social studies')">Social studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Agricultural studies')">Agricultural studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Home economics')">Home economics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('History')">History</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Creative and cultural art')">Creative and cultural art</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Basic science and technology')">Basic science and technology</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Leadership')">Leadership</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('French language')">French language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Digital literacy')">Digital literacy</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Verbal reasoning')">Verbal reasoning</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Quantitative reasoning')">Quantitative reasoning</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Container for displaying questions -->
+<div id="questionContainer" class="container mt-3">
+
+  
+</div> 
+
+
+<!-- Container for displaying score for each subject -->
+<div id="score-display" class="mt-3 p-3 border rounded shadow-sm bg-light">
+  <h4 class="text-center">Score board</h4>
+  <!-- Add score content here -->
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <p>Developed by Livingstone Consult 2024</p>
+    </div>
+</footer>
+
+<script>
+
+const questions = {
+'Mathematics': [
+    { question: 'What is 2 + 3?', options: ['4', '5', '6'], answer: '5' },
+    { question: 'Which number comes after 7?', options: ['8', '6', '9'], answer: '8' },
+    { question: 'How many sides does a triangle have?', options: ['3', '4', '5'], answer: '3' },
+    { question: 'What is 10 - 4?', options: ['5', '6', '7'], answer: '6' },
+    { question: 'Which of these is the largest number: 3, 5, or 2?', options: ['3', '5', '2'], answer: '5' },
+    { question: 'What shape is a clock?', options: ['Circle', 'Square', 'Triangle'], answer: 'Circle' },
+    { question: 'How many days are there in a week?', options: ['5', '6', '7'], answer: '7' },
+    { question: 'What is 1 + 1?', options: ['1', '2', '3'], answer: '2' },
+    { question: 'Which number is smaller: 4 or 6?', options: ['4', '6', 'Both'], answer: '4' },
+    { question: 'How many legs does a cat have?', options: ['2', '3', '4'], answer: '4' },
+    { question: 'What number comes before 10?', options: ['8', '9', '11'], answer: '9' },
+    { question: 'What is 5 - 2?', options: ['2', '3', '4'], answer: '3' },
+    { question: 'How many months are there in a year?', options: ['10', '11', '12'], answer: '12' },
+    { question: 'What is 3 + 4?', options: ['6', '7', '8'], answer: '7' },
+    { question: 'Which of these is the smallest number: 9, 7, or 8?', options: ['7', '8', '9'], answer: '7' },
+    { question: 'What color is the sky?', options: ['Blue', 'Green', 'Red'], answer: 'Blue' },
+    { question: 'How many hours are there in a day?', options: ['12', '24', '48'], answer: '24' },
+    { question: 'What is 2 + 5?', options: ['6', '7', '8'], answer: '7' },
+    { question: 'What number comes after 4?', options: ['3', '5', '6'], answer: '5' },
+    { question: 'How many fingers do you have?', options: ['8', '9', '10'], answer: '10' },
+    { question: 'What is 6 - 3?', options: ['2', '3', '4'], answer: '3' },
+    { question: 'What shape is a window?', options: ['Circle', 'Square', 'Triangle'], answer: 'Square' },
+    { question: 'How many wheels does a bicycle have?', options: ['1', '2', '3'], answer: '2' },
+    { question: 'What is 4 + 1?', options: ['4', '5', '6'], answer: '5' },
+    { question: 'Which number is larger: 2 or 5?', options: ['2', '5', 'Both'], answer: '5' },
+    { question: 'How many letters are there in the alphabet?', options: ['24', '25', '26'], answer: '26' },
+    { question: 'What is 7 - 1?', options: ['5', '6', '7'], answer: '6' },
+    { question: 'Which number comes before 3?', options: ['1', '2', '4'], answer: '2' },
+    { question: 'How many eyes do you have?', options: ['1', '2', '3'], answer: '2' },
+    { question: 'What is 2 + 2?', options: ['3', '4', '5'], answer: '4' }
+],
+
+'English language': [
+    { question: 'What is the first letter of the word "Apple"?', options: ['A', 'B', 'C'], answer: 'A' },
+    { question: 'Which word is a color?', options: ['Red', 'Table', 'Car'], answer: 'Red' },
+    { question: 'What is the opposite of "Hot"?', options: ['Cold', 'Big', 'Fast'], answer: 'Cold' },
+    { question: 'Which of these is a fruit?', options: ['Dog', 'Banana', 'Chair'], answer: 'Banana' },
+    { question: 'What is the missing letter in "C_t"?', options: ['a', 'e', 'i'], answer: 'a' },
+    { question: 'What sound does a cat make?', options: ['Meow', 'Bark', 'Roar'], answer: 'Meow' },
+    { question: 'What is the correct word to complete the sentence: "I can see with my _____.', options: ['Eyes', 'Ears', 'Nose'], answer: 'Eyes' },
+    { question: 'How many letters are in the word "School"?', options: ['5', '6', '7'], answer: '6' },
+    { question: 'What is the opposite of "Tall"?', options: ['Short', 'Big', 'Fast'], answer: 'Short' },
+    { question: 'Which of these is an animal?', options: ['Dog', 'Apple', 'Car'], answer: 'Dog' },
+    { question: 'What is the first letter of the word "Elephant"?', options: ['E', 'F', 'G'], answer: 'E' },
+    { question: 'Which word is a number?', options: ['Three', 'Blue', 'House'], answer: 'Three' },
+    { question: 'What is the missing letter in "D_g"?', options: ['o', 'a', 'e'], answer: 'o' },
+    { question: 'What sound does a dog make?', options: ['Bark', 'Meow', 'Chirp'], answer: 'Bark' },
+    { question: 'What is the correct word to complete the sentence: "I can hear with my _____.', options: ['Eyes', 'Ears', 'Nose'], answer: 'Ears' },
+    { question: 'How many letters are in the word "House"?', options: ['4', '5', '6'], answer: '5' },
+    { question: 'What is the opposite of "Big"?', options: ['Small', 'Fast', 'Hot'], answer: 'Small' },
+    { question: 'Which of these is a toy?', options: ['Ball', 'Apple', 'Cat'], answer: 'Ball' },
+    { question: 'What is the first letter of the word "Umbrella"?', options: ['U', 'V', 'W'], answer: 'U' },
+    { question: 'Which word is a shape?', options: ['Square', 'Red', 'Dog'], answer: 'Square' },
+    { question: 'What is the missing letter in "B_t"?', options: ['a', 'e', 'o'], answer: 'a' },
+    { question: 'What sound does a bird make?', options: ['Chirp', 'Roar', 'Bark'], answer: 'Chirp' },
+    { question: 'What is the correct word to complete the sentence: "I can smell with my _____.', options: ['Eyes', 'Ears', 'Nose'], answer: 'Nose' },
+    { question: 'How many letters are in the word "Table"?', options: ['4', '5', '6'], answer: '5' },
+    { question: 'What is the opposite of "Day"?', options: ['Night', 'Light', 'Hot'], answer: 'Night' },
+    { question: 'Which of these is a place?', options: ['School', 'Dog', 'Apple'], answer: 'School' },
+    { question: 'What is the first letter of the word "Orange"?', options: ['O', 'P', 'Q'], answer: 'O' },
+    { question: 'Which word is an animal?', options: ['Cat', 'Red', 'Car'], answer: 'Cat' },
+    { question: 'What is the missing letter in "F_sh"?', options: ['a', 'i', 'u'], answer: 'i' },
+    { question: 'What sound does a cow make?', options: ['Moo', 'Meow', 'Chirp'], answer: 'Moo' }
+],
+
+'Yoruba language': [
+    { question: "Kini oruko?", options: ["Eniyan", "Eran", "Ilé"], answer: "Eniyan" },
+    { question: "Kini iye?", options: ["Oran", "Owo", "Ewe"], answer: "Owo" },
+    { question: "Kini awon?", options: ["Igbin", "Eyin", "Ijapa"], answer: "Ijapa" },
+    { question: "Kini ese?", options: ["Ile", "Oju", "Ese"], answer: "Ese" },
+    { question: "Kini oju?", options: ["Imu", "Oju", "Enu"], answer: "Oju" },
+    { question: "Kini o n se?", options: ["Jeun", "Sun", "Gba"], answer: "Jeun" },
+    { question: "Kini omo?", options: ["Eku", "Omo", "Agbo"], answer: "Omo" },
+    { question: "Kini ile iwe?", options: ["Oja", "Ile", "Ile-iwe"], answer: "Ile-iwe" },
+    { question: "Kini ohun elo ile-iwe?", options: ["Pen", "Aso", "Ounje"], answer: "Pen" },
+    { question: "Kini a n pe ni baba?", options: ["Mama", "Baba", "Omokunrin"], answer: "Baba" },
+    { question: "Kini a n pe ni mama?", options: ["Mama", "Baba", "Omobirin"], answer: "Mama" },
+    { question: "Kini a n pe ni enu?", options: ["Enu", "Imu", "Ile"], answer: "Enu" },
+    { question: "Kini ohun?", options: ["Igi", "Ohun", "Ese"], answer: "Ohun" },
+    { question: "Kini agbo?", options: ["Eran", "Aso", "Agbo"], answer: "Agbo" },
+    { question: "Kini eja?", options: ["Eja", "Ounje", "Omi"], answer: "Eja" },
+    { question: "Kini omokunrin?", options: ["Omokunrin", "Obinrin", "Agba"], answer: "Omokunrin" },
+    { question: "Kini ibo?", options: ["Ibadan", "Ibo", "Lagos"], answer: "Ibo" },
+    { question: "Kini obinrin?", options: ["Omokunrin", "Obinrin", "Omowe"], answer: "Obinrin" },
+    { question: "Kini aso?", options: ["Aso", "Baba", "Ese"], answer: "Aso" },
+    { question: "Kini a n pe ni owo?", options: ["Pen", "Owo", "Enu"], answer: "Owo" },
+    { question: "Kini omobirin?", options: ["Omobirin", "Omokunrin", "Agbo"], answer: "Omobirin" },
+    { question: "Kini ile?", options: ["Ile", "Ese", "Enu"], answer: "Ile" },
+    { question: "Kini ohun mimu?", options: ["Eran", "Ohun mimu", "Aso"], answer: "Ohun mimu" },
+    { question: "Kini o n se ni ogba?", options: ["Danu", "Gbin", "Sare"], answer: "Gbin" },
+    { question: "Kini a n pe ni eran?", options: ["Eran", "Aso", "Ese"], answer: "Eran" },
+    { question: "Kini a n se ni ile-iwe?", options: ["Jeun", "Sun", "Keko"], answer: "Keko" },
+    { question: "Kini ewe?", options: ["Ewe", "Eran", "Ile"], answer: "Ewe" },
+    { question: "Kini igi?", options: ["Igi", "Ese", "Enu"], answer: "Igi" },
+    { question: "Kini o n gbe?", options: ["Iwe", "Omiran", "Ese"], answer: "Iwe" }
+],
+
+'Civic education': [
+    { question: '1. Who helps to make government decisions?', options: ['Teacher', 'Pressure group', 'Footballer'], answer: 'Pressure group' },
+    { question: '2. NCWS means ______', options: ['National council of women societies', 'National chocolate with sugar', 'National club of world stars'], answer: 'National council of women societies' },
+    { question: '3. NUPENG means ______', options: ['National union of petroleum and natural gas', 'National umbrella for playing', 'National union of people enjoying'], answer: 'National union of petroleum and natural gas' },
+    { question: '4. What do pressure groups do?', options: ['Keep Government in check', 'Sing songs', 'Play games'], answer: 'Keep Government in check' },
+    { question: '5. One bad thing about pressure groups is that ______', options: ['They sometimes make demands for their members only', 'They help everyone', 'They clean the streets'], answer: 'They sometimes make demands for their members only' },
+    { question: '6. What are important beliefs called?', options: ['Books', 'Values', 'Games'], answer: 'Values' },
+    { question: '7. Which is an example of a value?', options: ['Stealing', 'Fighting', 'Integrity'], answer: 'Integrity' },
+    { question: '8. Which is not a value?', options: ['Stealing', 'Kindness', 'Courage'], answer: 'Stealing' },
+    { question: '9. What promotes peace?', options: ['Hating others', 'Fighting', 'Forgiving others'], answer: 'Forgiving others' },
+    { question: '10. What helps people live together happily?', options: ['Tolerance', 'Yelling', 'Ignoring'], answer: 'Tolerance' },
+    { question: '11. What does cooperation mean?', options: ['Working together', 'Playing alone', 'Sleeping'], answer: 'Working together' },
+    { question: '12. What is humility?', options: ['Being proud', 'Not being proud', 'Talking loudly'], answer: 'Not being proud' },
+    { question: '13. What is gratitude?', options: ['Thankfulness', 'Anger', 'Laziness'], answer: 'Thankfulness' },
+    { question: '14. What is social injustice?', options: ['Treating others unfairly', 'Sharing equally', 'Being happy'], answer: 'Treating others unfairly' },
+    { question: '15. What is discrimination?', options: ['Treating people equally', 'Treating people unfairly', 'Helping everyone'], answer: 'Treating people unfairly' },
+    { question: '16. What is racism?', options: ['Liking everyone', 'Disliking people because of their race', 'Playing with everyone'], answer: 'Disliking people because of their race' },
+    { question: '17. What is homophobia?', options: ['Loving everyone', 'Disliking gay people', 'Helping everyone'], answer: 'Disliking gay people' },
+    { question: '18. What is ageism?', options: ['Disliking people because of their age', 'Liking everyone', 'Helping old people'], answer: 'Disliking people because of their age' },
+    { question: '19. What is a gender pay gap?', options: ['Equal pay', 'Men and women earning different amounts', 'Everyone earning the same'], answer: 'Men and women earning different amounts' },
+    { question: '20. What is climate change?', options: ['Weather patterns changing', 'Planting trees', 'Building houses'], answer: 'Weather patterns changing' },
+    { question: '21. What is food insecurity?', options: ['Having enough food', 'Not having enough food', 'Eating too much'], answer: 'Not having enough food' },
+    { question: '22. How can people show they are unhappy with social injustice?', options: ['By singing', 'By demonstrating', 'By ignoring'], answer: 'By demonstrating' },
+    { question: '23. What is a strike?', options: ['Playing a game', 'Stopping work to make a point', 'Going to school'], answer: 'Stopping work to make a point' },
+    { question: '24. What is resignation?', options: ['Starting a new job', 'Quitting a job', 'Getting promoted'], answer: 'Quitting a job' },
+    { question: '25. What is social justice?', options: ['Treating everyone fairly', 'Treating everyone unfairly', 'Playing games'], answer: 'Treating everyone fairly' },
+    { question: '26. What is social injustice?', options: ['Treating everyone unfairly', 'Treating everyone fairly', 'Ignoring others'], answer: 'Treating everyone unfairly' },
+    { question: '27. What is strike?', options: ['Stop work to make a point', 'Work harder', 'By passing day by day'], answer: 'Stop work to make a point' },
+    { question: '28. What is cooperation?', options: ['Working together to achieve a common purpose', 'Playing games', 'Sleeping'], answer: 'Working together to achieve a common purpose' },
+    { question: '29. What is social justice?', options: ['Treating everyone fairly', 'Treating everyone unfairly', 'Ignoring others'], answer: 'Treating everyone fairly' },
+    { question: '30. What is strike?', options: ['Stop work to make a point', 'Work harder', 'By passing day by day'], answer: 'Stop work to make a point' }
+],
+
+
+'Physical and health education': [
+    { question: '1. _______ are those useful substances in the foods we eat.', options: ['Oil', 'Salt', 'Food nutrients', 'Sardines'], answer: 'Food nutrients' },
+    { question: '2. ________ helps our body to grow.', options: ['Ceramics', 'Food nutrients', 'Charger', 'Body'], answer: 'Food nutrients' },
+    { question: '3. ________ gives energy to the body to play and run.', options: ['Oil', 'Fat and oil', 'Carbohydrates', 'Protein'], answer: 'Carbohydrates' },
+    { question: '4. ______ helps to build our body and replace old cells with new ones.', options: ['Fat and oil', 'Protein', 'Groundnut oil', 'Bread'], answer: 'Protein' },
+    { question: '5. ______ keeps the body warm.', options: ['Annointing oil', 'Berry', 'Fat and oil', 'Perfume'], answer: 'Fat and oil' },
+    { question: '6. Vitamins protect us from infection and ________.', options: ['Event', 'Disease', 'Organism', 'Power'], answer: 'Disease' },
+    { question: '7. ________ make our bones and teeth strong.', options: ['Minerals', 'Vitamins', 'Charcoal', 'Syringe'], answer: 'Minerals' },
+    { question: '8. _______ helps our body to stay hydrated and aids digestion.', options: ['Minerals', 'Water', 'Oil', 'Orange'], answer: 'Water' },
+    { question: '9. Nutritional deficiency diseases arise as a result of lack of nutrients needed for body growth and ___________.', options: ['Development', 'Bacteria', 'Power', 'Powder'], answer: 'Development' },
+    { question: '10. Examples of nutritional deficiency diseases are these except?', options: ['Kwashiorkor', 'Ticket', 'Scurvy', 'Headache'], answer: 'Headache' },
+    { question: '11. _________ is caused by lack of protein in the body.', options: ['Headache', 'Stomach', 'Dizziness', 'Kwashiorkor'], answer: 'Kwashiorkor' },
+    { question: '12. ______ is caused by lack of vitamin D in the body.', options: ['Fever', 'Ricket', 'Headache', 'Bow leg'], answer: 'Ricket' },
+    { question: '13. _______ is caused by lack of foods containing vitamin C.', options: ['Scurvy', 'Muscle', 'Fatigue', 'Diabetes'], answer: 'Scurvy' },
+    { question: '14. ______ is a game that was developed in Japan.', options: ['Ludo', 'Judo', 'Tennis', 'Biro'], answer: 'Judo' },
+    { question: '15. Professor Jigoro Kano developed judo in the year ______.', options: ['1997', '1178', '1882', '1954'], answer: '1882' },
+    { question: '16. Judo became an Olympic ________.', options: ['Game', 'Cloth', 'Track', 'Feast'], answer: 'Game' },
+    { question: '17. A judo player is called a ______.', options: ['Fighter', 'Judoka', 'Prayer', 'Bouncer'], answer: 'Judoka' },
+    { question: '18. Judo helps to make the body strong and ______.', options: ['Bold', 'Flexible', 'Swim', 'Faster'], answer: 'Flexible' },
+    { question: '19. All these are judo equipment except?', options: ['A belt', 'Judo suit', 'Mat', 'Socks'], answer: 'Socks' },
+    { question: '20. _______ is the movement made through water, with the help of both the arms and legs.', options: ['Swimming', 'Playing', 'Singing', 'Clapping'], answer: 'Swimming' },
+    { question: '21. _______ are the different ways we can move our body while swimming.', options: ['Swimming pool', 'Swimming strokes', 'Bend strokes', 'Running'], answer: 'Swimming strokes' },
+    { question: '22. _____ is the use of back to swim.', options: ['Front stroke', 'Back strokes', 'Running', 'Singing'], answer: 'Back strokes' },
+    { question: '23. _______ is when the face of the swimmer stays in the water and breath is controlled while feet are extended backwards.', options: ['Move stroke', 'Crawl stroke', 'Front stroke', 'Back stroke'], answer: 'Crawl stroke' },
+    { question: '24. ______ are those viruses, fungi, and bacteria that cause diseases.', options: ['Pathogens', 'Virus', 'Fungi', 'Mucus'], answer: 'Pathogens' },
+    { question: '25. Diseases and pathogens are these except;', options: ['Small pox', 'Tuberculosis', 'Fever', 'Catarrh'], answer: 'Fever' },
+    { question: '26. A _______ interacts with the host and causes infection leading to the development of disease in the host.', options: ['Fish', 'Goat', 'Pathogens', 'Fungi'], answer: 'Pathogens' },
+    { question: '27. _______ are experiences a patient goes through as a result of sickness.', options: ['Sickness', 'Symptoms', 'Cough', 'Weakness'], answer: 'Symptoms' },
+    { question: '28. _______ are the observations or findings of a doctor when checking a sick person.', options: ['Blend', 'Sign', 'Encourage', 'Eat'], answer: 'Sign' },
+    { question: '29. Signs are the following except?', options: ['Body pains', 'Aches', 'Body temperature', 'Playing'], answer: 'Playing' },
+    { question: '30. _______ have germs and can be spread from one person to another.', options: ['Diarrhea', 'Communicable diseases', 'Song', 'Polythene'], answer: 'Communicable diseases' }
+],
+
+
+'Christian religion studies': [
+    { question: '1. God said Sarai should now be called ______', options: ['Jacob', 'Sarah', 'Noah'], answer: 'Sarah' },
+    { question: '2. God changed Sarai\'s name to give her a _____', options: ['money', 'son', 'power'], answer: 'son' },
+    { question: '3. God promised that Sarah would be a mother of many _______', options: ['nations', 'power', 'kingdoms'], answer: 'nations' },
+    { question: '4. Sarah\'s son\'s name is ________', options: ['Isaac', 'Grace', 'Jesus'], answer: 'Isaac' },
+    { question: '5. God promised to establish a covenant with ______ for an everlasting covenant.', options: ['Ezekiel', 'Isaac', 'Devil'], answer: 'Isaac' },
+    { question: '6. God also promised to make ______ fruitful and multiply exceedingly', options: ['Paul', 'Ishmael', 'Fighter'], answer: 'Ishmael' },
+    { question: '7. God promised to make Ishmael have _______ princes and make him a great nation', options: ['12', '14', '15'], answer: '12' },
+    { question: '8. The Lord visited _____ as He promised', options: ['Israel', 'Jacob', 'Sarah'], answer: 'Sarah' },
+    { question: '9. Sarah became _______', options: ['Powerful', 'Pregnant', 'Gifted'], answer: 'Pregnant' },
+    { question: '10. The _____ did as He had spoken', options: ['Lord', 'Jesus', 'Devil'], answer: 'Lord' },
+    { question: '11. Sarah became pregnant and had a son for Abraham in their ______', options: ['Room', 'Old age', 'Studio'], answer: 'Old age' },
+    { question: '12. Abraham named his son ______', options: ['Esau', 'Jacob', 'Isaac'], answer: 'Isaac' },
+    { question: '13. He circumcised Isaac on the ______ day', options: ['3rd', '8th', '9th'], answer: '8th' },
+    { question: '14. Abraham was ______ years old when Isaac was born', options: ['100', '90', '99'], answer: '100' },
+    { question: '15. Sarah said God had made her ____', options: ['Dance', 'Laugh', 'Play'], answer: 'Laugh' },
+    { question: '16. Paul\'s mission was to go to ______', options: ['Cameroon', 'Mexico', 'Damascus'], answer: 'Damascus' },
+    { question: '17. The Christians scattered ______ because of persecution', options: ['In the room', 'Everywhere', 'Home'], answer: 'Everywhere' },
+    { question: '18. They preached the ______ and won new souls', options: ['Food', 'Word', 'Book'], answer: 'Word' },
+    { question: '19. ______ was in Samaria preaching and doing mighty miracles', options: ['Silas', 'Devil', 'Philip'], answer: 'Philip' },
+    { question: '20. Paul had permission from the _____', options: ['Pastor', 'High priest', 'Paul'], answer: 'High priest' },
+    { question: '21. The voice said, \'I am Jesus whom you _______\'', options: ['Persecute', 'Fight', 'Build'], answer: 'Persecute' },
+    { question: '22. Paul asked the _____ \'What should I do?\'', options: ['Devil', 'Lord', 'Jacob'], answer: 'Lord' },
+    { question: '23. Paul and his ______ heard the voice but saw no one', options: ['Wife', 'Friends', 'Enemy'], answer: 'Friends' },
+    { question: '24. Paul also became ____ and was led by his friends', options: ['Deaf', 'Blind', 'Courageous'], answer: 'Blind' },
+    { question: '25. The Lord Jesus spoke to a disciple named ______', options: ['Noah', 'Ananias', 'Police'], answer: 'Ananias' },
+    { question: '26. Ananias laid hands on ______ to give him sight', options: ['Saul', 'Jacob', 'Jeremiah'], answer: 'Saul' },
+    { question: '27. Ananias worried about ______\'s identity', options: ['Mary', 'Margaret', 'Paul'], answer: 'Paul' },
+    { question: '28. Paul was chosen to be a special ______', options: ['Glory', 'Vessel', 'Plant'], answer: 'Vessel' },
+    { question: '29. The Holy Spirit said, \'Set apart Barnabas and Saul for the ____\'', options: ['Prayer', 'Work', 'Gift'], answer: 'Work' },
+    { question: '30. Paul preached to the ______ and the Jews', options: ['Gentiles', 'Paul and Silas', 'Jacob and Esau'], answer: 'Gentiles and Jews' }
+],
+
+    'Social studies': [
+    { question: '1. _______ is where we live and play.', options: ['School', 'Home', 'Park'], answer: 'Home' },
+    { question: '2. Our houses are built with _______ and _______.', options: ['Stones, iron', 'Thatch, mud', 'Bricks, plastic'], answer: 'Thatch, mud' },
+    { question: '3. _______ is where we get our food, clothes, and other things we need.', options: ['Home', 'Market', 'School'], answer: 'Market' },
+    { question: '4. We get water from _______.', options: ['Well', 'Trees', 'Clouds'], answer: 'Well' },
+    { question: '5. _______ is where we learn and play together with our friends.', options: ['Home', 'School', 'Farm'], answer: 'School' },
+    { question: '6. _______ is where we go to buy things like food and clothes.', options: ['Farm', 'Market', 'Beach'], answer: 'Market' },
+    { question: '7. We keep our clothes in a _______.', options: ['Basket', 'Fridge', 'Pot'], answer: 'Basket' },
+    { question: '8. _______ is where we grow plants like yams, maize, and vegetables.', options: ['Garden', 'Zoo', 'Library'], answer: 'Garden' },
+    { question: '9. _______ is where we get our milk, meat, and eggs.', options: ['Farm', 'School', 'Hospital'], answer: 'Farm' },
+    { question: '10. _______ is where we play and have fun with our friends.', options: ['Workplace', 'Park', 'Bank'], answer: 'Park' },
+    { question: '11. _______ is the person who takes care of cows, goats, and sheep on the farm.', options: ['Teacher', 'Farmer', 'Doctor'], answer: 'Farmer' },
+    { question: '12. _______ is where we keep animals like cows, goats, and sheep.', options: ['Zoo', 'Farm', 'Library'], answer: 'Farm' },
+    { question: '13. _______ is where we get our bread, biscuits, and cakes.', options: ['Bakery', 'School', 'Beach'], answer: 'Bakery' },
+    { question: '14. _______ is where we get our medicine when we are sick.', options: ['Hospital', 'Market', 'Garden'], answer: 'Hospital' },
+    { question: '15. _______ is where we keep books and read them.', options: ['Library', 'Park', 'Home'], answer: 'Library' },
+    { question: '16. _______ is where we catch fish and swim.', options: ['Library', 'School', 'Beach'], answer: 'Beach' },
+    { question: '17. _______ is where we play with toys and games.', options: ['Farm', 'Park', 'Market'], answer: 'Park' },
+    { question: '18. _______ is where we buy clothes, shoes, and bags.', options: ['Market', 'Garden', 'Zoo'], answer: 'Market' },
+    { question: '19. _______ is where we go to see wild animals like lions and elephants.', options: ['Park', 'Hospital', 'Bakery'], answer: 'Park' },
+    { question: '20. _______ is where we grow vegetables like tomatoes and carrots.', options: ['Farm', 'Library', 'School'], answer: 'Farm' },
+    { question: '21. _______ is where we buy food like rice, beans, and vegetables.', options: ['Market', 'Bakery', 'Beach'], answer: 'Market' },
+    { question: '22. _______ is where we go to learn and study.', options: ['Park', 'School', 'Farm'], answer: 'School' },
+    { question: '23. _______ is where we get our toys, books, and games.', options: ['Library', 'Hospital', 'Market'], answer: 'Library' },
+    { question: '24. _______ is where we buy fruits like apples, oranges, and bananas.', options: ['Bakery', 'Farm', 'Market'], answer: 'Market' },
+    { question: '25. _______ is where we buy pencils, erasers, and rulers.', options: ['Library', 'School', 'Bakery'], answer: 'School' },
+    { question: '26. _______ is where we go to buy medicine when we are sick.', options: ['Hospital', 'Farm', 'Park'], answer: 'Hospital' },
+    { question: '27. _______ is where we go to swim and play with friends.', options: ['Beach', 'Market', 'Library'], answer: 'Beach' },
+    { question: '28. _______ is where we buy clothes and shoes.', options: ['Market', 'Park', 'Farm'], answer: 'Market' },
+    { question: '29. _______ is where we get our bread, biscuits, and cakes.', options: ['Bakery', 'Library', 'School'], answer: 'Bakery' },
+    { question: '30. _______ is where we learn new things and play with friends.', options: ['School', 'Hospital', 'Park'], answer: 'School' }
+],
+
+
+'Agricultural studies': [
+    { question: '1. What is agriculture?', options: ['Growing crops', 'Building houses', 'Playing games'], answer: 'Growing crops' },
+    { question: '2. Why is water important for plants?', options: ['To drink', 'To grow', 'To play'], answer: 'To grow' },
+    { question: '3. Name three things that farmers grow on the farm.', options: ['Cars, bikes, boats', 'Vegetables, fruits, grains', 'Books, pens, toys'], answer: 'Vegetables, fruits, grains' },
+    { question: '4. What do chickens lay?', options: ['Eggs', 'Apples', 'Shoes'], answer: 'Eggs' },
+    { question: '5. What are the different parts of a plant?', options: ['Roots, trunk, branches', 'Leaves, petals, stem', 'Fruits, vegetables, seeds'], answer: 'Leaves, petals, stem' },
+    { question: '6. Name three animals that live on the farm.', options: ['Lions, tigers, elephants', 'Cows, pigs, chickens', 'Dogs, cats, birds'], answer: 'Cows, pigs, chickens' },
+    { question: '7. How do farmers take care of crops?', options: ['Watering, weeding, protecting', 'Painting, singing, dancing', 'Reading, writing, drawing'], answer: 'Watering, weeding, protecting' },
+    { question: '8. What is the difference between fruits and vegetables?', options: ['Color', 'Taste', 'Seeds'], answer: 'Seeds' },
+    { question: '9. Name three types of fruits you know.', options: ['Carrots, potatoes, onions', 'Apples, bananas, oranges', 'Chairs, tables, beds'], answer: 'Apples, bananas, oranges' },
+    { question: '10. Why do farmers need to protect their crops from pests?', options: ['To make them grow faster', 'To keep them healthy', 'To make them colorful'], answer: 'To keep them healthy' },
+    { question: '11. What do plants need to grow well?', options: ['Chocolate', 'Water, sunlight, soil', 'Toys'], answer: 'Water, sunlight, soil' },
+    { question: '12. What are the seasons of the year for planting crops?', options: ['Winter and summer', 'Spring and autumn', 'Morning and evening'], answer: 'Spring and autumn' },
+    { question: '13. How do farmers prepare the soil for planting?', options: ['Painting it', 'Digging, plowing, fertilizing', 'Sleeping on it'], answer: 'Digging, plowing, fertilizing' },
+    { question: '14. Name three farm animals that give us milk.', options: ['Dogs, cats, rabbits', 'Cows, goats, sheep', 'Horses, lions, tigers'], answer: 'Cows, goats, sheep' },
+    { question: '15. What do we use wool from sheep for?', options: ['Making clothes', 'Building houses', 'Playing games'], answer: 'Making clothes' },
+    { question: '16. What do cows eat?', options: ['Grass', 'Leaves', 'Meat'], answer: 'Grass' },
+    { question: '17. Why do farmers keep bees?', options: ['For fun', 'To make honey', 'To scare away birds'], answer: 'To make honey' },
+    { question: '18. How do farmers harvest crops?', options: ['By singing', 'By cutting, picking, gathering', 'By dancing'], answer: 'By cutting, picking, gathering' },
+    { question: '19. Name two types of grains grown on farms.', options: ['Rice, wheat', 'Potatoes, carrots', 'Apples, oranges'], answer: 'Rice, wheat' },
+    { question: '20. What do farmers use tractors for?', options: ['Painting', 'Plowing fields', 'Writing'], answer: 'Plowing fields' },
+    { question: '21. Why do farmers sometimes put up fences around their fields?', options: ['To keep animals out', 'To make it look pretty', 'To hide the crops'], answer: 'To keep animals out' },
+    { question: '22. How do farmers care for baby animals on the farm?', options: ['By feeding and protecting them', 'By ignoring them', 'By playing with them'], answer: 'By feeding and protecting them' },
+    { question: '23. What is the job of a scarecrow on the farm?', options: ['To scare away birds', 'To play games', 'To sleep'], answer: 'To scare away birds' },
+    { question: '24. Name three vegetables that grow underground.', options: ['Carrots, potatoes, onions', 'Apples, bananas, oranges', 'Chairs, tables, beds'], answer: 'Carrots, potatoes, onions' },
+    { question: '25. Why is it important for farmers to rotate their crops?', options: ['To make the crops tired', 'To keep the soil healthy', 'To play with the crops'], answer: 'To keep the soil healthy' },
+    { question: '26. How do plants make their own food?', options: ['By singing', 'By using sunlight, water, and air', 'By dancing'], answer: 'By using sunlight, water, and air' },
+    { question: '27. What are the benefits of farming?', options: ['Making toys', 'Growing food, providing jobs', 'Building houses'], answer: 'Growing food, providing jobs' },
+    { question: '28. How does sunlight help plants grow?', options: ['By making them cold', 'By giving them energy to make food', 'By making them dance'], answer: 'By giving them energy to make food' },
+    { question: '29. What do plants need to grow well?', options: ['Chocolate', 'Water, sunlight, soil', 'Toys'], answer: 'Water, sunlight, soil' },
+    { question: '30. What is the job of a scarecrow on the farm?', options: ['To scare away birds', 'To play games', 'To sleep'], answer: 'To scare away birds' }
+],
+
+
+'Home economics': [
+    { question: '1. What do we use to clean our teeth?', options: ['Toothbrush', 'Spoon', 'Pen'], answer: 'Toothbrush' },
+    { question: '2. Why is it important to wash our hands before eating?', options: ['To make our hands cold', 'To remove germs', 'To dry our hands'], answer: 'To remove germs' },
+    { question: '3. What do we wear to keep our feet safe?', options: ['Hat', 'Gloves', 'Shoes'], answer: 'Shoes' },
+    { question: '4. What is the main purpose of a kitchen?', options: ['To sleep', 'To cook food', 'To study'], answer: 'To cook food' },
+    { question: '5. Why do we need to eat fruits and vegetables?', options: ['They taste bad', 'They make us sick', 'They help us stay healthy'], answer: 'They help us stay healthy' },
+    { question: '6. What should we do before going to bed?', options: ['Play games', 'Brush our teeth', 'Run outside'], answer: 'Brush our teeth' },
+    { question: '7. What is the best way to dry our hands after washing?', options: ['With a towel', 'With a blanket', 'With paper'], answer: 'With a towel' },
+    { question: '8. What do we use to drink water?', options: ['Plate', 'Cup', 'Fork'], answer: 'Cup' },
+    { question: '9. Why do we need to eat breakfast?', options: ['To start our day with energy', 'To feel tired', 'To skip lunch'], answer: 'To start our day with energy' },
+    { question: '10. What should we do if we spill food on the floor?', options: ['Leave it', 'Clean it up', 'Hide it'], answer: 'Clean it up' },
+    { question: '11. What do we use to cut food in the kitchen?', options: ['Knife', 'Spoon', 'Chopsticks'], answer: 'Knife' },
+    { question: '12. Why should we drink water every day?', options: ['To stay hydrated', 'To stay sleepy', 'To stay hungry'], answer: 'To stay hydrated' },
+    { question: '13. What is a balanced diet?', options: ['Eating only sweets', 'Eating a variety of foods', 'Eating no food'], answer: 'Eating a variety of foods' },
+    { question: '14. Why is it important to keep our homes clean?', options: ['To invite insects', 'To feel comfortable and healthy', 'To make it dirty again'], answer: 'To feel comfortable and healthy' },
+    { question: '15. What do we use to sweep the floor?', options: ['Mop', 'Broom', 'Cloth'], answer: 'Broom' },
+    { question: '16. Why do we need to eat food?', options: ['To stay alive and healthy', 'To stay sick', 'To stay tired'], answer: 'To stay alive and healthy' },
+    { question: '17. What do we use to wash our clothes?', options: ['Soap', 'Oil', 'Flour'], answer: 'Soap' },
+    { question: '18. Why should we wear clean clothes?', options: ['To look good and feel fresh', 'To look dirty', 'To feel itchy'], answer: 'To look good and feel fresh' },
+    { question: '19. What should we do after using the toilet?', options: ['Wash our hands', 'Clap our hands', 'Shake hands'], answer: 'Wash our hands' },
+    { question: '20. What do we use to comb our hair?', options: ['Brush', 'Stick', 'Paper'], answer: 'Brush' },
+    { question: '21. Why is it important to eat different types of food?', options: ['To get all the nutrients we need', 'To eat only one type of food', 'To avoid nutrients'], answer: 'To get all the nutrients we need' },
+    { question: '22. What do we use to keep our body clean?', options: ['Soap and water', 'Sand and mud', 'Paint and glue'], answer: 'Soap and water' },
+    { question: '23. Why should we help our parents with house chores?', options: ['To be lazy', 'To learn responsibility', 'To make more mess'], answer: 'To learn responsibility' },
+    { question: '24. What should we do before eating food?', options: ['Wash our hands', 'Wash our feet', 'Wash our clothes'], answer: 'Wash our hands' },
+    { question: '25. What is the use of an apron in the kitchen?', options: ['To protect our clothes while cooking', 'To sleep', 'To play'], answer: 'To protect our clothes while cooking' },
+    { question: '26. What do we use to stir soup?', options: ['Spoon', 'Knife', 'Fork'], answer: 'Spoon' },
+    { question: '27. Why should we drink milk?', options: ['To build strong bones and teeth', 'To make our teeth fall out', 'To feel sleepy'], answer: 'To build strong bones and teeth' },
+    { question: '28. What do we call the meal we eat in the morning?', options: ['Breakfast', 'Lunch', 'Dinner'], answer: 'Breakfast' },
+    { question: '29. Why is it important to have good manners at the table?', options: ['To be rude', 'To be polite and respectful', 'To make noise'], answer: 'To be polite and respectful' },
+    { question: '30. What do we use to dry our body after bathing?', options: ['Towel', 'Paper', 'Sponge'], answer: 'Towel' }
+],
+
+    'History': [
+    { question: '1. Who was the first President of the United States?', options: ['George Washington', 'Abraham Lincoln', 'Thomas Jefferson'], answer: 'George Washington' },
+    { question: '2. What is the capital city of Nigeria?', options: ['Lagos', 'Abuja', 'Kano'], answer: 'Abuja' },
+    { question: '3. Who is known as the Father of Nigeria?', options: ['Nnamdi Azikiwe', 'Olusegun Obasanjo', 'Yakubu Gowon'], answer: 'Nnamdi Azikiwe' },
+    { question: '4. What is the name of the famous ship that sank in 1912?', options: ['Titanic', 'Queen Mary', 'Mayflower'], answer: 'Titanic' },
+    { question: '5. Who was the first man to walk on the moon?', options: ['Neil Armstrong', 'Buzz Aldrin', 'Yuri Gagarin'], answer: 'Neil Armstrong' },
+    { question: '6. Who was the first Prime Minister of Nigeria?', options: ['Alhaji Sir Abubakar Tafawa Balewa', 'Goodluck Jonathan', 'Muhammadu Buhari'], answer: 'Alhaji Sir Abubakar Tafawa Balewa' },
+    { question: '7. What was the name of the ship Christopher Columbus sailed on?', options: ['Santa Maria', 'Mayflower', 'Endeavour'], answer: 'Santa Maria' },
+    { question: '8. Who was the first female Prime Minister of the United Kingdom?', options: ['Margaret Thatcher', 'Theresa May', 'Queen Elizabeth I'], answer: 'Margaret Thatcher' },
+    { question: '9. What year did Nigeria gain independence?', options: ['1960', '1970', '1980'], answer: '1960' },
+    { question: '10. Who was the first African-American President of the United States?', options: ['Barack Obama', 'Martin Luther King Jr.', 'Jesse Jackson'], answer: 'Barack Obama' },
+    { question: '11. Who was the famous leader of the Indian independence movement?', options: ['Mahatma Gandhi', 'Nelson Mandela', 'Winston Churchill'], answer: 'Mahatma Gandhi' },
+    { question: '12. What is the largest pyramid in Egypt?', options: ['Pyramid of Giza', 'Pyramid of Khafre', 'Pyramid of Djoser'], answer: 'Pyramid of Giza' },
+    { question: '13. Who was the first woman to fly solo across the Atlantic Ocean?', options: ['Amelia Earhart', 'Harriet Quimby', 'Jacqueline Cochran'], answer: 'Amelia Earhart' },
+    { question: '14. Who was the first Emperor of Rome?', options: ['Augustus', 'Julius Caesar', 'Nero'], answer: 'Augustus' },
+    { question: '15. What was the name of the first artificial satellite?', options: ['Sputnik', 'Explorer', 'Hubble'], answer: 'Sputnik' },
+    { question: '16. Who was known as the Iron Lady?', options: ['Margaret Thatcher', 'Indira Gandhi', 'Angela Merkel'], answer: 'Margaret Thatcher' },
+    { question: '17. Who wrote the national anthem of Nigeria?', options: ['Ben Odiase', 'Wole Soyinka', 'Chinua Achebe'], answer: 'Ben Odiase' },
+    { question: '18. Who discovered America in 1492?', options: ['Christopher Columbus', 'Leif Erikson', 'Marco Polo'], answer: 'Christopher Columbus' },
+    { question: '19. What is the name of the famous wall in China?', options: ['Great Wall of China', 'Berlin Wall', 'Wall of Jericho'], answer: 'Great Wall of China' },
+    { question: '20. Who was the first President of South Africa?', options: ['Nelson Mandela', 'Desmond Tutu', 'F. W. de Klerk'], answer: 'Nelson Mandela' },
+    { question: '21. What ancient city was buried under volcanic ash in AD 79?', options: ['Pompeii', 'Athens', 'Carthage'], answer: 'Pompeii' },
+    { question: '22. Who was the famous nurse during the Crimean War?', options: ['Florence Nightingale', 'Clara Barton', 'Marie Curie'], answer: 'Florence Nightingale' },
+    { question: '23. Who invented the telephone?', options: ['Alexander Graham Bell', 'Thomas Edison', 'Nikola Tesla'], answer: 'Alexander Graham Bell' },
+    { question: '24. What year did World War II end?', options: ['1945', '1950', '1960'], answer: '1945' },
+    { question: '25. Who was the Queen of England during the Victorian era?', options: ['Queen Victoria', 'Queen Elizabeth I', 'Queen Anne'], answer: 'Queen Victoria' },
+    { question: '26. Who was the famous civil rights leader in the United States?', options: ['Martin Luther King Jr.', 'Malcolm X', 'Rosa Parks'], answer: 'Martin Luther King Jr.' },
+    { question: '27. What is the name of the famous statue in New York Harbor?', options: ['Statue of Liberty', 'Christ the Redeemer', 'Big Ben'], answer: 'Statue of Liberty' },
+    { question: '28. Who painted the Mona Lisa?', options: ['Leonardo da Vinci', 'Vincent van Gogh', 'Pablo Picasso'], answer: 'Leonardo da Vinci' },
+    { question: '29. What was the name of the ship that brought the Pilgrims to America?', options: ['Mayflower', 'Santa Maria', 'Titanic'], answer: 'Mayflower' },
+    { question: '30. Who was the first woman to win a Nobel Prize?', options: ['Marie Curie', 'Jane Addams', 'Mother Teresa'], answer: 'Marie Curie' }
+],
+
+
+    'Creative and cultural art': [
+    { question: '1. What is drawing?', options: ['Writing letters', 'Creating pictures with lines', 'Playing games'], answer: 'Creating pictures with lines' },
+    { question: '2. What do we use to color pictures?', options: ['Pens', 'Crayons', 'Erasers'], answer: 'Crayons' },
+    { question: '3. What is a song?', options: ['A type of food', 'A piece of music with words', 'A game'], answer: 'A piece of music with words' },
+    { question: '4. What is dancing?', options: ['Moving your body to music', 'Sitting still', 'Reading books'], answer: 'Moving your body to music' },
+    { question: '5. What do we call a person who paints pictures?', options: ['Singer', 'Artist', 'Driver'], answer: 'Artist' },
+    { question: '6. What is the name of a place where we can see many paintings?', options: ['Library', 'Museum', 'Market'], answer: 'Museum' },
+    { question: '7. What are the primary colors?', options: ['Red, blue, yellow', 'Green, orange, purple', 'Black, white, grey'], answer: 'Red, blue, yellow' },
+    { question: '8. What is a sculpture?', options: ['A drawing', 'A three-dimensional artwork', 'A song'], answer: 'A three-dimensional artwork' },
+    { question: '9. What is acting?', options: ['Playing a character in a story', 'Drawing pictures', 'Cooking food'], answer: 'Playing a character in a story' },
+    { question: '10. What do we use to draw?', options: ['Knife', 'Pencil', 'Fork'], answer: 'Pencil' },
+    { question: '11. What is drama?', options: ['A story acted out on stage', 'A type of food', 'A kind of dance'], answer: 'A story acted out on stage' },
+    { question: '12. What is a mask used for in cultural dances?', options: ['To cover the face', 'To clean the floor', 'To cook food'], answer: 'To cover the face' },
+    { question: '13. What is a puppet?', options: ['A toy that can be moved to tell stories', 'A type of music', 'A drawing'], answer: 'A toy that can be moved to tell stories' },
+    { question: '14. What do we call music played by a band?', options: ['Concert', 'Movie', 'Game'], answer: 'Concert' },
+    { question: '15. What is the purpose of a costume in a play?', options: ['To dress up the actors', 'To eat food', 'To draw pictures'], answer: 'To dress up the actors' },
+    { question: '16. What are the materials used to make a collage?', options: ['Paper, glue, scissors', 'Water, soap, towel', 'Knife, fork, spoon'], answer: 'Paper, glue, scissors' },
+    { question: '17. What is a musical instrument?', options: ['A tool used to make music', 'A type of food', 'A piece of clothing'], answer: 'A tool used to make music' },
+    { question: '18. What is a mural?', options: ['A large painting on a wall', 'A small drawing', 'A type of dance'], answer: 'A large painting on a wall' },
+    { question: '19. What do we use to make a clay pot?', options: ['Clay', 'Paper', 'Wood'], answer: 'Clay' },
+    { question: '20. What is a traditional dance?', options: ['A dance that comes from a specific culture', 'A new dance', 'A game'], answer: 'A dance that comes from a specific culture' },
+    { question: '21. What is the use of a brush in painting?', options: ['To apply paint to a surface', 'To cut paper', 'To clean the floor'], answer: 'To apply paint to a surface' },
+    { question: '22. What is storytelling?', options: ['Telling a story to an audience', 'Eating food', 'Drawing pictures'], answer: 'Telling a story to an audience' },
+    { question: '23. What is a rhythm in music?', options: ['A pattern of sounds and beats', 'A type of drawing', 'A kind of food'], answer: 'A pattern of sounds and beats' },
+    { question: '24. What is a pattern?', options: ['A repeated design or sequence', 'A song', 'A game'], answer: 'A repeated design or sequence' },
+    { question: '25. What do we call a group of people who sing together?', options: ['Choir', 'Team', 'Band'], answer: 'Choir' },
+    { question: '26. What is a portrait?', options: ['A drawing or painting of a person', 'A type of dance', 'A kind of food'], answer: 'A drawing or painting of a person' },
+    { question: '27. What is a theater?', options: ['A place where plays and movies are shown', 'A place to eat', 'A place to draw'], answer: 'A place where plays and movies are shown' },
+    { question: '28. What is weaving?', options: ['Interlacing threads to make fabric', 'Singing a song', 'Playing a game'], answer: 'Interlacing threads to make fabric' },
+    { question: '29. What do we call a short performance that tells a story?', options: ['Play', 'Song', 'Game'], answer: 'Play' },
+    { question: '30. What is a landscape in art?', options: ['A picture of natural scenery', 'A type of dance', 'A piece of music'], answer: 'A picture of natural scenery' }
+],
+
+'Basic science and technology': [
+    { question: '1. What do plants need to grow?', options: ['Water, sunlight, soil', 'Sugar, salt, oil', 'Juice, milk, honey'], answer: 'Water, sunlight, soil' },
+    { question: '2. What is the color of the sky on a clear day?', options: ['Blue', 'Green', 'Red'], answer: 'Blue' },
+    { question: '3. Which part of the plant is usually green?', options: ['Leaf', 'Root', 'Seed'], answer: 'Leaf' },
+    { question: '4. What do we call the natural satellite of the Earth?', options: ['Moon', 'Sun', 'Star'], answer: 'Moon' },
+    { question: '5. How many legs does an insect have?', options: ['Six', 'Four', 'Two'], answer: 'Six' },
+    { question: '6. What do we use to see things far away?', options: ['Telescope', 'Microscope', 'Glasses'], answer: 'Telescope' },
+    { question: '7. Which is the largest planet in our solar system?', options: ['Jupiter', 'Earth', 'Mars'], answer: 'Jupiter' },
+    { question: '8. What is the main source of light for the Earth?', options: ['Sun', 'Moon', 'Stars'], answer: 'Sun' },
+    { question: '9. What do we call water in its solid form?', options: ['Ice', 'Steam', 'Rain'], answer: 'Ice' },
+    { question: '10. What do we use to measure time?', options: ['Clock', 'Thermometer', 'Scale'], answer: 'Clock' },
+    { question: '11. What do bees make?', options: ['Honey', 'Milk', 'Bread'], answer: 'Honey' },
+    { question: '12. What do we use to keep ourselves dry in the rain?', options: ['Umbrella', 'Hat', 'Sunglasses'], answer: 'Umbrella' },
+    { question: '13. What do fish use to breathe underwater?', options: ['Gills', 'Lungs', 'Nose'], answer: 'Gills' },
+    { question: '14. Which part of the body helps us to hear?', options: ['Ears', 'Eyes', 'Mouth'], answer: 'Ears' },
+    { question: '15. What is the shape of a ball?', options: ['Round', 'Square', 'Triangle'], answer: 'Round' },
+    { question: '16. What do birds use to fly?', options: ['Wings', 'Legs', 'Fins'], answer: 'Wings' },
+    { question: '17. What do we call a scientist who studies stars?', options: ['Astronomer', 'Biologist', 'Chemist'], answer: 'Astronomer' },
+    { question: '18. What is the name of our planet?', options: ['Earth', 'Mars', 'Venus'], answer: 'Earth' },
+    { question: '19. What do we use to see tiny objects?', options: ['Microscope', 'Telescope', 'Binoculars'], answer: 'Microscope' },
+    { question: '20. What do we call the process of changing from liquid to gas?', options: ['Evaporation', 'Freezing', 'Melting'], answer: 'Evaporation' },
+    { question: '21. Which animal is known as the king of the jungle?', options: ['Lion', 'Elephant', 'Tiger'], answer: 'Lion' },
+    { question: '22. What do we call the star at the center of our solar system?', options: ['Sun', 'Moon', 'Earth'], answer: 'Sun' },
+    { question: '23. What is the main ingredient in bread?', options: ['Flour', 'Water', 'Salt'], answer: 'Flour' },
+    { question: '24. What do we call a baby cat?', options: ['Kitten', 'Puppy', 'Cub'], answer: 'Kitten' },
+    { question: '25. What do plants release into the air during photosynthesis?', options: ['Oxygen', 'Carbon dioxide', 'Nitrogen'], answer: 'Oxygen' },
+    { question: '26. What is the force that pulls objects toward the Earth?', options: ['Gravity', 'Magnetism', 'Friction'], answer: 'Gravity' },
+    { question: '27. Which part of the body is used for thinking?', options: ['Brain', 'Heart', 'Stomach'], answer: 'Brain' },
+    { question: '28. What do cows give us?', options: ['Milk', 'Eggs', 'Wool'], answer: 'Milk' },
+    { question: '29. What do we call the process of making plants from seeds?', options: ['Germination', 'Pollination', 'Hibernation'], answer: 'Germination' },
+    { question: '30. What tool do we use to measure temperature?', options: ['Thermometer', 'Barometer', 'Ruler'], answer: 'Thermometer' }
+],
+
+    
+    'Leadership': [
+    { question: '1. Who is a leader?', options: ['Someone who follows', 'Someone who guides others', 'Someone who plays alone'], answer: 'Someone who guides others' },
+    { question: '2. What does a good leader do?', options: ['Helps others', 'Ignores others', 'Makes fun of others'], answer: 'Helps others' },
+    { question: '3. Who can be a leader?', options: ['Only adults', 'Only children', 'Anyone'], answer: 'Anyone' },
+    { question: '4. Why is it important to listen to others?', options: ['To understand them', 'To ignore them', 'To make them angry'], answer: 'To understand them' },
+    { question: '5. What is teamwork?', options: ['Working alone', 'Working together with others', 'Playing games'], answer: 'Working together with others' },
+    { question: '6. What should a leader always show?', options: ['Kindness', 'Anger', 'Sadness'], answer: 'Kindness' },
+    { question: '7. How can a leader help at school?', options: ['By being mean', 'By helping classmates', 'By breaking rules'], answer: 'By helping classmates' },
+    { question: '8. What does it mean to be responsible?', options: ['Taking care of duties', 'Ignoring duties', 'Playing all day'], answer: 'Taking care of duties' },
+    { question: '9. What is an example of a good leader?', options: ['Bullying others', 'Helping others', 'Stealing'], answer: 'Helping others' },
+    { question: '10. What should a leader do if someone is hurt?', options: ['Laugh at them', 'Help them', 'Ignore them'], answer: 'Help them' },
+    { question: '11. Why is it important to be honest?', options: ['To build trust', 'To tell lies', 'To make others angry'], answer: 'To build trust' },
+    { question: '12. What should a leader do when they make a mistake?', options: ['Blame others', 'Admit it and learn', 'Ignore it'], answer: 'Admit it and learn' },
+    { question: '13. How can a leader set a good example?', options: ['By following rules', 'By breaking rules', 'By being lazy'], answer: 'By following rules' },
+    { question: '14. What is a meeting?', options: ['A group of people coming together to discuss something', 'Playing alone', 'Sleeping'], answer: 'A group of people coming together to discuss something' },
+    { question: '15. How can a leader show respect?', options: ['By being rude', 'By listening to others', 'By ignoring others'], answer: 'By listening to others' },
+    { question: '16. Why is sharing important?', options: ['To show kindness', 'To be selfish', 'To take everything'], answer: 'To show kindness' },
+    { question: '17. How can a leader encourage others?', options: ['By giving up', 'By saying kind words', 'By being mean'], answer: 'By saying kind words' },
+    { question: '18. What is the job of a class monitor?', options: ['To help the teacher and classmates', 'To play games', 'To sleep'], answer: 'To help the teacher and classmates' },
+    { question: '19. How should a leader solve a problem?', options: ['By fighting', 'By finding a solution', 'By ignoring it'], answer: 'By finding a solution' },
+    { question: '20. What does it mean to be fair?', options: ['Treating everyone equally', 'Being unfair', 'Ignoring others'], answer: 'Treating everyone equally' },
+    { question: '21. What should a leader do during group work?', options: ['Take all the credit', 'Help and support the group', 'Do nothing'], answer: 'Help and support the group' },
+    { question: '22. How can a leader show courage?', options: ['By being afraid', 'By facing challenges bravely', 'By running away'], answer: 'By facing challenges bravely' },
+    { question: '23. Why is it important to say "thank you"?', options: ['To show appreciation', 'To be rude', 'To ignore others'], answer: 'To show appreciation' },
+    { question: '24. What is kindness?', options: ['Being mean', 'Helping and caring for others', 'Being selfish'], answer: 'Helping and caring for others' },
+    { question: '25. What should a leader do if they see someone being bullied?', options: ['Join in the bullying', 'Help stop the bullying', 'Ignore it'], answer: 'Help stop the bullying' },
+    { question: '26. How can a leader stay organized?', options: ['By being messy', 'By keeping things in order', 'By forgetting tasks'], answer: 'By keeping things in order' },
+    { question: '27. What is an example of being helpful?', options: ['Doing your own work', 'Helping a friend with their work', 'Ignoring others'], answer: 'Helping a friend with their work' },
+    { question: '28. What should a leader do if someone has a different idea?', options: ['Ignore them', 'Listen and consider their idea', 'Laugh at them'], answer: 'Listen and consider their idea' },
+    { question: '29. What does it mean to be patient?', options: ['Getting angry quickly', 'Waiting calmly', 'Being in a hurry'], answer: 'Waiting calmly' },
+    { question: '30. How can a leader inspire others?', options: ['By being lazy', 'By setting a good example', 'By being mean'], answer: 'By setting a good example' }
+],
+
+    'French language': [
+    { question: '1. How do you say "Hello" in French?', options: ['Bonjour', 'Hola', 'Hello'], answer: 'Bonjour' },
+    { question: '2. What is the French word for "Goodbye"?', options: ['Adios', 'Au revoir', 'Ciao'], answer: 'Au revoir' },
+    { question: '3. How do you say "Thank you" in French?', options: ['Merci', 'Gracias', 'Danke'], answer: 'Merci' },
+    { question: '4. What is the French word for "Please"?', options: ['Por favor', 'S\'il vous plaît', 'Bitte'], answer: 'S\'il vous plaît' },
+    { question: '5. How do you say "Yes" in French?', options: ['Oui', 'Sí', 'Ja'], answer: 'Oui' },
+    { question: '6. What is the French word for "No"?', options: ['Nein', 'Non', 'No'], answer: 'Non' },
+    { question: '7. How do you say "Good night" in French?', options: ['Buenas noches', 'Buona notte', 'Bonne nuit'], answer: 'Bonne nuit' },
+    { question: '8. What is the French word for "Water"?', options: ['Agua', 'Eau', 'Wasser'], answer: 'Eau' },
+    { question: '9. How do you say "Friend" in French?', options: ['Amigo', 'Freund', 'Ami'], answer: 'Ami' },
+    { question: '10. What is the French word for "Book"?', options: ['Libro', 'Buch', 'Livre'], answer: 'Livre' },
+    { question: '11. How do you say "Teacher" in French?', options: ['Maestro', 'Lehrer', 'Professeur'], answer: 'Professeur' },
+    { question: '12. What is the French word for "School"?', options: ['Escuela', 'Schule', 'École'], answer: 'École' },
+    { question: '13. How do you say "House" in French?', options: ['Casa', 'Haus', 'Maison'], answer: 'Maison' },
+    { question: '14. What is the French word for "Dog"?', options: ['Perro', 'Hund', 'Chien'], answer: 'Chien' },
+    { question: '15. How do you say "Cat" in French?', options: ['Gato', 'Katze', 'Chat'], answer: 'Chat' },
+    { question: '16. What is the French word for "Father"?', options: ['Padre', 'Vater', 'Père'], answer: 'Père' },
+    { question: '17. How do you say "Mother" in French?', options: ['Madre', 'Mutter', 'Mère'], answer: 'Mère' },
+    { question: '18. What is the French word for "Brother"?', options: ['Hermano', 'Bruder', 'Frère'], answer: 'Frère' },
+    { question: '19. How do you say "Sister" in French?', options: ['Hermana', 'Schwester', 'Sœur'], answer: 'Sœur' },
+    { question: '20. What is the French word for "Car"?', options: ['Coche', 'Auto', 'Voiture'], answer: 'Voiture' },
+    { question: '21. How do you say "Bicycle" in French?', options: ['Bicicleta', 'Fahrrad', 'Vélo'], answer: 'Vélo' },
+    { question: '22. What is the French word for "Table"?', options: ['Mesa', 'Tisch', 'Table'], answer: 'Table' },
+    { question: '23. How do you say "Chair" in French?', options: ['Silla', 'Stuhl', 'Chaise'], answer: 'Chaise' },
+    { question: '24. What is the French word for "Window"?', options: ['Ventana', 'Fenster', 'Fenêtre'], answer: 'Fenêtre' },
+    { question: '25. How do you say "Door" in French?', options: ['Puerta', 'Tür', 'Porte'], answer: 'Porte' },
+    { question: '26. What is the French word for "Sun"?', options: ['Sol', 'Sonne', 'Soleil'], answer: 'Soleil' },
+    { question: '27. How do you say "Moon" in French?', options: ['Luna', 'Mond', 'Lune'], answer: 'Lune' },
+    { question: '28. What is the French word for "Star"?', options: ['Estrella', 'Stern', 'Étoile'], answer: 'Étoile' },
+    { question: '29. How do you say "Rain" in French?', options: ['Lluvia', 'Regen', 'Pluie'], answer: 'Pluie' },
+    { question: '30. What is the French word for "Snow"?', options: ['Nieve', 'Schnee', 'Neige'], answer: 'Neige' }
+],
+
+    'Digital literacy': [
+    { question: '1. What is a computer?', options: ['A machine that helps people do work', 'A type of bicycle', 'A type of fruit'], answer: 'A machine that helps people do work' },
+    { question: '2. What do you use to move the cursor on the computer screen?', options: ['Mouse', 'Keyboard', 'Monitor'], answer: 'Mouse' },
+    { question: '3. What do you call a small picture on a computer screen that you can click on?', options: ['Icon', 'Button', 'Folder'], answer: 'Icon' },
+    { question: '4. Which device do you use to type words into a computer?', options: ['Keyboard', 'Mouse', 'Monitor'], answer: 'Keyboard' },
+    { question: '5. What do you use to watch videos and see pictures on a computer?', options: ['Monitor', 'Keyboard', 'Mouse'], answer: 'Monitor' },
+    { question: '6. What is the main button on the mouse used for?', options: ['Clicking', 'Scrolling', 'Typing'], answer: 'Clicking' },
+    { question: '7. What do you use to turn on a computer?', options: ['Power button', 'Volume button', 'Keyboard'], answer: 'Power button' },
+    { question: '8. Where do you type website addresses to visit them?', options: ['Web browser', 'Notepad', 'Calculator'], answer: 'Web browser' },
+    { question: '9. What do you call programs that help you do different things on a computer?', options: ['Software', 'Hardware', 'Firmware'], answer: 'Software' },
+    { question: '10. How do you make a computer do what you want?', options: ['Give it instructions', 'Ask nicely', 'Sing a song'], answer: 'Give it instructions' },
+    { question: '11. What should you do if you don’t know how to use a computer program?', options: ['Ask for help', 'Guess', 'Close the program'], answer: 'Ask for help' },
+    { question: '12. What do you call people who make programs and websites?', options: ['Programmers', 'Artists', 'Teachers'], answer: 'Programmers' },
+    { question: '13. What is a password used for?', options: ['To keep your account safe', 'To send emails', 'To make phone calls'], answer: 'To keep your account safe' },
+    { question: '14. What should you do if you see something you don’t like on a computer?', options: ['Tell an adult', 'Ignore it', 'Turn off the computer'], answer: 'Tell an adult' },
+    { question: '15. What do you use to talk to people on the computer?', options: ['Microphone', 'Speaker', 'Keyboard'], answer: 'Microphone' },
+    { question: '16. How do you save your work on a computer?', options: ['Click on save', 'Shut down the computer', 'Print it out'], answer: 'Click on save' },
+    { question: '17. What do you call a device that connects to the computer to save your work?', options: ['USB flash drive', 'Mouse pad', 'Scanner'], answer: 'USB flash drive' },
+    { question: '18. What do you use to send emails?', options: ['Email program', 'Web browser', 'Calculator'], answer: 'Email program' },
+    { question: '19. How do you make text bold on a computer?', options: ['Click on bold button', 'Shake the screen', 'Turn off the computer'], answer: 'Click on bold button' },
+    { question: '20. What do you use to listen to music on a computer?', options: ['Speakers', 'Microphone', 'Keyboard'], answer: 'Speakers' },
+    { question: '21. What do you call the main part of a computer system?', options: ['Central processing unit (CPU)', 'Printer', 'Mouse'], answer: 'Central processing unit (CPU)' },
+    { question: '22. How do you turn off a computer safely?', options: ['Shut down', 'Unplug it', 'Throw it away'], answer: 'Shut down' },
+    { question: '23. What do you call a small program that can be added to a web browser?', options: ['Extension', 'Attachment', 'Link'], answer: 'Extension' },
+    { question: '24. What do you use to change the size of text on a computer?', options: ['Font size option', 'Color option', 'Brightness option'], answer: 'Font size option' },
+    { question: '25. How do you open a program on a computer?', options: ['Double-click its icon', 'Shake the mouse', 'Press any key'], answer: 'Double-click its icon' },
+    { question: '26. What do you call a picture you take of what’s on your computer screen?', options: ['Screenshot', 'Photo', 'Video'], answer: 'Screenshot' },
+    { question: '27. How do you create a new folder on a computer?', options: ['Right-click and choose new folder', 'Drag and drop', 'Sing a song'], answer: 'Right-click and choose new folder' },
+    { question: '28. What do you call a group of computers connected together?', options: ['Network', 'Crowd', 'Team'], answer: 'Network' },
+    { question: '29. How do you delete a file on a computer?', options: ['Right-click and choose delete', 'Print it', 'Unplug the computer'], answer: 'Right-click and choose delete' },
+    { question: '30. What do you use to search for information on the internet?', options: ['Search engine', 'Web browser', 'Calculator'], answer: 'Search engine' }
+],
+
+
+'Verbal reasoning': [
+    { question: '1. Which word does not belong with the others?', options: ['Cat', 'Dog', 'Car', 'Bird'], answer: 'Car' },
+    { question: '2. Complete the sentence: The sun is ____.', options: ['Hot', 'Blue', 'Big', 'Cold'], answer: 'Hot' },
+    { question: '3. What comes next in this sequence: Circle, Square, Triangle, ____?', options: ['Rectangle', 'Star', 'Oval', 'Heart'], answer: 'Rectangle' },
+    { question: '4. Which word is the odd one out?', options: ['Apple', 'Banana', 'Chair', 'Orange'], answer: 'Chair' },
+    { question: '5. Which is the opposite of "fast"?', options: ['Slow', 'Quick', 'Speedy', 'Rapid'], answer: 'Slow' },
+    { question: '6. What do you do with a pencil?', options: ['Write', 'Eat', 'Sleep', 'Sing'], answer: 'Write' },
+    { question: '7. Which animal is not a bird?', options: ['Dog', 'Eagle', 'Parrot', 'Crow'], answer: 'Dog' },
+    { question: '8. What color is the sky during the day?', options: ['Blue', 'Red', 'Green', 'Yellow'], answer: 'Blue' },
+    { question: '9. Which number is missing in this sequence: 1, 2, ___, 4, 5?', options: ['3', '6', '7', '8'], answer: '3' },
+    { question: '10. What do you wear on your feet?', options: ['Shoes', 'Hat', 'Gloves', 'Socks'], answer: 'Shoes' },
+    { question: '11. What do you use to drink water?', options: ['Cup', 'Plate', 'Spoon', 'Fork'], answer: 'Cup' },
+    { question: '12. Which shape has three sides?', options: ['Triangle', 'Square', 'Circle', 'Rectangle'], answer: 'Triangle' },
+    { question: '13. What do you use to brush your teeth?', options: ['Toothbrush', 'Comb', 'Soap', 'Towel'], answer: 'Toothbrush' },
+    { question: '14. What do you use to eat soup?', options: ['Spoon', 'Knife', 'Fork', 'Plate'], answer: 'Spoon' },
+    { question: '15. Which month comes after June?', options: ['July', 'May', 'August', 'September'], answer: 'July' },
+    { question: '16. Which is a vegetable?', options: ['Carrot', 'Banana', 'Orange', 'Apple'], answer: 'Carrot' },
+    { question: '17. Which is the opposite of "big"?', options: ['Small', 'Tall', 'Fat', 'Heavy'], answer: 'Small' },
+    { question: '18. Which animal says "Meow"?', options: ['Cat', 'Dog', 'Cow', 'Horse'], answer: 'Cat' },
+    { question: '19. What color is a banana?', options: ['Yellow', 'Red', 'Green', 'Blue'], answer: 'Yellow' },
+    { question: '20. What do you do with a book?', options: ['Read', 'Eat', 'Sleep', 'Sing'], answer: 'Read' },
+    { question: '21. Which number is missing in this sequence: 5, 10, ___, 20, 25?', options: ['15', '30', '40', '50'], answer: '15' },
+    { question: '22. What do you use to write?', options: ['Pencil', 'Erasers', 'Ruler', 'Sharpener'], answer: 'Pencil' },
+    { question: '23. Which shape has four sides?', options: ['Square', 'Triangle', 'Circle', 'Oval'], answer: 'Square' },
+    { question: '24. What do you use to cut paper?', options: ['Scissors', 'Glue', 'Tape', 'Stapler'], answer: 'Scissors' },
+    { question: '25. Which day comes after Tuesday?', options: ['Wednesday', 'Monday', 'Friday', 'Saturday'], answer: 'Wednesday' },
+    { question: '26. Which is the opposite of "happy"?', options: ['Sad', 'Angry', 'Excited', 'Calm'], answer: 'Sad' },
+    { question: '27. What do you wear on your head?', options: ['Hat', 'Shoes', 'Gloves', 'Socks'], answer: 'Hat' },
+    { question: '28. Which animal lives in water?', options: ['Fish', 'Cat', 'Dog', 'Cow'], answer: 'Fish' },
+    { question: '29. What do you use to eat rice?', options: ['Fork', 'Spoon', 'Knife', 'Chopsticks'], answer: 'Spoon' },
+    { question: '30. Which season comes after summer?', options: ['Autumn', 'Winter', 'Spring', 'Rainy'], answer: 'Autumn' }
+],
+
+
+'Quantitative reasoning': [
+    { question: '1. How many legs does a cow have?', options: ['2', '4', '6', '8'], answer: '4' },
+    { question: '2. If you have 3 apples and you eat 1, how many apples are left?', options: ['1', '2', '3', '4'], answer: '2' },
+    { question: '3. How many fingers do you have on one hand?', options: ['3', '4', '5', '6'], answer: '5' },
+    { question: '4. How many sides does a triangle have?', options: ['2', '3', '4', '5'], answer: '3' },
+    { question: '5. If you have 4 crayons and you give away 2, how many crayons do you have left?', options: ['1', '2', '3', '4'], answer: '2' },
+    { question: '6. How many eyes does a person have?', options: ['1', '2', '3', '4'], answer: '2' },
+    { question: '7. If you have 5 balls and you add 3 more balls, how many balls do you have in total?', options: ['6', '7', '8', '9'], answer: '8' },
+    { question: '8. How many wheels does a bicycle have?', options: ['1', '2', '3', '4'], answer: '2' },
+    { question: '9. If you have 6 pencils and you lose 1, how many pencils do you have left?', options: ['2', '3', '4', '5'], answer: '5' },
+    { question: '10. How many months are there in a year?', options: ['10', '11', '12', '13'], answer: '12' },
+    { question: '11. How many corners does a square have?', options: ['2', '3', '4', '5'], answer: '4' },
+    { question: '12. If you have 8 candies and you eat 3, how many candies are left?', options: ['3', '4', '5', '6'], answer: '5' },
+    { question: '13. How many legs does an insect have?', options: ['4', '6', '8', '10'], answer: '6' },
+    { question: '14. If you have 7 books and you read 2, how many books do you have left?', options: ['3', '4', '5', '6'], answer: '5' },
+    { question: '15. How many sides does a rectangle have?', options: ['2', '3', '4', '5'], answer: '4' },
+    { question: '16. If you have 9 marbles and you give away 4, how many marbles do you have left?', options: ['3', '4', '5', '6'], answer: '5' },
+    { question: '17. How many wings does a butterfly have?', options: ['2', '4', '6', '8'], answer: '4' },
+    { question: '18. If you have 10 balloons and you give away 3, how many balloons do you have left?', options: ['4', '5', '6', '7'], answer: '7' },
+    { question: '19. How many days are there in a week?', options: ['5', '6', '7', '8'], answer: '7' },
+    { question: '20. How many legs does a spider have?', options: ['4', '6', '8', '10'], answer: '8' },
+    { question: '21. If you have 12 cookies and you eat 6, how many cookies do you have left?', options: ['4', '5', '6', '7'], answer: '6' },
+    { question: '22. How many sides does a circle have?', options: ['0', '1', '2', '3'], answer: '0' },
+    { question: '23. How many ears does a person have?', options: ['1', '2', '3', '4'], answer: '2' },
+    { question: '24. If you have 15 toy cars and you give away 8, how many toy cars do you have left?', options: ['5', '6', '7', '8'], answer: '7' },
+    { question: '25. How many wheels does a car have?', options: ['2', '3', '4', '5'], answer: '4' },
+    { question: '26. If you have 16 candies and you eat 9, how many candies do you have left?', options: ['5', '6', '7', '8'], answer: '7' },
+    { question: '27. How many legs does a cat have?', options: ['2', '3', '4', '5'], answer: '4' },
+    { question: '28. How many petals does a flower usually have?', options: ['3', '4', '5', '6'], answer: '4' },
+    { question: '29. If you have 18 marbles and you give away 10, how many marbles do you have left?', options: ['5', '6', '7', '8'], answer: '8' },
+    { question: '30. How many fingers do you have on both hands?', options: ['8', '10', '12', '14'], answer: '10' }
+],
+
+
+    'Music studies': [
+    { question: '1. What is music?', options: ['Singing', 'Playing sports', 'Drawing'], answer: 'Singing' },
+    { question: '2. Which of these is a musical instrument?', options: ['Chair', 'Guitar', 'Ball'], answer: 'Guitar' },
+    { question: '3. What do musicians do?', options: ['Cook', 'Play music', 'Run'], answer: 'Play music' },
+    { question: '4. What do you use to make music?', options: ['Books', 'Piano', 'Shoes'], answer: 'Piano' },
+    { question: '5. How do you listen to music?', options: ['With your eyes', 'With your ears', 'With your nose'], answer: 'With your ears' },
+    { question: '6. What do musicians use to sing?', options: ['Microphone', 'Chair', 'Plate'], answer: 'Microphone' },
+    { question: '7. What do you do when you hear music?', options: ['Sleep', 'Dance', 'Eat'], answer: 'Dance' },
+    { question: '8. What do you call a person who makes music?', options: ['Teacher', 'Musician', 'Doctor'], answer: 'Musician' },
+    { question: '9. Which of these is a musical note?', options: ['Letter', 'Number', 'Do'], answer: 'Do' },
+    { question: '10. What do you use to hit a drum?', options: ['Fork', 'Stick', 'Spoon'], answer: 'Stick' },
+    { question: '11. What do you call the group of people who sing together?', options: ['Choir', 'Orchestra', 'Team'], answer: 'Choir' },
+    { question: '12. What do musicians play to make music?', options: ['Toys', 'Instruments', 'Games'], answer: 'Instruments' },
+    { question: '13. Which of these is a musical instrument?', options: ['Ball', 'Flower', 'Violin'], answer: 'Violin' },
+    { question: '14. What do you do with a musical instrument?', options: ['Ride it', 'Play it', 'Read it'], answer: 'Play it' },
+    { question: '15. How do you make music?', options: ['Sleeping', 'Eating', 'Singing and playing instruments'], answer: 'Singing and playing instruments' },
+    { question: '16. What do you need to play music?', options: ['Pencil', 'Paper', 'Skills and practice'], answer: 'Skills and practice' },
+    { question: '17. What do you call a song that tells a story?', options: ['Fairy tale', 'Lullaby', 'Ballad'], answer: 'Ballad' },
+    { question: '18. How do musicians learn to play instruments?', options: ['By listening', 'By smelling', 'By sleeping'], answer: 'By listening' },
+    { question: '19. What do you call the person who writes music?', options: ['Writer', 'Composer', 'Singer'], answer: 'Composer' },
+    { question: '20. What do you do when you hear your favorite song?', options: ['Sit still', 'Laugh', 'Sing along'], answer: 'Sing along' },
+    { question: '21. What do you use to blow into and make music?', options: ['Shoes', 'Trumpet', 'Plate'], answer: 'Trumpet' },
+    { question: '22. What do you call a fast, lively piece of music?', options: ['Slow', 'Waltz', 'March'], answer: 'March' },
+    { question: '23. What do you call a musical group that plays together?', options: ['Choir', 'Orchestra', 'Team'], answer: 'Orchestra' },
+    { question: '24. What do you call the main part of a song that repeats?', options: ['Verse', 'Bridge', 'Chorus'], answer: 'Chorus' },
+    { question: '25. What do you use to play a guitar?', options: ['Bow', 'Pick', 'Brush'], answer: 'Pick' },
+    { question: '26. What do you use to play a piano?', options: ['Hammer', 'Stick', 'Fingers'], answer: 'Fingers' },
+    { question: '27. What do you call the written symbols for music?', options: ['Numbers', 'Letters', 'Notes'], answer: 'Notes' },
+    { question: '28. What do you call a slow, soft piece of music?', options: ['Loud', 'Ballad', 'March'], answer: 'Ballad' },
+    { question: '29. What do you do to make music sound good?', options: ['Play loudly', 'Practice', 'Stop'], answer: 'Practice' },
+    { question: '30. What do you use to play a drum?', options: ['Hands', 'Legs', 'Head'], answer: 'Hands' }
+]
+
+    
+};
+
+function displayQuestions(subject) {
+    const questionList = questions[subject];
+    if (questionList) {
+        // Clear previous questions if any
+        document.getElementById('questionContainer').innerHTML = '';
+        // Display questions
+        questionList.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('card', 'mt-3');
+            questionElement.setAttribute('data-subject', subject);
+            questionElement.setAttribute('data-question-index', index);
+            questionElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${question.question}</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option1${index}" value="${question.options[0]}">
+                        <label class="form-check-label" for="option1${index}">
+                            ${question.options[0]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option2${index}" value="${question.options[1]}">
+                        <label class="form-check-label" for="option2${index}">
+                            ${question.options[1]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option3${index}" value="${question.options[2]}">
+                        <label class="form-check-label" for="option3${index}">
+                            ${question.options[2]}
+                        </label>
+                    </div>
+                </div>
+            `;
+            document.getElementById('questionContainer').appendChild(questionElement);
+        });
+        
+        // Add submit button
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary mt-3');
+        submitButton.textContent = 'Submit Answers';
+        submitButton.onclick = calculateScore;
+        document.getElementById('questionContainer').appendChild(submitButton);
+    }
+}
+
+
+
+function calculateScore(username) {
+    let score = 0;
+    const questionCards = document.querySelectorAll('.card.mt-3');
+    
+    questionCards.forEach((card, index) => {
+        const selectedOption = card.querySelector('input[type=radio]:checked');
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const subject = card.getAttribute('data-subject');
+            const questionIndex = card.getAttribute('data-question-index');
+            const correctAnswer = questions[subject][questionIndex].answer;
+            if (selectedAnswer === correctAnswer) {
+                score += 3.33333333; // Each correct answer earns 3.33 marks
+            }
+        }
+    });
+
+    // Determine the grade based on score ranges
+let grade;
+if (score >= 0 && score <= 17) {
+    grade = 'F';
+} else if (score >= 18 && score <= 30) {
+    grade = 'E';
+} else if (score >= 31 && score <= 44) {
+    grade = 'D';
+} else if (score >= 45 && score <= 69) {
+    grade = 'C';
+} else if (score >= 70 && score <= 84) {
+    grade = 'B';
+} else if (score >= 85 && score <= 100) {
+    grade = 'A';
+} else {
+    grade = 'Invalid'; // If score exceeds the expected range
+}
+
+
+    // Display the score and grade on the page
+    const scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.textContent = `Congratulations, your score is: ${score}, and your grade is: ${grade}`;
+}
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = minutes + ':' + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = '00:00';
+            // Time is up, automatically submit the exam
+            calculateScore();
+        }
+    }, 1000);
+}
+
+// Function to attach click event listeners to subject elements
+function attachTimerToSubjects() {
+    const subjects = document.querySelectorAll('[id^="collapsePrimary"]'); // Select all elements with ids starting with "collapsePrimary"
+    subjects.forEach(subject => {
+        subject.addEventListener('click', () => {
+            const display = document.getElementById('timer-display');
+            const timeLimit = 60 * 10; // 10 minutes in seconds
+            startTimer(timeLimit, display);
+        });
+    });
+}
+
+window.onload = function () {
+    attachTimerToSubjects();
+};
+
+        
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

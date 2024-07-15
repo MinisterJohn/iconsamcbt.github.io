@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SS2</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .hidden { 
+            display: none; 
+        }
+        .logo {
+            height: 50px;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img\logo.jpg" alt="Logo 1" class="logo">
+                <img src="img\logo2.jpg" alt="Logo 2" class="logo">
+                Computer Based Examination System
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    
+    <div class="container mt-5">
+      <div id="subjectAccordion">
+          <!-- SS 2 -->
+          <div class="card">
+              <div class="card-header" id="headingSS2">
+                  <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSS2" aria-expanded="true" aria-controls="collapseSS2">
+                          SS 2
+                      </button>
+                  </h2>
+              </div>
+              <div id="collapseSS2" class="collapse show" aria-labelledby="headingSS2" data-parent="#subjectAccordion">
+                  <div class="card-body">
+                      <button class="btn btn-secondary" onclick="startExam('Mathematics')">Mathematics</button>
+                      <button class="btn btn-secondary" onclick="startExam('English language')">English language</button>
+                      <button class="btn btn-secondary" onclick="startExam('Biology')">Biology</button>
+                      <button class="btn btn-secondary" onclick="startExam('Civic education')">Civic education</button>
+                      <button class="btn btn-secondary" onclick="startExam('Physics')">Physics</button>
+                      <button class="btn btn-secondary" onclick="startExam('Chemistry')">Chemistry</button>
+                      <button class="btn btn-secondary" onclick="startExam('Government')">Government</button>
+                      <button class="btn btn-secondary" onclick="startExam('Digital literacy')">Digital literacy</button>
+                      <button class="btn btn-secondary" onclick="startExam('Economics')">Economics</button>
+                      <button class="btn btn-secondary" onclick="startExam('Geography')">Geography</button>
+                      <button class="btn btn-secondary" onclick="startExam('Leadership')">Leadership</button>
+                      <button class="btn btn-secondary" onclick="startExam('French language')">French language</button>
+                      <button class="btn btn-secondary" onclick="startExam('Entrepreneurship')">Entrepreneurship</button>
+                      <button class="btn btn-secondary" onclick="startExam('Food and nutrition')">Food and nutrition</button>
+                      <button class="btn btn-secondary" onclick="startExam('Music studies')">Music studies</button>
+                      <button class="btn btn-secondary" onclick="startExam('Agricultural studies')">Agricultural studies</button>
+                  </div>
+              </div>
+          
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+  function startExam(subject) {
+      // You can add logic here to start the exam for the selected subject
+      alert('Starting exam for ' + subject);
+      // Example: Redirect to an exam page or load questions dynamically
+      // window.location.href = 'exam-page.html?subject=' + encodeURIComponent(subject);
+  }
+  </script>
+  
+  </body>
+  </html>

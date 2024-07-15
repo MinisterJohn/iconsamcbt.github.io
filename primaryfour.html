@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primary Four</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .logo {
+            height: 50px;
+        }
+        .footer-section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #score-display {
+      max-width: 600px;
+      margin: auto;
+    }
+
+#score-display h4 {
+          color: #007bff; /* Bootstrap primary color */
+        }
+      #timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: fixed;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+    #timer-display {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.jpg" alt="Logo 1" class="logo">
+            <img src="img/logo2.jpg" alt="Logo 2" class="logo">
+            Computer Based Examination System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<!-- Container for displaying timer -->
+<div id="timer-container">
+  <center>
+      <div id="timer-display">
+          <p>Exam Time:</p>
+          <p id="timer">00:00</p>
+      </div>
+  </center>
+</div>
+
+<div class="container mt-5">
+    <div id="subjectAccordion">
+        <!-- Primary 4 -->
+        <div class="card">
+            <div class="card-header" id="headingPrimary4">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePrimary4" aria-expanded="true" aria-controls="collapsePrimary4">
+                        Primary 4
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePrimary4" class="collapse show" aria-labelledby="headingPrimary4" data-parent="#subjectAccordion">
+                <div class="card-body">
+                    <button class="btn btn-secondary" onclick="displayQuestions('Mathematics')">Mathematics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('English language')">English language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Yoruba language')">Yoruba language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Civic education')">Civic education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Physical and health education')">Physical and health education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Christian religion studies')">Christian religion studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Social studies')">Social studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Agricultural studies')">Agricultural studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Home economics')">Home economics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('History')">History</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Creative and cultural art')">Creative and cultural art</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Basic science and technology')">Basic science and technology</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Leadership')">Leadership</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('French language')">French language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Digital literacy')">Digital literacy</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Verbal reasoning')">Verbal reasoning</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Quantitative reasoning')">Quantitative reasoning</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Container for displaying questions -->
+<div id="questionContainer" class="container mt-3">
+
+  
+</div> 
+
+
+<!-- Container for displaying score for each subject -->
+<div id="score-display" class="mt-3 p-3 border rounded shadow-sm bg-light">
+  <h4 class="text-center">Score board</h4>
+  <!-- Add score content here -->
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <p>Developed by Livingstone Consult 2024</p>
+    </div>
+</footer>
+
+<script>
+
+const questions = {
+    'Mathematics': [
+    { question: 'What is the importance of estimating length?', options: ['To simplify measurements', 'To cook food', 'To drive cars'], answer: 'To simplify measurements' },
+    { question: 'Which profession uses length measurements to create products?', options: ['Fashion designers', 'Doctors', 'Chefs'], answer: 'Fashion designers' },
+    { question: 'How is the length of objects usually compared?', options: ['By measuring', 'By weighing', 'By tasting'], answer: 'By measuring' },
+    { question: 'Why is understanding weight important in everyday life?', options: ['For cooking', 'For simplifying measurements', 'For weighing heavy objects'], answer: 'For weighing heavy objects' },
+    { question: 'Which of the following items might require weight measurement for sales?', options: ['Fish', 'Books', 'Clothes'], answer: 'Fish' },
+    { question: 'What is the purpose of knowing the properties of squares and rectangles?', options: ['For artistic design of houses', 'For writing essays', 'For solving algebra'], answer: 'For artistic design of houses' },
+    { question: 'What do you calculate when you find the perimeter of a square?', options: ['The total length of all sides', 'The volume', 'The area'], answer: 'The total length of all sides' },
+    { question: 'Why is understanding time important?', options: ['To plan events and occasions', 'To write stories', 'To draw pictures'], answer: 'To plan events and occasions' },
+    { question: 'Which unit is used to measure capacity?', options: ['Litres', 'Meters', 'Kilograms'], answer: 'Litres' },
+    { question: 'What is one use of measuring capacity?', options: ['Fueling cars', 'Reading books', 'Drawing'], answer: 'Fueling cars' },
+    { question: 'Why might a fuel station need to understand capacity?', options: ['To measure fuel accurately', 'To measure distance', 'To measure weight'], answer: 'To measure fuel accurately' },
+    { question: 'Which shapes have properties that include symmetry?', options: ['Plane shapes', 'Cylinders', 'Pyramids'], answer: 'Plane shapes' },
+    { question: 'What is an example of a three-dimensional shape?', options: ['Cube', 'Square', 'Rectangle'], answer: 'Cube' },
+    { question: 'Why is it important to understand everyday statistics?', options: ['To collect and interpret information', 'To cook food', 'To play sports'], answer: 'To collect and interpret information' },
+    { question: 'Which graphical representation is used to show data in statistics?', options: ['Bar Chart', 'Pie Chart', 'Line Graph'], answer: 'Bar Chart' },
+    { question: 'What is the basic unit of measurement for length?', options: ['Meter', 'Liter', 'Kilogram'], answer: 'Meter' },
+    { question: 'How is the perimeter of a rectangle calculated?', options: ['By adding all the sides', 'By multiplying the length and width', 'By dividing the length by the width'], answer: 'By adding all the sides' },
+    { question: 'What is the quantitative aptitude?', options: ['Ability to perform mathematical calculations', 'Ability to write stories', 'Ability to sing songs'], answer: 'Ability to perform mathematical calculations' },
+    { question: 'Which activity helps us understand scheduling and timing?', options: ['Using a calendar', 'Drawing shapes', 'Cooking food'], answer: 'Using a calendar' },
+    { question: 'Why is multiplication of weight important?', options: ['To find the total weight when adding several weights', 'To find the distance traveled', 'To measure capacity'], answer: 'To find the total weight when adding several weights' },
+    { question: 'What is the use of three-dimensional shapes in design?', options: ['To create architectural models', 'To write essays', 'To cook food'], answer: 'To create architectural models' },
+    { question: 'How does symmetry help in designing clothes?', options: ['Ensures balance and equal proportions', 'Helps in cooking', 'Aids in writing stories'], answer: 'Ensures balance and equal proportions' },
+    { question: 'What is a pictogram?', options: ['A way to show data using pictures', 'A mathematical formula', 'A type of food'], answer: 'A way to show data using pictures' },
+    { question: 'Why is division of capacity important?', options: ['To distribute liquids evenly', 'To draw pictures', 'To measure weight'], answer: 'To distribute liquids evenly' },
+    { question: 'Which unit is used to measure weight?', options: ['Kilograms', 'Meters', 'Liters'], answer: 'Kilograms' },
+    { question: 'How is the area of a rectangle calculated?', options: ['Length x Width', 'Length + Width', 'Length - Width'], answer: 'Length x Width' },
+    { question: 'What is one importance of knowing weight?', options: ['It helps in sales of meat and fish', 'It helps in writing essays', 'It helps in drawing'], answer: 'It helps in sales of meat and fish' },
+    { question: 'Which concept is important for carpentry works?', options: ['Length measurement', 'Reading comprehension', 'Story writing'], answer: 'Length measurement' },
+    { question: 'What is the purpose of understanding plane shapes?', options: ['For designing buildings and clothes', 'For cooking', 'For singing songs'], answer: 'For designing buildings and clothes' },
+    { question: 'How does understanding time help weather forecasters?', options: ['To predict weather patterns accurately', 'To write stories', 'To draw pictures'], answer: 'To predict weather patterns accurately' }
+],
+
+    'English language': [
+    { question: 'What is the primary focus of the speech work?', options: ['Writing formal letters', 'Aural discrimination /i/ - /e/', 'Punctuation marks'], answer: 'Aural discrimination /i/ - /e/' },
+    { question: 'Which activity involves comparing things according to weight, size, height, distance, shape, and quality?', options: ['Reading comprehension', 'Structure', 'Dictation'], answer: 'Structure' },
+    { question: 'What are students expected to write in the \'Writing: Guided composition\' section?', options: ['A story about their family', 'A guided composition on a motor park', 'A letter to a friend'], answer: 'A guided composition on a motor park' },
+    { question: 'What should students do in the \'Dictation and spelling\' section?', options: ['Combine letters to form words', 'Compare adjectives', 'Write a descriptive essay'], answer: 'Combine letters to form words' },
+    { question: 'What is the purpose of \'Reading: Teaching of new words, oral and written comprehension\'?', options: ['Compare different letters', 'Analyze the passage', 'Write a guided composition'], answer: 'Analyze the passage' },
+    { question: 'What should students do in \'Speech work: Aural discrimination. /i/ - /e/\'?', options: ['Construct sentences using determiners', 'Recognize and distinguish sounds /i/ and /e/', 'Write an expository composition'], answer: 'Recognize and distinguish sounds /i/ and /e/' },
+    { question: 'Which section focuses on \'Further practice in the use of tense\'?', options: ['Writing', 'Structure', 'Dictation'], answer: 'Structure' },
+    { question: 'What are students supposed to do in the \'Writing: Giving an account of visits to places of interest\' section?', options: ['Write about a visit to a local market or supermarket', 'Write a letter to an old neighbor', 'Analyze a passage'], answer: 'Write about a visit to a local market or supermarket' },
+    { question: 'Which task involves identifying and using punctuation marks?', options: ['Dictation', 'Grammar', 'Structure'], answer: 'Grammar' },
+    { question: 'In the \'Speech work: Aural discrimination /a:/ and /i:/\' section, what are students supposed to do?', options: ['Use adverbs to describe verbs', 'Write a narrative composition', 'Distinguish between sounds /a:/ and /i:/'], answer: 'Distinguish between sounds /a:/ and /i:/' },
+    { question: 'Which activity involves describing places of interest they’ve been to?', options: ['Writing a letter', 'Grammar exercises', 'Structure'], answer: 'Structure' },
+    { question: 'What is the main task in \'Reading: Vocabulary and Oral and written comprehension\'?', options: ['Write a descriptive essay', 'Analyze and comprehend the passage', 'Use punctuation marks correctly'], answer: 'Analyze and comprehend the passage' },
+    { question: 'What should students do in the \'Writing: Composition: A day I shall never forget\' section?', options: ['Describe a motor park', 'Narrate a memorable story', 'Combine letters to form words'], answer: 'Narrate a memorable story' },
+    { question: 'Which section involves distinguishing between the sound /a:/ in lark and the sound /i/ in lock?', options: ['Dictation', 'Structure', 'Speech work'], answer: 'Speech work' },
+    { question: 'What should students do in \'Structure: Descriptive passage: My visit to Lagos University Teaching Hospital\'?', options: ['Highlight features of a descriptive essay', 'Compare adjectives', 'Write a letter'], answer: 'Highlight features of a descriptive essay' },
+    { question: 'What is the main focus of \'Grammar: Punctuation marks. Full stop and question mark\'?', options: ['Analyze a passage', 'Identify and use punctuation marks', 'Write a composition'], answer: 'Identify and use punctuation marks' },
+    { question: 'Which activity involves distinguishing between the sounds /i/ in fear and the sound /e/ in fare?', options: ['Writing a narrative', 'Aural discrimination', 'Reading comprehension'], answer: 'Aural discrimination' },
+    { question: 'What should students do in \'Writing: Comparative and superlative adjective\'?', options: ['Describe adjectives in comparative and superlative forms', 'Write a descriptive essay', 'Construct new sentences using substitution tables'], answer: 'Describe adjectives in comparative and superlative forms' },
+    { question: 'Which section involves filling in the gaps with words from a box?', options: ['Dictation', 'Structure', 'Writing'], answer: 'Writing' },
+    { question: 'What is the focus of \'Speech work: Aural discrimination /t/ tin and /i/ thin\'?', options: ['Compare different letters', 'Distinguish between consonant sounds', 'Write an expository composition'], answer: 'Distinguish between consonant sounds' },
+    { question: 'Which activity involves constructing sentences using substitution tables?', options: ['Dictation', 'Writing', 'Structure'], answer: 'Structure' },
+    { question: 'What is the main task in \'Writing: Expository writing\'?', options: ['Write an expository composition', 'Analyze a passage', 'Use punctuation marks'], answer: 'Write an expository composition' },
+    { question: 'What should students do in \'Grammar: Write or copy their own composition from the substitution table\'?', options: ['Understand sentence formation', 'Describe adjectives', 'Construct sentences using substitution tables'], answer: 'Understand sentence formation' },
+    { question: 'Which section involves recognizing and using possessive determiners?', options: ['Speech work', 'Dictation', 'Writing'], answer: 'Writing' },
+    { question: 'What is the focus of \'Reading comprehension: Vocabulary and oral and written comprehension\'?', options: ['Analyze the passage', 'Compare adjectives', 'Write a narrative'], answer: 'Analyze the passage' },
+    { question: 'Which activity involves constructing sentences with consonant sounds?', options: ['Dictation', 'Structure', 'Grammar'], answer: 'Structure' },
+    { question: 'What is the main task in \'Writing: Composition about My Family, My School\'?', options: ['Write about their family or school', 'Analyze a passage', 'Use punctuation marks'], answer: 'Write about their family or school' },
+    { question: 'Which section involves discussing adverbs and using them in sentences?', options: ['Grammar', 'Structure', 'Speech work'], answer: 'Speech work' },
+    { question: 'What should students do in \'Dictation: Selected words from the passage read\'?', options: ['Combine letters to form words', 'Write a narrative', 'Compare adjectives'], answer: 'Combine letters to form words' },
+    { question: 'Which activity involves pronouncing consonant sounds /l/, /r/, /s/ and /z/?', options: ['Writing a narrative', 'Speech work', 'Reading comprehension'], answer: 'Speech work' }
+],
+
+'Yoruba language': [
+
+    { question: 'Kini itumo "asa" ninu ede Yoruba?', options: ['Isinku', 'Oruko', 'Iwosan'], answer: 'Isinku' },
+    { question: 'Kini itumo "litireso"?', options: ['Itan-akoni', 'Iwe-kika', 'Oro-oruko'], answer: 'Iwe-kika' },
+    { question: 'Aye wo ni ogorun-un-aadojo wa ninu ede onka Yoruba?', options: ['100 - 150', '200 - 250', '50 - 100'], answer: '100 - 150' },
+    { question: 'Ta ni Balogun Ibikunle ninu itan akoni?', options: ['Olutayo', 'Alakoso', 'Alase'], answer: 'Alakoso' },
+    { question: 'Aye wo ni aadojo de igba wa ninu ede onka Yoruba?', options: ['150 - 200', '100 - 150', '200 - 250'], answer: '150 - 200' },
+    { question: 'Kini awon ohun ti o n farahan ninu oriki orile?', options: ['Oruko', 'Asa', 'Itan-akoni'], answer: 'Asa' },
+    { question: 'Ta ni Herbert Macauley ninu itan akoni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini ise ti oro-oruko n se ninu gbolohoun?', options: ['Oriki', 'Fifa oro yo', 'Ibudo'], answer: 'Oriki' },
+    { question: 'Ta ni Ransome Kuti ninu itan akoni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini eewo ti aisan mu wa?', options: ['Itan-akoni', 'Ibudo', 'Oriki'], answer: 'Ibudo' },
+    { question: 'Ta ni Obafemi Awolowo ninu itan akoni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini itumo fifa oro oruko yo ninu gbolohun?', options: ['Fifihan asepo', 'Fifiranse', 'Fifihan agbara'], answer: 'Fifihan asepo' },
+    { question: 'Ta ni Mosudi Olawale Abiola ninu itan akoni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini aroko oniroyin?', options: ['Itan-akoni', 'Iwe-kika', 'Aroko'], answer: 'Aroko' },
+    { question: 'Kini eewo aisan?', options: ['Oriki', 'Iwa ibaje', 'Itan-akoni'], answer: 'Iwa ibaje' },
+    { question: 'Ta ni Moremi ninu itan aboni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini aroko asapejuwe?', options: ['Itan-akoni', 'Iwe-kika', 'Aroko'], answer: 'Aroko' },
+    { question: 'Kini anfaani ti o wa nibi pipa eewo mo?', options: ['Ilera', 'Ibi', 'Owo'], answer: 'Ilera' },
+    { question: 'Ta ni Efunroye Tinubu ninu itan aboni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini aroko asariyanjiyan?', options: ['Itan-akoni', 'Iwe-kika', 'Aroko'], answer: 'Aroko' },
+    { question: 'Kini eewoiran?', options: ['Oriki', 'Iwa ibaje', 'Itan-akoni'], answer: 'Iwa ibaje' },
+    { question: 'Ta ni Kudirat Abiola ninu itan aboni?', options: ['Olutayo', 'Aare', 'Olusagutan'], answer: 'Olutayo' },
+    { question: 'Kini itesiwaju itan aboni?', options: ['Igbekele', 'Aseyori', 'Ibudo'], answer: 'Aseyori' },
+    { question: 'Kini itumo eya ara ifo?', options: ['Oriki', 'Iwa ibaje', 'Itan-akoni'], answer: 'Oriki' },
+    { question: 'Kini eewo ti o ro mo eewo kookan?', options: ['Ibaje', 'Ilera', 'Itan'], answer: 'Ibaje' },
+    { question: 'Kini kikii oriki ilubii?', options: ['Iwa ibaje', 'Oro oruko', 'Oriki'], answer: 'Oriki' },
+    { question: 'Kini aroko oniroyin?', options: ['Igbekele', 'Itan', 'Aroko'], answer: 'Aroko' },
+    { question: 'Kini itumo ewo kookan?', options: ['Ibaje', 'Ilera', 'Itan'], answer: 'Ibaje' },
+    { question: 'Kini eewo?', options: ['Ibaje', 'Ilera', 'Itan'], answer: 'Ibaje' },
+    { question: 'Kini itumo eya ifo?', options: ['Oriki', 'Iwa ibaje', 'Itan-akoni'], answer: 'Oriki' }
+],
+
+'Civic education': [
+    { question: '_____ is the reason why we should build our nation.', options: ['for common use of resources', 'for riot', 'for conflict', 'all of the above'], answer: 'for common use of resources' },
+    { question: '______ is where Nigeria resources is located in Geo-political zone.', options: ['South -south zone', 'Nigeria African zone', 'East - East zone', 'all of above'], answer: 'South -south zone' },
+    { question: '_____ is the example of the resources of Geo-political zone.', options: ['petroleum', 'foodstuffs', 'iron', 'Human being'], answer: 'petroleum' },
+    { question: '_______ are the cause of ethnicity.', options: ['colonialism', 'conflict', 'quarrel', 'None'], answer: 'colonialism' },
+    { question: 'The British colonial was founded in which year.', options: ['1998', '1914', '1917', '1999'], answer: '1914' },
+    { question: '______ is when one ethnic group feel marginalized.', options: ['success', 'poverty', 'labour', 'Honour'], answer: 'poverty' },
+    { question: '______ are part of the consequences of ethnicity.', options: ['Communal conflict', 'visual conflict', 'common conflict', 'Standard conflict'], answer: 'Communal conflict' },
+    { question: '______ are part of the consequences of ethnicity except.', options: ['man power', 'waste of manpower', 'political violence', 'None of above'], answer: 'man power' },
+    { question: '_____ can also be explain as a resource in certain areas will be neglected as a result of ethnicity.', options: ['waste of resources', 'waste of time', 'waste of money', 'all of the above'], answer: 'waste of resources' },
+    { question: '______ is a way we can solve the problem of ethnicity.', options: ['promoting of tolerance', 'promoting riot', 'promoting conflict', 'none of above'], answer: 'promoting of tolerance' },
+    { question: '______ is the act of respecting each other\'s person behavior and the way we do things.', options: ['Tolerance', 'joyful', 'honest', 'Success'], answer: 'Tolerance' },
+    { question: '______ is the study that teaches us about our rights and duties.', options: ['Civic education', 'Business studies', 'basic studies', 'all of above'], answer: 'Civic education' },
+    { question: 'Nigeria has _____ geopolitical zones.', options: ['10', '6', '8', '9'], answer: '6' },
+    { question: 'Aggression from other countries can only be resisted only by a united _____.', options: ['Back', 'Front', 'Grow', 'Farm'], answer: 'Front' },
+    { question: '_______ is the ethnic or social group consciousness that influence social, economic, and political decisions.', options: ['Ethnicity', 'Grace', 'power', 'Solvent'], answer: 'Ethnicity' },
+    { question: 'Ethnicity can also be a social group of people with the same customs and ______.', options: ['school', 'Farm', 'Church', 'Traditions'], answer: 'Traditions' },
+    { question: 'There are over _____ ethnic groups in Nigeria.', options: ['300', '250', '110', '80'], answer: '250' },
+    { question: '_____ is the benefit of being a citizen.', options: ['Right to vote', 'Right to elect', 'right to see', 'all of the above'], answer: 'Right to vote' },
+    { question: '______ is the resource from which allocations are expected.', options: ['money', 'Crude oil', 'people', 'Goat'], answer: 'Crude oil' },
+    { question: '______ is a type of election.', options: ['Great election', 'free and fair election', 'Grape', 'Power election'], answer: 'free and fair election' },
+    { question: '______ helps in promoting national unity.', options: ['Ethnicity', 'Tolerance', 'Conflict', 'Violence'], answer: 'Tolerance' },
+    { question: '______ is a form of government where citizens have a say.', options: ['Democracy', 'Dictatorship', 'Monarchy', 'Oligarchy'], answer: 'Democracy' },
+    { question: '______ is an essential quality of a good citizen.', options: ['Dishonesty', 'Loyalty', 'Selfishness', 'Indifference'], answer: 'Loyalty' },
+    { question: 'The Nigerian flag is a symbol of ______.', options: ['Unity', 'Conflict', 'Division', 'Ethnicity'], answer: 'Unity' },
+    { question: '______ is a right of a Nigerian citizen.', options: ['Right to education', 'Right to travel abroad', 'Right to vote', 'Right to remain silent'], answer: 'Right to vote' },
+    { question: 'The national anthem promotes ______.', options: ['Ethnicity', 'National pride', 'Conflict', 'Economic growth'], answer: 'National pride' },
+    { question: '______ is a consequence of political instability.', options: ['Economic growth', 'Conflict', 'Peace', 'Development'], answer: 'Conflict' },
+    { question: '______ can lead to national development.', options: ['Conflict', 'Cooperation', 'Division', 'Neglect'], answer: 'Cooperation' },
+    { question: '______ is essential for a peaceful society.', options: ['Violence', 'Respect', 'Conflict', 'Division'], answer: 'Respect' },
+    { question: '______ is an important aspect of civic education.', options: ['Understanding rights and duties', 'Promoting violence', 'Ignoring laws', 'Avoiding responsibilities'], answer: 'Understanding rights and duties' }
+],
+
+'Physical and health education': [
+    { question: '______ are the contents in a first aid box.', options: ['Tablet', 'blade', 'scissors', 'all of the above'], answer: 'all of the above' },
+    { question: '_____ is used to cover a wound.', options: ['bondage', 'cotton wool', 'blade', 'none of above'], answer: 'cotton wool' },
+    { question: '_____ is used to hold a broken bone in place.', options: ['sling', 'bandage', 'cotton', 'wool'], answer: 'sling' },
+    { question: '______ is used on a burn.', options: ['Vaseline', 'outline', 'scissors', 'blade'], answer: 'Vaseline' },
+    { question: '______ water is used to wash the skin in the case of bites.', options: ['salt', 'sugar', 'honey', 'sweet'], answer: 'salt' },
+    { question: '______ is the absence of accidents in the use of machines.', options: ['safety', 'exercise', 'saviour', 'problem'], answer: 'safety' },
+    { question: '_____ is an unexpected event that happens to human beings.', options: ['accident', 'Jack', 'fighting', 'issues'], answer: 'accident' },
+    { question: '____ are the causes of accidents.', options: ['not obeying the traffic rules', 'not working at the right time', 'not fighting for necessary things', 'none of the above'], answer: 'not obeying the traffic rules' },
+    { question: 'What is the full meaning of FRSC?', options: ['federal road safety commission', 'federal road savor control', 'financial rebrand saving commission', 'all of the above'], answer: 'federal road safety commission' },
+    { question: '_____ are the different measures that must be taken to make sure our roads are free from accidents.', options: ['Road safety', 'road emergency', 'road security', 'Road taking'], answer: 'Road safety' },
+    { question: 'Pedestrians always use the ______ crossing.', options: ['zebra', 'Zigzag', 'Circle', 'none of the above'], answer: 'zebra' },
+    { question: '______ are people who ride motorcycles.', options: ['motorcyclist', 'driver', 'conductor', 'Grace'], answer: 'motorcyclist' },
+    { question: '______ are the consequences of not observing the road safety guidelines.', options: ['there will be accidents', 'there will be safety', 'There will be joy', 'all of the above'], answer: 'there will be accidents' },
+    { question: '_____ is the full meaning of NLFA.', options: ['Nigeria law enforcement agency', 'national law enforcement', 'Net leave fo aspire'], answer: 'Nigeria law enforcement agency' },
+    { question: '____ is the first treatment given to an injured or sick person before being taken to a hospital.', options: ['first aid', 'treatment', 'Future', 'none of the above'], answer: 'first aid' },
+    { question: '______ is the full meaning of NAFDAC.', options: ['national agency for food advice control', 'national agency for food and drugs administration', 'Nigeria administrator for fuel and assistance commission', 'Water'], answer: 'national agency for food and drugs administration' },
+    { question: 'The full meaning of P.H.E is ______.', options: ['physical and health education', 'phrases and heat encounter', 'physical and health empowerment', 'phrases, habit, and energy'], answer: 'physical and health education' },
+    { question: 'The dirt of our ear is called ________.', options: ['cerumen', 'Dirty', 'white', 'Dress'], answer: 'cerumen' },
+    { question: 'As a cyclist you should ride bicycles _______.', options: ['sidewalk', 'middle road', 'right road', 'above'], answer: 'right road' },
+    { question: 'Physical and health education is general education which helps to develop the body through ____.', options: ['Policy', 'power', 'exercise', 'but ..'], answer: 'exercise' },
+    { question: '______ is used to clean wounds and prevent infection.', options: ['Antiseptic', 'Salt', 'Sugar', 'Honey'], answer: 'Antiseptic' },
+    { question: '______ is used to reduce swelling and pain from injuries.', options: ['Ice pack', 'Cotton wool', 'Blade', 'Bandage'], answer: 'Ice pack' },
+    { question: '_____ is a method of resuscitating someone who has stopped breathing.', options: ['CPR', 'First aid', 'Bandaging', 'None of the above'], answer: 'CPR' },
+    { question: '_____ is the process of making sure an injured person is safe until professional help arrives.', options: ['First aid', 'Safety', 'Exercise', 'Treatment'], answer: 'First aid' },
+    { question: '______ is used to immobilize a sprained ankle.', options: ['Bandage', 'Sling', 'Cotton wool', 'Blade'], answer: 'Bandage' },
+    { question: '______ is the importance of maintaining proper hygiene.', options: ['Preventing disease', 'Causing illness', 'Ignoring health', 'None of the above'], answer: 'Preventing disease' },
+    { question: '______ is necessary for keeping our bodies healthy and fit.', options: ['Exercise', 'Resting', 'Eating junk food', 'None of the above'], answer: 'Exercise' },
+    { question: '______ is the first thing to do when someone is bleeding heavily.', options: ['Apply pressure', 'Ignore', 'Wash with water', 'Bandage'], answer: 'Apply pressure' },
+    { question: '______ is a safe way to lift heavy objects.', options: ['Bend your knees', 'Use your back', 'Lift with one hand', 'None of the above'], answer: 'Bend your knees' },
+    { question: '______ is important to avoid dehydration.', options: ['Drinking water', 'Eating sweets', 'Sleeping', 'None of the above'], answer: 'Drinking water' }
+
+],
+
+'Christian religion studies': [
+    { question: 'What should we pray for?', options: ['Health', 'Wealth', 'Family', 'All of the above'], answer: 'All of the above' },
+    { question: 'Who gave His life for us?', options: ['Moses', 'David', 'Jesus', 'Paul'], answer: 'Jesus' },
+    { question: 'What does giving one’s life mean?', options: ['Sharing wealth', 'Sacrificing everything', 'Helping others', 'Praying daily'], answer: 'Sacrificing everything' },
+    { question: 'Why did Jesus give His life?', options: ['To become famous', 'To save us from sin', 'To gain power', 'To build a kingdom'], answer: 'To save us from sin' },
+    { question: 'Where did Jesus give His life for us?', options: ['On the mountain', 'In the temple', 'On the cross', 'By the sea'], answer: 'On the cross' },
+    { question: 'What sacrifice did Jesus make for us?', options: ['He prayed for us', 'He healed the sick', 'He gave His life', 'He preached to us'], answer: 'He gave His life' },
+    { question: 'Why is Jesus laying down His life important?', options: ['It shows His love', 'It was a miracle', 'It was a command', 'It was a tradition'], answer: 'It shows His love' },
+    { question: 'Who is the Holy Spirit?', options: ['A prophet', 'A disciple', 'The third person of the Trinity', 'An angel'], answer: 'The third person of the Trinity' },
+    { question: 'What did Jesus promise about the Holy Spirit?', options: ['It will teach us', 'It will guide us', 'It will comfort us', 'All of the above'], answer: 'All of the above' },
+    { question: 'When did the Holy Spirit come?', options: ['Before Jesus was born', 'After Jesus ascended', 'During Jesus’ ministry', 'At the beginning of time'], answer: 'After Jesus ascended' },
+    { question: 'What is the gift of the Holy Spirit?', options: ['Wisdom', 'Strength', 'Love', 'All of the above'], answer: 'All of the above' },
+    { question: 'What are some things the Holy Spirit does for us?', options: ['Guides us', 'Teaches us', 'Comforts us', 'All of the above'], answer: 'All of the above' },
+    { question: 'What does new life mean?', options: ['A fresh start', 'A new job', 'A new house', 'A new car'], answer: 'A fresh start' },
+    { question: 'What is the nature of new life in Jesus?', options: ['Holy', 'Peaceful', 'Righteous', 'All of the above'], answer: 'All of the above' },
+    { question: 'What are some evidence of new life?', options: ['Kindness', 'Love', 'Patience', 'All of the above'], answer: 'All of the above' },
+    { question: 'Who is the author of new life?', options: ['Paul', 'Peter', 'Jesus', 'John'], answer: 'Jesus' },
+    { question: 'What are the fruits of new life?', options: ['Love', 'Joy', 'Peace', 'All of the above'], answer: 'All of the above' },
+    { question: 'What are the characteristics of new life in Jesus?', options: ['Faith', 'Hope', 'Charity', 'All of the above'], answer: 'All of the above' },
+    { question: 'Why did Jesus give His life for us?', options: ['To save us from sin', 'To gain power', 'To build a kingdom', 'To become famous'], answer: 'To save us from sin' },
+    { question: 'What sacrifice did Jesus make on the cross?', options: ['He prayed for us', 'He healed the sick', 'He gave His life', 'He preached to us'], answer: 'He gave His life' },
+    { question: 'What is the promise of the Holy Spirit?', options: ['It will teach us', 'It will guide us', 'It will comfort us', 'All of the above'], answer: 'All of the above' },
+    { question: 'What does new life in Jesus mean?', options: ['A fresh start', 'A new job', 'A new house', 'A new car'], answer: 'A fresh start' },
+    { question: 'Who is our guide as Christians?', options: ['Jesus', 'The Holy Spirit', 'Angels', 'Disciples'], answer: 'The Holy Spirit' },
+    { question: 'What are some characteristics of new life in Jesus?', options: ['Faith', 'Hope', 'Charity', 'All of the above'], answer: 'All of the above' },
+    { question: 'Why is the coming of the Holy Spirit important?', options: ['It guides us', 'It teaches us', 'It comforts us', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is the role of the Holy Spirit in our lives?', options: ['Guiding us', 'Teaching us', 'Comforting us', 'All of the above'], answer: 'All of the above' },
+    { question: 'What does the Holy Spirit do for us?', options: ['Guides us', 'Teaches us', 'Comforts us', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is the evidence of new life in Jesus?', options: ['Kindness', 'Love', 'Patience', 'All of the above'], answer: 'All of the above' },
+    { question: 'Who is the author and finisher of our faith?', options: ['Paul', 'Peter', 'Jesus', 'John'], answer: 'Jesus' },
+    { question: 'What are the fruits of new life in Jesus?', options: ['Love', 'Joy', 'Peace', 'All of the above'], answer: 'All of the above' }
+
+],
+
+    'Social studies': [
+    { question: 'What is the meaning of a road accident?', options: ['An accident on the road', 'A road repair', 'A roadblock', 'A road construction'], answer: 'An accident on the road' },
+    { question: 'Which of the following is a type of road?', options: ['Private drive', 'Two-lane highway', 'Dual carriageway', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is a road accident?', options: ['A breakdown', 'A collision or crash', 'A road repair', 'A road closure'], answer: 'A collision or crash' },
+    { question: 'How can drivers maintain the roads?', options: ['Speeding', 'Driving carefully', 'Ignoring road signs', 'Overloading vehicles'], answer: 'Driving carefully' },
+    { question: 'Which of the following is a road sign?', options: ['Stop sign', 'Pedestrian crossing', 'Speed limit sign', 'All of the above'], answer: 'All of the above' },
+    { question: 'What does a stop sign mean?', options: ['Go', 'Stop', 'Slow down', 'Turn left'], answer: 'Stop' },
+    { question: 'What is the meaning of ethnicity?', options: ['Belonging to different races', 'Belonging to different religions', 'Belonging to different countries', 'Belonging to different sports'], answer: 'Belonging to different races' },
+    { question: 'What is a major problem of ethnicity in Nigeria?', options: ['Unity', 'Conflicts', 'Economic growth', 'Cultural exchange'], answer: 'Conflicts' },
+    { question: 'How many major ethnic groups are there in Nigeria?', options: ['10', '15', '250', '300'], answer: '250' },
+    { question: 'What number should you call in case of an emergency?', options: ['911', '112', '119', 'All of the above'], answer: 'All of the above' },
+    { question: 'Who should you contact in case of danger?', options: ['Friends', 'Relatives', 'Authorities', 'Neighbors'], answer: 'Authorities' },
+    { question: 'What is one cause of road accidents?', options: ['Driving carefully', 'Ignoring traffic rules', 'Proper vehicle maintenance', 'Following road signs'], answer: 'Ignoring traffic rules' },
+    { question: 'What is the full meaning of FRSC?', options: ['Federal Road Safety Commission', 'Federal Road Savor Control', 'Financial Rebrand Saving Commission', 'Federal Revenue Service Commission'], answer: 'Federal Road Safety Commission' },
+    { question: 'What are some consequences of road accidents?', options: ['Vehicle damage', 'Road repair', 'Traffic congestion', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is a solution to road accidents?', options: ['Ignoring traffic rules', 'Proper vehicle maintenance', 'Overloading vehicles', 'Speeding'], answer: 'Proper vehicle maintenance' },
+    { question: 'What is the role of security agents at accident scenes?', options: ['Causing traffic', 'Helping victims', 'Ignoring the scene', 'Blocking roads'], answer: 'Helping victims' },
+    { question: 'What does first aid mean?', options: ['Initial medical help', 'Final medical help', 'Unnecessary help', 'No help'], answer: 'Initial medical help' },
+    { question: 'Who is a first aid giver?', options: ['A person who provides initial help', 'A doctor', 'A nurse', 'A pharmacist'], answer: 'A person who provides initial help' },
+    { question: 'What is the emergency hotline number in Lagos?', options: ['999', '767', '911', '112'], answer: '767' },
+    { question: 'What is the meaning of peaceful co-existence?', options: ['Living together in harmony', 'Fighting constantly', 'Ignoring each other', 'Living separately'], answer: 'Living together in harmony' },
+    { question: 'What is one duty of community leaders?', options: ['Promoting conflict', 'Ensuring peaceful co-existence', 'Creating division', 'Avoiding responsibility'], answer: 'Ensuring peaceful co-existence' },
+    { question: 'What should be done in case of robbery?', options: ['Call emergency services', 'Fight back', 'Ignore it', 'Run away'], answer: 'Call emergency services' },
+    { question: 'What is the use of a bandage in a first aid box?', options: ['Cutting', 'Covering wounds', 'Writing', 'Measuring'], answer: 'Covering wounds' },
+    { question: 'What is tribalism?', options: ['A sense of identity', 'A sense of belonging to a tribe', 'Discrimination based on tribe', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is the emergency service number in Lagos?', options: ['767', '911', '999', '112'], answer: '767' },
+    { question: 'How is simple first aid applied to an accident victim?', options: ['Ignoring the victim', 'Providing initial care', 'Waiting for a doctor', 'Avoiding the scene'], answer: 'Providing initial care' },
+    { question: 'What is the difference between ethnicity and tribalism?', options: ['Ethnicity is broader', 'Tribalism is narrower', 'Both involve group identity', 'All of the above'], answer: 'All of the above' },
+    { question: 'What is the primary duty of security agencies?', options: ['Maintaining order', 'Causing chaos', 'Avoiding duties', 'None of the above'], answer: 'Maintaining order' },
+    { question: 'What should you do in case of a fire?', options: ['Call emergency services', 'Run away', 'Ignore it', 'Wait for help'], answer: 'Call emergency services' },
+    { question: 'Who should you contact in case of an emergency?', options: ['Police', 'Neighborhood watch', 'FRSC', 'All of the above'], answer: 'All of the above' }
+
+],
+
+'Agricultural studies': [
+    { question: 'What is one common farm tool?', options: ['Hoe', 'Pencil', 'Notebook', 'Pen'], answer: 'Hoe' },
+    { question: 'Which of the following is a farm tool?', options: ['Spade', 'Ruler', 'Chalk', 'Eraser'], answer: 'Spade' },
+    { question: 'What is the use of a hoe?', options: ['Weeding', 'Writing', 'Drawing', 'Reading'], answer: 'Weeding' },
+    { question: 'How is a rake used on the farm?', options: ['Gathering leaves', 'Cutting trees', 'Planting seeds', 'Harvesting crops'], answer: 'Gathering leaves' },
+    { question: 'Which of these is a tillage tool?', options: ['Plough', 'Chair', 'Table', 'Book'], answer: 'Plough' },
+    { question: 'What is the purpose of a plough?', options: ['Turning soil', 'Writing', 'Cooking', 'Cleaning'], answer: 'Turning soil' },
+    { question: 'What is a common digging tool?', options: ['Shovel', 'Pen', 'Paper', 'Eraser'], answer: 'Shovel' },
+    { question: 'How is a spade used on the farm?', options: ['Digging holes', 'Drawing pictures', 'Reading books', 'Writing notes'], answer: 'Digging holes' },
+    { question: 'What tool is used for carrying items on the farm?', options: ['Wheelbarrow', 'Ruler', 'Chalkboard', 'Notebook'], answer: 'Wheelbarrow' },
+    { question: 'What is the importance of maintaining farm tools?', options: ['To make them last longer', 'To make them look new', 'To change their color', 'To sell them'], answer: 'To make them last longer' },
+    { question: 'Which tool is used for gathering crops?', options: ['Basket', 'Book', 'Pen', 'Pencil'], answer: 'Basket' },
+    { question: 'What is a common tool for transporting items?', options: ['Cart', 'Ruler', 'Pencil', 'Eraser'], answer: 'Cart' },
+    { question: 'Why is it important to maintain farm tools?', options: ['To prevent them from breaking', 'To make them look new', 'To change their shape', 'To sell them'], answer: 'To prevent them from breaking' },
+    { question: 'What is one method of maintaining farm tools?', options: ['Cleaning them regularly', 'Writing on them', 'Drawing on them', 'Ignoring them'], answer: 'Cleaning them regularly' },
+    { question: 'What is the effect of poor maintenance on farm tools?', options: ['Tools become rusty', 'Tools look new', 'Tools become shiny', 'Tools are sold quickly'], answer: 'Tools become rusty' },
+    { question: 'What is a digging tool?', options: ['Pickaxe', 'Pen', 'Pencil', 'Notebook'], answer: 'Pickaxe' },
+    { question: 'What is the use of a pickaxe?', options: ['Breaking hard ground', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Breaking hard ground' },
+    { question: 'What is a gathering tool?', options: ['Basket', 'Book', 'Pen', 'Pencil'], answer: 'Basket' },
+    { question: 'How do you use a basket on the farm?', options: ['Gathering crops', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Gathering crops' },
+    { question: 'What is a transportation tool?', options: ['Wheelbarrow', 'Ruler', 'Chalkboard', 'Notebook'], answer: 'Wheelbarrow' },
+    { question: 'What is one advantage of using a wheelbarrow?', options: ['Carrying heavy loads', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Carrying heavy loads' },
+    { question: 'What is the purpose of maintaining farm tools?', options: ['To make them last longer', 'To change their shape', 'To make them look new', 'To sell them'], answer: 'To make them last longer' },
+    { question: 'What is a common tillage tool?', options: ['Plough', 'Pen', 'Pencil', 'Notebook'], answer: 'Plough' },
+    { question: 'What is the use of a plough on the farm?', options: ['Turning soil', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Turning soil' },
+    { question: 'What is a common farm tool used for digging?', options: ['Shovel', 'Pen', 'Pencil', 'Notebook'], answer: 'Shovel' },
+    { question: 'What is the use of a shovel on the farm?', options: ['Digging holes', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Digging holes' },
+    { question: 'What is a common gathering tool?', options: ['Basket', 'Book', 'Pen', 'Pencil'], answer: 'Basket' },
+    { question: 'What is the use of a basket on the farm?', options: ['Gathering crops', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Gathering crops' },
+    { question: 'What is the purpose of using a cart on the farm?', options: ['Transporting items', 'Writing notes', 'Drawing pictures', 'Reading books'], answer: 'Transporting items' },
+    { question: 'How can you maintain a farm tool?', options: ['Cleaning it regularly', 'Writing on it', 'Drawing on it', 'Ignoring it'], answer: 'Cleaning it regularly' }
+],
+
+'Home economics': [
+    { question: 'What is used to make starch?', options: ['Corn starch', 'Flour', 'Salt', 'Sugar'], answer: 'Corn starch' },
+    { question: 'Which of the following is used to prepare starch?', options: ['Water', 'Milk', 'Sugar', 'Salt'], answer: 'Water' },
+    { question: 'What are the uses of starch?', options: ['Clothes starching', 'Writing', 'Drawing', 'Reading'], answer: 'Clothes starching' },
+    { question: 'Which of these is not used to make starch?', options: ['Corn starch', 'Sugar', 'Water', 'Salt'], answer: 'Sugar' },
+    { question: 'What is the first step in preparing starch?', options: ['Boil water', 'Mix starch with water', 'Add sugar', 'Heat the starch'], answer: 'Mix starch with water' },
+    { question: 'What is the main purpose of starch?', options: ['Starching clothes', 'Cooking', 'Cleaning', 'Writing'], answer: 'Starching clothes' },
+    { question: 'Which food is part of an adequate diet?', options: ['Fruits', 'Sand', 'Plastic', 'Wood'], answer: 'Fruits' },
+    { question: 'What is a balanced diet?', options: ['Eating only fruits', 'Eating a variety of foods', 'Eating sweets', 'Skipping meals'], answer: 'Eating a variety of foods' },
+    { question: 'How many classes of food nutrients are there?', options: ['Five', 'Three', 'Seven', 'Two'], answer: 'Five' },
+    { question: 'Which nutrient is essential for growth?', options: ['Carbohydrates', 'Proteins', 'Fats', 'Vitamins'], answer: 'Proteins' },
+    { question: 'What is the importance of an adequate diet?', options: ['Staying healthy', 'Feeling tired', 'Feeling hungry', 'Sleeping more'], answer: 'Staying healthy' },
+    { question: 'Which is not a class of food nutrients?', options: ['Proteins', 'Vitamins', 'Wood', 'Minerals'], answer: 'Wood' },
+    { question: 'Which food nutrient helps in repairing body tissues?', options: ['Carbohydrates', 'Proteins', 'Fats', 'Vitamins'], answer: 'Proteins' },
+    { question: 'Which nutrient is found in fruits and vegetables?', options: ['Proteins', 'Vitamins', 'Fats', 'Sugars'], answer: 'Vitamins' },
+    { question: 'Which of the following is a deficiency disease of protein?', options: ['Scurvy', 'Kwashiorkor', 'Night blindness', 'Rickets'], answer: 'Kwashiorkor' },
+    { question: 'Which of these is a digging tool?', options: ['Spade', 'Pen', 'Book', 'Eraser'], answer: 'Spade' },
+    { question: 'How do you maintain farm tools?', options: ['Cleaning them', 'Throwing them away', 'Ignoring them', 'Painting them'], answer: 'Cleaning them' },
+    { question: 'What is the effect of poor maintenance on farm tools?', options: ['Rusting', 'Shining', 'Growing', 'Dancing'], answer: 'Rusting' },
+    { question: 'What is a basic stitch used for?', options: ['Mending clothes', 'Drawing pictures', 'Writing notes', 'Reading books'], answer: 'Mending clothes' },
+    { question: 'What is a temporary stitch?', options: ['A stitch for mending', 'A stitch for decoration', 'A stitch that can be removed easily', 'A stitch that is permanent'], answer: 'A stitch that can be removed easily' },
+    { question: 'Which of these is a method of cooking cakes?', options: ['Baking', 'Boiling', 'Frying', 'Steaming'], answer: 'Baking' },
+    { question: 'What is a common ingredient in cake baking?', options: ['Flour', 'Salt', 'Sand', 'Sugar'], answer: 'Flour' },
+    { question: 'Which of the following is used for making snacks?', options: ['Fruits', 'Plastic', 'Stones', 'Wood'], answer: 'Fruits' },
+    { question: 'Which nutrient is important for energy?', options: ['Carbohydrates', 'Proteins', 'Vitamins', 'Water'], answer: 'Carbohydrates' },
+    { question: 'What is the benefit of eating snacks?', options: ['Providing energy', 'Making you tired', 'Making you sleepy', 'Making you hungry'], answer: 'Providing energy' },
+    { question: 'Which of these is a fruit drink ingredient?', options: ['Fruit juice', 'Plastic', 'Sand', 'Paper'], answer: 'Fruit juice' },
+    { question: 'What do you need to prepare a fruit drink?', options: ['Fruits', 'Water', 'Sugar', 'All of the above'], answer: 'All of the above' },
+    { question: 'Which of these is a type of food nutrient?', options: ['Minerals', 'Wood', 'Plastic', 'Iron'], answer: 'Iron' },
+    { question: 'What is the use of baking in cooking?', options: ['Making bread', 'Frying eggs', 'Boiling rice', 'Steaming fish'], answer: 'Making bread' },
+    { question: 'Which stitch is used for temporary mending?', options: ['Running stitch', 'Backstitch', 'Hemming stitch', 'Chain stitch'], answer: 'Running stitch' },
+    { question: 'What do you use to apply starch on clothes?', options: ['Starch solution', 'Water', 'Sugar', 'Salt'], answer: 'Starch solution' }
+
+],
+
+'History': [
+    { question: 'What is the meaning of a hero?', options: ['A person admired for their courage', 'A person who sleeps all day', 'A person who talks loudly', 'A person who writes books'], answer: 'A person admired for their courage' },
+    { question: 'Who is a hero in Nigeria?', options: ['Jaja of Opobo', 'Spider-Man', 'Superman', 'Harry Potter'], answer: 'Jaja of Opobo' },
+    { question: 'Which hero fought against colonial rule in Nigeria?', options: ['Herbert Macaulay', 'Albert Einstein', 'Nelson Mandela', 'Mahatma Gandhi'], answer: 'Herbert Macaulay' },
+    { question: 'Who was known as the Lion of the North?', options: ['Ahmadu Bello', 'Abraham Lincoln', 'Winston Churchill', 'Julius Caesar'], answer: 'Ahmadu Bello' },
+    { question: 'Who is a heroine in Nigeria?', options: ['Queen Amina', 'Cinderella', 'Snow White', 'Wonder Woman'], answer: 'Queen Amina' },
+    { question: 'Which heroine led a resistance against British colonialism?', options: ['Funmilayo Ransome Kuti', 'Joan of Arc', 'Florence Nightingale', 'Mother Teresa'], answer: 'Funmilayo Ransome Kuti' },
+    { question: 'Which Nigerian people are located in the Northern region?', options: ['Hausa/Fulani', 'Yoruba', 'Igbo', 'Edo'], answer: 'Hausa/Fulani' },
+    { question: 'Where are the Hausa/Fulani people mainly located?', options: ['Northern Nigeria', 'Eastern Nigeria', 'Western Nigeria', 'Southern Nigeria'], answer: 'Northern Nigeria' },
+    { question: 'What is the traditional origin of the Igbo people?', options: ['Eastern Nigeria', 'Northern Nigeria', 'Western Nigeria', 'Southern Nigeria'], answer: 'Eastern Nigeria' },
+    { question: 'Name a significant historical site in Southern Nigeria.', options: ['Waterfall', 'Desert', 'Mountain', 'Glacier'], answer: 'Waterfall' },
+    { question: 'Which historical feature is important in Northern Nigeria?', options: ['Mosque', 'Temple', 'Church', 'Synagogue'], answer: 'Mosque' },
+    { question: 'What is the significance of historical sites in Nigeria?', options: ['Development', 'Destruction', 'Tourism', 'Relaxation'], answer: 'Development' },
+    { question: 'Who is a notable hero in Nigerian history?', options: ['Obafemi Awolowo', 'Harry Potter', 'Iron Man', 'Thor'], answer: 'Obafemi Awolowo' },
+    { question: 'Who is a hero in Nigeria?', options: ['Ahmadu Bello', 'Albert Einstein', 'Nelson Mandela', 'Mahatma Gandhi'], answer: 'Ahmadu Bello' },
+    { question: 'Which heroine led a resistance against British colonialism?', options: ['Funmilayo Ransome Kuti', 'Joan of Arc', 'Florence Nightingale', 'Mother Teresa'], answer: 'Funmilayo Ransome Kuti' },
+    { question: 'Who is the traditional origin of the Ijaws?', options: ['South Nigeria', 'North Nigeria', 'West Nigeria', 'East Nigeria'], answer: 'South Nigeria' },
+    { question: 'Name a significant historical site in Southern Nigeria.', options: ['Waterfall', 'Desert', 'Mountain', 'Glacier'], answer: 'Waterfall' },
+    { question: 'What is the traditional origin of the Igbos?', options: ['East Nigeria', 'South Nigeria', 'West Nigeria', 'North Nigeria'], answer: 'East Nigeria' },
+    { question: 'Name a significant historical site in Southern Nigeria.', options: ['Waterfall', 'Desert', 'Mountain', 'Glacier'], answer: 'Waterfall' },
+    { question: 'What is the traditional origin of the Fulanis?', options: ['Northern Nigeria', 'Southern Nigeria', 'Eastern Nigeria', 'Western Nigeria'], answer: 'Northern Nigeria' },
+    { question: 'Name a significant historical site in Northern Nigeria.', options: ['Mosque', 'Temple', 'Church', 'Synagogue'], answer: 'Mosque' },
+    { question: 'What is the significance of historical sites in Nigeria?', options: ['Development', 'Destruction', 'Tourism', 'Relaxation'], answer: 'Development' },
+    { question: 'Who is a hero in Nigeria?', options: ['Ahmadu Bello', 'Albert Einstein', 'Nelson Mandela', 'Mahatma Gandhi'], answer: 'Ahmadu Bello' },
+    { question: 'Which heroine led a resistance against British colonialism?', options: ['Funmilayo Ransome Kuti', 'Joan of Arc', 'Florence Nightingale', 'Mother Teresa'], answer: 'Funmilayo Ransome Kuti' },
+    { question: 'Who is the traditional origin of the Igbos?', options: ['East Nigeria', 'South Nigeria', 'West Nigeria', 'North Nigeria'], answer: 'East Nigeria' },
+    { question: 'Name a significant historical site in Southern Nigeria.', options: ['Waterfall', 'Desert', 'Mountain', 'Glacier'], answer: 'Waterfall' },
+    { question: 'What is the traditional origin of the Hausas?', options: ['Northern Nigeria', 'Southern Nigeria', 'Eastern Nigeria', 'Western Nigeria'], answer: 'Northern Nigeria' },
+    { question: 'Name a significant historical site in Northern Nigeria.', options: ['Mosque', 'Temple', 'Church', 'Synagogue'], answer: 'Mosque' },
+    { question: 'What is the significance of historical sites in Nigeria?', options: ['Development', 'Destruction', 'Tourism', 'Relaxation'], answer: 'Development' },
+    { question: 'What is the meaning of a hero?', options: ['A person admired for their courage', 'A person who sleeps all day', 'A person who talks loudly', 'A person who writes books'], answer: 'A person admired for their courage' }
+
+],
+
+'Creative and cultural art': [
+    { question: "What is the primary method used in leaf and thumb print making?", options: ["Painting", "Sculpting", "Printing"], answer: "Printing" },
+    { question: "State the source of music.", options: ["Nature", "Humans", "Animals"], answer: "Humans" },
+    { question: "List things that produce sounds.", options: ["Birds, insects, and humans", "Rocks, trees, and rivers", "Air, water, and fire"], answer: "Birds, insects, and humans" },
+    { question: "Differentiate between noise and music.", options: ["Noise is loud, music is soft", "Noise is random, music is organized", "Noise is natural, music is artificial"], answer: "Noise is random, music is organized" },
+    { question: "Explain the meaning of papier mache.", options: ["Sculpting with clay", "Molding with paper and glue", "Painting on canvas"], answer: "Molding with paper and glue" },
+    { question: "Identify materials used in papier mache.", options: ["Wood and metal", "Paper and water", "Plastic and glass"], answer: "Paper and water" },
+    { question: "Make an object using papier mache.", options: ["A kite", "A mask", "A book"], answer: "A mask" },
+    { question: "Identify Nigerian musical instruments.", options: ["Piano and guitar", "Agogo and talking drum", "Violin and flute"], answer: "Agogo and talking drum" },
+    { question: "Discover how Nigerian musical instruments are played and the sound they produce.", options: ["Striking and blowing", "Plucking and bowing", "Tapping and shaking"], answer: "Striking and blowing" },
+    { question: "Classify foreign musical instruments.", options: ["Brass, woodwind, percussion", "String, keyboard, electronic", "Traditional, modern, experimental"], answer: "Brass, woodwind, percussion" },
+    { question: "Explain the meaning of drama.", options: ["Acting out a story", "Singing a song", "Dancing on stage"], answer: "Acting out a story" },
+    { question: "Differentiate between drama and theatre.", options: ["Drama is serious, theatre is funny", "Drama is scripted, theatre is improvised", "Drama is a performance, theatre is a building"], answer: "Drama is a performance, theatre is a building" },
+    { question: "Partake in a short drama performance.", options: ["Acting out a script", "Reciting a poem", "Painting a scene"], answer: "Acting out a script" },
+    { question: "Explain the definition of dance.", options: ["Moving rhythmically to music", "Standing still", "Jumping up and down"], answer: "Moving rhythmically to music" },
+    { question: "State the importance of dance.", options: ["Exercise, expression, cultural celebration", "Writing, reading, arithmetic", "Cooking, cleaning, gardening"], answer: "Exercise, expression, cultural celebration" },
+    { question: "Present a dance performance for the class and school.", options: ["Solo dance", "Group dance", "Mime performance"], answer: "Group dance" },
+    { question: "Identify greetings in different parts of Nigeria.", options: ["Handshake, bow, nod", "Hug, kiss, high-five", "Salaam, prostration, clapping"], answer: "Handshake, bow, nod" },
+    { question: "List occasions to greet.", options: ["Birthdays, weddings, funerals", "Rainy days, sunny days, windy days", "Mornings, afternoons, evenings"], answer: "Birthdays, weddings, funerals" },
+    { question: "State benefits of greeting.", options: ["Builds relationships, shows respect, promotes peace", "Provides entertainment, enhances creativity, fosters learning", "Increases productivity, reduces stress, improves health"], answer: "Builds relationships, shows respect, promotes peace" },
+    { question: "Differentiate styles of greeting in different tribes in Nigeria.", options: ["Handshake, bow, clap", "Salaam, prostration, hug", "Nod, high-five, kiss"], answer: "Salaam, prostration, hug" },
+    { question: "Differentiate drawings with examples.", options: ["Sketch, painting, sculpture", "Portrait, landscape, abstract", "Color, shape, line"], answer: "Portrait, landscape, abstract" },
+    { question: "Produce different types of drawings.", options: ["Pencil sketch, watercolor painting, clay sculpture", "Cooking recipe, storybook, song lyrics", "Math equation, historical timeline, geographic map"], answer: "Pencil sketch, watercolor painting, clay sculpture" },
+    { question: "What is the purpose of revision?", options: ["To learn new things", "To review and remember", "To forget old information"], answer: "To review and remember" },
+    { question: "How does revision help in exams?", options: ["By making exams easier", "By improving memory and understanding", "By creating stress and confusion"], answer: "By improving memory and understanding" },
+    { question: "When should revision be done?", options: ["Only during exams", "Regularly and before exams", "After exams are over"], answer: "Regularly and before exams" },
+    { question: "What is the purpose of an examination?", options: ["To have fun", "To test knowledge and skills", "To meet new friends"], answer: "To test knowledge and skills" },
+    { question: "How should you prepare for an examination?", options: ["By not studying at all", "By studying regularly and thoroughly", "By guessing answers"], answer: "By studying regularly and thoroughly" },
+    { question: "What should you do during an examination?", options: ["Chat with friends", "Focus and answer questions calmly", "Rush through and finish quickly"], answer: "Focus and answer questions calmly" },
+    { question: "What is the significance of a mid-term break?", options: ["To start a new school term", "To relax and recharge during the term", "To end the school year"], answer: "To relax and recharge during the term" },
+    { question: "How should you spend your mid-term break?", options: ["By studying all day", "By engaging in fun and relaxing activities", "By sleeping all day"], answer: "By engaging in fun and relaxing activities" }
+
+],
+
+    'Basic science and technology': [
+    { question: "What tools are used in shape construction such as cutting tools?", options: ["Hammers", "Saws", "Pencils"], answer: "Saws" },
+    { question: "What are the methods of shape construction?", options: ["Folding, bending, wrapping", "Cutting, pasting, folding", "Mixing, stirring, pouring"], answer: "Folding, bending, wrapping" },
+    { question: "What are the types of relay races in athletics?", options: ["100m, 200m, 400m", "4 x 100m, 4 x 400m, medley relay", "Sprint, hurdles, marathon"], answer: "4 x 100m, 4 x 400m, medley relay" },
+    { question: "What is the meaning of martial art?", options: ["Art of war and peace", "Art of combat and self-defense", "Art of dance and music"], answer: "Art of combat and self-defense" },
+    { question: "What are the types of martial arts?", options: ["Karate, Judo, Taekwondo", "Ballet, Hip-hop, Salsa", "Opera, Drama, Mime"], answer: "Karate, Judo, Taekwondo" },
+    { question: "What is the meaning of data processing?", options: ["Analyzing and interpreting data", "Collecting and storing data", "Editing and publishing data"], answer: "Analyzing and interpreting data" },
+    { question: "What are the uses of data?", options: ["To inform, entertain, and educate", "To destroy, manipulate, and steal", "To organize, simplify, and complicate"], answer: "To inform, entertain, and educate" },
+    { question: "What are the types of data?", options: ["Text, audio, video", "Static, dynamic, volatile", "Quantitative, qualitative, categorical"], answer: "Text, audio, video" },
+    { question: "What are the types of buildings?", options: ["Houses, schools, hospitals", "Residential, commercial, industrial", "Brick, stone, wood"], answer: "Residential, commercial, industrial" },
+    { question: "What materials are needed for building?", options: ["Concrete, steel, glass", "Paper, plastic, fabric", "Water, air, sunlight"], answer: "Concrete, steel, glass" },
+    { question: "What are special buildings?", options: ["Houses, schools, hospitals", "Religious buildings, courthouses, markets", "Bridges, tunnels, dams"], answer: "Religious buildings, courthouses, markets" },
+    { question: "What are the needs for building?", options: ["Shelter, security, comfort", "Food, water, sleep", "Education, healthcare, entertainment"], answer: "Shelter, security, comfort" },
+    { question: "How are different types of buildings classified?", options: ["By size, shape, color", "By location, function, design", "By age, condition, material"], answer: "By location, function, design" },
+    { question: "What are the skills involved in relay races?", options: ["Running, jumping, throwing", "Baton grip, take-off, exchange", "Swimming, cycling, rowing"], answer: "Baton grip, take-off, exchange" },
+    { question: "What is the importance of martial arts?", options: ["Self-discipline, fitness, self-defense", "Entertainment, competition, teamwork", "Creativity, relaxation, meditation"], answer: "Self-discipline, fitness, self-defense" },
+    { question: "What is the meaning of information?", options: ["Facts, data, knowledge", "Opinion, belief, rumor", "Noise, silence, confusion"], answer: "Facts, data, knowledge" },
+    { question: "What are the uses of information?", options: ["To inform, persuade, entertain", "To confuse, mislead, deceive", "To divide, isolate, segregate"], answer: "To inform, persuade, entertain" },
+    { question: "What are the types of information?", options: ["Verbal, non-verbal, written", "Public, private, secret", "True, false, uncertain"], answer: "Verbal, non-verbal, written" },
+    { question: "What is the meaning of a vehicle?", options: ["A mode of transport", "A place to live", "A type of food"], answer: "A mode of transport" },
+    { question: "What are the different types of vehicles?", options: ["Cars, buses, bicycles", "Planes, ships, rockets", "Trucks, vans, motorcycles"], answer: "Cars, buses, bicycles" },
+    { question: "What are the external parts of a vehicle?", options: ["Wheels, doors, windows", "Engine, gearbox, radiator", "Seats, steering wheel, pedals"], answer: "Wheels, doors, windows" },
+    { question: "What are the uses and disadvantages of vehicles?", options: ["Convenience, speed, pollution", "Cost, maintenance, safety", "Comfort, luxury, status"], answer: "Convenience, speed, pollution" },
+    { question: "Draw a vehicle and label its external parts.", options: ["A boat, a plane, a submarine", "A car, a truck, a bicycle", "A train, a spaceship, a helicopter"], answer: "A car, a truck, a bicycle" },
+    { question: "What are the concepts of energy?", options: ["Power, force, energy", "Movement, change, transformation", "Heat, light, sound"], answer: "Movement, change, transformation" },
+    { question: "What are the forms of energy?", options: ["Solar, wind, geothermal", "Kinetic, potential, thermal", "Electrical, magnetic, chemical"], answer: "Kinetic, potential, thermal" },
+    { question: "What are the uses of energy?", options: ["To work, play, live", "To sleep, rest, dream", "To eat, drink, breathe"], answer: "To work, play, live" },
+    { question: "What are the sources of energy?", options: ["Sun, wind, water", "Earth, moon, stars", "Fire, ice, lightning"], answer: "Sun, wind, water" },
+    { question: "Compare the different forms of energy.", options: ["Similarities, differences, examples", "Advantages, disadvantages, applications", "Connections, relationships, implications"], answer: "Similarities, differences, examples" },
+    { question: "What are the types of swimming strokes?", options: ["Breaststroke, backstroke, freestyle", "Running, cycling, jumping", "Skiing, snowboarding, skating"], answer: "Breaststroke, backstroke, freestyle" },
+    { question: "What are the safety rules for swimming?", options: ["Never swim alone, use flotation devices", "Run around the pool, dive headfirst", "Swim after eating, ignore lifeguards"], answer: "Never swim alone, use flotation devices" },
+    { question: "What is the significance of sources of information?", options: ["To inform, entertain, educate", "To confuse, mislead, deceive", "To divide, isolate, segregate"], answer: "To inform, entertain, educate" },
+    { question: "What are the classes of food?", options: ["Protein, carbohydrate, fat", "Breakfast, lunch, dinner", "Vegetables, fruits, grains"], answer: "Protein, carbohydrate, fat" },
+    { question: "What are the uses of food?", options: ["To nourish, energize, heal", "To harm, destroy, weaken", "To confuse, mislead, deceive"], answer: "To nourish, energize, heal" }
+
+],
+
+    
+    'Leadership': [
+    { question: "What is leadership?", options: ["Directing others", "Following instructions", "Working alone"], answer: "Directing others" },
+    { question: "Name one quality of a good leader.", options: ["Kindness", "Laziness", "Rudeness"], answer: "Kindness" },
+    { question: "Why is it important to listen to others as a leader?", options: ["To learn new ideas", "To ignore different perspectives", "To dominate conversations"], answer: "To learn new ideas" },
+    { question: "How can a leader encourage teamwork?", options: ["By sharing credit", "By taking all the credit", "By working alone"], answer: "By sharing credit" },
+    { question: "What does it mean to lead by example?", options: ["To do as I say, not as I do", "To set a good example for others", "To follow others' examples"], answer: "To set a good example for others" },
+    { question: "How can a leader solve problems?", options: ["By blaming others", "By brainstorming with the team", "By ignoring the problem"], answer: "By brainstorming with the team" },
+    { question: "What is empathy and why is it important for leaders?", options: ["Understanding others' feelings", "Ignoring others' feelings", "Laughing at others' feelings"], answer: "Understanding others' feelings" },
+    { question: "What does it mean to delegate tasks as a leader?", options: ["To do all the work alone", "To share tasks with others", "To avoid tasks"], answer: "To share tasks with others" },
+    { question: "Why should leaders set goals for their team?", options: ["To confuse the team", "To motivate and focus efforts", "To distract the team"], answer: "To motivate and focus efforts" },
+    { question: "How can a leader motivate others?", options: ["By criticizing mistakes", "By offering encouragement", "By ignoring efforts"], answer: "By offering encouragement" },
+    { question: "What is the role of a leader during conflicts?", options: ["To escalate conflicts", "To resolve conflicts peacefully", "To ignore conflicts"], answer: "To resolve conflicts peacefully" },
+    { question: "How can a leader show respect to others?", options: ["By insulting others", "By listening attentively", "By ignoring others' opinions"], answer: "By listening attentively" },
+    { question: "Why is it important for leaders to make fair decisions?", options: ["To create chaos", "To promote fairness and trust", "To favor some team members"], answer: "To promote fairness and trust" },
+    { question: "What is the importance of communication for leaders?", options: ["To confuse messages", "To clarify ideas and instructions", "To avoid conversations"], answer: "To clarify ideas and instructions" },
+    { question: "How can leaders show responsibility?", options: ["By blaming others for mistakes", "By taking ownership of actions", "By avoiding tasks"], answer: "By taking ownership of actions" },
+    { question: "What does it mean to be accountable as a leader?", options: ["To take credit for others' work", "To accept responsibility for actions", "To avoid responsibility"], answer: "To accept responsibility for actions" },
+    { question: "Why is it important for leaders to learn from failures?", options: ["To repeat mistakes", "To grow and improve", "To ignore lessons"], answer: "To grow and improve" },
+    { question: "How can leaders encourage creativity?", options: ["By limiting ideas", "By encouraging new ideas", "By criticizing ideas"], answer: "By encouraging new ideas" },
+    { question: "What is the role of honesty in leadership?", options: ["To lie and deceive", "To build trust and integrity", "To hide mistakes"], answer: "To build trust and integrity" },
+    { question: "Why should leaders seek feedback from others?", options: ["To ignore opinions", "To improve performance", "To discourage teamwork"], answer: "To improve performance" },
+    { question: "How can leaders show humility?", options: ["By boasting about achievements", "By admitting mistakes", "By avoiding challenges"], answer: "By admitting mistakes" },
+    { question: "What does it mean to be resilient as a leader?", options: ["To give up easily", "To bounce back from challenges", "To avoid difficulties"], answer: "To bounce back from challenges" },
+    { question: "Why should leaders continue to learn and grow?", options: ["To stay ignorant", "To develop new skills", "To remain stagnant"], answer: "To develop new skills" },
+    { question: "How can leaders build trust within their team?", options: ["By betraying team members", "By keeping promises", "By criticizing efforts"], answer: "By keeping promises" },
+    { question: "What is the role of patience in leadership?", options: ["To rush decisions", "To wait for results", "To quit easily"], answer: "To wait for results" },
+    { question: "Why is it important for leaders to celebrate successes?", options: ["To overlook achievements", "To recognize and reward efforts", "To discourage achievements"], answer: "To recognize and reward efforts" },
+    { question: "How can leaders inspire others?", options: ["By demotivating the team", "By setting an example", "By ignoring goals"], answer: "By setting an example" },
+    { question: "What is the role of vision in leadership?", options: ["To confuse team members", "To inspire and guide", "To limit opportunities"], answer: "To inspire and guide" },
+    { question: "Why should leaders promote inclusivity?", options: ["To exclude others", "To embrace diversity", "To avoid collaboration"], answer: "To embrace diversity" },
+    { question: "How can leaders build strong relationships?", options: ["By ignoring others' feelings", "By fostering connections", "By isolating team members"], answer: "By fostering connections" }
+
+],
+    'French language': [
+    { question: "What does 'il est midi' mean in English?", options: ["It is midnight", "It is noon", "It is morning"], answer: "It is noon" },
+    { question: "Name three meals of the day in French.", options: ["Petit déjeuner, déjeuner, dîner", "Petit dîner, souper, déjeuner", "Dîner, collation, petit déjeuner"], answer: "Petit déjeuner, déjeuner, dîner" },
+    { question: "How do you say 'It is three o'clock' in French?", options: ["Il est trois heures", "Il est midi", "Il est une heure"], answer: "Il est trois heures" },
+    { question: "What does 'il est une heure' mean in English?", options: ["It is one hour", "It is one o'clock", "It is one minute"], answer: "It is one o'clock" },
+    { question: "Name some clothing items in French.", options: ["Un pantalon, une chemise", "Un chapeau, un vélo", "Un livre, une pomme"], answer: "Un pantalon, une chemise" },
+    { question: "How do you ask 'What time is it?' in French?", options: ["Quel temps fait-il?", "Quelle heure est-il?", "Quand est-ce que tu arrives?"], answer: "Quelle heure est-il?" },
+    { question: "What is 'le petit déjeuner' in English?", options: ["Dinner", "Breakfast", "Lunch"], answer: "Breakfast" },
+    { question: "How do you say 'It is fifteen past three' in French?", options: ["Il est trois heures quinze", "Il est trois heures", "Il est trois heures et quart"], answer: "Il est trois heures quinze" },
+    { question: "What does 'il est dix heures' mean in English?", options: ["It is ten o'clock", "It is ten minutes", "It is ten hours"], answer: "It is ten o'clock" },
+    { question: "Name some numbers in French from 1 to 20.", options: ["Un, deux, trois", "Dix, vingt, trente", "Quatre, cinq, six"], answer: "Un, deux, trois" },
+    { question: "How do you say 'It is one hour' in French?", options: ["Il est une heure", "Il est une minute", "Il est une seconde"], answer: "Il est une heure" },
+    { question: "What does 'il est trois heures' mean in English?", options: ["It is three hours", "It is three o'clock", "It is three minutes"], answer: "It is three o'clock" },
+    { question: "Name some food items in French.", options: ["Le riz, le maïs, le mil", "Le livre, le stylo, le papier", "La pomme, la banane, l'orange"], answer: "Le riz, le maïs, le mil" },
+    { question: "What is 'le déjeuner' in English?", options: ["Lunch", "Dinner", "Breakfast"], answer: "Lunch" },
+    { question: "How do you say 'It is two o'clock' in French?", options: ["Il est deux heures", "Il est midi", "Il est une heure"], answer: "Il est deux heures" },
+    { question: "What does 'il est cinq heures' mean in English?", options: ["It is five hours", "It is five o'clock", "It is five minutes"], answer: "It is five o'clock" },
+    { question: "Name some clothing items in French.", options: ["Un pantalon, une chemise", "Un livre, un crayon", "Une pomme, une orange"], answer: "Un pantalon, une chemise" },
+    { question: "How do you ask 'What time is it?' in French?", options: ["Quel temps fait-il?", "Quelle heure est-il?", "Quand est-ce que tu arrives?"], answer: "Quelle heure est-il?" },
+    { question: "What is 'le petit déjeuner' in English?", options: ["Dinner", "Breakfast", "Lunch"], answer: "Breakfast" },
+    { question: "How do you say 'It is fifteen past three' in French?", options: ["Il est trois heures quinze", "Il est trois heures", "Il est trois heures et quart"], answer: "Il est trois heures quinze" },
+    { question: "What does 'il est dix heures' mean in English?", options: ["It is ten o'clock", "It is ten minutes", "It is ten hours"], answer: "It is ten o'clock" },
+    { question: "Name some numbers in French from 1 to 20.", options: ["Un, deux, trois", "Dix, vingt, trente", "Quatre, cinq, six"], answer: "Un, deux, trois" },
+    { question: "How do you say 'It is one hour' in French?", options: ["Il est une heure", "Il est une minute", "Il est une seconde"], answer: "Il est une heure" },
+    { question: "What does 'il est trois heures' mean in English?", options: ["It is three hours", "It is three o'clock", "It is three minutes"], answer: "It is three o'clock" },
+    { question: "Name some food items in French.", options: ["Le riz, le maïs, le mil", "Le livre, le stylo, le papier", "La pomme, la banane, l'orange"], answer: "Le riz, le maïs, le mil" },
+    { question: "What is 'le déjeuner' in English?", options: ["Lunch", "Dinner", "Breakfast"], answer: "Lunch" },
+    { question: "How do you say 'It is two o'clock' in French?", options: ["Il est deux heures", "Il est midi", "Il est une heure"], answer: "Il est deux heures" },
+    { question: "What does 'il est cinq heures' mean in English?", options: ["It is five hours", "It is five o'clock", "It is five minutes"], answer: "It is five o'clock" }
+
+    ],
+    'Digital literacy': [
+    { question: "What does 'CPU' stand for?", options: ["Central Processing Unit", "Computer Processing Unit", "Central Power Unit"], answer: "Central Processing Unit" },
+    { question: "Which of the following is NOT an input device?", options: ["Monitor", "Keyboard", "Mouse"], answer: "Monitor" },
+    { question: "What is the purpose of a 'browser'?", options: ["To browse the internet", "To store files", "To play games"], answer: "To browse the internet" },
+    { question: "What does 'URL' stand for?", options: ["Uniform Resource Locator", "Universal Resource Link", "Uniform Research Link"], answer: "Uniform Resource Locator" },
+    { question: "Which of these is an example of a storage device?", options: ["USB flash drive", "Printer", "Scanner"], answer: "USB flash drive" },
+    { question: "What is 'email' used for?", options: ["Sending and receiving messages", "Playing games", "Editing photos"], answer: "Sending and receiving messages" },
+    { question: "What does 'WWW' stand for?", options: ["World Wide Web", "Web World Wide", "World Web Wide"], answer: "World Wide Web" },
+    { question: "Which of the following is an example of a social media platform?", options: ["Facebook", "Microsoft Word", "Excel"], answer: "Facebook" },
+    { question: "What is a 'password' used for?", options: ["To secure accounts", "To browse websites", "To type faster"], answer: "To secure accounts" },
+    { question: "Which software is used for creating documents and presentations?", options: ["Microsoft Word", "Adobe Photoshop", "Sony Vegas"], answer: "Microsoft Word" },
+    { question: "What is 'digital citizenship'?", options: ["Using technology responsibly", "Playing digital games", "Learning about computers"], answer: "Using technology responsibly" },
+    { question: "What is 'cyberbullying'?", options: ["Bullying online", "Using computers in school", "Learning about cybernetics"], answer: "Bullying online" },
+    { question: "What is 'malware'?", options: ["Malicious software", "A type of hardware", "A computer network"], answer: "Malicious software" },
+    { question: "What is 'encryption'?", options: ["Securing data", "Sending emails", "Creating folders"], answer: "Securing data" },
+    { question: "What does 'download' mean?", options: ["Saving data from the internet", "Uploading files to the cloud", "Deleting files"], answer: "Saving data from the internet" },
+    { question: "Which of the following is used for video calls?", options: ["Skype", "Instagram", "WhatsApp"], answer: "Skype" },
+    { question: "What does 'Wi-Fi' refer to?", options: ["Wireless internet connection", "Wired internet connection", "Internet service provider"], answer: "Wireless internet connection" },
+    { question: "Which tool is used for searching information on the internet?", options: ["Search engine", "Calculator", "Dictionary"], answer: "Search engine" },
+    { question: "What does 'backup' mean?", options: ["Saving copies of files", "Closing a program", "Deleting data"], answer: "Saving copies of files" },
+    { question: "Which of the following is NOT safe to share online?", options: ["Home address", "Favorite color", "Hobbies"], answer: "Home address" },
+    { question: "What is 'phishing'?", options: ["Tricking people into giving personal information", "Playing online games", "Learning about fish species"], answer: "Tricking people into giving personal information" },
+    { question: "What does 'ISP' stand for?", options: ["Internet Service Provider", "International Security Protocol", "Internal Software Platform"], answer: "Internet Service Provider" },
+    { question: "What is 'spam'?", options: ["Unwanted emails", "Important messages", "Computer virus"], answer: "Unwanted emails" },
+    { question: "Which of these is used for creating and editing images?", options: ["Adobe Photoshop", "Microsoft Excel", "Google Chrome"], answer: "Adobe Photoshop" },
+    { question: "What is 'firewall'?", options: ["Security system", "Computer monitor", "Digital camera"], answer: "Security system" },
+    { question: "What is 'cloud computing'?", options: ["Storing and accessing data over the internet", "Printing documents", "Playing online games"], answer: "Storing and accessing data over the internet" },
+    { question: "What does 'browser history' contain?", options: ["Websites visited", "Bookmarks", "Passwords"], answer: "Websites visited" },
+    { question: "Which of these is an example of an operating system?", options: ["Windows", "Microsoft Office", "Antivirus software"], answer: "Windows" },
+    { question: "What does 'digital footprint' refer to?", options: ["Traces left online", "A type of shoe", "A computer file"], answer: "Traces left online" },
+    { question: "What is 'two-factor authentication'?", options: ["Using two methods to verify identity", "Connecting two computers", "Sending two emails"], answer: "Using two methods to verify identity" }
+
+],
+
+'Verbal reasoning': [
+
+    { question: "Complete the series: 3, 6, 9, 12, ___", options: ["15", "18", "21"], answer: "15" },
+    { question: "Which word is different from the others? Apple, Banana, Orange, Pear", options: ["Apple", "Banana", "Orange", "Pear"], answer: "Banana" },
+    { question: "Arrange these words in alphabetical order: Cat, Dog, Rabbit, Elephant", options: ["Cat, Dog, Elephant, Rabbit", "Cat, Dog, Rabbit, Elephant", "Cat, Rabbit, Dog, Elephant"], answer: "Cat, Dog, Elephant, Rabbit" },
+    { question: "What comes next in the pattern? Circle, Square, Triangle, Circle, Square, ___", options: ["Triangle", "Rectangle", "Oval"], answer: "Triangle" },
+    { question: "Which is the odd one out? Chair, Table, Bed, Lamp", options: ["Chair", "Table", "Bed", "Lamp"], answer: "Lamp" },
+    { question: "What is the opposite of 'happy'?", options: ["Sad", "Joyful", "Excited"], answer: "Sad" },
+    { question: "Which number comes next? 5, 10, 15, ___", options: ["20", "25", "30"], answer: "20" },
+    { question: "Find the missing number in the sequence: 2, 4, 6, ___", options: ["8", "10", "12"], answer: "8" },
+    { question: "Which word does not belong? Circle, Square, Triangle, Red", options: ["Circle", "Square", "Triangle", "Red"], answer: "Red" },
+    { question: "Complete the analogy: Bird is to nest as bee is to ___", options: ["Hive", "Web", "Nest"], answer: "Hive" },
+    { question: "Which word does not rhyme? Cat, Hat, Bat, Dog", options: ["Cat", "Hat", "Bat", "Dog"], answer: "Dog" },
+    { question: "What is the synonym of 'happy'?", options: ["Joyful", "Sad", "Excited"], answer: "Joyful" },
+    { question: "Choose the correct spelling: Caffee, Cafe, Caffey, Caffe", options: ["Cafe", "Caffey", "Caffe"], answer: "Cafe" },
+    { question: "What comes next in the pattern? 1, 4, 9, ___", options: ["12", "13", "16"], answer: "16" },
+    { question: "Which animal is fastest? Lion, Elephant, Cheetah, Giraffe", options: ["Lion", "Elephant", "Cheetah", "Giraffe"], answer: "Cheetah" },
+    { question: "What is the opposite of 'old'?", options: ["New", "Young", "Ancient"], answer: "Young" },
+    { question: "Which shape does not belong? Circle, Square, Triangle, Oval", options: ["Circle", "Square", "Triangle", "Oval"], answer: "Triangle" },
+    { question: "What is the synonym of 'big'?", options: ["Large", "Small", "Huge"], answer: "Large" },
+    { question: "What is missing? Monday, Tuesday, Wednesday, ___", options: ["Thursday", "Friday", "Saturday"], answer: "Thursday" },
+    { question: "Which number is missing? 10, 20, ___, 40", options: ["30", "35", "45"], answer: "30" },
+    { question: "Choose the odd one out: Elephant, Lion, Zebra, Car", options: ["Elephant", "Lion", "Zebra", "Car"], answer: "Car" },
+    { question: "What is the synonym of 'fast'?", options: ["Quick", "Slow", "Rapid"], answer: "Quick" },
+    { question: "What time is 1 hour before 4 o'clock?", options: ["3 o'clock", "5 o'clock", "6 o'clock"], answer: "3 o'clock" },
+    { question: "Which shape comes next? Circle, Square, Triangle, Circle, Square, ___", options: ["Triangle", "Rectangle", "Oval"], answer: "Triangle" },
+    { question: "What is the opposite of 'heavy'?", options: ["Light", "Dark", "Hard"], answer: "Light" },
+    { question: "Which animal does not belong? Dog, Cat, Fish, Lion", options: ["Fish", "Dog", "Cat", "Lion"], answer: "Fish" },
+    { question: "Which is the correct order? Morning, Night, Afternoon, Evening", options: ["Morning, Night, Afternoon, Evening", "Night, Morning, Evening, Afternoon", "Evening, Morning, Night, Afternoon"], answer: "Morning, Night, Afternoon, Evening" },
+    { question: "Choose the odd one out: Red, Blue, Green, Chair", options: ["Red", "Blue", "Green", "Chair"], answer: "Chair" },
+    { question: "What is the opposite of 'hot'?", options: ["Cold", "Warm", "Freezing"], answer: "Cold" },
+    { question: "What is the synonym of 'small'?", options: ["Tiny", "Big", "Large"], answer: "Tiny" }
+
+],
+
+'Quantitative reasoning': [
+    { question: "If John has 5 apples and he gives 2 to Jane, how many apples does John have left?", options: ["2", "3", "5"], answer: "3" },
+    { question: "Which shape has 4 equal sides?", options: ["Square", "Rectangle", "Triangle"], answer: "Square" },
+    { question: "What is the next number in the sequence: 10, 15, 20, ___", options: ["25", "30", "35"], answer: "25" },
+    { question: "If a box contains 8 oranges and 3 are taken out, how many oranges are left in the box?", options: ["5", "6", "8"], answer: "5" },
+    { question: "What is 50 divided by 5?", options: ["10", "15", "20"], answer: "10" },
+    { question: "If a book costs $12 and Sam has $20, how much change will Sam get if he buys the book?", options: ["$8", "$10", "$12"], answer: "$8" },
+    { question: "How many sides does a triangle have?", options: ["3", "4", "5"], answer: "3" },
+    { question: "What is 25 multiplied by 3?", options: ["50", "75", "100"], answer: "75" },
+    { question: "If Mary has 3 times as many marbles as Tom, and Tom has 5 marbles, how many marbles does Mary have?", options: ["8", "10", "15"], answer: "15" },
+    { question: "What is the value of 2 tens and 3 ones?", options: ["23", "32", "25"], answer: "23" },
+    { question: "Which number is the largest: 15, 18, 21?", options: ["15", "18", "21"], answer: "21" },
+    { question: "If there are 24 hours in a day, how many hours are there in 3 days?", options: ["68", "72", "76"], answer: "72" },
+    { question: "What is half of 16?", options: ["6", "8", "10"], answer: "8" },
+    { question: "Which is heavier: 1 kilogram or 500 grams?", options: ["1 kilogram", "500 grams"], answer: "1 kilogram" },
+    { question: "If there are 7 days in a week, how many days are there in 3 weeks?", options: ["18", "19", "21"], answer: "21" },
+    { question: "What is the perimeter of a square with each side of length 4 meters?", options: ["12 meters", "16 meters", "20 meters"], answer: "16 meters" },
+    { question: "How many centimeters are there in 1 meter?", options: ["10", "100", "1000"], answer: "100" },
+    { question: "If a pencil costs 25 cents, how much will 5 pencils cost?", options: ["$1.00", "$1.25", "$1.50"], answer: "$1.25" },
+    { question: "What is the next number in the pattern: 2, 5, 10, ___", options: ["15", "20", "25"], answer: "15" },
+    { question: "If there are 60 minutes in an hour, how many minutes are there in 2 hours?", options: ["100", "110", "120"], answer: "120" },
+    { question: "What is the difference between 35 and 20?", options: ["15", "20", "25"], answer: "15" },
+    { question: "How many millimeters are there in 1 centimeter?", options: ["10", "100", "1000"], answer: "10" },
+    { question: "If a box has 6 red balls and 4 blue balls, what fraction of the balls are blue?", options: ["1/4", "2/5", "3/10"], answer: "2/5" },
+    { question: "What is the sum of 45 and 25?", options: ["60", "70", "80"], answer: "70" },
+    { question: "How many sides does an octagon have?", options: ["6", "8", "10"], answer: "8" },
+    { question: "What is the value of 3 tens and 4 ones?", options: ["34", "43", "32"], answer: "34" },
+    { question: "If there are 12 months in a year, how many months are there in 3 years?", options: ["30", "36", "42"], answer: "36" },
+    { question: "What is three-quarters of 20?", options: ["10", "12", "15"], answer: "15" },
+    { question: "Which number is even: 17, 20, 23?", options: ["17", "20", "23"], answer: "20" },
+    { question: "If a rectangle has a length of 8 cm and a width of 5 cm, what is its perimeter?", options: ["26 cm", "32 cm", "40 cm"], answer: "26 cm" }
+
+],
+
+    'Music studies': [
+    { question: "What is the primary method used in leaf and thumb print making?", options: ["Painting", "Sculpting", "Printing"], answer: "Printing" },
+    { question: "State the source of music.", options: ["Nature", "Humans", "Animals"], answer: "Humans" },
+    { question: "List things that produce sounds.", options: ["Birds, insects, and humans", "Rocks, trees, and rivers", "Air, water, and fire"], answer: "Birds, insects, and humans" },
+    { question: "Differentiate between noise and music.", options: ["Noise is loud, music is soft", "Noise is random, music is organized", "Noise is natural, music is artificial"], answer: "Noise is random, music is organized" },
+    { question: "Explain the meaning of papier mache.", options: ["Sculpting with clay", "Molding with paper and glue", "Painting on canvas"], answer: "Molding with paper and glue" },
+    { question: "Identify materials used in papier mache.", options: ["Wood and metal", "Paper and water", "Plastic and glass"], answer: "Paper and water" },
+    { question: "Make an object using papier mache.", options: ["A kite", "A mask", "A book"], answer: "A mask" },
+    { question: "Identify Nigerian musical instruments.", options: ["Piano and guitar", "Agogo and talking drum", "Violin and flute"], answer: "Agogo and talking drum" },
+    { question: "Discover how Nigerian musical instruments are played and the sound they produce.", options: ["Striking and blowing", "Plucking and bowing", "Tapping and shaking"], answer: "Striking and blowing" },
+    { question: "Classify foreign musical instruments.", options: ["Brass, woodwind, percussion", "String, keyboard, electronic", "Traditional, modern, experimental"], answer: "Brass, woodwind, percussion" },
+    { question: "Explain the meaning of drama.", options: ["Acting out a story", "Singing a song", "Dancing on stage"], answer: "Acting out a story" },
+    { question: "Differentiate between drama and theatre.", options: ["Drama is serious, theatre is funny", "Drama is scripted, theatre is improvised", "Drama is a performance, theatre is a building"], answer: "Drama is a performance, theatre is a building" },
+    { question: "Partake in a short drama performance.", options: ["Acting out a script", "Reciting a poem", "Painting a scene"], answer: "Acting out a script" },
+    { question: "Explain the definition of dance.", options: ["Moving rhythmically to music", "Standing still", "Jumping up and down"], answer: "Moving rhythmically to music" },
+    { question: "State the importance of dance.", options: ["Exercise, expression, cultural celebration", "Writing, reading, arithmetic", "Cooking, cleaning, gardening"], answer: "Exercise, expression, cultural celebration" },
+    { question: "Present a dance performance for the class and school.", options: ["Solo dance", "Group dance", "Mime performance"], answer: "Group dance" },
+    { question: "Identify greetings in different parts of Nigeria.", options: ["Handshake, bow, nod", "Hug, kiss, high-five", "Salaam, prostration, clapping"], answer: "Handshake, bow, nod" },
+    { question: "List occasions to greet.", options: ["Birthdays, weddings, funerals", "Rainy days, sunny days, windy days", "Mornings, afternoons, evenings"], answer: "Birthdays, weddings, funerals" },
+    { question: "State benefits of greeting.", options: ["Builds relationships, shows respect, promotes peace", "Provides entertainment, enhances creativity, fosters learning", "Increases productivity, reduces stress, improves health"], answer: "Builds relationships, shows respect, promotes peace" },
+    { question: "Differentiate styles of greeting in different tribes in Nigeria.", options: ["Handshake, bow, clap", "Salaam, prostration, hug", "Nod, high-five, kiss"], answer: "Salaam, prostration, hug" },
+    { question: "Differentiate drawings with examples.", options: ["Sketch, painting, sculpture", "Portrait, landscape, abstract", "Color, shape, line"], answer: "Portrait, landscape, abstract" },
+    { question: "Produce different types of drawings.", options: ["Pencil sketch, watercolor painting, clay sculpture", "Cooking recipe, storybook, song lyrics", "Math equation, historical timeline, geographic map"], answer: "Pencil sketch, watercolor painting, clay sculpture" },
+    { question: "State the meaning of musical notation.", options: ["Symbols used to represent musical sounds", "Tools for making music", "Styles of playing instruments"], answer: "Symbols used to represent musical sounds" },
+    { question: "Identify different musical notes.", options: ["Whole note, half note, quarter note", "Major note, minor note, augmented note", "High note, low note, medium note"], answer: "Whole note, half note, quarter note" },
+    { question: "Explain the role of a conductor in music.", options: ["Leads the performance", "Writes the music", "Sells the tickets"], answer: "Leads the performance" },
+    { question: "Identify the sections of an orchestra.", options: ["Strings, woodwinds, brass, percussion", "Singers, dancers, actors", "Lights, sound, stage"], answer: "Strings, woodwinds, brass, percussion" },
+    { question: "Describe how to care for a musical instrument.", options: ["Regular cleaning, proper storage, careful handling", "Frequent use, exposure to sunlight, keeping it dry", "Leaving it out in the open, letting it get dusty, playing it loudly"], answer: "Regular cleaning, proper storage, careful handling" },
+    { question: "Explain the importance of practice in music.", options: ["Improves skill and performance", "Makes music louder", "Changes the type of instrument"], answer: "Improves skill and performance" },
+    { question: "List benefits of learning music.", options: ["Enhances creativity, improves memory, builds discipline", "Provides entertainment, encourages dancing, teaches history", "Increases physical strength, improves vision, builds muscles"], answer: "Enhances creativity, improves memory, builds discipline" },
+    { question: "Identify different genres of music.", options: ["Classical, jazz, rock", "Fast, slow, medium", "Loud, soft, moderate"], answer: "Classical, jazz, rock" }
+
+],
+
+    
+};
+
+function displayQuestions(subject) {
+    const questionList = questions[subject];
+    if (questionList) {
+        // Clear previous questions if any
+        document.getElementById('questionContainer').innerHTML = '';
+        // Display questions
+        questionList.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('card', 'mt-3');
+            questionElement.setAttribute('data-subject', subject);
+            questionElement.setAttribute('data-question-index', index);
+            questionElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${question.question}</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option1${index}" value="${question.options[0]}">
+                        <label class="form-check-label" for="option1${index}">
+                            ${question.options[0]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option2${index}" value="${question.options[1]}">
+                        <label class="form-check-label" for="option2${index}">
+                            ${question.options[1]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option3${index}" value="${question.options[2]}">
+                        <label class="form-check-label" for="option3${index}">
+                            ${question.options[2]}
+                        </label>
+                    </div>
+                </div>
+            `;
+            document.getElementById('questionContainer').appendChild(questionElement);
+        });
+        
+        // Add submit button
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary mt-3');
+        submitButton.textContent = 'Submit Answers';
+        submitButton.onclick = calculateScore;
+        document.getElementById('questionContainer').appendChild(submitButton);
+    }
+}
+
+
+
+function calculateScore(username) {
+    let score = 0;
+    const questionCards = document.querySelectorAll('.card.mt-3');
+    
+    questionCards.forEach((card, index) => {
+        const selectedOption = card.querySelector('input[type=radio]:checked');
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const subject = card.getAttribute('data-subject');
+            const questionIndex = card.getAttribute('data-question-index');
+            const correctAnswer = questions[subject][questionIndex].answer;
+            if (selectedAnswer === correctAnswer) {
+                score += 3.33333333; // Each correct answer earns 3.33 marks
+            }
+        }
+    });
+
+    // Determine the grade based on score ranges
+let grade;
+if (score >= 0 && score <= 17) {
+    grade = 'F';
+} else if (score >= 18 && score <= 30) {
+    grade = 'E';
+} else if (score >= 31 && score <= 44) {
+    grade = 'D';
+} else if (score >= 45 && score <= 69) {
+    grade = 'C';
+} else if (score >= 70 && score <= 84) {
+    grade = 'B';
+} else if (score >= 85 && score <= 100) {
+    grade = 'A';
+} else {
+    grade = 'Invalid'; // If score exceeds the expected range
+}
+
+
+    // Display the score and grade on the page
+    const scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.textContent = `Congratulations, your score is: ${score}, and your grade is: ${grade}`;
+}
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = minutes + ':' + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = '00:00';
+            // Time is up, automatically submit the exam
+            calculateScore();
+        }
+    }, 1000);
+}
+
+// Function to attach click event listeners to subject elements
+function attachTimerToSubjects() {
+    const subjects = document.querySelectorAll('[id^="collapsePrimary"]'); // Select all elements with ids starting with "collapsePrimary"
+    subjects.forEach(subject => {
+        subject.addEventListener('click', () => {
+            const display = document.getElementById('timer-display');
+            const timeLimit = 60 * 10; // 10 minutes in seconds
+            startTimer(timeLimit, display);
+        });
+    });
+}
+
+window.onload = function () {
+    attachTimerToSubjects();
+};
+
+        
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
