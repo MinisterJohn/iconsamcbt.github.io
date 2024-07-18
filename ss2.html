@@ -1,101 +1,809 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>SS2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             padding-top: 56px;
         }
-        .hidden { 
-            display: none; 
-        }
         .logo {
             height: 50px;
         }
-       
+        .footer-section {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #score-display {
+      max-width: 600px;
+      margin: auto;
+    }
+
+#score-display h4 {
+          color: #007bff; /* Bootstrap primary color */
+        }
+      #timer-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: fixed;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+    #timer-display {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: center;
+    }
+}
+
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img\logo.jpg" alt="Logo 1" class="logo">
-                <img src="img\logo2.jpg" alt="Logo 2" class="logo">
-                Computer Based Examination System
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                </ul>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.jpg" alt="Logo 1" class="logo">
+            <img src="img/logo2.jpg" alt="Logo 2" class="logo">
+            Computer Based Examination System
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
+
+<!-- Container for displaying timer -->
+<div id="timer-container">
+  <center>
+      <div id="timer-display">
+          <p>Exam Time:</p>
+          <p id="timer">00:00</p>
+      </div>
+  </center>
+</div>
+
+<div class="container mt-5">
+    <div id="subjectAccordion">
+        <!-- SS1 -->
+        <div class="card">
+            <div class="card-header" id="headingPrimary5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePrimary5" aria-expanded="true" aria-controls="collapsePrimary5">
+                        SS2
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePrimary5" class="collapse show" aria-labelledby="headingPrimary5" data-parent="#subjectAccordion">
+                <div class="card-body">
+                    <button class="btn btn-secondary" onclick="displayQuestions('Mathematics')">Mathematics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('English language')">English language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Biology')">Biology</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Civic education')">Civic education</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Physics')">Physics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Chemistry')">Chemistry</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Government')">Government</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Digital literacy')">Digital literacy</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Economics')">Economics</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Geography')">Geography</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Leadership')">Leadership</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('French language')">French language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Entrepreneurship')">Entrepreneurship</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Food and nutrition')">Food and nutrition</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                </div>
             </div>
         </div>
-    </nav>
-    <br>
-    <br>
-    <br>
+    </div>
+</div>
+
+
+<!-- Container for displaying questions -->
+<div id="questionContainer" class="container mt-3">
+
+  
+</div> 
+
+
+<!-- Container for displaying score for each subject -->
+<div id="score-display" class="mt-3 p-3 border rounded shadow-sm bg-light">
+  <h4 class="text-center">Score board</h4>
+  <!-- Add score content here -->
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <p>Developed by Livingstone Consult 2024</p>
+    </div>
+</footer>
+
+<script>
+
+const questions = {
+    'Mathematics': [
+  { question: "1. Solve for x: 3x + 7 = 25", options: ["x = 6", "x = 8", "x = 9"], answer: "x = 6" },
+  { question: "2. Simplify: 4x + 2y - 3x + 5y", options: ["x + 7y", "x - y", "7y"], answer: "x + 7y" },
+  { question: "3. What is the square root of 144?", options: ["12", "14", "16"], answer: "12" },
+  { question: "4. Evaluate: 2^4 + 3 * 5", options: ["33", "40", "28"], answer: "28" },
+  { question: "5. Solve the equation: 2(x - 3) = 10", options: ["x = 7", "x = 8", "x = 10"], answer: "x = 8" },
+  { question: "6. What is the perimeter of a rectangle with length 6 cm and width 4 cm?", options: ["24 cm", "20 cm", "16 cm"], answer: "20 cm" },
+  { question: "7. Simplify: (3x^2 - 2x + 5) - (2x^2 + 4x - 1)", options: ["x^2 - 6x + 6", "x^2 - 6x + 4", "x^2 - 2x + 4"], answer: "x^2 - 6x + 6" },
+  { question: "8. What is the value of 5! (5 factorial)?", options: ["120", "60", "24"], answer: "120" },
+  { question: "9. Solve for y: 2y + 4 = 10", options: ["y = 3", "y = 2", "y = 5"], answer: "y = 3" },
+  { question: "10. Find the area of a triangle with base 8 cm and height 6 cm.", options: ["24 cm²", "30 cm²", "48 cm²"], answer: "24 cm²" },
+  { question: "11. Simplify: 5x - (2x - 3)", options: ["3x + 3", "3x - 3", "3x + 5"], answer: "3x + 3" },
+  { question: "12. What is the value of π (pi) correct to two decimal places?", options: ["3.14", "3.16", "3.18"], answer: "3.14" },
+  { question: "13. Solve for x: 4(x + 3) = 32", options: ["x = 5", "x = 6", "x = 7"], answer: "x = 5" },
+  { question: "14. What is the volume of a cube with side length 3 cm?", options: ["27 cm³", "18 cm³", "9 cm³"], answer: "27 cm³" },
+  { question: "15. Factorize: x^2 - 9", options: ["(x - 3)(x + 3)", "(x - 2)(x - 4)", "(x + 3)(x + 3)"], answer: "(x - 3)(x + 3)" },
+  { question: "16. Solve the inequality: 2x + 5 > 15", options: ["x > 5", "x > 10", "x > 15"], answer: "x > 5" },
+  { question: "17. What is the value of log₁₀100?", options: ["1", "2", "10"], answer: "2" },
+  { question: "18. If a = 5 and b = 3, what is a² + b²?", options: ["34", "30", "25"], answer: "34" },
+  { question: "19. Solve for x: 3(x - 4) = 15", options: ["x = 7", "x = 9", "x = 11"], answer: "x = 9" },
+  { question: "20. Find the circumference of a circle with radius 7 cm (use π = 3.14).", options: ["43.96 cm", "43.96 cm²", "48.26 cm"], answer: "43.96 cm" },
+  { question: "21. What is the value of 2^3 * 4?", options: ["64", "32", "16"], answer: "64" },
+  { question: "22. Simplify: 6y - (3y + 2)", options: ["3y - 2", "3y - 4", "3y + 2"], answer: "3y - 2" },
+  { question: "23. Solve for x: 2(x + 5) = 18", options: ["x = 4", "x = 5", "x = 6"], answer: "x = 4" },
+  { question: "24. Find the area of a circle with radius 10 cm (use π = 3.14).", options: ["314 cm²", "300 cm²", "210 cm²"], answer: "314 cm²" },
+  { question: "25. If the sum of two angles in a triangle is 90°, what is the measure of the third angle?", options: ["45°", "90°", "135°"], answer: "45°" },
+  { question: "26. What is the slope of the line passing through points (3, 5) and (1, 2)?", options: ["1.5", "2", "3"], answer: "1.5" },
+  { question: "27. Solve for x: 3x - 7 = 2x + 3", options: ["x = 10", "x = 8", "x = 5"], answer: "x = 10" },
+  { question: "28. What is the value of 7! (7 factorial)?", options: ["5040", "3520", "720"], answer: "5040" },
+  { question: "29. Simplify: (4a + 3b) - (2a - 5b)", options: ["2a + 8b", "2a - 2b", "2a - 2b"], answer: "2a + 8b" },
+  { question: "30. What is the value of 2πr where r = 10 cm?", options: ["20π cm", "40π cm", "60π cm"], answer: "20π cm" }
+],
+
+
+
+    'English language': [
+  { question: "1. Choose the correct form of the verb in the sentence: 'She _____ to the market yesterday.'", options: ["go", "went", "gone"], answer: "went" },
+  { question: "2. Identify the type of sentence: 'He is playing football.'", options: ["Interrogative", "Exclamatory", "Declarative"], answer: "Declarative" },
+  { question: "3. Which word is a synonym of 'angry'?", options: ["Happy", "Furious", "Brave"], answer: "Furious" },
+  { question: "4. What is the plural form of 'child'?", options: ["Childrens", "Childs", "Children"], answer: "Children" },
+  { question: "5. Choose the correct sentence: 'She didn't like the movie, ____.'", options: ["did she?", "didn't she?", "did she"], answer: "did she?" },
+  { question: "6. What is the antonym of 'happy'?", options: ["Sad", "Content", "Cheerful"], answer: "Sad" },
+  { question: "7. Which sentence is punctuated correctly?", options: ["I went to the store and bought apples.", "I went to the store, and bought apples.", "I went to the store, and bought apples"], answer: "I went to the store and bought apples." },
+  { question: "8. Identify the adverb in the sentence: 'She sings beautifully.'", options: ["She", "Sings", "Beautifully"], answer: "Beautifully" },
+  { question: "9. What is the plural of 'hero'?", options: ["Heros", "Heroes", "Heroies"], answer: "Heroes" },
+  { question: "10. Choose the correct sentence: 'I have ____ seen that movie.'", options: ["never", "ever", "already"], answer: "never" },
+  { question: "11. What is the comparative form of 'good'?", options: ["Gooder", "Better", "Best"], answer: "Better" },
+  { question: "12. Which word is a preposition in the sentence: 'She walked through the park.'", options: ["She", "Walked", "Through"], answer: "Through" },
+  { question: "13. What is the plural of 'ox'?", options: ["Oxen", "Oxes", "Ox"], answer: "Oxen" },
+  { question: "14. Choose the correct sentence: 'They ____ to the beach every summer.'", options: ["go", "goes", "going"], answer: "go" },
+  { question: "15. Which word is a conjunction in the sentence: 'He likes apples but not oranges.'", options: ["He", "Likes", "But"], answer: "But" },
+  { question: "16. What is the past tense of 'eat'?", options: ["Eaten", "Eating", "Ate"], answer: "Ate" },
+  { question: "17. Choose the correct sentence: 'She ____ studying when I called.'", options: ["is", "are", "was"], answer: "was" },
+  { question: "18. What is the superlative form of 'far'?", options: ["Farther", "Further", "Farthest"], answer: "Farthest" },
+  { question: "19. Which word is a noun in the sentence: 'He ran quickly.'", options: ["He", "Ran", "Quickly"], answer: "He" },
+  { question: "20. Choose the correct sentence: 'I ____ my homework yesterday.'", options: ["finished", "finish", "finishes"], answer: "finished" },
+  { question: "21. What is the meaning of 'intelligent'?", options: ["Smart", "Silly", "Kind"], answer: "Smart" },
+  { question: "22. Identify the type of sentence: 'How tall are you?'", options: ["Declarative", "Interrogative", "Imperative"], answer: "Interrogative" },
+  { question: "23. What is the plural form of 'cactus'?", options: ["Cactuses", "Cacti", "Cactus"], answer: "Cacti" },
+  { question: "24. Which sentence is correct?", options: ["He don't like pizza.", "He doesn't likes pizza.", "He doesn't like pizza."], answer: "He doesn't like pizza." },
+  { question: "25. What is the antonym of 'brave'?", options: ["Strong", "Cowardly", "Bold"], answer: "Cowardly" },
+  { question: "26. Which word is an adjective in the sentence: 'The cat chased the small mouse.'", options: ["Chased", "Small", "Mouse"], answer: "Small" },
+  { question: "27. Choose the correct sentence: 'She ____ in New York last year.'", options: ["was live", "lived", "living"], answer: "lived" },
+  { question: "28. What is the meaning of 'mysterious'?", options: ["Obvious", "Secretive", "Interesting"], answer: "Secretive" },
+  { question: "29. Identify the conjunction in the sentence: 'He likes both cats and dogs.'", options: ["He", "Likes", "Both"], answer: "Both" },
+  { question: "30. Choose the correct sentence: 'The children ____ playing outside.'", options: ["is", "are", "were"], answer: "were" }
+],
+
+
+
+
+'Biology': [
+  { question: "1. What is the primary function of the lungs in humans?", options: ["Digestion", "Circulation", "Respiration"], answer: "Respiration" },
+  { question: "2. Which of the following is a function of the skeletal system?", options: ["Producing hormones", "Protecting internal organs", "Transporting oxygen"], answer: "Protecting internal organs" },
+  { question: "3. What is the role of red blood cells in the body?", options: ["Carrying oxygen", "Digesting food", "Producing antibodies"], answer: "Carrying oxygen" },
+  { question: "4. What is the process by which plants make their own food?", options: ["Photosynthesis", "Respiration", "Transpiration"], answer: "Photosynthesis" },
+  { question: "5. Which organ in the human body produces bile?", options: ["Pancreas", "Liver", "Kidney"], answer: "Liver" },
+  { question: "6. What is the function of the nervous system?", options: ["Transporting nutrients", "Controlling body movements", "Producing hormones"], answer: "Controlling body movements" },
+  { question: "7. What is the function of the mitochondria in cells?", options: ["Storing water", "Producing energy", "Digesting food"], answer: "Producing energy" },
+  { question: "8. What is the main function of the heart in the circulatory system?", options: ["Filtering blood", "Pumping blood", "Producing blood cells"], answer: "Pumping blood" },
+  { question: "9. Which part of a plant absorbs water and minerals from the soil?", options: ["Stem", "Leaf", "Root"], answer: "Root" },
+  { question: "10. What is the role of white blood cells in the immune system?", options: ["Transporting oxygen", "Fighting infections", "Producing antibodies"], answer: "Fighting infections" },
+  { question: "11. What is the function of the rib cage in humans?", options: ["Digesting food", "Protecting organs", "Filtering blood"], answer: "Protecting organs" },
+  { question: "12. Which substance is primarily responsible for muscle contraction?", options: ["Insulin", "Hormones", "Adenosine triphosphate (ATP)"], answer: "Adenosine triphosphate (ATP)" },
+  { question: "13. What is the function of the respiratory system in humans?", options: ["Circulating blood", "Exchanging gases", "Digesting food"], answer: "Exchanging gases" },
+  { question: "14. What is the role of chlorophyll in photosynthesis?", options: ["Absorbing water", "Absorbing light energy", "Producing oxygen"], answer: "Absorbing light energy" },
+  { question: "15. What is the function of the pancreas in the human body?", options: ["Regulating blood sugar", "Producing bile", "Filtering blood"], answer: "Regulating blood sugar" },
+  { question: "16. Which of the following is a function of the excretory system?", options: ["Regulating body temperature", "Removing waste products", "Producing hormones"], answer: "Removing waste products" },
+  { question: "17. What is the role of the nucleus in a cell?", options: ["Storing water", "Controlling cell activities", "Digesting food"], answer: "Controlling cell activities" },
+  { question: "18. What is the process by which plants lose water through their leaves?", options: ["Transpiration", "Photosynthesis", "Respiration"], answer: "Transpiration" },
+  { question: "19. Which part of the brain controls balance and coordination?", options: ["Cerebrum", "Cerebellum", "Medulla oblongata"], answer: "Cerebellum" },
+  { question: "20. What is the function of the circulatory system in humans?", options: ["Transporting nutrients", "Exchanging gases", "Producing energy"], answer: "Transporting nutrients" },
+  { question: "21. Which structure connects muscles to bones?", options: ["Ligament", "Tendon", "Cartilage"], answer: "Tendon" },
+  { question: "22. What is the function of the small intestine in digestion?", options: ["Absorbing nutrients", "Producing enzymes", "Storing bile"], answer: "Absorbing nutrients" },
+  { question: "23. What is the primary function of the reproductive system?", options: ["Producing hormones", "Regulating body temperature", "Producing offspring"], answer: "Producing offspring" },
+  { question: "24. Which part of a flower produces pollen?", options: ["Stigma", "Pistil", "Anther"], answer: "Anther" },
+  { question: "25. What is the function of the endocrine system in the body?", options: ["Regulating body temperature", "Producing hormones", "Filtering blood"], answer: "Producing hormones" },
+  { question: "26. Which of the following is a function of the skeletal system?", options: ["Producing energy", "Supporting the body", "Digesting food"], answer: "Supporting the body" },
+  { question: "27. What is the role of the liver in the digestive system?", options: ["Producing bile", "Regulating blood sugar", "Excreting waste"], answer: "Producing bile" },
+  { question: "28. What is the function of the epidermis in plants?", options: ["Storing water", "Absorbing minerals", "Protecting the plant"], answer: "Protecting the plant" },
+  { question: "29. Which part of the eye controls the amount of light entering?", options: ["Pupil", "Lens", "Cornea"], answer: "Pupil" },
+  { question: "30. What is the primary function of the kidneys in humans?", options: ["Producing urine", "Digesting food", "Pumping blood"], answer: "Producing urine" }
+],
+
+
+
+'Civic education': [
+  { question: "1. What does democracy promote in a society?", options: ["Dictatorship", "Rule of law", "Corruption"], answer: "Rule of law" },
+  { question: "2. Which of the following is a fundamental human right?", options: ["Censorship", "Freedom of speech", "Forced labor"], answer: "Freedom of speech" },
+  { question: "3. What is the essence of the rule of law in a democratic society?", options: ["Arbitrary arrests", "Equality before the law", "Selective justice"], answer: "Equality before the law" },
+  { question: "4. What is the role of a constitution in a country?", options: ["Enforcing laws", "Defining citizens' rights", "Selecting leaders"], answer: "Defining citizens' rights" },
+  { question: "5. Which of these promotes accountability in government?", options: ["Transparency", "Censorship", "Media blackout"], answer: "Transparency" },
+  { question: "6. What is the importance of civic responsibility?", options: ["Avoiding taxes", "Participating in elections", "Ignoring community needs"], answer: "Participating in elections" },
+  { question: "7. What does citizenship education aim to promote?", options: ["Selfishness", "Respect for diversity", "Social exclusion"], answer: "Respect for diversity" },
+  { question: "8. Which of these is a consequence of corruption in society?", options: ["Economic growth", "Social justice", "Underdevelopment"], answer: "Underdevelopment" },
+  { question: "9. Why is it important for citizens to know their rights?", options: ["To break laws", "To demand accountability", "To avoid responsibilities"], answer: "To demand accountability" },
+  { question: "10. What is the role of the judiciary in a democratic society?", options: ["Making laws", "Interpreting laws", "Enforcing laws"], answer: "Interpreting laws" },
+  { question: "11. How does civic education promote good governance?", options: ["By encouraging corruption", "By promoting civic engagement", "By supporting dictatorship"], answer: "By promoting civic engagement" },
+  { question: "12. What is the significance of elections in a democratic society?", options: ["Limiting citizen participation", "Choosing leaders", "Ignoring public opinion"], answer: "Choosing leaders" },
+  { question: "13. What is the purpose of checks and balances in government?", options: ["Concentrating power", "Preventing abuse of power", "Bypassing the constitution"], answer: "Preventing abuse of power" },
+  { question: "14. Which of these is an example of civic responsibility?", options: ["Ignoring community issues", "Paying taxes", "Avoiding voting"], answer: "Paying taxes" },
+  { question: "15. How does civic education contribute to national development?", options: ["By promoting conflict", "By encouraging corruption", "By fostering citizenship"], answer: "By fostering citizenship" },
+  { question: "16. What is the role of civil society organizations in promoting democracy?", options: ["Suppressing public voice", "Advocating for citizen rights", "Limiting civic engagement"], answer: "Advocating for citizen rights" },
+  { question: "17. What is the significance of human rights education?", options: ["Promoting discrimination", "Empowering individuals", "Suppressing freedoms"], answer: "Empowering individuals" },
+  { question: "18. How does civic education promote social justice?", options: ["By encouraging inequality", "By promoting fairness", "By undermining rights"], answer: "By promoting fairness" },
+  { question: "19. Why is it important for citizens to participate in decision-making processes?", options: ["To hinder progress", "To foster inclusivity", "To promote dictatorship"], answer: "To foster inclusivity" },
+  { question: "20. What is the purpose of public accountability in governance?", options: ["Avoiding scrutiny", "Ensuring transparency", "Limiting government control"], answer: "Ensuring transparency" },
+  { question: "21. How does civic education contribute to community development?", options: ["By promoting ignorance", "By encouraging apathy", "By fostering responsibility"], answer: "By fostering responsibility" },
+  { question: "22. What is the role of ethics in civic responsibility?", options: ["Promoting corruption", "Fostering integrity", "Encouraging dishonesty"], answer: "Fostering integrity" },
+  { question: "23. Why is it important for citizens to respect the rights of others?", options: ["To promote conflict", "To foster unity", "To suppress freedoms"], answer: "To foster unity" },
+  { question: "24. What is the goal of civic education programs?", options: ["To discourage participation", "To promote civic engagement", "To suppress democratic values"], answer: "To promote civic engagement" },
+  { question: "25. How does civic education enhance political awareness?", options: ["By promoting ignorance", "By encouraging informed choices", "By limiting voter turnout"], answer: "By encouraging informed choices" },
+  { question: "26. What is the significance of public service in a democratic society?", options: ["Promoting self-interest", "Serving community needs", "Ignoring public opinion"], answer: "Serving community needs" },
+  { question: "27. Why is civic education essential for sustainable development?", options: ["Promoting conflict", "Fostering citizenship", "Ignoring environmental concerns"], answer: "Fostering citizenship" },
+  { question: "28. What is the role of media in promoting civic education?", options: ["Suppressing public voice", "Educating citizens", "Promoting misinformation"], answer: "Educating citizens" },
+  { question: "29. How does civic education empower marginalized groups?", options: ["By promoting exclusion", "By advocating for rights", "By fostering discrimination"], answer: "By advocating for rights" },
+  { question: "30. What is the impact of civic engagement on national unity?", options: ["Promoting division", "Fostering cohesion", "Ignoring public opinion"], answer: "Fostering cohesion" }
+],
+
+
+
+'Physics': [
+  { question: "1. What is the SI unit of electric current?", options: ["Ampere", "Volt", "Ohm"], answer: "Ampere" },
+  { question: "2. Which of these is a scalar quantity?", options: ["Force", "Velocity", "Distance"], answer: "Distance" },
+  { question: "3. What is the formula for calculating momentum?", options: ["Force × Distance", "Mass × Acceleration", "Mass × Velocity"], answer: "Mass × Velocity" },
+  { question: "4. What is the principle of conservation of energy?", options: ["Energy can be created", "Energy cannot be destroyed", "Energy can change form"], answer: "Energy cannot be destroyed" },
+  { question: "5. What is the law of reflection?", options: ["Light bends towards the normal", "Angle of reflection equals angle of incidence", "Light speeds up in a denser medium"], answer: "Angle of reflection equals angle of incidence" },
+  { question: "6. What is the unit of power?", options: ["Joule", "Watt", "Newton"], answer: "Watt" },
+  { question: "7. Which of these is an example of electromagnetic wave?", options: ["Sound wave", "X-ray", "Water wave"], answer: "X-ray" },
+  { question: "8. What is the formula for calculating pressure?", options: ["Force × Area", "Mass × Volume", "Density × Volume"], answer: "Force × Area" },
+  { question: "9. Which law states that 'For every action, there is an equal and opposite reaction'?", options: ["Newton's First Law", "Newton's Second Law", "Newton's Third Law"], answer: "Newton's Third Law" },
+  { question: "10. What does the term 'pH' measure?", options: ["Pressure", "Hydrogen ion concentration", "Power"], answer: "Hydrogen ion concentration" },
+  { question: "11. What is the function of an electric fuse in a circuit?", options: ["To increase resistance", "To control current", "To protect against overload"], answer: "To protect against overload" },
+  { question: "12. What is the focal length of a converging lens if the object distance is equal to the focal length?", options: ["0 cm", "2F", "F"], answer: "2F" },
+  { question: "13. What is the relationship between frequency and wavelength of a wave?", options: ["Inversely proportional", "Directly proportional", "No relationship"], answer: "Inversely proportional" },
+  { question: "14. What is the principle of moments?", options: ["Force × Distance", "Force × Lever arm", "Clockwise moments equal anticlockwise moments"], answer: "Clockwise moments equal anticlockwise moments" },
+  { question: "15. What is the role of an insulator in an electrical appliance?", options: ["To conduct electricity", "To resist the flow of electricity", "To regulate current"], answer: "To resist the flow of electricity" },
+  { question: "16. Which of these is a primary color of light?", options: ["Yellow", "Cyan", "Magenta"], answer: "Green" },
+  { question: "17. What is the unit of electric charge?", options: ["Coulomb", "Ampere-hour", "Ohm"], answer: "Coulomb" },
+  { question: "18. How does increasing the temperature affect the resistance of a conductor?", options: ["Decreases it", "Increases it", "No effect"], answer: "Increases it" },
+  { question: "19. What is the purpose of a step-up transformer?", options: ["Decrease voltage", "Increase voltage", "Regulate current"], answer: "Increase voltage" },
+  { question: "20. Which of these is a vector quantity?", options: ["Distance", "Speed", "Force"], answer: "Force" },
+  { question: "21. What is the function of a diode in an electrical circuit?", options: ["To control current", "To convert AC to DC", "To amplify signals"], answer: "To convert AC to DC" },
+  { question: "22. What is the law of gravitation?", options: ["Objects attract with a force proportional to their masses", "Objects repel with a force proportional to their masses", "Objects move in straight lines"], answer: "Objects attract with a force proportional to their masses" },
+  { question: "23. What is the purpose of a concave mirror?", options: ["To form virtual images", "To form real images", "To magnify objects"], answer: "To form real images" },
+  { question: "24. What is the principle of superposition of waves?", options: ["Waves cancel each other out", "Waves combine to form a resultant wave", "Waves refract in different directions"], answer: "Waves combine to form a resultant wave" },
+  { question: "25. How does the density of an object affect its buoyancy in a fluid?", options: ["Higher density increases buoyancy", "Lower density increases buoyancy", "Density has no effect"], answer: "Lower density increases buoyancy" },
+  { question: "26. What is the law of electromagnetic induction?", options: ["Current flows in a closed circuit", "Voltage is proportional to current", "A changing magnetic field induces an electromotive force"], answer: "A changing magnetic field induces an electromotive force" },
+  { question: "27. What is the function of a capacitor in an electronic circuit?", options: ["To store energy", "To resist current flow", "To amplify signals"], answer: "To store energy" },
+  { question: "28. What is the principle behind the operation of a simple pendulum?", options: ["Conservation of energy", "Harmonic motion", "Elastic potential energy"], answer: "Harmonic motion" },
+  { question: "29. How does the structure of a series circuit differ from a parallel circuit?", options: ["In series, components share the same current; in parallel, they have different currents", "In series, components have different currents; in parallel, they share the same current", "There is no difference"], answer: "In series, components share the same current; in parallel, they have different currents" },
+  { question: "30. What is the relationship between work done and power?", options: ["Directly proportional", "Inversely proportional", "No relationship"], answer: "Directly proportional" }
+],
+
+
+
+'Chemistry': [
+  { question: "1. What is the chemical symbol for Sodium?", options: ["So", "Na", "Sa"], answer: "Na" },
+  { question: "2. What is the formula for methane?", options: ["CH", "CH3", "CH4"], answer: "CH4" },
+  { question: "3. Which of these is a noble gas?", options: ["Oxygen", "Nitrogen", "Helium"], answer: "Helium" },
+  { question: "4. What is the pH value of a neutral substance?", options: ["0", "7", "14"], answer: "7" },
+  { question: "5. What is the process of converting a solid directly into a gas called?", options: ["Sublimation", "Condensation", "Evaporation"], answer: "Sublimation" },
+  { question: "6. Which element has the chemical symbol 'Fe'?", options: ["Iron", "Gold", "Silver"], answer: "Iron" },
+  { question: "7. What is the chemical formula for water?", options: ["H2O", "CO2", "O2"], answer: "H2O" },
+  { question: "8. Which gas is produced during photosynthesis?", options: ["Oxygen", "Carbon dioxide", "Nitrogen"], answer: "Oxygen" },
+  { question: "9. What is the law of conservation of mass?", options: ["Mass can be created", "Mass cannot be destroyed", "Mass can change form"], answer: "Mass cannot be destroyed" },
+  { question: "10. What type of reaction is represented by the equation: A + B -> AB?", options: ["Combination", "Decomposition", "Replacement"], answer: "Combination" },
+  { question: "11. What is the chemical name for baking soda?", options: ["Sodium chloride", "Sodium bicarbonate", "Calcium carbonate"], answer: "Sodium bicarbonate" },
+  { question: "12. Which substance speeds up a chemical reaction without being used up itself?", options: ["Catalyst", "Reactant", "Product"], answer: "Catalyst" },
+  { question: "13. What is the state of matter with a definite shape and volume?", options: ["Gas", "Liquid", "Solid"], answer: "Solid" },
+  { question: "14. Which of these is a primary component of natural gas?", options: ["Methane", "Ethanol", "Propane"], answer: "Methane" },
+  { question: "15. What is the process of breaking down glucose to release energy called?", options: ["Photosynthesis", "Respiration", "Fermentation"], answer: "Respiration" },
+  { question: "16. Which of these is a property of acids?", options: ["Turns blue litmus paper red", "Bitter taste", "Slippery feel"], answer: "Turns blue litmus paper red" },
+  { question: "17. What is the chemical formula for sulfuric acid?", options: ["H2SO4", "HCl", "NaOH"], answer: "H2SO4" },
+  { question: "18. What is the process of a substance absorbing moisture from the air called?", options: ["Hydration", "Hydrolysis", "Deliquescence"], answer: "Deliquescence" },
+  { question: "19. What is the process of a substance losing water molecules called?", options: ["Dehydration", "Evaporation", "Condensation"], answer: "Dehydration" },
+  { question: "20. What is the chemical formula for hydrogen peroxide?", options: ["H2O", "H2O2", "HOH"], answer: "H2O2" },
+  { question: "21. Which element is essential for the rusting of iron?", options: ["Oxygen", "Nitrogen", "Carbon"], answer: "Oxygen" },
+  { question: "22. What is the product of the reaction between an acid and a base?", options: ["Water", "Oxygen", "Carbon dioxide"], answer: "Water" },
+  { question: "23. What is the process of separating components of a mixture based on their boiling points called?", options: ["Distillation", "Filtration", "Decantation"], answer: "Distillation" },
+  { question: "24. What is the chemical formula for ammonia?", options: ["NH3", "NO2", "N2O"], answer: "NH3" },
+  { question: "25. Which of these is an example of a halogen?", options: ["Chlorine", "Sulfur", "Potassium"], answer: "Chlorine" },
+  { question: "26. What is the chemical formula for calcium carbonate?", options: ["CaCO2", "Ca(OH)2", "CaCO3"], answer: "CaCO3" },
+  { question: "27. Which gas is responsible for the greenhouse effect?", options: ["Oxygen", "Methane", "Carbon dioxide"], answer: "Carbon dioxide" },
+  { question: "28. What is the process of a liquid changing into a gas at temperatures below its boiling point called?", options: ["Evaporation", "Sublimation", "Condensation"], answer: "Evaporation" },
+  { question: "29. What is the chemical name for table salt?", options: ["Sodium chloride", "Calcium carbonate", "Potassium nitrate"], answer: "Sodium chloride" },
+  { question: "30. Which of these is a property of bases?", options: ["Turns red litmus paper blue", "Sour taste", "Sticky feel"], answer: "Turns red litmus paper blue" }
+],
+
+
+
+'Government': [
+  { question: "1. Who is the current President of Nigeria?", options: ["Bola Ahmed Tinubu", "Goodluck Jonathan", "Olusegun Obasanjo"], answer: "Bola Ahmed Tinubu" },
+  { question: "2. What type of government does Nigeria practice?", options: ["Monarchy", "Democracy", "Dictatorship"], answer: "Democracy" },
+  { question: "3. What does the acronym 'INEC' stand for in Nigeria's electoral system?", options: ["Independent National Election Committee", "Independent National Electoral Commission", "International National Election Council"], answer: "Independent National Electoral Commission" },
+  { question: "4. How many tiers of government exist in Nigeria?", options: ["1", "2", "3"], answer: "3" },
+  { question: "5. Who was Nigeria's first President after gaining independence?", options: ["Nnamdi Azikiwe", "Obafemi Awolowo", "Abubakar Tafawa Balewa"], answer: "Nnamdi Azikiwe" },
+  { question: "6. What is the primary function of the legislature?", options: ["Enforcing laws", "Interpreting laws", "Making laws"], answer: "Making laws" },
+  { question: "7. Which arm of government is responsible for the administration of justice?", options: ["Executive", "Legislature", "Judiciary"], answer: "Judiciary" },
+  { question: "8. What is the role of the opposition in a democratic government?", options: ["To support the ruling party", "To challenge the ruling party", "To form alliances"], answer: "To challenge the ruling party" },
+  { question: "9. Who is the head of state in a parliamentary system of government?", options: ["Prime Minister", "President", "Monarch"], answer: "Prime Minister" },
+  { question: "10. Which of these is a fundamental human right?", options: ["Right to own property", "Right to free speech", "Right to bear arms"], answer: "Right to free speech" },
+  { question: "11. What does the acronym 'NASS' stand for in Nigeria's political system?", options: ["Nigerian Assembly of Senators and Statesmen", "National Assembly of Supreme States", "National Assembly of Nigeria"], answer: "National Assembly of Nigeria" },
+  { question: "12. What is the term of office for a Nigerian President?", options: ["4 years", "5 years", "6 years"], answer: "4 years" },
+  { question: "13. Who has the power to declare war in Nigeria?", options: ["President", "Minister of Defence", "Chief of Defence Staff"], answer: "President" },
+  { question: "14. What is the composition of the Nigerian National Assembly?", options: ["Senate and House of Representatives", "House of Lords and House of Commons", "House of Representatives and Council of States"], answer: "Senate and House of Representatives" },
+  { question: "15. What is the role of a political party in a democracy?", options: ["To govern the country", "To contest elections", "To run businesses"], answer: "To contest elections" },
+  { question: "16. Who is responsible for approving the national budget in Nigeria?", options: ["President", "Minister of Finance", "National Assembly"], answer: "National Assembly" },
+  { question: "17. What does the acronym 'APC' stand for in Nigeria's political landscape?", options: ["African People's Congress", "All Progressives Congress", "Action People's Congress"], answer: "All Progressives Congress" },
+  { question: "18. What is the role of the judiciary in a democratic system?", options: ["To make laws", "To interpret laws", "To enforce laws"], answer: "To interpret laws" },
+  { question: "19. Who appoints the Chief Justice of Nigeria?", options: ["President", "Senate", "Supreme Court"], answer: "President" },
+  { question: "20. What is the function of the State House of Assembly in Nigeria?", options: ["To make laws for the state", "To elect the Governor", "To represent the state in foreign affairs"], answer: "To make laws for the state" },
+  { question: "21. What is the role of a local government chairman?", options: ["To head the judiciary", "To oversee state affairs", "To administer local government"], answer: "To administer local government" },
+  { question: "22. Which document outlines the rights and freedoms of Nigerian citizens?", options: ["Nigerian Constitution", "Federal Character Commission Act", "Electoral Act"], answer: "Nigerian Constitution" },
+  { question: "23. Who has the power to impeach the President in Nigeria?", options: ["National Assembly", "Supreme Court", "State Governors"], answer: "National Assembly" },
+  { question: "24. What is the role of a diplomat in international relations?", options: ["To conduct elections", "To negotiate treaties", "To enforce laws"], answer: "To negotiate treaties" },
+  { question: "25. Which of these is a principle of democracy?", options: ["Majority rule", "Single-party rule", "Military rule"], answer: "Majority rule" },
+  { question: "26. Who has the power to dissolve the National Assembly in Nigeria?", options: ["President", "Senate President", "Chief Justice"], answer: "President" },
+  { question: "27. What is the role of the Independent National Electoral Commission (INEC)?", options: ["To conduct elections", "To interpret laws", "To approve budgets"], answer: "To conduct elections" },
+  { question: "28. What is the role of the Chief Justice of Nigeria?", options: ["To head the armed forces", "To administer oaths", "To approve legislation"], answer: "To administer oaths" },
+  { question: "29. Who is responsible for appointing federal ministers in Nigeria?", options: ["President", "Senate", "Supreme Court"], answer: "President" },
+  { question: "30. What is the role of the Federal Executive Council in Nigeria?", options: ["To make laws", "To implement policies", "To interpret laws"], answer: "To implement policies" }
+],
+
+
+
+
+'Digital literacy': [
+  { question: "1. What does 'URL' stand for in computing?", options: ["Uniform Resource Locator", "Universal Remote Link", "Unified Resource Locator"], answer: "Uniform Resource Locator" },
+  { question: "2. Which of these is not a web browser?", options: ["Chrome", "Firefox", "Java"], answer: "Java" },
+  { question: "3. What does 'HTML' stand for?", options: ["Hyper Text Markup Language", "High Tech Management Language", "Hyperlink Text Markup Layout"], answer: "Hyper Text Markup Language" },
+  { question: "4. What is 'phishing' in the context of digital security?", options: ["A technique to hack software", "Sending unwanted emails", "Attempting to steal sensitive information"], answer: "Attempting to steal sensitive information" },
+  { question: "5. What is 'spam'?", options: ["Unsolicited or unwanted messages", "A type of computer virus", "A pop-up advertisement"], answer: "Unsolicited or unwanted messages" },
+  { question: "6. What does 'PDF' stand for?", options: ["Portable Document Format", "Personal Data File", "Print Document Format"], answer: "Portable Document Format" },
+  { question: "7. Which of these is a social media platform?", options: ["MS Excel", "Instagram", "Windows Explorer"], answer: "Instagram" },
+  { question: "8. What is 'encryption' used for in computing?", options: ["To hide files", "To create viruses", "To secure data"], answer: "To secure data" },
+  { question: "9. What does 'LAN' stand for in networking?", options: ["Local Area Network", "Large Access Network", "Link Access Node"], answer: "Local Area Network" },
+  { question: "10. What is the purpose of a firewall in computer security?", options: ["To protect against viruses", "To control network traffic", "To clean up disk space"], answer: "To control network traffic" },
+  { question: "11. What does 'CPU' stand for in computing?", options: ["Central Processing Unit", "Computer Processing Unit", "Central Power Unit"], answer: "Central Processing Unit" },
+  { question: "12. What is 'cloud storage'?", options: ["Physical data storage devices", "Storage accessible via the internet", "A type of computer virus"], answer: "Storage accessible via the internet" },
+  { question: "13. What is the purpose of a 'cookie' on the internet?", options: ["To store user information", "To block ads", "To speed up internet connections"], answer: "To store user information" },
+  { question: "14. What is 'malware'?", options: ["A type of computer hardware", "Malicious software", "A type of internet browser"], answer: "Malicious software" },
+  { question: "15. What is '2FA' in online security?", options: ["Two-Factor Authentication", "Two-Factor Authorization", "Two-Factor Action"], answer: "Two-Factor Authentication" },
+  { question: "16. What is the purpose of 'Ctrl + C' on a computer keyboard?", options: ["Copy", "Cut", "Paste"], answer: "Copy" },
+  { question: "17. What does 'SEO' stand for in digital marketing?", options: ["Search Engine Optimization", "Social Engagement Outreach", "Software Enhancement Online"], answer: "Search Engine Optimization" },
+  { question: "18. Which software is used for creating and editing documents?", options: ["Adobe Photoshop", "Microsoft Word", "AutoCAD"], answer: "Microsoft Word" },
+  { question: "19. What is 'pharming' in the context of internet security?", options: ["A type of internet connection", "A method to redirect web traffic", "A type of online scam"], answer: "A method to redirect web traffic" },
+  { question: "20. What is 'VR' in computing?", options: ["Virtual Reality", "Visual Rendering", "Virtual Router"], answer: "Virtual Reality" },
+  { question: "21. What does 'HTTPS' stand for in web addresses?", options: ["Hypertext Transfer Protocol Secure", "Hyper Transfer System", "High-Performance Transfer System"], answer: "Hypertext Transfer Protocol Secure" },
+  { question: "22. Which of these is a programming language?", options: ["MySQL", "CSS", "Python"], answer: "Python" },
+  { question: "23. What does 'IP address' stand for in networking?", options: ["Internet Protocol Address", "Internal Protocol Address", "Internet Power Address"], answer: "Internet Protocol Address" },
+  { question: "24. What is the function of 'Ctrl + V' on a computer keyboard?", options: ["Paste", "Copy", "Cut"], answer: "Paste" },
+  { question: "25. What does 'ISP' stand for in internet services?", options: ["Internet Service Provider", "Internet Security Protocol", "Internet Software Provider"], answer: "Internet Service Provider" },
+  { question: "26. What is 'RAM' in computing?", options: ["Random Access Memory", "Read-Only Memory", "Remote Access Management"], answer: "Random Access Memory" },
+  { question: "27. What is the purpose of 'Ctrl + X' on a computer keyboard?", options: ["Cut", "Copy", "Paste"], answer: "Cut" },
+  { question: "28. What does 'FTP' stand for in computing?", options: ["File Transfer Protocol", "Full Text Processor", "Fast Transfer Protocol"], answer: "File Transfer Protocol" },
+  { question: "29. What is 'DNS' used for in networking?", options: ["Domain Name System", "Digital Network Security", "Data Network Service"], answer: "Domain Name System" },
+  { question: "30. What is 'biometrics' used for in computer security?", options: ["To encrypt files", "To identify individuals", "To speed up computers"], answer: "To identify individuals" }
+],
+
+
+
+'Economics': [
+  { question: "1. What is the study of how societies use limited resources to produce valuable commodities and distribute them among different people?", options: ["Sociology", "Economics", "Anthropology"], answer: "Economics" },
+  { question: "2. Which of these is not a factor of production?", options: ["Land", "Labor", "Language"], answer: "Language" },
+  { question: "3. What is the economic term for the total value of all goods and services produced within a country in a specific period?", options: ["Gross Domestic Product (GDP)", "Gross National Product (GNP)", "Net Domestic Product (NDP)"], answer: "Gross Domestic Product (GDP)" },
+  { question: "4. What is inflation?", options: ["A decrease in the general price level of goods and services", "An increase in the general price level of goods and services", "Stable prices of goods and services"], answer: "An increase in the general price level of goods and services" },
+  { question: "5. What does 'CPI' stand for in economics?", options: ["Consumer Price Index", "Cost Price Indicator", "Central Pricing Information"], answer: "Consumer Price Index" },
+  { question: "6. What is the economic term for a market situation where there is only one buyer of a product?", options: ["Monopoly", "Oligopoly", "Monopsony"], answer: "Monopsony" },
+  { question: "7. What is the economic term for a market situation where there are only a few sellers of a product?", options: ["Monopoly", "Oligopoly", "Monopsony"], answer: "Oligopoly" },
+  { question: "8. What is the economic term for a good that is non-excludable and non-rivalrous?", options: ["Public good", "Private good", "Common resource"], answer: "Public good" },
+  { question: "9. What is 'demand' in economics?", options: ["The quantity of goods and services that producers are willing to sell", "The quantity of goods and services that consumers are willing to buy", "The quantity of goods and services available in the market"], answer: "The quantity of goods and services that consumers are willing to buy" },
+  { question: "10. What is 'supply' in economics?", options: ["The quantity of goods and services that consumers are willing to buy", "The quantity of goods and services available in the market", "The quantity of goods and services that producers are willing to sell"], answer: "The quantity of goods and services that producers are willing to sell" },
+  { question: "11. What is 'opportunity cost'?", options: ["The cost of an opportunity", "The highest-valued alternative that must be sacrificed to satisfy a want", "The cost of production"], answer: "The highest-valued alternative that must be sacrificed to satisfy a want" },
+  { question: "12. What does 'PPP' stand for in economics?", options: ["Purchasing Power Paradox", "Public-Private Partnership", "Purchasing Power Parity"], answer: "Purchasing Power Parity" },
+  { question: "13. What is 'scarcity' in economics?", options: ["A situation where unlimited wants exceed limited resources", "A situation where unlimited resources exceed limited wants", "A situation where resources are evenly distributed"], answer: "A situation where unlimited wants exceed limited resources" },
+  { question: "14. What is 'monetary policy'?", options: ["Government policy that attempts to manage the economy by controlling the money supply and interest rates", "Government policy that regulates trade between countries", "Government policy that aims to reduce inflation rates"], answer: "Government policy that attempts to manage the economy by controlling the money supply and interest rates" },
+  { question: "15. What is 'fiscal policy'?", options: ["Government policy that attempts to manage the economy by controlling the money supply and interest rates", "Government policy that regulates trade between countries", "Government policy that involves changes in government spending and taxation"], answer: "Government policy that involves changes in government spending and taxation" },
+  { question: "16. What is 'profit' in economics?", options: ["The total revenue minus the total cost", "The total revenue divided by the total cost", "The total cost minus the total revenue"], answer: "The total revenue minus the total cost" },
+  { question: "17. What is 'depreciation'?", options: ["Increase in the value of assets over time", "Decrease in the value of assets over time", "Stagnation in the value of assets over time"], answer: "Decrease in the value of assets over time" },
+  { question: "18. What is 'deficit'?", options: ["Excess of government spending over revenue in a given period", "Shortage of goods and services in the market", "Surplus of goods and services in the market"], answer: "Excess of government spending over revenue in a given period" },
+  { question: "19. What is 'subsidy' in economics?", options: ["A payment made by the government to support a business or market", "A tax levied on imported goods", "A form of financial aid for low-income households"], answer: "A payment made by the government to support a business or market" },
+  { question: "20. What is 'tariff'?", options: ["A tax levied on imported goods", "A payment made by the government to support a business or market", "A form of financial aid for low-income households"], answer: "A tax levied on imported goods" },
+  { question: "21. What is 'dumping' in international trade?", options: ["Selling goods abroad at a lower price than in the domestic market", "Selling goods abroad at a higher price than in the domestic market", "Exchanging goods without tariffs"], answer: "Selling goods abroad at a lower price than in the domestic market" },
+  { question: "22. What is 'balance of trade'?", options: ["The difference between a country's exports and imports", "The balance between government spending and revenue", "The total value of goods and services produced within a country in a specific period"], answer: "The difference between a country's exports and imports" },
+  { question: "23. What is 'capital' in economics?", options: ["Money and assets used to produce goods and services", "Physical goods and services produced in an economy", "The total value of goods and services produced within a country in a specific period"], answer: "Money and assets used to produce goods and services" },
+  { question: "24. What is 'investment'?", options: ["The purchase of goods and services by households", "The government's expenditure on infrastructure", "The expenditure on capital goods that are used to produce other goods"], answer: "The expenditure on capital goods that are used to produce other goods" },
+  { question: "25. What is 'interest rate'?", options: ["The cost of borrowing money", "The amount of money spent on goods and services", "The price of goods and services"], answer: "The cost of borrowing money" },
+  { question: "26. What is 'demand curve'?", options: ["A graphical representation of the relationship between price and quantity demanded", "A curve showing the relationship between supply and demand", "A curve showing the relationship between income and consumption"], answer: "A graphical representation of the relationship between price and quantity demanded" },
+  { question: "27. What is 'supply curve'?", options: ["A graphical representation of the relationship between price and quantity supplied", "A curve showing the relationship between income and consumption", "A curve showing the relationship between supply and demand"], answer: "A graphical representation of the relationship between price and quantity supplied" },
+  { question: "28. What is 'utility' in economics?", options: ["The satisfaction derived from consuming goods and services", "The measure of economic growth", "The value of goods and services produced in an economy"], answer: "The satisfaction derived from consuming goods and services" },
+  { question: "29. What is 'oligopoly' in economics?", options: ["A market structure with few sellers", "A market structure with many sellers", "A market structure with one seller"], answer: "A market structure with few sellers" },
+  { question: "30. What is 'market equilibrium'?", options: ["The point where supply equals demand", "The point where supply is greater than demand", "The point where demand is greater than supply"], answer: "The point where supply equals demand" }
+],
+
+
+    'Geography': [
+  { question: "1. What is the study of the physical features of the earth and its atmosphere, and of human activity as it affects and is affected by these, called?", options: ["Sociology", "Geography", "Anthropology"], answer: "Geography" },
+  { question: "2. Which of the following is not a major branch of geography?", options: ["Physical geography", "Political geography", "Biological geography"], answer: "Biological geography" },
+  { question: "3. What is the imaginary line that divides the earth into Northern and Southern Hemispheres called?", options: ["Tropic of Cancer", "Prime Meridian", "Equator"], answer: "Equator" },
+  { question: "4. What is the imaginary line that divides the earth into Eastern and Western Hemispheres called?", options: ["Equator", "Prime Meridian", "International Date Line"], answer: "Prime Meridian" },
+  { question: "5. What is the longest river in the world?", options: ["Amazon River", "Nile River", "Yangtze River"], answer: "Nile River" },
+  { question: "6. Which of these is not a type of map scale?", options: ["Verbal scale", "Graphical scale", "Numerical scale"], answer: "Numerical scale" },
+  { question: "7. What is the term for the physical and human characteristics that make a place unique?", options: ["Location", "Region", "Place"], answer: "Place" },
+  { question: "8. Which of the following is not a primary economic activity?", options: ["Mining", "Manufacturing", "Farming"], answer: "Manufacturing" },
+  { question: "9. What is the term for the spread of people, ideas, technology, and culture between countries?", options: ["Migration", "Globalization", "Urbanization"], answer: "Globalization" },
+  { question: "10. What is the term for the number of live births per thousand of population per year?", options: ["Death rate", "Birth rate", "Infant mortality rate"], answer: "Birth rate" },
+  { question: "11. What is the term for the removal and transport of weathered material by natural agents such as water, wind, and ice?", options: ["Weathering", "Erosion", "Deposition"], answer: "Erosion" },
+  { question: "12. What is the name of the largest desert in the world, located in North Africa?", options: ["Kalahari Desert", "Sahara Desert", "Gobi Desert"], answer: "Sahara Desert" },
+  { question: "13. Which of these is an example of a secondary economic activity?", options: ["Fishing", "Mining", "Retailing"], answer: "Mining" },
+  { question: "14. What is the term for the transformation of rural areas into urban areas?", options: ["Ruralization", "Urbanization", "Industrialization"], answer: "Urbanization" },
+  { question: "15. What is the term for the physical and human characteristics that link one place to another?", options: ["Location", "Region", "Connection"], answer: "Connection" },
+  { question: "16. Which ocean is the largest and deepest?", options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"], answer: "Pacific Ocean" },
+  { question: "17. What is the term for the study of the relationship between people and their environment?", options: ["Ecology", "Demography", "Environmental geography"], answer: "Environmental geography" },
+  { question: "18. What is the term for the process of breaking down rocks, soils, and minerals through direct contact with the Earth's atmosphere?", options: ["Erosion", "Weathering", "Deposition"], answer: "Weathering" },
+  { question: "19. Which of the following is an example of a natural hazard?", options: ["Deforestation", "Flood", "Pollution"], answer: "Flood" },
+  { question: "20. What is the term for a large natural stream of water flowing in a channel to the sea, a lake, or another such stream?", options: ["Brook", "River", "Creek"], answer: "River" },
+  { question: "21. What is the term for the physical features of the Earth's surface, including landforms, vegetation, climate, and soils?", options: ["Environment", "Ecosystem", "Physical geography"], answer: "Physical geography" },
+  { question: "22. What is the term for a region that shares a common language, culture, or history?", options: ["Location", "Region", "Connection"], answer: "Region" },
+  { question: "23. Which of these is not a factor affecting climate?", options: ["Altitude", "Latitude", "Longitude"], answer: "Longitude" },
+  { question: "24. What is the term for the physical process that changes rock into soil?", options: ["Erosion", "Weathering", "Soil formation"], answer: "Soil formation" },
+  { question: "25. What is the term for the study of population, including its size, structure, and distribution?", options: ["Ecology", "Demography", "Environmental geography"], answer: "Demography" },
+  { question: "26. What is the term for the process of making something more uniform or similar?", options: ["Globalization", "Standardization", "Industrialization"], answer: "Standardization" },
+  { question: "27. Which of these is not a type of climate?", options: ["Tropical", "Desert", "Tundra"], answer: "Tundra" },
+  { question: "28. What is the term for the process by which fertile land becomes desert, typically as a result of drought, deforestation, or inappropriate agriculture?", options: ["Desertification", "Deforestation", "Erosion"], answer: "Desertification" },
+  { question: "29. Which of these is a primary economic activity?", options: ["Manufacturing", "Mining", "Retailing"], answer: "Mining" },
+  { question: "30. What is the term for a flat area of land that is higher than the surrounding land?", options: ["Mountain", "Hill", "Plateau"], answer: "Plateau" }
+],
+
+
+
+   'Leadership': [
+  { question: "1. What is leadership?", options: ["The act of ruling over a group of people", "The process of social influence in which one person can enlist the aid and support of others in the accomplishment of a common task", "The ability to make decisions"], answer: "The process of social influence in which one person can enlist the aid and support of others in the accomplishment of a common task" },
+  { question: "2. Which of the following is not a trait of effective leadership?", options: ["Integrity", "Arrogance", "Empathy"], answer: "Arrogance" },
+  { question: "3. Who is considered a leader in a democratic society?", options: ["Dictator", "President", "Monarch"], answer: "President" },
+  { question: "4. What is a leadership style that involves the leader making decisions without consulting others called?", options: ["Democratic leadership", "Autocratic leadership", "Laissez-faire leadership"], answer: "Autocratic leadership" },
+  { question: "5. Which leadership theory suggests that leadership qualities are inherent and cannot be developed through learning or experience?", options: ["Trait theory", "Behavioral theory", "Contingency theory"], answer: "Trait theory" },
+  { question: "6. What is a leader who focuses on setting goals and inspiring followers to achieve them called?", options: ["Transactional leader", "Transformational leader", "Charismatic leader"], answer: "Transformational leader" },
+  { question: "7. What is the ability to understand and share the feelings of another person called?", options: ["Integrity", "Empathy", "Decisiveness"], answer: "Empathy" },
+  { question: "8. Which of the following is an example of situational leadership?", options: ["A leader adjusts their leadership style based on the readiness or maturity of their followers", "A leader maintains the same leadership style regardless of the situation", "A leader focuses only on task completion"], answer: "A leader adjusts their leadership style based on the readiness or maturity of their followers" },
+  { question: "9. What is a leader who leads by example and earns respect through their actions called?", options: ["Authoritarian leader", "Servant leader", "Transformational leader"], answer: "Servant leader" },
+  { question: "10. What is the ability to make decisions quickly and effectively called?", options: ["Decisiveness", "Empathy", "Integrity"], answer: "Decisiveness" },
+  { question: "11. Which leadership style encourages collaboration and participation from all members of the group?", options: ["Autocratic leadership", "Laissez-faire leadership", "Democratic leadership"], answer: "Democratic leadership" },
+  { question: "12. What is the term for a leader who inspires loyalty and enthusiasm in their followers?", options: ["Charismatic leader", "Transactional leader", "Bureaucratic leader"], answer: "Charismatic leader" },
+  { question: "13. Which of these is not a characteristic of ethical leadership?", options: ["Transparency", "Accountability", "Manipulation"], answer: "Manipulation" },
+  { question: "14. What is the ability to stick to your moral and ethical principles called?", options: ["Empathy", "Integrity", "Charisma"], answer: "Integrity" },
+  { question: "15. Which leadership theory suggests that effective leaders adapt their behavior to the maturity or readiness level of their followers?", options: ["Contingency theory", "Behavioral theory", "Transformational theory"], answer: "Contingency theory" },
+  { question: "16. What is the term for a leader who focuses on maintaining routine operations and ensuring tasks are completed efficiently?", options: ["Transactional leader", "Transformational leader", "Charismatic leader"], answer: "Transactional leader" },
+  { question: "17. What is a leader who encourages creativity, innovation, and risk-taking among their followers called?", options: ["Bureaucratic leader", "Autocratic leader", "Transformational leader"], answer: "Transformational leader" },
+  { question: "18. Which leadership style is characterized by the leader giving complete freedom to their subordinates to make decisions?", options: ["Democratic leadership", "Autocratic leadership", "Laissez-faire leadership"], answer: "Laissez-faire leadership" },
+  { question: "19. What is the ability to communicate clearly and persuasively called?", options: ["Empathy", "Communication", "Charisma"], answer: "Communication" },
+  { question: "20. What is a leader who uses authority and control to make decisions and enforce rules called?", options: ["Authoritarian leader", "Servant leader", "Transformational leader"], answer: "Authoritarian leader" },
+  { question: "21. Which leadership style focuses on building consensus and guiding decision-making through collaboration?", options: ["Charismatic leadership", "Transactional leadership", "Transformational leadership"], answer: "Transformational leadership" },
+  { question: "22. What is the ability to inspire confidence and loyalty in others called?", options: ["Empathy", "Charisma", "Decisiveness"], answer: "Charisma" },
+  { question: "23. Which of these is a characteristic of a servant leader?", options: ["Focus on self-promotion", "Focus on serving others' needs", "Focus on strict hierarchy"], answer: "Focus on serving others' needs" },
+  { question: "24. What is the term for a leader who delegates authority and encourages decision-making at all levels of an organization?", options: ["Democratic leader", "Autocratic leader", "Laissez-faire leader"], answer: "Democratic leader" },
+  { question: "25. Which leadership theory suggests that leaders can learn and develop their skills through training and experience?", options: ["Trait theory", "Behavioral theory", "Contingency theory"], answer: "Behavioral theory" },
+  { question: "26. What is the term for a leader who focuses on maintaining order and efficiency through strict rules and procedures?", options: ["Bureaucratic leader", "Transformational leader", "Transactional leader"], answer: "Bureaucratic leader" },
+  { question: "27. Which of these is not a quality of a transformational leader?", options: ["Encourages innovation", "Motivates through rewards and punishment", "Inspires followers"], answer: "Motivates through rewards and punishment" },
+  { question: "28. What is the ability to hold oneself and others accountable for their actions called?", options: ["Accountability", "Integrity", "Empathy"], answer: "Accountability" },
+  { question: "29. Which leadership style is characterized by the leader focusing on empowering their team and fostering personal growth?", options: ["Servant leadership", "Autocratic leadership", "Laissez-faire leadership"], answer: "Servant leadership" },
+  { question: "30. What is a leader who believes in the principle of giving authority and power to their subordinates to make decisions called?", options: ["Authoritarian leader", "Servant leader", "Transformational leader"], answer: "Servant leader" }
+],
+
+
+
+    'French Language': [
+  { question: "1. Comment dit-on 'Bonjour' en français ?", options: ["Hello", "Goodbye", "Good morning"], answer: "Hello" },
+  { question: "2. Quel est le contraire de 'petit' en français ?", options: ["Grand", "Jeune", "Vieux"], answer: "Grand" },
+  { question: "3. Comment dit-on 'merci beaucoup' en français ?", options: ["Thank you very much", "You're welcome", "Excusez-moi"], answer: "Thank you very much" },
+  { question: "4. Quel est le pluriel de 'chat' en français ?", options: ["Chats", "Château", "Chatte"], answer: "Chats" },
+  { question: "5. Comment dit-on 'j'aime lire' en français ?", options: ["I like to read", "I like to eat", "I like to sleep"], answer: "I like to read" },
+  { question: "6. Quel est le synonyme de 'heureux' en français ?", options: ["Triste", "Content", "Fatigué"], answer: "Content" },
+  { question: "7. Comment dit-on 'école' en français ?", options: ["House", "School", "Book"], answer: "School" },
+  { question: "8. Quel est l'antonyme de 'froid' en français ?", options: ["Chaud", "Gelé", "Neige"], answer: "Chaud" },
+  { question: "9. Comment dit-on 'mère' en français ?", options: ["Mother", "Father", "Sister"], answer: "Mother" },
+  { question: "10. Quel est le féminin de 'garçon' en français ?", options: ["Garçonne", "Fille", "Amie"], answer: "Fille" },
+  { question: "11. Comment dit-on 'je vais bien' en français ?", options: ["I am fine", "I am hungry", "I am tired"], answer: "I am fine" },
+  { question: "12. Quel est le pluriel de 'livre' en français ?", options: ["Livre", "Livres", "Livresse"], answer: "Livres" },
+  { question: "13. Comment dit-on 'je parle français' en français ?", options: ["I speak English", "I speak French", "I speak Spanish"], answer: "I speak French" },
+  { question: "14. Quel est le synonyme de 'intelligent' en français ?", options: ["Bête", "Sage", "Intelligent"], answer: "Intelligent" },
+  { question: "15. Comment dit-on 'merci' en français ?", options: ["Thank you", "Please", "Excuse me"], answer: "Thank you" },
+  { question: "16. Quel est l'antonyme de 'heureux' en français ?", options: ["Triste", "Content", "Fatigué"], answer: "Triste" },
+  { question: "17. Comment dit-on 'livre' en français ?", options: ["House", "School", "Book"], answer: "Book" },
+  { question: "18. Quel est l'antonyme de 'chaud' en français ?", options: ["Froid", "Gelé", "Neige"], answer: "Froid" },
+  { question: "19. Comment dit-on 'père' en français ?", options: ["Mother", "Father", "Sister"], answer: "Father" },
+  { question: "20. Quel est le féminin de 'chien' en français ?", options: ["Chienne", "Chat", "Amie"], answer: "Chienne" },
+  { question: "21. Comment dit-on 'je suis fatigué' en français ?", options: ["I am fine", "I am hungry", "I am tired"], answer: "I am tired" },
+  { question: "22. Quel est le pluriel de 'stylo' en français ?", options: ["Stylo", "Stylos", "Stylosses"], answer: "Stylos" },
+  { question: "23. Comment dit-on 'je comprends' en français ?", options: ["I understand", "I speak French", "I speak Spanish"], answer: "I understand" },
+  { question: "24. Quel est le synonyme de 'gentil' en français ?", options: ["Méchant", "Gentil", "Doux"], answer: "Gentil" },
+  { question: "25. Comment dit-on 'excusez-moi' en français ?", options: ["Thank you", "Please", "Excuse me"], answer: "Excuse me" },
+  { question: "26. Quel est l'antonyme de 'intelligent' en français ?", options: ["Bête", "Sage", "Intelligent"], answer: "Bête" },
+  { question: "27. Comment dit-on 'école' en français ?", options: ["House", "School", "Book"], answer: "School" },
+  { question: "28. Quel est l'antonyme de 'grand' en français ?", options: ["Petit", "Jeune", "Vieux"], answer: "Petit" },
+  { question: "29. Comment dit-on 'frère' en français ?", options: ["Mother", "Father", "Brother"], answer: "Brother" },
+  { question: "30. Quel est le féminin de 'ami' en français ?", options: ["Amie", "Amigo", "Fille"], answer: "Amie" }
+],
+
     
-    <div class="container mt-5">
-      <div id="subjectAccordion">
-          <!-- SS 2 -->
-          <div class="card">
-              <div class="card-header" id="headingSS2">
-                  <h2 class="mb-0">
-                      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSS2" aria-expanded="true" aria-controls="collapseSS2">
-                          SS 2
-                      </button>
-                  </h2>
-              </div>
-              <div id="collapseSS2" class="collapse show" aria-labelledby="headingSS2" data-parent="#subjectAccordion">
-                  <div class="card-body">
-                      <button class="btn btn-secondary" onclick="startExam('Mathematics')">Mathematics</button>
-                      <button class="btn btn-secondary" onclick="startExam('English language')">English language</button>
-                      <button class="btn btn-secondary" onclick="startExam('Biology')">Biology</button>
-                      <button class="btn btn-secondary" onclick="startExam('Civic education')">Civic education</button>
-                      <button class="btn btn-secondary" onclick="startExam('Physics')">Physics</button>
-                      <button class="btn btn-secondary" onclick="startExam('Chemistry')">Chemistry</button>
-                      <button class="btn btn-secondary" onclick="startExam('Government')">Government</button>
-                      <button class="btn btn-secondary" onclick="startExam('Digital literacy')">Digital literacy</button>
-                      <button class="btn btn-secondary" onclick="startExam('Economics')">Economics</button>
-                      <button class="btn btn-secondary" onclick="startExam('Geography')">Geography</button>
-                      <button class="btn btn-secondary" onclick="startExam('Leadership')">Leadership</button>
-                      <button class="btn btn-secondary" onclick="startExam('French language')">French language</button>
-                      <button class="btn btn-secondary" onclick="startExam('Entrepreneurship')">Entrepreneurship</button>
-                      <button class="btn btn-secondary" onclick="startExam('Food and nutrition')">Food and nutrition</button>
-                      <button class="btn btn-secondary" onclick="startExam('Music studies')">Music studies</button>
-                      <button class="btn btn-secondary" onclick="startExam('Agricultural studies')">Agricultural studies</button>
-                  </div>
-              </div>
-          
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-  <script>
-  function startExam(subject) {
-      // You can add logic here to start the exam for the selected subject
-      alert('Starting exam for ' + subject);
-      // Example: Redirect to an exam page or load questions dynamically
-      // window.location.href = 'exam-page.html?subject=' + encodeURIComponent(subject);
-  }
-  </script>
-  
-  </body>
-  </html>
+
+    
+    'Entrepreneurship': [
+  { question: "1. What is the definition of 'entrepreneurship'?", options: ["The study of stars", "The process of starting a business", "The study of ancient civilizations"], answer: "The process of starting a business" },
+  { question: "2. What is a business plan?", options: ["A document outlining business goals and how to achieve them", "A type of insurance", "A method of hiring employees"], answer: "A document outlining business goals and how to achieve them" },
+  { question: "3. Who is an entrepreneur?", options: ["A scientist", "A person who starts and runs a business", "A doctor"], answer: "A person who starts and runs a business" },
+  { question: "4. What does ROI stand for in business?", options: ["Return on Investment", "Real Organic Income", "Revenue of Interest"], answer: "Return on Investment" },
+  { question: "5. Which of these is not a factor of production in business?", options: ["Labor", "Land", "Money"], answer: "Money" },
+  { question: "6. What is market research?", options: ["The study of ancient markets", "The process of collecting and analyzing information about a market", "A type of business strategy"], answer: "The process of collecting and analyzing information about a market" },
+  { question: "7. What is a target market?", options: ["A market that sells targets", "A specific group of consumers that a business aims to reach", "A market that only sells to businesses"], answer: "A specific group of consumers that a business aims to reach" },
+  { question: "8. What does SWOT analysis stand for?", options: ["Strengths, Weaknesses, Opportunities, Threats", "Strengths, Weaknesses, Opinions, Threats", "Strategic Work on Timing"], answer: "Strengths, Weaknesses, Opportunities, Threats" },
+  { question: "9. What is branding in business?", options: ["A type of advertising", "Creating a unique image and identity for a product or company", "Naming a business"], answer: "Creating a unique image and identity for a product or company" },
+  { question: "10. What is an elevator pitch?", options: ["A type of transportation", "A quick and compelling summary of a business idea", "A type of sales technique"], answer: "A quick and compelling summary of a business idea" },
+  { question: "11. What does ROI stand for in business?", options: ["Return on Investment", "Real Organic Income", "Revenue of Interest"], answer: "Return on Investment" },
+  { question: "12. Which of these is not a factor of production in business?", options: ["Labor", "Land", "Money"], answer: "Money" },
+  { question: "13. What is market research?", options: ["The study of ancient markets", "The process of collecting and analyzing information about a market", "A type of business strategy"], answer: "The process of collecting and analyzing information about a market" },
+  { question: "14. What is a target market?", options: ["A market that sells targets", "A specific group of consumers that a business aims to reach", "A market that only sells to businesses"], answer: "A specific group of consumers that a business aims to reach" },
+  { question: "15. What does SWOT analysis stand for?", options: ["Strengths, Weaknesses, Opportunities, Threats", "Strengths, Weaknesses, Opinions, Threats", "Strategic Work on Timing"], answer: "Strengths, Weaknesses, Opportunities, Threats" },
+  { question: "16. What is branding in business?", options: ["A type of advertising", "Creating a unique image and identity for a product or company", "Naming a business"], answer: "Creating a unique image and identity for a product or company" },
+  { question: "17. What is an elevator pitch?", options: ["A type of transportation", "A quick and compelling summary of a business idea", "A type of sales technique"], answer: "A quick and compelling summary of a business idea" },
+  { question: "18. What is bootstrapping in business?", options: ["A type of shoe manufacturing", "Starting a business with little or no external capital", "A marketing strategy"], answer: "Starting a business with little or no external capital" },
+  { question: "19. What is a business model canvas?", options: ["A type of painting", "A visual chart with elements describing a firm's or product's value proposition, infrastructure, customers, and finances", "A type of business plan"], answer: "A visual chart with elements describing a firm's or product's value proposition, infrastructure, customers, and finances" },
+  { question: "20. What is equity financing?", options: ["A type of loan", "Raising funds by selling shares in a company", "A type of grant"], answer: "Raising funds by selling shares in a company" },
+  { question: "21. What is a mission statement?", options: ["A company's goals and aspirations", "A type of legal document", "A type of business strategy"], answer: "A company's goals and aspirations" },
+  { question: "22. What is break-even analysis in business?", options: ["Calculating when a business becomes profitable", "Analyzing competitor's prices", "A marketing strategy"], answer: "Calculating when a business becomes profitable" },
+  { question: "23. What is innovation in business?", options: ["A type of product", "Creating something new or improving existing products, processes, or services", "A type of business strategy"], answer: "Creating something new or improving existing products, processes, or services" },
+  { question: "24. What is a mentor in business?", options: ["A type of coach", "A type of employee", "A marketing strategy"], answer: "A type of coach" },
+  { question: "25. What is a shareholder?", options: ["A company's customer", "An employee", "An owner of shares in a company"], answer: "An owner of shares in a company" },
+  { question: "26. What is negotiation in business?", options: ["A type of partnership", "Discussing terms and reaching agreements", "A type of business strategy"], answer: "Discussing terms and reaching agreements" },
+  { question: "27. What is scalability in business?", options: ["The ability to scale mountains", "The capacity to grow and manage increased demand", "A type of business model"], answer: "The capacity to grow and manage increased demand" },
+  { question: "28. What is intellectual property in business?", options: ["A type of product", "A type of legal protection for inventions, designs, and artistic works", "A type of business strategy"], answer: "A type of legal protection for inventions, designs, and artistic works" },
+  { question: "29. What is cash flow in business?", options: ["The flow of money in a river", "The movement of money in and out of a business", "A type of accounting"], answer: "The movement of money in and out of a business" },
+  { question: "30. What is diversification in business?", options: ["A type of investment", "Expanding products or services into new markets or industries", "A type of business strategy"], answer: "Expanding products or services into new markets or industries" }
+],
+
+
+
+    
+    'Food and nutrition': [
+  { question: "1. What are macronutrients?", options: ["Vitamins and minerals", "Fats, proteins, and carbohydrates", "Proteins and carbohydrates"], answer: "Fats, proteins, and carbohydrates" },
+  { question: "2. Which nutrient is the body's primary source of energy?", options: ["Proteins", "Carbohydrates", "Fats"], answer: "Carbohydrates" },
+  { question: "3. What is the function of proteins in the body?", options: ["To provide energy", "To build and repair tissues", "To store vitamins"], answer: "To build and repair tissues" },
+  { question: "4. Which vitamin is important for vision?", options: ["Vitamin A", "Vitamin C", "Vitamin D"], answer: "Vitamin A" },
+  { question: "5. What is the role of calcium in the body?", options: ["To strengthen bones and teeth", "To aid digestion", "To regulate body temperature"], answer: "To strengthen bones and teeth" },
+  { question: "6. What is the main function of dietary fiber?", options: ["To provide energy", "To aid in digestion", "To build muscles"], answer: "To aid in digestion" },
+  { question: "7. Which of these is a good source of vitamin C?", options: ["Milk", "Oranges", "Rice"], answer: "Oranges" },
+  { question: "8. What is the function of iron in the body?", options: ["To regulate body temperature", "To aid in muscle growth", "To transport oxygen in the blood"], answer: "To transport oxygen in the blood" },
+  { question: "9. Which food group is the main source of carbohydrates?", options: ["Fruits and vegetables", "Meat and poultry", "Bread and cereals"], answer: "Bread and cereals" },
+  { question: "10. What is the role of water in the body?", options: ["To provide energy", "To regulate body temperature", "To build muscles"], answer: "To regulate body temperature" },
+  { question: "11. What is an essential nutrient?", options: ["A nutrient that must be obtained from food because the body cannot produce it", "A nutrient found in fruits only", "A nutrient that is not necessary for health"], answer: "A nutrient that must be obtained from food because the body cannot produce it" },
+  { question: "12. Which nutrient is most concentrated in fats and oils?", options: ["Proteins", "Vitamins", "Fats"], answer: "Fats" },
+  { question: "13. What is the function of vitamins in the body?", options: ["To provide energy", "To regulate body functions", "To build muscles"], answer: "To regulate body functions" },
+  { question: "14. What is the role of potassium in the body?", options: ["To strengthen bones", "To regulate blood pressure", "To aid in digestion"], answer: "To regulate blood pressure" },
+  { question: "15. Which nutrient is essential for the formation of red blood cells?", options: ["Iron", "Calcium", "Vitamin D"], answer: "Iron" },
+  { question: "16. What is the function of zinc in the body?", options: ["To aid in muscle growth", "To regulate body temperature", "To support immune function"], answer: "To support immune function" },
+  { question: "17. Which nutrient is important for brain function and development?", options: ["Proteins", "Fats", "Omega-3 fatty acids"], answer: "Omega-3 fatty acids" },
+  { question: "18. What is the role of sodium in the body?", options: ["To regulate blood sugar levels", "To maintain fluid balance", "To provide energy"], answer: "To maintain fluid balance" },
+  { question: "19. Which nutrient is essential for the formation and maintenance of healthy skin?", options: ["Vitamin A", "Vitamin C", "Vitamin E"], answer: "Vitamin E" },
+  { question: "20. What is the function of magnesium in the body?", options: ["To regulate body temperature", "To support muscle and nerve function", "To aid in digestion"], answer: "To support muscle and nerve function" },
+  { question: "21. Which food group is the main source of protein?", options: ["Fruits", "Meat and beans", "Bread and cereals"], answer: "Meat and beans" },
+  { question: "22. What is the role of phosphorus in the body?", options: ["To regulate blood pressure", "To strengthen bones and teeth", "To aid in digestion"], answer: "To strengthen bones and teeth" },
+  { question: "23. Which nutrient is important for the formation and maintenance of strong teeth?", options: ["Calcium", "Iron", "Fiber"], answer: "Calcium" },
+  { question: "24. What is the function of selenium in the body?", options: ["To support immune function", "To regulate body temperature", "To aid in digestion"], answer: "To support immune function" },
+  { question: "25. Which nutrient is essential for the health of connective tissues and wound healing?", options: ["Vitamin C", "Vitamin D", "Vitamin K"], answer: "Vitamin C" },
+  { question: "26. What is the function of omega-3 fatty acids in the body?", options: ["To regulate body temperature", "To support heart health", "To aid in muscle growth"], answer: "To support heart health" },
+  { question: "27. Which nutrient is important for energy production and metabolism?", options: ["Vitamin B12", "Vitamin B6", "Vitamin B1 (Thiamine)"], answer: "Vitamin B1 (Thiamine)" },
+  { question: "28. What is the role of chromium in the body?", options: ["To support immune function", "To regulate blood sugar levels", "To aid in digestion"], answer: "To regulate blood sugar levels" },
+  { question: "29. Which nutrient is important for proper nerve function and muscle contraction?", options: ["Potassium", "Sodium", "Magnesium"], answer: "Potassium" },
+  { question: "30. What is the function of iodine in the body?", options: ["To regulate body temperature", "To support thyroid function", "To aid in digestion"], answer: "To support thyroid function" }
+],
+
+'Music studies': [
+  { question: "1. What is a scale in music?", options: ["A type of song", "A series of notes in ascending or descending order", "A type of instrument"], answer: "A series of notes in ascending or descending order" },
+  { question: "2. Which term describes the speed of music?", options: ["Tempo", "Pitch", "Rhythm"], answer: "Tempo" },
+  { question: "3. What does 'forte' mean in musical terms?", options: ["Loud", "Soft", "Slow"], answer: "Loud" },
+  { question: "4. What is a melody in music?", options: ["A harmony", "A rhythm", "A sequence of notes that form a musical phrase"], answer: "A sequence of notes that form a musical phrase" },
+  { question: "5. What is the main function of a conductor in an orchestra?", options: ["To play the piano", "To conduct the tempo and dynamics of the music", "To design the costumes"], answer: "To conduct the tempo and dynamics of the music" },
+  { question: "6. What is harmony in music?", options: ["A melody played backwards", "Two or more notes played simultaneously to produce a pleasing sound", "A type of percussion instrument"], answer: "Two or more notes played simultaneously to produce a pleasing sound" },
+  { question: "7. What is a key signature in sheet music?", options: ["The number of notes in a measure", "The sharps or flats at the beginning of each staff line indicating the key of the music", "The tempo of the music"], answer: "The sharps or flats at the beginning of each staff line indicating the key of the music" },
+  { question: "8. What is the role of dynamics in music?", options: ["To determine the tempo", "To indicate the key signature", "To indicate the volume and intensity of the music"], answer: "To indicate the volume and intensity of the music" },
+  { question: "9. Which term describes the pattern of beats in music?", options: ["Harmony", "Rhythm", "Melody"], answer: "Rhythm" },
+  { question: "10. What is a crescendo in music?", options: ["A gradual increase in volume", "A sudden decrease in volume", "A change in tempo"], answer: "A gradual increase in volume" },
+  { question: "11. What is the main function of a bass guitar in a band?", options: ["To play high-pitched melodies", "To provide rhythm", "To play low-pitched notes and provide harmonic foundation"], answer: "To play low-pitched notes and provide harmonic foundation" },
+  { question: "12. What does 'allegro' mean in musical terms?", options: ["Fast", "Slow", "Loud"], answer: "Fast" },
+  { question: "13. What is a chord in music?", options: ["A single note", "Two or more notes played simultaneously", "A type of wind instrument"], answer: "Two or more notes played simultaneously" },
+  { question: "14. What is the role of percussion instruments in an orchestra?", options: ["To play high-pitched melodies", "To provide rhythm and add texture to the music", "To conduct the tempo"], answer: "To provide rhythm and add texture to the music" },
+  { question: "15. Which term describes the pitch of a musical note?", options: ["Tempo", "Dynamics", "Tone"], answer: "Tone" },
+  { question: "16. What is a solo in music?", options: ["A piece of music for one performer", "A fast tempo", "A type of dance"], answer: "A piece of music for one performer" },
+  { question: "17. What is a duet in music?", options: ["A piece of music for two performers", "A type of percussion instrument", "A type of wind instrument"], answer: "A piece of music for two performers" },
+  { question: "18. What is a score in music?", options: ["The number of instruments in a band", "The written notation of a piece of music", "The tempo of a piece of music"], answer: "The written notation of a piece of music" },
+  { question: "19. What is a fermata in musical notation?", options: ["A note held for an extended period", "A sudden change in tempo", "A fast rhythm"], answer: "A note held for an extended period" },
+  { question: "20. What is an interval in music?", options: ["A type of dance", "The distance between two notes", "A type of percussion instrument"], answer: "The distance between two notes" },
+  { question: "21. What is a symphony in music?", options: ["A type of song", "A large-scale orchestral composition", "A solo performance"], answer: "A large-scale orchestral composition" },
+  { question: "22. What is the role of a conductor in a choir?", options: ["To sing solo parts", "To conduct the tempo and dynamics of the music", "To play the piano"], answer: "To conduct the tempo and dynamics of the music" },
+  { question: "23. What is a clef in sheet music?", options: ["The number of notes in a measure", "The symbol at the beginning of a staff indicating the pitch of the notes", "The tempo of the music"], answer: "The symbol at the beginning of a staff indicating the pitch of the notes" },
+  { question: "24. What is a flat in musical notation?", options: ["A symbol that lowers the pitch of a note", "A type of percussion instrument", "A note that is held for an extended period"], answer: "A symbol that lowers the pitch of a note" },
+  { question: "25. What does 'piano' mean in musical terms?", options: ["Slow", "Soft", "Loud"], answer: "Soft" },
+  { question: "26. What is a treble clef in music?", options: ["A symbol at the beginning of a staff indicating the pitch of the notes", "The tempo of the music", "A type of percussion instrument"], answer: "A symbol at the beginning of a staff indicating the pitch of the notes" },
+  { question: "27. What is a bar in musical notation?", options: ["A type of dance", "A symbol that lowers the pitch of a note", "A segment of time in music indicated by vertical lines"], answer: "A segment of time in music indicated by vertical lines" },
+  { question: "28. What is a conductor's baton used for?", options: ["To play the piano", "To conduct the tempo and dynamics of the music", "To design the costumes"], answer: "To conduct the tempo and dynamics of the music" },
+  { question: "29. What is a pitch in music?", options: ["The speed of music", "The distance between two notes", "The volume of music"], answer: "The distance between two notes" },
+  { question: "30. What is a coda in musical notation?", options: ["A symbol that raises the pitch of a note", "The final section of a piece of music", "A type of dance"], answer: "The final section of a piece of music" }
+]
+    
+};
+
+function displayQuestions(subject) {
+    const questionList = questions[subject];
+    if (questionList) {
+        // Clear previous questions if any
+        document.getElementById('questionContainer').innerHTML = '';
+        // Display questions
+        questionList.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('card', 'mt-3');
+            questionElement.setAttribute('data-subject', subject);
+            questionElement.setAttribute('data-question-index', index);
+            questionElement.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${question.question}</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option1${index}" value="${question.options[0]}">
+                        <label class="form-check-label" for="option1${index}">
+                            ${question.options[0]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option2${index}" value="${question.options[1]}">
+                        <label class="form-check-label" for="option2${index}">
+                            ${question.options[1]}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answer${index}" id="option3${index}" value="${question.options[2]}">
+                        <label class="form-check-label" for="option3${index}">
+                            ${question.options[2]}
+                        </label>
+                    </div>
+                </div>
+            `;
+            document.getElementById('questionContainer').appendChild(questionElement);
+        });
+        
+        // Add submit button
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('class', 'btn btn-primary mt-3');
+        submitButton.textContent = 'Submit Answers';
+        submitButton.onclick = calculateScore;
+        document.getElementById('questionContainer').appendChild(submitButton);
+    }
+}
+
+
+
+function calculateScore(username) {
+    let score = 0;
+    const questionCards = document.querySelectorAll('.card.mt-3');
+    
+    questionCards.forEach((card, index) => {
+        const selectedOption = card.querySelector('input[type=radio]:checked');
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const subject = card.getAttribute('data-subject');
+            const questionIndex = card.getAttribute('data-question-index');
+            const correctAnswer = questions[subject][questionIndex].answer;
+            if (selectedAnswer === correctAnswer) {
+                score += 3.33333333; // Each correct answer earns 3.33 marks
+            }
+        }
+    });
+
+    // Determine the grade based on score ranges
+let grade;
+if (score >= 0 && score <= 17) {
+    grade = 'F';
+} else if (score >= 18 && score <= 30) {
+    grade = 'E';
+} else if (score >= 31 && score <= 44) {
+    grade = 'D';
+} else if (score >= 45 && score <= 69) {
+    grade = 'C';
+} else if (score >= 70 && score <= 84) {
+    grade = 'B';
+} else if (score >= 85 && score <= 100) {
+    grade = 'A';
+} else {
+    grade = 'Invalid'; // If score exceeds the expected range
+}
+
+
+    // Display the score and grade on the page
+    const scoreDisplay = document.getElementById('score-display');
+    scoreDisplay.textContent = `Congratulations, your score is: ${score}, and your grade is: ${grade}`;
+}
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    const interval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.textContent = minutes + ':' + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = '00:00';
+            // Time is up, automatically submit the exam
+            calculateScore();
+        }
+    }, 1000);
+}
+
+// Function to attach click event listeners to subject elements
+function attachTimerToSubjects() {
+    const subjects = document.querySelectorAll('[id^="collapsePrimary"]'); // Select all elements with ids starting with "collapsePrimary"
+    subjects.forEach(subject => {
+        subject.addEventListener('click', () => {
+            const display = document.getElementById('timer-display');
+            const timeLimit = 60 * 10; // 10 minutes in seconds
+            startTimer(timeLimit, display);
+        });
+    });
+}
+
+window.onload = function () {
+    attachTimerToSubjects();
+};
+
+        
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
