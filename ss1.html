@@ -114,6 +114,9 @@
                     <button class="btn btn-secondary" onclick="displayQuestions('Entrepreneurship')">Entrepreneurship</button>
                     <button class="btn btn-secondary" onclick="displayQuestions('Food and nutrition')">Food and nutrition</button>
                     <button class="btn btn-secondary" onclick="displayQuestions('Music studies')">Music studies</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Yoruba language')">Yoruba language</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Literature in English')">Literature in English</button>
+                    <button class="btn btn-secondary" onclick="displayQuestions('Fine and Visual art')">Fine and Visual art</button>
                 </div>
             </div>
         </div>
@@ -596,7 +599,7 @@ const questions = {
 
 
     
-    'Food and nutrition': [
+'Food and nutrition': [
   { question: "1. What are macronutrients?", options: ["Tiny organisms", "Essential nutrients needed in large amounts", "Types of fish"], answer: "Essential nutrients needed in large amounts" },
   { question: "2. Why is water important in the diet?", options: ["To swim", "To stay hydrated and regulate body functions", "To build houses"], answer: "To stay hydrated and regulate body functions" },
   { question: "3. Which foods are good sources of protein?", options: ["Fruits", "Meat, fish, beans, eggs", "Cakes"], answer: "Meat, fish, beans, eggs" },
@@ -660,16 +663,107 @@ const questions = {
   { question: "28. What is the role of music in education?", options: ["To avoid education", "To enhance learning, creativity, and personal development", "To ignore facts"], answer: "To enhance learning, creativity, and personal development" },
   { question: "29. How does music influence physical activity?", options: ["It has no influence", "It can enhance motivation and performance during exercise", "It makes people tired"], answer: "It can enhance motivation and performance during exercise" },
   { question: "30. What is the significance of music in different cultures?", options: ["To avoid cultures", "It serves as a universal language and expression of identity", "To read books"], answer: "It serves as a universal language and expression of identity" }
+],
+
+'Yoruba language':[
+  { question: "1. Kini itumo oro 'Alafia'?", options: ["Peace", "Health", "Happiness"], answer: "Health" },
+  { question: "2. Kini itumo oro 'Oro'?", options: ["Song", "Money", "Word"], answer: "Word" },
+  { question: "3. Ile wo ni awon Yoruba maa n siso pe 'Ile Iwosan'?", options: ["School", "Hospital", "Market"], answer: "Hospital" },
+  { question: "4. Kini oruko miiran fun 'Igi' ninu ede Yoruba?", options: ["Ewe", "Ope", "Oyinbo"], answer: "Ope" },
+  { question: "5. Bawo ni a se maa n pe 'School' ninu ede Yoruba?", options: ["Ile Iwe", "Ile Eko", "Ile Ayo"], answer: "Ile Iwe" },
+  { question: "6. Kini itumo oro 'Oko'?", options: ["Husband", "Farm", "Car"], answer: "Farm" },
+  { question: "7. Ede Yoruba ni o so pe 'Mo fe jeun', kini itumo re?", options: ["I want to dance", "I want to eat", "I want to sleep"], answer: "I want to eat" },
+  { question: "8. Ewo ni a maa n pe ni 'Ounje' ninu ede Yoruba?", options: ["Food", "Water", "Fire"], answer: "Food" },
+  { question: "9. Kini itumo oro 'Ile'?", options: ["Land", "Home", "Sky"], answer: "Home" },
+  { question: "10. Bawo ni a se maa n pe 'Doctor' ninu ede Yoruba?", options: ["Oluwa", "Dokita", "Onisegun"], answer: "Onisegun" },
+  { question: "11. Kini itumo oro 'Ounje'?", options: ["Food", "Drink", "Game"], answer: "Food" },
+  { question: "12. Kini itumo oro 'Omode'?", options: ["Child", "Adult", "Old person"], answer: "Child" },
+  { question: "13. Bawo ni a se maa n pe 'Water' ninu ede Yoruba?", options: ["Omi", "Ami", "Imi"], answer: "Omi" },
+  { question: "14. Kini itumo oro 'Oluwa'?", options: ["Friend", "Lord", "Teacher"], answer: "Lord" },
+  { question: "15. Bawo ni a se maa n pe 'Teacher' ninu ede Yoruba?", options: ["Oluko", "Dokita", "Baba"], answer: "Oluko" },
+  { question: "16. Kini itumo oro 'Obirin'?", options: ["Man", "Woman", "Child"], answer: "Woman" },
+  { question: "17. Kini itumo oro 'Ọkọ'?", options: ["Husband", "Boat", "Friend"], answer: "Husband" },
+  { question: "18. Bawo ni a se maa n pe 'Cat' ninu ede Yoruba?", options: ["Ekun", "Erin", "Ologbo"], answer: "Ologbo" },
+  { question: "19. Kini itumo oro 'Ẹjẹ'?", options: ["Milk", "Blood", "Sweat"], answer: "Blood" },
+  { question: "20. Bawo ni a se maa n pe 'Fish' ninu ede Yoruba?", options: ["Ẹja", "Ẹkun", "Ẹran"], answer: "Ẹja" },
+  { question: "21. Kini itumo oro 'Ọjọ'?", options: ["Month", "Week", "Day"], answer: "Day" },
+  { question: "22. Bawo ni a se maa n pe 'School' ninu ede Yoruba?", options: ["Ile-iwe", "Ile-ori", "Ile-aye"], answer: "Ile-iwe" },
+  { question: "23. Kini itumo oro 'Ọmọde'?", options: ["Teacher", "Child", "Parent"], answer: "Child" },
+  { question: "24. Bawo ni a se maa n pe 'Dog' ninu ede Yoruba?", options: ["Ajá", "Agbo", "Ologbo"], answer: "Ajá" },
+  { question: "25. Kini itumo oro 'Ọmọ'?", options: ["Child", "Teacher", "Elder"], answer: "Child" },
+  { question: "26. Bawo ni a se maa n pe 'Bird' ninu ede Yoruba?", options: ["Ẹyẹ", "Ekun", "Eran"], answer: "Ẹyẹ" },
+  { question: "27. Kini itumo oro 'Ọjọgbọn'?", options: ["Teacher", "Doctor", "Professor"], answer: "Professor" },
+  { question: "28. Bawo ni a se maa n pe 'Lion' ninu ede Yoruba?", options: ["Ẹyẹ", "Ekun", "Erin"], answer: "Ekun" },
+  { question: "29. Kini itumo oro 'Ọkọ'?", options: ["Boat", "Husband", "Car"], answer: "Car" },
+  { question: "30. Bawo ni a se maa n pe 'Head' ninu ede Yoruba?", options: ["Ori", "Ika", "Ise"], answer: "Ori" }
+],
+
+'Literature in English': [
+  { question: "1. Who is the author of 'Things Fall Apart'?", options: ["Wole Soyinka", "Chinua Achebe", "Ngugi wa Thiong'o"], answer: "Chinua Achebe" },
+  { question: "2. What is the main theme of 'Animal Farm' by George Orwell?", options: ["Love", "Revolution", "Betrayal"], answer: "Revolution" },
+  { question: "3. In 'Romeo and Juliet', who is Romeo in love with before Juliet?", options: ["Rosaline", "Ophelia", "Desdemona"], answer: "Rosaline" },
+  { question: "4. What genre does 'Pride and Prejudice' belong to?", options: ["Romance", "Science Fiction", "Horror"], answer: "Romance" },
+  { question: "5. Who wrote 'The Lion and the Jewel'?", options: ["Chimamanda Adichie", "Wole Soyinka", "Ama Ata Aidoo"], answer: "Wole Soyinka" },
+  { question: "6. What is the setting of 'To Kill a Mockingbird'?", options: ["Maycomb, Alabama", "New York, New York", "Dublin, Ireland"], answer: "Maycomb, Alabama" },
+  { question: "7. In 'The Great Gatsby', what is Gatsby's real name?", options: ["James Gatz", "Nick Carraway", "Tom Buchanan"], answer: "James Gatz" },
+  { question: "8. Who wrote 'The Crucible'?", options: ["Arthur Miller", "Tennessee Williams", "Lorraine Hansberry"], answer: "Arthur Miller" },
+  { question: "9. What type of play is 'Oedipus Rex'?", options: ["Comedy", "Tragedy", "Romance"], answer: "Tragedy" },
+  { question: "10. Who is the protagonist in 'Jane Eyre'?", options: ["Elizabeth Bennet", "Jane Eyre", "Emma Woodhouse"], answer: "Jane Eyre" },
+  { question: "11. What is the main conflict in 'Lord of the Flies'?", options: ["Man vs. Nature", "Man vs. Society", "Man vs. Man"], answer: "Man vs. Man" },
+  { question: "12. Who wrote '1984'?", options: ["Aldous Huxley", "George Orwell", "Ray Bradbury"], answer: "George Orwell" },
+  { question: "13. What is the climax of 'Macbeth'?", options: ["Banquo's murder", "Macbeth's coronation", "Macduff kills Macbeth"], answer: "Macduff kills Macbeth" },
+  { question: "14. Who is the author of 'The Tempest'?", options: ["Christopher Marlowe", "William Shakespeare", "Ben Jonson"], answer: "William Shakespeare" },
+  { question: "15. What is the narrative perspective of 'The Catcher in the Rye'?", options: ["First person", "Third person limited", "Third person omniscient"], answer: "First person" },
+  { question: "16. In 'Frankenstein', who is the creature's creator?", options: ["Dr. Jekyll", "Victor Frankenstein", "Robert Walton"], answer: "Victor Frankenstein" },
+  { question: "17. What is the setting of 'Heart of Darkness'?", options: ["The Congo River", "The Amazon Rainforest", "The Nile River"], answer: "The Congo River" },
+  { question: "18. Who wrote 'The Adventures of Huckleberry Finn'?", options: ["Ernest Hemingway", "Mark Twain", "F. Scott Fitzgerald"], answer: "Mark Twain" },
+  { question: "19. In 'The Odyssey', who is Odysseus' wife?", options: ["Helen", "Penelope", "Clytemnestra"], answer: "Penelope" },
+  { question: "20. Who is the author of 'Beloved'?", options: ["Toni Morrison", "Alice Walker", "Zora Neale Hurston"], answer: "Toni Morrison" },
+  { question: "21. What is the main theme of 'A Raisin in the Sun'?", options: ["Family", "Racial discrimination", "Love"], answer: "Racial discrimination" },
+  { question: "22. Who wrote 'The Old Man and the Sea'?", options: ["John Steinbeck", "Ernest Hemingway", "William Faulkner"], answer: "Ernest Hemingway" },
+  { question: "23. What is the setting of 'Brave New World'?", options: ["A dystopian future", "A medieval kingdom", "A tropical island"], answer: "A dystopian future" },
+  { question: "24. In 'The Scarlet Letter', what letter does Hester Prynne have to wear?", options: ["A", "B", "C"], answer: "A" },
+  { question: "25. Who is the author of 'Their Eyes Were Watching God'?", options: ["Langston Hughes", "Zora Neale Hurston", "James Baldwin"], answer: "Zora Neale Hurston" },
+  { question: "26. What is the main conflict in 'Hamlet'?", options: ["Hamlet vs. Claudius", "Hamlet vs. Laertes", "Hamlet vs. Polonius"], answer: "Hamlet vs. Claudius" },
+  { question: "27. Who wrote 'Invisible Man'?", options: ["James Baldwin", "Ralph Ellison", "Richard Wright"], answer: "Ralph Ellison" },
+  { question: "28. What is the setting of 'The Grapes of Wrath'?", options: ["California", "Oklahoma", "Texas"], answer: "California" },
+  { question: "29. Who is the protagonist in 'Wuthering Heights'?", options: ["Catherine Earnshaw", "Heathcliff", "Edgar Linton"], answer: "Heathcliff" },
+  { question: "30. Who wrote 'Death of a Salesman'?", options: ["Tennessee Williams", "Arthur Miller", "Edward Albee"], answer: "Arthur Miller" }
+],
+
+'Fine and Visual art': [
+  { question: "1. What is the primary purpose of drawing in fine art?", options: ["To create music", "To produce visual images", "To build structures"], answer: "To produce visual images" },
+  { question: "2. Which of the following is a type of painting?", options: ["Landscape", "Sculpture", "Photography"], answer: "Landscape" },
+  { question: "3. Who is known as the father of modern Nigerian art?", options: ["Bruce Onobrakpeya", "Aina Onabolu", "Ben Enwonwu"], answer: "Aina Onabolu" },
+  { question: "4. What is the medium used in watercolor painting?", options: ["Oil", "Acrylic", "Water"], answer: "Water" },
+  { question: "5. Which art movement is characterized by the use of bold colors and abstract shapes?", options: ["Renaissance", "Cubism", "Impressionism"], answer: "Cubism" },
+  { question: "6. What is a primary color?", options: ["Green", "Red", "Purple"], answer: "Red" },
+  { question: "7. What type of art involves creating three-dimensional works?", options: ["Painting", "Drawing", "Sculpture"], answer: "Sculpture" },
+  { question: "8. Who painted the Mona Lisa?", options: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso"], answer: "Leonardo da Vinci" },
+  { question: "9. What is the technique of applying pigment to wet plaster called?", options: ["Fresco", "Mosaic", "Etching"], answer: "Fresco" },
+  { question: "10. Which of these is an element of art?", options: ["Harmony", "Contrast", "Line"], answer: "Line" },
+  { question: "11. What is the name of the Nigerian traditional art form that uses beadwork?", options: ["Adire", "Aso Oke", "Ileke"], answer: "Ileke" },
+  { question: "12. What does the term 'chiaroscuro' refer to in art?", options: ["Use of bright colors", "Use of light and dark contrasts", "Use of geometric shapes"], answer: "Use of light and dark contrasts" },
+  { question: "13. Which art style is known for its emphasis on light and color, often capturing outdoor scenes?", options: ["Baroque", "Impressionism", "Surrealism"], answer: "Impressionism" },
+  { question: "14. What is the art of making objects from clay called?", options: ["Weaving", "Pottery", "Engraving"], answer: "Pottery" },
+  { question: "15. Who is a famous Nigerian sculptor?", options: ["Uche Okeke", "Yusuf Grillo", "Lamidi Fakeye"], answer: "Lamidi Fakeye" },
+  { question: "16. What is a canvas?", options: ["A type of sculpture", "A surface for painting", "A drawing tool"], answer: "A surface for painting" },
+  { question: "17. What is the process of making prints from a metal plate called?", options: ["Lithography", "Etching", "Screen printing"], answer: "Etching" },
+  { question: "18. Which of the following is a secondary color?", options: ["Blue", "Yellow", "Green"], answer: "Green" },
+  { question: "19. What is the purpose of perspective in drawing?", options: ["To create rhythm", "To show depth", "To blend colors"], answer: "To show depth" },
+  { question: "20. Who is known for the painting 'Starry Night'?", options: ["Claude Monet", "Vincent van Gogh", "Michelangelo"], answer: "Vincent van Gogh" },
+  { question: "21. What is the term for a quick, rough drawing?", options: ["Sketch", "Portrait", "Still life"], answer: "Sketch" },
+  { question: "22. What material is traditionally used in Yoruba wood carving?", options: ["Stone", "Ivory", "Wood"], answer: "Wood" },
+  { question: "23. Which art form involves arranging pieces of colored glass or stone to create images?", options: ["Fresco", "Mosaic", "Relief"], answer: "Mosaic" },
+  { question: "24. Who is known as the first Nigerian to receive formal art training in Europe?", options: ["Ben Enwonwu", "Aina Onabolu", "Bruce Onobrakpeya"], answer: "Aina Onabolu" },
+  { question: "25. What is 'Adire'?", options: ["A type of beadwork", "A textile dyeing technique", "A form of pottery"], answer: "A textile dyeing technique" },
+  { question: "26. What is the technique of drawing with fine lines to create shading called?", options: ["Hatching", "Stippling", "Blending"], answer: "Hatching" },
+  { question: "27. Which of the following is a principle of design?", options: ["Color", "Texture", "Balance"], answer: "Balance" },
+  { question: "28. What is the purpose of a still life painting?", options: ["To depict landscapes", "To represent inanimate objects", "To show movement"], answer: "To represent inanimate objects" },
+  { question: "29. What is a characteristic of surrealist art?", options: ["Realistic scenes", "Abstract forms", "Dream-like imagery"], answer: "Dream-like imagery" },
+  { question: "30. Who is the famous Nigerian artist known for his bronze sculptures?", options: ["Uche Okeke", "Ben Enwonwu", "Olowe of Ise"], answer: "Olowe of Ise" }
 ]
 
-
-  
-  
-
-  
-
-
-  
 
 
     
